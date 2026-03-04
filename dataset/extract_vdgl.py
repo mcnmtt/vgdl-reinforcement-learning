@@ -24,21 +24,21 @@ def extract_vgdl_from_file(py_path):
 
 
 def process_files():
-    # crea la cartella di output se non esiste
     os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
-    for filename in os.listdir(INPUT_FOLDER):
-        if not filename.endswith(".py"):
-            continue
+    # Ordina i file per avere ID coerenti
+    py_files = sorted(f for f in os.listdir(INPUT_FOLDER) if f.endswith(".py"))
 
+    for idx, filename in enumerate(py_files, start=1):
         py_path = os.path.join(INPUT_FOLDER, filename)
         vgdl_text = extract_vgdl_from_file(py_path)
 
         if vgdl_text is None:
-            print(f"[SKIP] Nessun blocco VGDL trovato in: {filename}")
+            print(f"[SKIP] Nessun blocco VGDL in: {filename}")
             continue
 
-        txt_filename = filename.replace(".py", ".txt")
+        base_name = filename.replace(".py", "")
+        txt_filename = f"{idx}_{base_name}.txt"
         txt_path = os.path.join(OUTPUT_FOLDER, txt_filename)
 
         with open(txt_path, "w", encoding="utf-8") as out:

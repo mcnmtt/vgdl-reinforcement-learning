@@ -1,0 +1,17 @@
+Player role:
+The player controls an avatar that can aim and shoot a bullet projectile. The bullet is affected by gravity and can exist only once at a time.
+
+Entities:
+The game contains pad objects that act as targets, walls that block movement and projectiles, and bullets fired by the avatar.
+
+Interactions:
+Bullets are destroyed when they collide with walls, pads, or the edge of the screen. The avatar cannot pass through walls or the edge of the screen and is pushed back when attempting to do so.
+
+Win condition:
+The player wins when all pad objects are removed.
+
+Lose condition:
+The player loses if the avatar is removed.
+
+Objective:
+Shoot bullets to destroy all pads while navigating the environment.

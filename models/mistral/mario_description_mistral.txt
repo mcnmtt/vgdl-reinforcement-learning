@@ -1,0 +1,17 @@
+Player Role: 
+The player controls the avatar, which is a character similar to Mario with air steering capabilities.
+
+Entities : 
+The game includes entities such as elevators (which move upwards), moving platforms (which follow the player's movement), Goombas (walking enemies that face left), Paratroopas (jumping enemies also facing left), and a green goal object.
+
+Interaction: 
+The avatar can interact with enemies by killing them when they collide from above or if the enemy is already on the ground. Enemies can also kill the avatars if they collides with it while alive. Moving platforms will stop at walls and have reduced friction with other moving objects. The avatarl can ride on elevators and be pulled along with them. When the avtar reaches the edge of the screen, it will reappear from the opposite side due to the "wraparound" feature.
+
+Win Condition: 
+The game ends when the player collects all the goals (green objects).
+
+Loose Condition: 
+If the avator dies (collides with an enemy or falls off the screen), the game ends.
+
+Objectives: 
+The main objective for the player is to navigate through the level, avoiding enemies and collecting all the green goals to win the game.

@@ -1,0 +1,17 @@
+Player role: 
+The player controls an avatar with gravity physics that can move around the level.
+
+Entities : 
+The game includes two types of sprites: pads (passive, blue) and the avatar (moves under gravity).
+
+Interactions: 
+The avatar can collide with walls, which results in its death; the avatr can also collide and be killed if it moves too slowly near the edge of the map (EOS); the avtar can interact with pads, but this interaction will result in the avtr's death if it is moving too slow.
+
+Win Condition: 
+Winning the game occurs when there are exactly 4 pads on the screen.
+
+Loose Condition: 
+Losing the game happens when the avatars dies or there are less than 4 active pads.
+
+Objectives: 
+The objective for the player is to navigate the avator through the level while avoiding collisions and maintaining a certain speed to prevent self-destruction, with the ultimate goal being to have 4 remaining pads at any given time.

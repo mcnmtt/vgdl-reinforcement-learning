@@ -1,0 +1,17 @@
+Player role:
+The player controls an avatar that moves under gravity using inertial movement.
+
+Entities:
+The game contains pad objects and walls that act as obstacles within the level.
+
+Interactions:
+The avatar is destroyed if it collides with walls or reaches the edge of the screen. When the avatar collides with a pad while moving slowly relative to it, the pad is removed.
+
+Win condition:
+The player wins when the number of pad objects reaches the specified limit of four.
+
+Lose condition:
+The player loses if the avatar is destroyed.
+
+Objective:
+Move the avatar carefully to interact with pads while avoiding collisions with walls or the edge of the screen.

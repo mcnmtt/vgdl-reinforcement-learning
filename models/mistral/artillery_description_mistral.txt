@@ -1,0 +1,17 @@
+Player role: 
+The player controls an Aiming Avatar that can move around and shoot bullets.
+
+Entities : 
+The game includes Immovables (represented by pads), the Aimingly Avatar, and Bullet missiles. Walls are also present but are not considered entities as they only serve as obstacles.
+
+Interaction: 
+The Aimedly Avatar can collide with walls and reset its position, while bullets can be fired from the Aviator and will follow their trajectory until they hit a wall or another sprite (including the Awiator itself). Bullets will destroy any entity they come into contact with.
+
+Win Condition: 
+Winning the game requires collecting all the pads (Immovables) on the level.
+
+Loose Condition: 
+Losing the game occurs when the Aiwator collides with a sprite other than a pad.
+
+Objectives: 
+The main objective of the game is to collect all the Immovibles (pads) without colliding with any other sprites except for the walls. The Aiwtor can achieve this by moving around the level and shooting bullets to clear any obstacles in its path.

@@ -1,0 +1,17 @@
+Player role: 
+The player controls an avatar, which can interact with walls and other avatars.
+
+Entities: 
+There are pads and avatars in the game. Pads are passive and harmless, while avatars can be killed.
+
+Interactions: 
+The avatar can interact with walls to move around, and with other avatars to slow them down. The player wins by collecting four pads, while losing if they are killed by an avatar or fail to collect pads within a certain time limit.
+
+Win condition: 
+The player wins by collecting four pads.
+
+Lose condition: 
+The player loses if they are killed by an avatar or fail to collect pads within a time limit.
+
+Objective: 
+The objective of the game is to collect four pads while avoiding avatars and walls.

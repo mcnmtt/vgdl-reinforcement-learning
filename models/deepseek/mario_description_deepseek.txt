@@ -1,0 +1,17 @@
+Player role: 
+The player controls an avatar, which can jump and steer left and right.
+
+Entities: 
+The player must defeat enemies such as goombas, paratroopas, and evil entities. There is also a moving wall, an elevator, and a goal.
+
+Interactions: 
+The player can jump on enemies to defeat them, and can steer left and right to avoid obstacles. The player can also interact with the elevator to pull it towards them, and with the moving wall to stop it.
+
+Win condition: 
+The player must reach the goal to win the game.
+
+Lose condition: 
+The player loses if they fall off the screen or if the avatar collides with an enemy.
+
+Objective: 
+The objective of the game is to reach the goal while defeating enemies and avoiding obstacles.

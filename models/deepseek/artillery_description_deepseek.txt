@@ -1,0 +1,17 @@
+Player role: 
+The player controls an avatar that can shoot bullets.
+
+Entities: 
+The game features a blue immovable pad, an avatar, bullets, and walls.
+
+Interactions: 
+The player can shoot bullets that can kill enemies (pad, bullet, and avatar) and interact with walls. The avatar can step back when it hits a wall.
+
+Win condition: 
+The player wins by killing all enemies (pad, bullet, and avatar).
+
+Lose condition: 
+The player loses when the avatar hits the pad.
+
+Objective: 
+The objective of the game is to survive by killing all enemies.

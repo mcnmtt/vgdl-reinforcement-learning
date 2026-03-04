@@ -1,0 +1,17 @@
+Player role:
+The player controls an avatar with Mario-like movement under gravity. The avatar can steer while in the air.
+
+Entities:
+The game contains enemies called Goombas and Paratroopas, a goal object, and moving elevators. Goombas walk horizontally, while Paratroopas move by jumping. Elevators move upward continuously.
+
+Interactions:
+If the avatar jumps on an enemy from above, the enemy is killed and the player gains one point. If the avatar collides with an enemy while the enemy is still alive, the avatar dies. Moving entities stop when they hit walls and are affected by friction. Elevators can carry moving entities along with them as they move. When elevators reach the edge of the level, they wrap around to the opposite side.
+
+Win condition:
+The player wins when the avatar reaches the goal object.
+
+Lose condition:
+The player loses when the avatar is killed.
+
+Objective:
+Navigate the level using movement and elevators, avoid or defeat enemies, and reach the goal.
