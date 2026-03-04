@@ -1,0 +1,17 @@
+Player role:
+<text>The player controls the avatar, which can be MarioAvatar with airsteering ability.</text>
+
+Entities:
+<text>Entities include the avatar (MarioAvatar), enemies (goomba, paratroopa), walls, elevators, and a goal (Immovable).</text>
+
+Interactions:
+<text>The avatar can kill enemies from above, kill living enemies, and be killed by walls, elevators, or the goal. Elevators can be pulled with the avatar, and walls stop moving entities with friction. The elevator can wrap around the level.</text>
+
+Win condition:
+<text>The player wins by reaching the goal (Immovable) entity.</text>
+
+Lose condition:
+<text>The player loses by being killed by walls, elevators, or the goal.</text>
+
+Objective:
+<text>The objective is to navigate the avatar to the goal while avoiding enemies and obstacles.</text>

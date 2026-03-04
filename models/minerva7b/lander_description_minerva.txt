@@ -1,0 +1,16 @@
+Player role: 
+Avatar
+
+Entities: 
+None
+
+Interactions:
+
+Win condition: 
+The player wins when they reach the end of the level.
+
+Lose condition: 
+The player loses if they fall off the platform or collide with an obstacle.
+
+Objective: 
+The objective is to navigate the player through a series of platforms and obstacles while avoiding falling off the platform.

@@ -1,0 +1,20 @@
+Player role:
+- The player controls the avatar, which is an aimed bullet.
+
+Entities:
+- There are two entities: a pad (immovable, color blue) and an avatar (aimed bullet).
+
+Interactions:
+- The avatar can kill bullets and walls.
+- Bullets can kill walls and the avatar.
+- The avatar can step back when hitting a wall or reaching the end of the level (EOS).
+- The pad can kill bullets and the avatar.
+
+Win condition:
+- The player wins when the count of pads reaches a certain threshold (win=True).
+
+Lose condition:
+- The player loses when the avatar is killed by a bullet or wall (win=False).
+
+Objective:
+- The objective is to increase the count of pads by avoiding being killed by bullets or walls.

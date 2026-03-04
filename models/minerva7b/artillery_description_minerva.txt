@@ -1,0 +1,1 @@
+Player Role: The player controls a character in the game and must navigate through levels to complete objectives while avoiding obstacles and enemies. The goal is to reach the end of each level and achieve victory.

@@ -1,0 +1,18 @@
+Player role:
+- The player controls the avatar.
+
+Entities:
+- There are two entities: pad (colored BLUE) and avatar (InertialAvatar with GravityPhysics).
+
+Interactions:
+- The avatar can be killed by colliding with walls or the EOS entity.
+- The avatar can also be killed if it moves too slowly relative to the pad.
+
+Win condition:
+- The game is won when the player reaches a count of 4 pads.
+
+Lose condition:
+- The game is lost if the player's avatar collides with walls or the EOS entity, or if it moves too slowly relative to the pad.
+
+Objective:
+- The objective is to reach a count of 4 pads without being killed by walls or the EOS entity, or by moving too slowly.
