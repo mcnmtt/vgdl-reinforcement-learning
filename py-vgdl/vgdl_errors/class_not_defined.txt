@@ -1,0 +1,13 @@
+BasicGame
+    SpriteSet 
+        avatar > FlyingDragon
+        goal   > Immovable color=GREEN
+
+    TerminationSet
+        SpriteCounter stype=goal win=True
+
+    InteractionSet
+        avatar goal > killSprite
+
+    LevelMapping
+        G > goal

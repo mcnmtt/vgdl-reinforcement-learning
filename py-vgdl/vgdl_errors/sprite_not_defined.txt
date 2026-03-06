@@ -1,0 +1,13 @@
+BasicGame
+    SpriteSet 
+        avatar > MovingAvatar
+        goal   > Immovable color=GREEN
+
+    TerminationSet
+        SpriteCounter stype=goal win=True
+
+    InteractionSet
+        avatar enemy > killSprite
+
+    LevelMapping
+        G > goal

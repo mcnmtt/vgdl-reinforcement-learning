@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: vgdl
+Version: 1.0
+Summary: A video game description language (VGDL) built on top pf pygame
+Home-page: https://github.com/schaul/py-vgdl
+Author: Tom Schaul
+License-File: LICENSE.txt
+Requires-Dist: pygame
+Dynamic: author
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: summary
