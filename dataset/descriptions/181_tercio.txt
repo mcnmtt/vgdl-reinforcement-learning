@@ -1,0 +1,36 @@
+Player role:
+The player controls an avatar that moves in four directions using arrow keys. The avatar changes appearance and abilities based on the color of the ground it stands on - it appears as different colored characters when on black, white, blue, or grey surfaces. The avatar cannot move onto certain colored surfaces depending on its current state and bounces back from the edge of the screen instead of wrapping around.
+
+Entities:
+- Black floor tiles that serve as walkable ground and change the avatar into a black-costumed character
+- White floor tiles that serve as walkable ground and change the avatar into a white-costumed character  
+- Blue floor tiles that serve as walkable ground and change the avatar into a blue-costumed character
+- Grey floor tiles that serve as walkable ground and change the avatar into a grey-costumed character
+- Walls that block movement for both the avatar and pushable objects
+- Pushable crates that can be moved by the avatar and come in different variants matching the floor colors
+- Target holes that need to be filled with crates to complete the level
+- The avatar character that changes appearance based on the floor color it's standing on
+
+Interactions:
+- When the avatar touches the edge of the screen, it bounces back instead of leaving the play area
+- When the black-costumed avatar tries to move onto white or blue tiles, it bounces back
+- When the white-costumed avatar tries to move onto black or blue tiles, it bounces back  
+- When the blue-costumed avatar tries to move onto black or white tiles, it bounces back
+- When the avatar steps onto black tiles, it transforms into the black-costumed version
+- When the avatar steps onto white tiles, it transforms into the white-costumed version
+- When the avatar steps onto blue tiles, it transforms into the blue-costumed version
+- When the avatar steps onto grey tiles, it transforms into the grey-costumed version
+- When the avatar pushes against a crate, the crate moves one space in that direction
+- When a crate hits a wall, all recent moves are undone
+- When a target hole hits a wall, all recent moves are undone
+- When the avatar hits a wall, it bounces back
+- When a crate is pushed into a target hole, the hole becomes filled and the player scores a point
+
+Win condition:
+The player wins when all target holes have been filled with crates.
+
+Lose condition:
+The player loses if they don't complete the level within the time limit.
+
+Objective:
+Push crates into all the target holes to fill them, while navigating the restriction that your character can only move on certain colored floor tiles depending on which costume you're currently wearing.

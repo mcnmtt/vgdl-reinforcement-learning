@@ -1,0 +1,36 @@
+**Player role:**
+The player controls a character that moves freely in all directions using standard movement controls. The character also has an invisible cannon that sometimes fires projectiles when the player moves.
+
+**Entities:**
+- **Floor tiles**: Hidden brown background tiles that cover the playing area
+- **Invisible cannon**: An invisible object attached to the player that sometimes shoots projectiles
+- **Player character**: The main character that the player controls directly, appearing as an axeman
+- **Projectile**: A small axe that moves in random directions when fired from the cannon
+- **Random moving enemy**: An enemy that moves randomly around the screen, pausing briefly between movements
+- **Chasing enemy**: An enemy that actively pursues the player character, pausing briefly between movements  
+- **Directional enemy**: An enemy that moves in straight lines in one direction
+- **Random enemy spawner**: A hole that periodically creates random moving enemies, up to 10 total
+- **Chase enemy spawner**: A different colored hole that periodically creates chasing enemies, up to 10 total
+- **Rightward directional spawner**: A hole that creates enemies moving to the right, up to 5 total
+- **Leftward directional spawner**: A hole that creates enemies moving to the left, up to 5 total
+- **Upward directional spawner**: A hole that creates enemies moving upward, up to 5 total
+- **Downward directional spawner**: A hole that creates enemies moving downward, up to 5 total
+
+**Interactions:**
+- When the player character moves over the cannon, there is a 50% chance a projectile will be fired
+- When a projectile hits any enemy, the enemy is destroyed and the player gains 1 point
+- When the player character touches any enemy, the player character is destroyed
+- When the player character reaches the edge of the screen, they are pushed back onto the playfield
+- When directional enemies reach the edge of the screen, they reverse direction and move the opposite way
+- When random moving enemies reach the edge of the screen, they are pushed back onto the playfield
+- When chasing enemies reach the edge of the screen, they are pushed back onto the playfield
+- When projectiles hit enemies or reach the edge of the screen, the projectiles are destroyed
+
+**Win condition:**
+The player wins when all enemies on the screen have been destroyed.
+
+**Lose condition:**
+The player loses when their character is destroyed by touching an enemy.
+
+**Objective:**
+Survive enemy attacks while using your randomly-firing cannon to destroy all enemies that spawn from various holes around the level.

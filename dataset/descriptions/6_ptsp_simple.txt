@@ -1,0 +1,20 @@
+Player role:
+The player controls an avatar that moves with inertia, meaning it continues moving in the direction it was pushed and gradually comes to a stop rather than stopping immediately when input ends.
+
+Entities:
+- Avatar: The player-controlled character that moves with inertia physics
+- Blue pads: Stationary blue objects that remain fixed in place
+- Walls: Immovable barriers that form the boundaries of the level
+
+Interactions:
+- When the avatar or any object with inertia hits a wall, it bounces off in the opposite direction
+- When the avatar touches a blue pad, the pad is destroyed
+
+Win condition:
+The player wins when all blue pads have been destroyed.
+
+Lose condition:
+The player loses if the avatar is destroyed.
+
+Objective:
+Navigate your avatar around the level to collect all the blue pads while avoiding destruction, using the inertial movement physics to bounce off walls and reach your targets.

@@ -1,0 +1,33 @@
+**Player role:**
+The player controls a character that can move in all directions using keyboard input. The character has 5 health points and can switch between two states: a normal moving form and a dead ghost form that automatically drifts downward.
+
+**Entities:**
+- Floor tiles that serve as the basic walkable surface of the highway
+- Street crossing areas that look different from regular floor
+- A green exit portal that appears randomly with low probability every 16 game steps
+- Orange trucks that move rightward at high speed
+- Red trucks that move rightward at moderate speed  
+- Orange trucks that move leftward at high speed
+- Red trucks that move leftward at moderate speed
+- Trees that act as solid obstacles
+- Walls that can revive the player's character
+- An invisible starting position marker
+- An invisible spawn point that creates the exit portal
+
+**Interactions:**
+- When the moving character touches the goal portal, the character is removed and the player gains 10 points
+- When the moving character reaches the goal portal, the character is transported to the exit
+- When the moving character hits a tree, the character is pushed back to the previous position
+- When the moving character is hit by any truck, the character loses health points and transforms into the dead ghost form
+- When the dead ghost touches a wall, it transforms back into the normal moving character
+- When the moving character hits a wall, the character is pushed back to the previous position
+- When trucks reach the edge of the screen, they wrap around to the opposite side
+
+**Win condition:**
+The player wins if they survive for 1900 time steps (the timeout limit) or successfully reach the exit portal.
+
+**Lose condition:**
+The player loses if their character's health reaches zero and there are no avatar sprites remaining on the screen.
+
+**Objective:**
+Navigate your character across the dangerous highway filled with fast-moving trucks to reach the green exit portal while avoiding obstacles and managing your limited health points.

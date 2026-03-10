@@ -1,0 +1,24 @@
+**Player role:**
+The player controls an angel character that can move in all four directions using the arrow keys or similar controls. The avatar moves freely around the game area without being affected by gravity or momentum.
+
+**Entities:**
+- Floor: Green grass tiles that cover the entire game area as a background surface
+- Avatar: An animated angel sprite that the player directly controls
+- Butterfly: A colorful flying creature that moves around randomly at moderate speed with flapping wing animation
+- Cocoon: A blue stationary object that remains in a fixed position throughout the game
+- Wall: Tree-shaped obstacles that block movement and remain stationary
+
+**Interactions:**
+- When any animal (avatar or butterfly) touches a wall, it is pushed back and cannot pass through
+- When a butterfly touches the avatar, the butterfly is destroyed and the player gains 2 points
+- When a butterfly touches a cocoon, a new butterfly is created at that location
+- When a cocoon touches a butterfly, the butterfly is destroyed
+
+**Win condition:**
+The player wins when all butterflies have been removed from the game area.
+
+**Lose condition:**
+The player loses when all cocoons have been removed from the game area.
+
+**Objective:**
+Navigate your angel character to catch butterflies for points while preventing them from reaching the cocoons, since cocoons create new butterflies but you lose if all cocoons disappear.

@@ -1,0 +1,31 @@
+Player role:
+The player controls a swordsman character that can move in all directions around the game area. The swordsman can also attack by shooting sword slashes in the direction they're facing. The swordsman has two visual states - one when carrying no key and another when carrying a key.
+
+Entities:
+- Floor tiles that make up the walkable surface of the game area, appearing as textured ground
+- A green door that serves as the exit point from the level
+- An orange key that can be picked up by the player
+- Sword slashes that are created when the player attacks, appearing as flickering slash marks that disappear after a short time
+- Three types of monsters that move randomly around the level:
+  - Quick bats that change direction frequently and move with moderate endurance
+  - Normal spiders that change direction at a medium pace with good endurance  
+  - Slow scorpions that change direction infrequently but have high endurance
+- Walls that block movement and form the boundaries and obstacles of the level
+
+Interactions:
+- When any moving object hits a wall, it is pushed back and cannot pass through
+- When the keyless swordsman touches the door, they are pushed back and cannot enter
+- When the key-carrying swordsman touches the door, the door is destroyed and the player gains 1 point
+- When any monster is hit by a sword slash, the monster is destroyed and the player gains 2 points
+- When two monsters collide with each other, they both bounce back
+- When the swordsman touches any monster, the swordsman is destroyed and the player loses 1 point
+- When the keyless swordsman picks up the key, they transform into the key-carrying version, the key disappears, and the player gains 1 point
+
+Win condition:
+The player wins when the door is destroyed (by entering it while carrying the key).
+
+Lose condition:
+The player loses when the swordsman is destroyed (by touching a monster).
+
+Objective:
+Find and collect the key, then reach the exit door while avoiding or defeating the monsters that roam the level.

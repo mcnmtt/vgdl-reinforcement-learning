@@ -1,0 +1,29 @@
+**Player role:**
+The player controls a knight that can move in four directions and maintains its facing direction. The knight can push objects and wraps around to the opposite side when reaching the edge of the screen.
+
+**Entities:**
+- Knight: The player character that can move around and push boxes
+- Floor tiles: Hidden surface elements that provide the base terrain
+- Ground tiles: Hidden surface elements that form the basic floor
+- Holes: Dark blue circular pits scattered throughout the level
+- Boxes: Movable brown blocks that the player can push around
+- Boxes in holes: Gray blocks that appear when a regular box falls into a hole
+- Walls: Stone barriers that block movement and have connecting edges between adjacent wall pieces
+
+**Interactions:**
+- When the knight reaches the edge of the screen, it appears on the opposite side
+- When the knight touches a box, the box is pushed forward in the direction the knight is facing
+- When a box reaches the edge of the screen, it appears on the opposite side
+- When the knight touches a wall, the knight is prevented from moving forward
+- When a box touches a wall or another box, all affected boxes return to their previous positions
+- When a box enters a hole, it transforms into a box-in-hole and the player gains 1 point
+- When a box-in-hole is on regular ground, it transforms back into a regular box and the player loses 1 point
+
+**Win condition:**
+The player wins when all boxes have been placed in holes (no regular boxes remain on the level).
+
+**Lose condition:**
+There is no way to lose this game.
+
+**Objective:**
+Push all the boxes into the holes to fill them completely. Be careful not to push filled holes back onto regular ground, as this will turn them back into boxes.

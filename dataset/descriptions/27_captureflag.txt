@@ -1,0 +1,43 @@
+**Player role:**
+This is a two-player game where each player controls an avatar that can move in four directions. Player 1 controls a girl character and Player 2 controls a man character. The avatars can switch between different states based on which colored area they're standing on - they appear differently when on black areas versus white areas, and also change appearance when carrying a flag.
+
+**Entities:**
+- Black areas: Dark colored floor sections that are impassable barriers but affect avatar appearance
+- White areas: Light colored floor sections that are impassable barriers but affect avatar appearance  
+- Player 1's flag: A collectible flag that belongs to Player 1, appears slightly smaller than normal size
+- Player 2's flag: A collectible flag that belongs to Player 2, appears slightly smaller than normal size
+- Player 1's avatar: A girl character that changes appearance based on location (different look on black vs white areas) and when carrying a flag
+- Player 2's avatar: A man character that changes appearance based on location (different look on black vs white areas) and when carrying a flag
+- Blocks: Solid immovable obstacles that block movement
+- Invisible teleportation portals: Hidden objects that can transport avatars and flags to starting positions when activated
+- Starting positions: Invisible markers that define spawn points for avatars and flags
+- Walls: Solid barriers that block movement
+
+**Interactions:**
+- When any avatar hits the edge of the screen, a block, or a wall, they are pushed back and cannot pass through
+- When Player 2's avatar (on white areas) tries to collect Player 1's flag, they are pushed back
+- When Player 1's avatar (on black areas) tries to collect Player 2's flag, they are pushed back
+- When Player 1's avatar on black areas moves onto white areas, they transform to their white area appearance
+- When Player 1's avatar on white areas moves onto black areas, they transform to their black area appearance  
+- When Player 2's avatar on black areas moves onto white areas, they transform to their white area appearance
+- When Player 2's avatar on white areas moves onto black areas, they transform to their black area appearance
+- When Player 1's avatar on white areas collects Player 1's flag, they transform to flag-carrying state
+- When Player 2's avatar on black areas collects Player 2's flag, they transform to flag-carrying state
+- When Player 1's flag is collected by Player 1's avatar on white areas, the flag disappears
+- When Player 2's flag is collected by Player 2's avatar on black areas, the flag disappears
+- When Player 1's avatar carrying a flag moves onto black areas, teleportation portals spawn, a new flag appears, and they score 3 points while transforming to black area appearance
+- When Player 2's avatar carrying a flag moves onto white areas, teleportation portals spawn, a new flag appears, and they score 3 points while transforming to white area appearance
+- When Player 2's avatar on white areas touches Player 1's avatar carrying a flag, portals spawn, Player 1 loses 2 points, Player 2 gains 2 points, and Player 1 transforms to black area appearance
+- When Player 1's avatar on black areas touches Player 2's avatar carrying a flag, portals spawn, Player 2 loses 2 points, Player 1 gains 2 points, and Player 2 transforms to white area appearance
+- When both avatars are on white areas and touch each other, portals spawn, Player 1 loses 1 point, Player 2 gains 1 point, and Player 1 transforms to black area appearance
+- When both avatars are on black areas and touch each other, portals spawn, Player 2 loses 1 point, Player 1 gains 1 point, and Player 2 transforms to white area appearance
+- When teleportation portals touch flags or matching avatars, the flags/avatars disappear and are transported back to their starting positions
+
+**Win condition:**
+The player with the higher score wins when time runs out.
+
+**Lose condition:**
+The player with the lower score loses when the 1500-step time limit is reached.
+
+**Objective:**
+Collect your own flag and return it to your scoring area while preventing your opponent from doing the same, using tactical positioning and interference to maximize your score within the time limit.

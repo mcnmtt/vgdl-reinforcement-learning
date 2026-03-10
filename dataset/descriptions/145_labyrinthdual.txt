@@ -1,0 +1,32 @@
+Player role:
+The player controls a character that can move in four directions using keyboard input. The character can transform into different forms by collecting special items, which changes both its appearance and abilities.
+
+Entities:
+- A floor that covers the ground throughout the level, providing the basic walking surface
+- Spike traps that are dangerous obstacles placed on the floor
+- A green exit door that serves as the level's endpoint
+- Gray normal walls that block movement for all character forms
+- Red dirt walls that can be passed through only by the red-cloaked character form
+- Blue stone walls that can be passed through only by the blue-cloaked character form
+- A red cloak that transforms the character into a red-cloaked form when collected
+- A blue cloak that transforms the character into a blue-cloaked form when collected
+- The player character, which starts in normal form as a girl but can transform into a red princess form or blue queen form by collecting the corresponding cloaks
+
+Interactions:
+- When any character form touches a normal wall, it is pushed back and cannot pass through
+- When the normal character form touches any colored wall, it is pushed back and cannot pass through
+- When the blue character form touches a red wall, it is pushed back and cannot pass through
+- When the red character form touches a blue wall, it is pushed back and cannot pass through
+- When the character touches a red cloak, it transforms into the red form, the cloak disappears, and the player gains 3 points
+- When the character touches a blue cloak, it transforms into the blue form, the cloak disappears, and the player gains 3 points
+- When the character reaches the exit door, the character disappears and the player gains 1 point
+- When the character touches a spike trap, the character is destroyed and the player loses 1 point
+
+Win condition:
+The player wins when the character successfully reaches and enters the exit door, causing it to disappear from the level.
+
+Lose condition:
+The player loses if the character is destroyed by touching a spike trap, or if 1000 time units pass without completing the level.
+
+Objective:
+Navigate through a maze-like level by collecting colored cloaks to transform your character and gain the ability to pass through matching colored walls, ultimately reaching the exit door while avoiding deadly spike traps.

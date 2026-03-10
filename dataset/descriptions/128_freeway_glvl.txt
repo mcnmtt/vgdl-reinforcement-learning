@@ -1,0 +1,25 @@
+Player role:
+The player controls a character that can move in all directions using keyboard input.
+
+Entities:
+- Trees: Stationary brown objects that form walls and barriers throughout the level
+- Fast right-moving trucks: Vehicles that move quickly from left to right across the screen
+- Slow right-moving trucks: Vehicles that move slowly from left to right across the screen  
+- Fast left-moving trucks: Vehicles that move quickly from right to left across the screen
+- Slow left-moving trucks: Vehicles that move slowly from right to left across the screen
+- Moving character: The player's character that can be controlled to navigate through the level
+- Dead marker: A stationary object that indicates where something has been destroyed
+
+Interactions:
+- When the player character touches any truck, the player character is destroyed
+- Trucks continue moving in their designated directions regardless of collisions
+- Trees block movement - nothing can pass through them
+
+Win condition:
+The player wins by reaching a specific safe location or surviving for a certain amount of time (the exact win condition is not specified in this game description).
+
+Lose condition:
+The player loses when their character is hit by any of the moving trucks.
+
+Objective:
+Navigate your character safely through a level filled with moving trucks of varying speeds going in different directions, while avoiding collisions that would destroy you. Use the trees as cover and barriers to help plan your route through the dangerous traffic.

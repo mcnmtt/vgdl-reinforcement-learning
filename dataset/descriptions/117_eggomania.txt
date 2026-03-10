@@ -1,0 +1,29 @@
+Player role:
+The player controls a character that can move in all directions and shoot projectiles upward. The character carries explosive ammunition and can only shoot when they have at least 5 units of ammunition, with each shot consuming 5 units.
+
+Entities:
+- A brown tree trunk that remains stationary and blocks movement
+- Yellow broken eggshells that remain stationary after being created
+- Golden explosive ammunition that the player can collect, with a maximum capacity of 20 units
+- Fast chickens that move horizontally at high speed, change direction when hitting walls, and drop eggs downward frequently with short intervals between drops
+- Slow chickens that move horizontally at low speed, change direction when hitting walls, and drop eggs downward less frequently with longer intervals between drops
+- Blue projectiles that the player shoots upward and disappear when reaching the edge of the screen
+- Red eggs that fall downward slowly from chickens
+- Walls that block movement for all characters
+
+Interactions:
+- When chickens hit walls, they reverse direction and step back slightly
+- When the player hits walls, they step back slightly and cannot pass through
+- When eggs hit walls, they transform into broken eggshells
+- When the player touches an egg, they gain 1 unit of explosive ammunition, earn 1 point, and the egg disappears
+- When a blue projectile hits a chicken, the chicken is destroyed and the player earns 100 points
+- When blue projectiles reach the edge of the screen, they disappear
+
+Win condition:
+The player wins either by destroying all chickens or by surviving until the time limit of 1500 time units is reached.
+
+Lose condition:
+The player loses if there is at least 1 broken eggshell on the screen.
+
+Objective:
+Shoot all the chickens while avoiding letting any eggs hit the walls and break, as broken eggs will cause you to lose the game.

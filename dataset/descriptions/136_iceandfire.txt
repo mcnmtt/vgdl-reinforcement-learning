@@ -1,0 +1,32 @@
+**Player role:**
+The player controls a dwarf character that can move in four directions around the game area. The dwarf moves normally without any special physics like gravity or momentum.
+
+**Entities:**
+- A dwarf (the player character) that can move around and collect items
+- A green exit door that the player must reach to complete the level
+- Gray spikes that are deadly traps fixed in place
+- Gray ice tiles that cover the ground and are dangerous to walk on
+- Orange fire tiles that are fixed hazards and dangerous to step on
+- Brown boots (ice shoes) that can be collected and protect against ice, appearing smaller than normal size and limited to one pair
+- Red boots (fire boots) that can be collected and protect against fire, appearing smaller than normal size and limited to one pair
+- Small golden chips that can be collected for points, appearing at half normal size
+- Tree walls that block movement and are fixed obstacles
+- Grass floor tiles that provide the basic walkable surface (invisible background)
+
+**Interactions:**
+- When the dwarf touches a wall, it is pushed back and cannot pass through
+- When the dwarf reaches the exit door, the dwarf disappears and the player gains 1 point
+- When the dwarf touches a spike trap, the dwarf is destroyed and the player loses 1 point
+- When the dwarf touches a golden chip, the chip disappears and the player gains 1 point
+- When the dwarf touches ice shoes or fire boots, the footwear is collected and the player gains 3 points
+- When the dwarf steps on ice without having ice shoes, the dwarf is destroyed
+- When the dwarf steps on fire without having fire boots, the dwarf is destroyed
+
+**Win condition:**
+The player wins when there are no exit doors remaining on the screen (meaning they successfully reached the exit).
+
+**Lose condition:**
+The player loses if the dwarf is destroyed by touching traps, ice, or fire, or if 500 time units pass without completing the level.
+
+**Objective:**
+Navigate the dwarf safely through a dangerous environment filled with spikes, ice, and fire to reach the exit door. Collect the appropriate protective footwear to safely traverse hazardous terrain and gather golden chips for bonus points along the way.

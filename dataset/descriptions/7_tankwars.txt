@@ -1,0 +1,29 @@
+Player role:
+The player controls a tank that can aim and shoot in any direction. The tank starts facing upward and can rotate to target enemies. The tank bounces back when it hits walls or the edge of the screen.
+
+Entities:
+- Player tank: A controllable tank that can aim in different directions and fire bullets. It bounces back when hitting obstacles or screen edges.
+- Enemy tank: A red tank that serves as a target. It also bounces back when hitting walls or screen edges and can fire red bullets.
+- White bullet: A projectile fired by the player's tank. It travels at high speed, is affected by gravity, and displays a directional arrow. Only one can exist at a time.
+- Red bullet: A projectile fired by the enemy tank. It travels at high speed, is affected by gravity, and displays a directional arrow. Only one can exist at a time.
+- Blue pad: A stationary blue object that remains fixed in place.
+- Upward conveyor: A platform that pushes tanks upward when they stand on it.
+- Downward conveyor: A platform that pushes tanks downward when they stand on it.
+
+Interactions:
+- When the enemy tank is hit by a white bullet, the enemy tank is destroyed.
+- When the player tank is hit by a red bullet, the player tank is destroyed.
+- When any bullet hits a wall, the bullet is destroyed.
+- When any bullet reaches the edge of the screen, the bullet is destroyed.
+- When any tank hits a wall, the tank bounces back.
+- When any tank reaches the edge of the screen, the tank bounces back.
+- When any tank touches a conveyor, the tank is pushed in the conveyor's direction.
+
+Win condition:
+The player wins when all enemy tanks are destroyed.
+
+Lose condition:
+The player loses when their tank is destroyed.
+
+Objective:
+Destroy all enemy tanks while avoiding being hit by their bullets. Use the conveyors strategically to position yourself for better shots.

@@ -1,0 +1,48 @@
+**Player role:**
+This is a two-player game. Player A controls a girl character and Player B controls a man character. Both players can move around the game area and have different abilities depending on which colored zone they're standing in. When in black zones, they can shoot projectiles. When in white zones, they can create melee weapons. When in grey zones, they can only move around. Both players are blocked by walls and the edge of the screen.
+
+**Entities:**
+- Three types of colored floor zones: black zones (hidden but functional), white zones (hidden but functional), and grey zones (hidden but functional) that give players different abilities
+- A flag that appears smaller than normal size, which players need to collect
+- Player A (girl character) who changes appearance based on location and whether she has the flag
+- Player B (man character) who changes appearance based on location and whether he has the flag
+- Two types of warrior enemies that move randomly around the level at different speeds - one moves faster but attacks less frequently, the other moves slower but attacks more frequently
+- Sword weapons that flicker and appear smaller than normal, created by players in white zones
+- Missile projectiles that appear much smaller than normal, created by players in black zones
+- Invisible teleportation points that respawn destroyed objects at their starting locations
+- Starting position markers that are invisible
+- Walls that automatically connect to adjacent walls and block movement
+
+**Interactions:**
+- When any player or warrior hits a wall or the edge of the screen, they are pushed back and cannot pass through
+- When missiles or swords hit walls, they are destroyed
+- When Player A moves between different colored zones, her abilities change accordingly
+- When Player B moves between different colored zones, his abilities change accordingly
+- When a player in a grey zone touches the flag, they pick it up and their appearance changes
+- When any player touches the flag, the flag is destroyed
+- When warriors are hit by Player A's sword, they are destroyed and Player A gains 6 points
+- When warriors are hit by Player B's sword, they are destroyed and Player B gains 6 points
+- When warriors are hit by Player A's missiles, they are destroyed and Player A gains 2 points
+- When warriors are hit by Player B's missiles, they are destroyed and Player B gains 2 points
+- When any sword or missile hits a warrior, the weapon is destroyed
+- When Player A (carrying the flag) touches a warrior, she loses the flag, it respawns, warriors respawn, and Player A loses 5 points
+- When Player A touches warriors in different zones, she is sent back to start and loses varying points (1-3 based on zone)
+- When Player B (carrying the flag) touches a warrior, he loses the flag, it respawns, warriors respawn, and Player B loses 5 points
+- When Player B touches warriors in different zones, he is sent back to start and loses varying points (1-3 based on zone)
+- When Player A (carrying the flag) reaches a black zone, she scores 10 points, loses the flag, and the flag respawns
+- When Player B (carrying the flag) reaches a white zone, he scores 10 points, loses the flag, and the flag respawns
+- When swords hit Player A in different states, she changes state and points are exchanged between players
+- When missiles hit Player A in different states, she changes state and points are exchanged between players
+- When swords hit Player B in different states, he changes state and points are exchanged between players
+- When missiles hit Player B in different states, he changes state and points are exchanged between players
+- Destroyed objects respawn at their original starting positions through invisible teleportation
+- Any missile or sword that hits a player is destroyed
+
+**Win condition:**
+The game ends after a time limit and the player with the higher score wins.
+
+**Lose condition:**
+The player with the lower score when time runs out loses.
+
+**Objective:**
+Collect the flag and bring it to your goal zone (Player A to black zones, Player B to white zones) while avoiding or defeating warriors and competing against the other player for points.

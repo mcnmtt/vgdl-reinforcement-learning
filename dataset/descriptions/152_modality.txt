@@ -1,0 +1,34 @@
+**Player role:**
+The player controls a girl character who can move in four directions using arrow keys or WASD. The character changes appearance and behavior based on which colored surface she's standing on - she appears differently when on black surfaces, white surfaces, or neutral grey surfaces.
+
+**Entities:**
+- Black tiles: Immovable black floor surfaces that form part of the game area
+- White tiles: Immovable white floor surfaces that form part of the game area  
+- Grey tiles: Immovable brown-colored neutral surfaces
+- Targets: Holes that act as destinations for crates, appearing as dark circular pits
+- Win targets: Holes that have been successfully filled with crates
+- Crates: Movable brown bush-like objects that can be pushed around
+- Avatar variations: The player character appears as different colored girls depending on the surface type (dark girl on black, light girl on white, standard girl on grey)
+- Walls: Immovable dirt-textured barriers that block movement
+
+**Interactions:**
+- When the avatar tries to move beyond the edge of the screen, it is prevented from moving
+- When the avatar is on a black surface and tries to move onto a white surface, it is prevented from moving
+- When the avatar is on a white surface and tries to move onto a black surface, it is prevented from moving
+- When the avatar is on grey surfaces and moves onto black surfaces, it transforms into the black surface version
+- When the avatar is on grey surfaces and moves onto white surfaces, it transforms into the white surface version
+- When the avatar moves onto grey surfaces, it transforms into the neutral grey version
+- When the avatar pushes against a crate, the crate is pushed forward in the same direction
+- When a crate hits a wall, all recent moves are undone
+- When a target hits a wall, all recent moves are undone
+- When the avatar hits a wall, it is prevented from moving
+- When a crate is pushed into a target hole, the target transforms into a win target and the score increases by 1
+
+**Win condition:**
+The player wins when all target holes have been filled with crates (when there are no unfilled targets remaining).
+
+**Lose condition:**
+There is no explicit lose condition - the game continues until won.
+
+**Objective:**
+Push all the crates into the target holes while navigating the color-restricted movement system where you can only move between matching colored surfaces or through grey transition areas.

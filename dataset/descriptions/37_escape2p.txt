@@ -1,0 +1,32 @@
+Player role:
+This is a two-player game where each player controls a rat that can move in four directions. Player 1 controls a rat, and Player 2 controls a different rat. The rats move one space at a time and cannot pass through walls or each other.
+
+Entities:
+- Floor: Brown background tiles that form the walkable surface of the level
+- Wall: Dirt-textured barriers that block movement and connect seamlessly with adjacent walls
+- Box: A movable block that can be pushed around the level
+- Rat A: Player 1's character, depicted as a rat
+- Rat B: Player 2's character, depicted as a different rat
+- Exit A: A green cheese-like object that serves as the goal for Rat A
+- Exit B: A green cheese-like object that serves as the goal for Rat B
+- Hole: A dark blue pit that acts as a hazard, destroying anything that falls into it
+
+Interactions:
+- When a rat tries to move into a wall, it is pushed back to its previous position
+- When one rat tries to move into the other rat, it is pushed back to its previous position
+- When a rat pushes against a box, the box is pushed forward in the same direction
+- When a box is pushed into a wall, exit, or another box, all movements in that push are undone
+- When Rat A enters a hole, Rat A is destroyed and Player 1 loses a point
+- When Rat B enters a hole, Rat B is destroyed and Player 2 loses a point
+- When Rat A reaches Exit A, Rat A is destroyed and Player 1 gains a point
+- When Rat B reaches Exit B, Rat B is destroyed and Player 2 gains a point
+- When a box falls into a hole, the box is destroyed
+
+Win condition:
+Player 1 wins if their rat reaches Exit A while Player 2's rat is eliminated, or if only Player 1's rat remains alive. Player 2 wins if their rat reaches Exit B while Player 1's rat is eliminated, or if only Player 2's rat remains alive.
+
+Lose condition:
+A player loses if their rat falls into a hole. Both players lose if both rats are eliminated, if time runs out after 1000 moves, or if neither player can reach their respective exit.
+
+Objective:
+Guide your rat to its matching exit while avoiding holes and potentially using boxes strategically to block your opponent or create safe paths.

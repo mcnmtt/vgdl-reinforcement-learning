@@ -1,0 +1,34 @@
+Player role:
+The player controls a spaceship that moves in any direction at moderate speed and has a health system starting with 15 health points out of a maximum of 20. The spaceship is destroyed if it reaches the edge of the screen.
+
+Entities:
+- A spaceship (the player's avatar) that can move freely and has health points
+- Nebulae that appear as explosion-like clouds and damage anything that touches them
+- Black holes that appear as whirlpools and destroy anything that enters them
+- Turrets that look like satellites, rotate in place, and randomly fire bombs with a 40% chance every 3 seconds
+- Red circular bombs that move quickly in straight lines and gradually shrink as they travel
+- Empty planets that appear as one type of planet image
+- Busy planets that appear as a different type of planet image
+- Invisible atmosphere zones around planets that cannot be seen
+- Background space tiles that fill empty areas
+
+Interactions:
+- When the spaceship touches a nebula, it loses health points and the score decreases by 1
+- When the spaceship reaches the edge of the screen, it is destroyed
+- When the spaceship encounters a bomb, the bomb turns toward the spaceship
+- When the spaceship touches a bomb, it loses health points
+- When a bomb hits the spaceship, the bomb is destroyed
+- When the spaceship touches an empty planet, it aligns with the planet's position
+- When the spaceship touches an empty planet, that planet transforms into a busy planet
+- When the spaceship touches any planet, it gains health points
+- When the spaceship enters a planet's atmosphere, a 2-second timer starts that will transform all busy planets back into empty planets
+- When the spaceship enters a black hole, it is destroyed but the score increases by 1
+
+Win condition:
+The player wins when all black holes have been removed from the level.
+
+Lose condition:
+The player loses if the spaceship is destroyed or if 1000 time units pass without completing the objective.
+
+Objective:
+Navigate your spaceship through space to eliminate all black holes while avoiding nebulae and turret fire, using planets to restore health when needed.

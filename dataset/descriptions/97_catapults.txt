@@ -1,0 +1,32 @@
+Player role:
+The player controls a character that can move around the game area. When the player interacts with catapults, they transform into projectiles that fly in the direction the catapult is facing. The player can switch between being a moving character and being a flying projectile depending on which catapults they encounter.
+
+Entities:
+- A moving character (the player's main form) that can walk around the game area
+- Flying projectiles in four varieties: red ones that fly upward, orange ones that fly downward, yellow ones that fly rightward, and green ones that fly leftward
+- Water areas that are dangerous to the moving character
+- Four types of catapults that face different directions: red ones facing downward, orange ones facing upward, yellow ones facing rightward, and yellow ones facing leftward
+- Green doors that serve as targets to reach
+- Walls that block movement
+- Grass floor areas that provide safe ground for movement
+
+Interactions:
+- When a flying projectile hits a wall, it transforms back into the moving character
+- When the moving character tries to enter a wall, it is pushed back and cannot pass through
+- When the moving character touches water, it is destroyed
+- When the moving character approaches a catapult, the catapult turns to face the character
+- When the moving character touches a westward-facing catapult, it becomes a green projectile flying leftward
+- When the moving character touches an eastward-facing catapult, it becomes a yellow projectile flying rightward
+- When the moving character touches a southward-facing catapult, it becomes an orange projectile flying downward  
+- When the moving character touches a northward-facing catapult, it becomes a red projectile flying upward
+- When a catapult is touched by any form of the player character, the player character is destroyed and the score increases by 1
+- When the player character (in any form) reaches a green door, the character is destroyed
+
+Win condition:
+The player wins when all green doors have been reached and removed from the game area.
+
+Lose condition:
+The player loses when their character is destroyed (either by touching water, catapults, or doors) and there are no player characters remaining.
+
+Objective:
+Navigate through the level using catapults to transform between walking and flying forms, avoid water hazards, and reach all the green doors to win.

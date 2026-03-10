@@ -1,0 +1,38 @@
+Player role:
+The player controls a character that can move around and shoot arrows. The character moves at moderate speed and can shoot one arrow at a time - a new arrow can only be fired after the previous one hits something or leaves the screen.
+
+Entities:
+- A character (the player) that appears as a spelunky-style explorer and can shoot arrows
+- Arrows that the player shoots, which fly straight and fast in the direction fired
+- A green exit door that serves as the goal
+- Black walls that block movement
+- Floor sections that provide flat surfaces
+- Ground areas that serve as the base terrain
+- Ladders that allow vertical movement between levels
+- A monkey character that moves around very slowly and randomly
+- Invisible spawning points that periodically create barrels - some spawn barrels moving right, others spawn barrels moving left
+- Various types of barrels:
+  - Falling barrels that drop straight down at moderate speed (some appear as light brown barrels, others as dark brown barrels)
+  - Rolling barrels that move horizontally along the ground at slow speed (light brown breakable ones and dark brown tough ones)
+- When falling barrels hit the floor, light brown ones become breakable rolling barrels and dark brown ones become tough rolling barrels, maintaining their left or right direction
+- When rolling barrels encounter ladders, they transform back into falling barrels and drop down
+
+Interactions:
+- When the player touches a wall or reaches the edge of the screen, they are pushed back and cannot pass through
+- When the player touches any type of barrel (falling or rolling), the player is destroyed
+- When a falling barrel hits the floor, it stops falling and becomes a rolling barrel moving in the same direction
+- When a rolling barrel hits a ladder, it becomes a falling barrel and drops straight down
+- When a rolling barrel hits a wall, it reverses direction and continues rolling
+- When a rolling barrel reaches the edge of the screen, it disappears
+- When an arrow hits a wall or reaches the edge of the screen, the arrow disappears
+- When an arrow hits a breakable (light brown) barrel, both the arrow and barrel are destroyed and the player scores 1 point
+- When the player reaches the goal exit, the goal disappears and the player scores 1 point
+
+Win condition:
+The player wins when they reach and enter the goal exit (when no goal sprites remain on screen).
+
+Lose condition:
+The player loses if they are destroyed by touching any barrel.
+
+Objective:
+Navigate through the level while avoiding dangerous barrels, use arrows to destroy breakable barrels that block your path, and reach the green exit door to win.

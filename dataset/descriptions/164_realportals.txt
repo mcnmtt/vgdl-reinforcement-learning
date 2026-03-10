@@ -1,0 +1,53 @@
+Player role:
+The player controls an avatar that can move around the game area and shoot missiles. The avatar can transform between two different forms - one that shoots missiles that create portal entrances, and another that shoots missiles that create portal exits. The avatar has a limited supply of weapon ammunition.
+
+Entities:
+- Floor tiles: Brown background surfaces that can be walked on
+- Water: Blue liquid areas that are deadly to touch
+- Weapon toggle stations: Two types of red staff objects that transform the avatar between its two forms - one changes the avatar to the form that creates portal entrances, the other changes it to the form that creates portal exits
+- Weapon ammunition: Blue spaceship-shaped resources that provide the avatar with shooting capability
+- Keys: Small red key objects that can be collected
+- Locks: Door-like obstacles that block movement unless the player has collected a key
+- Portal entrances: Light blue circular effects that teleport entities to the corresponding exit
+- Portal exits: Brown explosion-like markers where entities emerge from portal entrances
+- Goal areas: Green door objects that must be reached to complete the level
+- Missiles: Small yellow projectiles that the avatar shoots - they move at medium speed and come in two types (one creates portal entrances when hitting walls, the other creates portal exits)
+- Boulders: Potion-shaped objects that normally stay in place but can be pushed by the avatar, becoming mobile and following the avatar's movement direction
+- Walls: Dirt-textured immovable barriers that block movement and stop mobile boulders
+
+Interactions:
+- When a mobile boulder hits a stationary boulder, it stops and becomes stationary again
+- When two stationary boulders touch, they push each other back
+- When the avatar touches a goal area, the goal disappears and points are scored
+- When the avatar touches a portal exit, it bounces back
+- When the avatar touches a portal entrance, it teleports to the corresponding exit and scores points
+- When the avatar touches water, it is destroyed
+- When the avatar touches weapon ammunition, it collects the resource
+- When the avatar touches a key, it collects the key and the key disappears
+- When the avatar touches a lock while carrying a key, the lock is destroyed
+- When the avatar touches a lock without a key, it bounces back
+- When any moving object touches a lock or wall, it bounces back
+- When the first avatar form touches the first weapon toggle, it transforms into the second form
+- When the second avatar form touches the second weapon toggle, it transforms back to the first form
+- When the avatar touches a stationary boulder, the boulder becomes mobile and starts following the avatar's direction
+- When the avatar touches a mobile boulder, the boulder follows the avatar's gaze direction
+- When the avatar touches any boulder while another boulder is mobile, it bounces back
+- When a mobile boulder hits a wall, key, lock, or weapon toggle, it stops and becomes stationary
+- When a stationary boulder touches a wall, key, lock, or weapon toggle, all recent movements are undone
+- When water touches a mobile boulder, both are destroyed
+- When a mobile boulder touches a portal entrance, it teleports to the exit
+- When missiles touch portal entrances, they teleport to the corresponding exit
+- When missiles touch portal exits, they follow the exit's orientation
+- When missiles reach the edge of the screen, they bounce back
+- When the first missile type hits a wall, it creates a portal entrance and destroys the wall
+- When the second missile type hits a wall, it creates a portal exit and destroys the wall
+- When missiles hit goals or walls (in other contexts), the missiles are destroyed
+
+Win condition:
+The player wins when all goal areas have been reached and removed from the level.
+
+Lose condition:
+The player loses if the avatar is destroyed (such as by touching water).
+
+Objective:
+Navigate through the level using portals, keys, and boulder manipulation to reach all goal areas while avoiding deadly water hazards.

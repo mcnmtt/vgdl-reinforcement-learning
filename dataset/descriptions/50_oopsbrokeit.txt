@@ -1,0 +1,31 @@
+**Player role:**
+This is a two-player cooperative game. Player 1 controls a child character that can shoot breaking projectiles, while Player 2 controls a parent character that can shoot fixing projectiles. Both characters move around the game area and can shoot their respective projectiles to interact with blocks.
+
+**Entities:**
+- Ground: Hidden floor tiles that cover the playable area
+- Door: A portal that teleports characters between the indoor and outdoor areas
+- Child character: A small figure that moves around and can shoot breaking projectiles. Exists in two states - either indoors or outdoors
+- Parent character: A larger figure that moves around and can shoot fixing projectiles. Also exists in two states - either indoors or outdoors  
+- Breaking projectile: A flickering slash-like projectile shot by the child that can break blocks
+- Fixing projectile: A flickering sparkle-like projectile shot by the parent that can repair blocks
+- Fixed block: A green, sturdy block that represents the repaired state
+- Broken block: A red, damaged block that represents the destroyed state
+- Wall: Solid barriers that block movement, with connected appearance
+
+**Interactions:**
+- When either character touches a wall or block, they are pushed back and cannot pass through
+- When a breaking projectile hits a fixed block, the block transforms into a broken block, the projectile disappears, and player 1 scores a point
+- When a fixing projectile hits a broken block, the block transforms into a fixed block, the projectile disappears, and player 2 scores a point
+- When the child character touches a door, they teleport to the outdoor version
+- When the outdoor child character touches the ground, they become the indoor version
+- When the parent character touches a door, they teleport to the outdoor version  
+- When the outdoor parent character touches the ground, they become the indoor version
+
+**Win condition:**
+Player 1 wins if they are indoors and all blocks have been broken. Player 2 wins if they are indoors and all blocks have been fixed.
+
+**Lose condition:**
+The other player wins, or time runs out after 1500 turns.
+
+**Objective:**
+This is a competitive puzzle game where the child player tries to break all blocks while staying indoors, and the parent player tries to fix all blocks while staying indoors. Players must manage their position relative to the door while working toward opposite goals.

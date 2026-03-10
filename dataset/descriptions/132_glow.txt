@@ -1,0 +1,28 @@
+**Player role:**
+You control a character that can move around and shoot sparks. The character bounces back when trying to move into walls or off the edge of the screen.
+
+**Entities:**
+- Floor tiles that provide the basic ground surface (invisible background elements)
+- Ground tiles that serve as a foundation layer (invisible background elements)
+- Your character avatar that can move and shoot orange sparks
+- Traps that are deadly to touch, appearing as floor spaces
+- Hidden bridge sections that are initially invisible and become visible wooden dock pieces when illuminated
+- An exit door that ends the level when reached
+- Orange sparks that you shoot, which spread light and flicker with illumination effects
+- Black walls that block movement and auto-connect to form continuous barriers
+
+**Interactions:**
+- When your character touches a wall or reaches the edge of the screen, it bounces back and cannot pass through
+- When light touches a hidden bridge section, the bridge becomes visible as a wooden dock
+- When a trap touches a visible bridge, the trap is destroyed
+- When your character touches a trap, your character is destroyed
+- When your character touches the exit, the exit is destroyed (completing the level)
+
+**Win condition:**
+You win by reaching the exit door, or if the timer runs out after 1500 time units.
+
+**Lose condition:**
+You lose if your character is destroyed by touching a trap.
+
+**Objective:**
+Navigate through the level by shooting sparks to illuminate hidden bridges, which will destroy traps and create safe passages to reach the exit door.

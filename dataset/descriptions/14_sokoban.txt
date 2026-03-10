@@ -1,0 +1,24 @@
+**Player role:**
+The player controls a knight character that can move in all four directions (up, down, left, right) on the game grid.
+
+**Entities:**
+- Floor tiles: Basic walkable surface that forms the ground throughout the level
+- Holes: Dark blue pit-like spaces that destroy objects that fall into them
+- Knight (player character): The character the player directly controls, which can push objects
+- Boxes: Movable brown blocks that can be pushed around by the player
+- Walls: Immovable barrier blocks that prevent movement, arranged in connected patterns
+
+**Interactions:**
+- When the knight tries to move into a wall, the knight is pushed back to its previous position
+- When the knight moves into a box, the box is pushed forward in the same direction the knight is moving
+- When a box is pushed into a wall or into another box, all affected boxes return to their previous positions
+- When a box is pushed into a hole, the box disappears and the player scores 1 point
+
+**Win condition:**
+The player wins when all boxes have been pushed into holes and destroyed.
+
+**Lose condition:**
+There is no specific lose condition - the player can continue playing until all boxes are eliminated.
+
+**Objective:**
+Push all the boxes into the holes to make them disappear and clear the level. You must carefully plan your moves since boxes that hit walls or other boxes will bounce back to their original positions.

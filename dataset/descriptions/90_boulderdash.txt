@@ -1,0 +1,34 @@
+Player role:
+The player controls an avatar that can move in all directions and shoot swords. The avatar can fire swords at a rapid rate to break through certain obstacles.
+
+Entities:
+- Avatar: A spelunker character that the player controls directly and can shoot swords
+- Sword: A gray pickaxe-like projectile that flickers briefly when fired and disappears quickly after being shot
+- Wall: Brown dirt walls that block movement and can be destroyed by swords
+- Dirt: Brown dirt blocks that can be dug through with swords
+- Diamond: Yellow gemstones that can be collected for points, appearing slightly smaller than normal size
+- Boulder: Gray rock that continuously falls downward at a slow speed
+- Exit door: A green door that serves as the level exit
+- Crab: A red scorpion-like enemy that moves randomly around the level
+- Butterfly: A pink bat-like enemy that moves randomly around the level
+
+Interactions:
+- When a sword hits dirt, the dirt is destroyed
+- When the avatar touches a diamond, the diamond is collected and the player gains 2 points
+- When any moving object (avatar or enemy) hits a wall or boulder, it is pushed back and cannot pass through
+- When the avatar is hit by a boulder from above, the avatar is destroyed and the player loses 1 point
+- When the avatar touches a butterfly or crab, the avatar is destroyed and the player loses 1 point
+- When a boulder hits dirt, walls, diamonds, or other boulders, it stops moving
+- When enemies touch dirt or diamonds, they are pushed back and cannot pass through
+- When a crab touches a butterfly, the butterfly is destroyed
+- When a butterfly touches a crab, the butterfly transforms into a diamond and the player gains 1 point
+- When the avatar reaches the exit door while carrying more than 9 diamonds, the exit door is activated
+
+Win condition:
+The player wins when the exit door is destroyed (activated by entering it with enough diamonds).
+
+Lose condition:
+The player loses when the avatar is destroyed.
+
+Objective:
+Collect at least 10 diamonds while avoiding falling boulders and enemies, then reach the exit door to complete the level. Use your sword to dig through dirt and walls to navigate the underground caverns safely.

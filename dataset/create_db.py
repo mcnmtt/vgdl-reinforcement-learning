@@ -1,142 +1,96 @@
 import os
-import glob
-import datetime
+import time
+import anthropic
 from dotenv import load_dotenv
 
-from openai import OpenAI
-from pymongo import MongoClient
-
-# Carica variabili da .env
 load_dotenv()
 
-# =======================
-# CONFIGURAZIONE
-# =======================
+# ======================
+# Configuration
+# ======================
+VGDL_FOLDER = "vgdl_files"
+DESC_FOLDER = "descriptions"
+os.makedirs(DESC_FOLDER, exist_ok=True)
 
-# Cartella che contiene i file VGDL (es. .txt, .vgdl, ecc.)
-VGDL_FOLDER = r"dataset\vgdl_files"
+client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
-# Pattern dei file da leggere
-FILE_PATTERN = "*.txt"
+SYSTEM_PROMPT = """You are a game designer describing a video game to someone who will implement it. Given a VGDL game specification, generate a structured natural language description of the game written as a human who knows the game rules thoroughly but has no knowledge of VGDL or any programming language.
+Follow these rules:
+Describe behaviors and roles in plain English, never use VGDL class names, effect names, or technical keywords.
+Instead of class names, describe what the sprite does: e.g. instead of "Walker", write "an enemy that moves horizontally and bounces off walls".
+Instead of effect names, describe what happens: e.g. instead of "killIfFromAbove", write "is destroyed only if the other sprite arrives from above".
+Instead of "EOS", write "the edge of the screen".
+When a sprite belongs to a group that shares physics or behavior, describe the shared behavior in plain English: e.g. "all enemies and the avatar are affected by gravity".
+When an interaction has parameters, describe their meaning: e.g. instead of "friction=0.1", write "slows down slightly upon contact".
+When a sprite has parameters, describe their effect: e.g. instead of "orientation=UP speed=0.1", write "moves upward slowly".
+Always use the following fixed structure:
+Player role:
+[Describe what the player controls and how it moves, including any special physics like gravity or inertia.]
+Entities:
+[List every object in the game. For each, describe its appearance, behavior, and role without using technical names.]
+Interactions:
+[List every interaction as a plain English sentence describing what happens when two objects meet.]
+Win condition:
+[Describe in plain English when the player wins.]
+Lose condition:
+[Describe in plain English when the player loses.]
+Objective:
+[One or two sentences summarizing the goal from the player's perspective.]
+Here is the VGDL to describe:"""
 
-# Modello OpenAI da usare
-OPENAI_MODEL = "gpt-5.1"  
-
-# Prompt di sistema fisso
-SYSTEM_PROMPT = (
-    "Sei un convertitore neutrale da codice VGDL a descrizioni testuali. "
-    "Ti fornirò del codice VGDL. Il tuo compito è generare una DESCRIZIONE TESTUALE "
-    "OGGETTIVA, COMPLETA E STANDARDIZZATA del gioco definito da quel codice, senza "
-    "aggiungere elementi inventati o modificare la logica. "
-    "La descrizione deve includere, nell’ordine: "
-    "1. Panoramica del gioco: quali sprite esistono e qual è il loro ruolo generale. "
-    "2. Descrizione dettagliata di ogni SpriteSet: proprietà, comportamenti, colori, "
-    "orientamenti, fisica, gerarchie. "
-    "3. Descrizione dettagliata dell’InteractionSet: cosa succede quando due sprite "
-    "entrano in contatto. "
-    "4. Descrizione del TerminationSet: tutte le condizioni di vittoria e sconfitta. "
-    "5. Descrizione del LevelMapping: cosa rappresenta ogni simbolo del livello. "
-    "6. Nessuna deduzione non presente nel codice. Nessun esempio, nessun commento, "
-    "nessuna interpretazione del gameplay. "
-    "7. Linguaggio tecnico e preciso, stile documentazione. "
-    "Restituisci solo la descrizione testuale, senza citare il codice o ripeterlo. "
-    "Ora ti fornirò il codice VGDL."
+# ======================
+# Get sorted list of VGDL files
+# ======================
+all_files = sorted(
+    [f for f in os.listdir(VGDL_FOLDER) if f.endswith(".txt")],
+    key=lambda x: int(x.split("_")[0])
 )
 
-# =======================
-# CLIENT OPENAI
-# =======================
+print(f"Found {len(all_files)} VGDL files.\n")
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# ======================
+# Generate descriptions
+# ======================
+for i, filename in enumerate(all_files):
+    vgdl_path = os.path.join(VGDL_FOLDER, filename)
+    desc_path = os.path.join(DESC_FOLDER, filename)
 
-# =======================
-# CLIENT MONGODB
-# =======================
+    # Skip if description already exists
+    if os.path.exists(desc_path):
+        print(f"[{i+1}/{len(all_files)}] Skipping (already exists): {filename}")
+        continue
 
-mongo_uri = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
-mongo_db_name = os.getenv("MONGODB_DB", "vgdl_db")
-mongo_collection_name = os.getenv("MONGODB_COLLECTION", "vgdl_descriptions")
+    # Read VGDL file
+    with open(vgdl_path, "r") as f:
+        vgdl_content = f.read()
 
-mongo_client = MongoClient(mongo_uri)
-db = mongo_client[mongo_db_name]
-collection = db[mongo_collection_name]
+    print(f"[{i+1}/{len(all_files)}] Generating description for: {filename}")
 
-# =======================
-# FUNZIONE: CHIAMATA MODELLO
-# =======================
+    try:
+        response = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1000,
+            messages=[
+                {
+                    "role": "user",
+                    "content": f"{SYSTEM_PROMPT}\n\n{vgdl_content}"
+                }
+            ]
+        )
 
-def generate_description_from_vgdl(vgdl_code: str) -> str:
-    """
-    Invia al modello OpenAI il codice VGDL e restituisce la descrizione testuale.
-    """
-    response = client.chat.completions.create(
-        model=OPENAI_MODEL,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {
-                "role": "user",
-                "content": vgdl_code
-            },
-        ],
-        temperature=0.0,  # per massima aderenza e ripetibilità
-    )
+        description = response.content[0].text.strip()
 
-    return response.choices[0].message.content.strip()
+        # Save description
+        with open(desc_path, "w") as f:
+            f.write(description)
 
-# =======================
-# FUNZIONE: PROCESSA UN FILE
-# =======================
+        print(f"    → Saved to {desc_path}")
 
-def process_file(filepath: str):
-    """
-    Legge il file VGDL, genera la descrizione con il modello e
-    salva input+output su MongoDB.
-    """
-    filename = os.path.basename(filepath)
+        # Avoid hitting rate limits
+        time.sleep(0.5)
 
-    # Leggi il contenuto del file
-    with open(filepath, "r", encoding="utf-8") as f:
-        vgdl_code = f.read()
+    except Exception as e:
+        print(f"    ERROR on {filename}: {e}")
+        time.sleep(5)  # Wait longer on error before retrying
 
-    # Genera descrizione dal modello
-    print(f"[*] Elaboro file: {filename}")
-    description = generate_description_from_vgdl(vgdl_code)
-
-    # Crea il documento da salvare
-    document = {
-        "filename": filename,
-        "filepath": filepath,
-        "vgdl_code": vgdl_code,
-        "description": description,
-        "created_at": datetime.datetime.utcnow(),
-    }
-
-    # Inserisci su MongoDB
-    result = collection.insert_one(document)
-    print(f"[+] Salvato su MongoDB con _id = {result.inserted_id}")
-
-# =======================
-# MAIN LOOP
-# =======================
-
-def main():
-    # Costruisco il pattern completo tipo "vgdl_files/*.txt"
-    search_pattern = os.path.join(VGDL_FOLDER, FILE_PATTERN)
-    files = glob.glob(search_pattern, recursive=True)
-
-    if not files:
-        print(f"Nessun file trovato con pattern: {search_pattern}")
-        return
-
-    print(f"Trovati {len(files)} file. Inizio elaborazione...\n")
-
-    for filepath in files:
-        try:
-            process_file(filepath)
-        except Exception as e:
-            print(f"[!] Errore con file {filepath}: {e}")
-
-    print("\nElaborazione completata.")
-
-if __name__ == "__main__":
-    main()
+print("\nDone! All descriptions generated.")

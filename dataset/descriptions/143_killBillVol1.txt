@@ -1,0 +1,40 @@
+Player role:
+The player controls a swordsman character that can move around the game area and shoot projectiles. The character can transform into a flying bat that moves in either an upward or downward direction depending on which lift is used. The swordsman can also create sword attacks that flicker briefly on screen.
+
+Entities:
+- A swordsman character that serves as the main avatar, can shoot projectiles, and has 20 health points
+- A flying bat form that the player transforms into, moving at moderate speed either upward (red colored) or downward (orange colored)
+- A flickering sword attack that appears briefly when activated, limited to 5 uses
+- A green door that serves as the goal exit
+- Red lift blocks that face downward and orange lift blocks that face upward, both stationary
+- Special invisible landing platforms in four varieties that trigger different level configurations
+- Three types of guards that move randomly with different movement patterns - some move every 2 turns with 2 possible directions, others with 3 directions, and the most complex with 6 directions
+- Tombstone-shaped traps in three varieties that destroy the player on contact
+- Gold coins in three varieties that can be collected for points
+- Stone walls that block movement
+- Floor tiles that provide the basic walkable surface
+- Invisible doors that act as barriers
+- A gold resource counter that tracks collected coins up to a limit of 10
+
+Interactions:
+- When the swordsman touches a wall, it steps back and cannot pass through
+- When enemies touch walls, invisible doors, traps, or other enemies, they step back
+- When enemies are hit by the sword attack, they are destroyed and the player gains 2 points
+- When the swordsman touches an enemy, it loses health points
+- When the swordsman touches a trap, it is destroyed and the player loses 1 point
+- When the swordsman touches any lift, it becomes perfectly aligned with that lift
+- When the swordsman touches an upward lift, it transforms into the upward-flying bat
+- When the swordsman touches a downward lift, it transforms into the downward-flying bat
+- When the flying bat touches a landing platform, it transforms back into the ground-based swordsman
+- When the swordsman touches different special platforms, it triggers complex level reconfigurations that make various enemies, traps, and coins appear or disappear throughout the level
+- When the swordsman collects a gold coin, it gains 1 gold resource, scores 1 point, and the coin disappears
+- When the swordsman with 10 gold coins touches the goal door, it scores 500 points and completes the level
+
+Win condition:
+The player wins by collecting exactly 10 gold coins and then reaching the green goal door.
+
+Lose condition:
+The player loses if the swordsman's health points reach zero from enemy contact or trap damage.
+
+Objective:
+Navigate through the level using lifts to transform between ground and flying forms, collect exactly 10 gold coins while avoiding enemies and traps, then reach the exit door to win.

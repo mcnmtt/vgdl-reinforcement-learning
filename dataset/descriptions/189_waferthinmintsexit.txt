@@ -1,0 +1,27 @@
+**Player role:**
+The player controls a character that can move in four directions using keyboard input. The character moves freely across the game area but cannot pass through walls.
+
+**Entities:**
+- **Wall**: Gray barriers that block movement and remain stationary throughout the game
+- **Floor**: Red tile surfaces that serve as the walkable ground area
+- **Player character**: A black figure that the player directly controls with movement keys
+- **Chef**: A white character that stays in one place and occasionally drops green items (about 20% chance every 4 time units)
+- **Green resource items**: Green collectible objects that appear when dropped by chefs or are placed in the level initially
+- **Exit**: A special tile that serves as the level's completion point
+
+**Interactions:**
+- When the player character or chef tries to move into a wall, they are pushed back and cannot pass through
+- When the player character touches a green resource item, the item is collected and the player's score increases by 1 point
+- When the player character has collected more than 10 green resource items and touches another one, the player character is destroyed
+- When the player character touches a green resource item (regardless of how many they have), the resource item disappears
+- When two green resource items touch each other, both are destroyed
+- When the player character reaches the exit, the player character disappears from the game
+
+**Win condition:**
+The player wins when all exits have been used (the player character has reached the exit) or when the time limit of 1500 time units expires.
+
+**Lose condition:**
+The player loses if their character is destroyed by collecting too many green resource items (more than 10).
+
+**Objective:**
+Navigate through the level collecting green resource items for points while being careful not to collect more than 10, then reach the exit to complete the level successfully.

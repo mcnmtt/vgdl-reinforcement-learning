@@ -1,0 +1,40 @@
+**Player role:**
+The player controls a character that can move in four directions around the game area. The player can switch between two modes: a walking mode where they move normally on the ground, and a projectile mode where they shoot themselves in one of four directions (north, south, east, or west) with different colored appearances for each direction.
+
+**Entities:**
+- **Water**: Blue areas that are deadly to touch when walking
+- **Floor**: Hidden ground tiles that provide safe walking surfaces
+- **Walls**: Bush-like obstacles that block movement and destroy logs
+- **Goal**: A green door that the player must reach to win
+- **Forest spawn points**: Areas that periodically create logs moving in specific directions (right or left)
+- **Logs**: Brown objects that move horizontally at slow speed, either leftward or rightward depending on their type
+- **Landing pads**: Stationary orange platforms that can carry the walking player
+- **Catapults**: Directional devices that face north, south, east, or west, colored red, orange, or yellow respectively, and launch the player as a projectile
+- **Walking avatar**: The player's normal form that can move on ground and logs
+- **Projectile avatar**: The player's bullet form that flies in the aimed direction, appearing as different colors based on direction
+
+**Interactions:**
+- When a projectile hits a wall or log, the player transforms back into walking mode
+- When the walking player tries to move into a wall, they are pushed back with precise collision detection
+- When the walking player stands on a log, they are protected from water and move along with the log
+- When the walking player stands on a landing pad, they move with it using precise positioning
+- When a landing pad touches the walking player, the landing pad is destroyed
+- When a log hits a wall, the log is destroyed
+- When any form of the player touches a catapult, they are aligned with it and face the same direction
+- When the player touches a west-facing catapult, they become a westward projectile
+- When the player touches an east-facing catapult, they become an eastward projectile
+- When the player touches a south-facing catapult, they become a southward projectile
+- When the player touches a north-facing catapult, they become a northward projectile
+- When a catapult touches the player, the player is destroyed and the score increases by 1
+- When the goal touches the player, the player is destroyed (completing the level)
+- When the walking player touches water, they are destroyed
+- When the player tries to enter a forest spawn point, they are pushed back
+
+**Win condition:**
+The player wins when they reach the goal (when there are no more goal sprites remaining on the field).
+
+**Lose condition:**
+The player loses if they are destroyed by water, catapults, or if the time limit of 1000 time units expires.
+
+**Objective:**
+Navigate safely across water-filled areas by riding on moving logs and using catapults to launch yourself, while avoiding deadly water and obstacles, to reach the green goal door before time runs out.

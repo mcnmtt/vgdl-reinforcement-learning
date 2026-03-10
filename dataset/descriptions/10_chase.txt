@@ -1,0 +1,27 @@
+**Player role:**
+The player controls a character that can move in all directions using keyboard input. The character cannot pass through solid obstacles and will be pushed back when trying to move into them.
+
+**Entities:**
+- Floor: Hidden grass tiles that form the ground of the game world
+- Character: The player's character, depicted as a princess figure, that moves around the game area
+- Wall: Immovable tree obstacles that block movement for all characters
+- Scared goat: A blue bird-like creature that actively flees away from the player's character
+- Angry goat: An orange bird-like creature that actively chases and pursues the player's character
+- Carcass: A brown, smaller worm-like remains that appear when scared goats are caught
+
+**Interactions:**
+- When any goat touches a wall, the goat is pushed back and cannot pass through
+- When the player's character touches a wall, the character is pushed back and cannot pass through  
+- When the player's character touches an angry goat, the character is destroyed and the player loses 1 point
+- When a scared goat touches the player's character, the scared goat transforms into a carcass and the player gains 1 point
+- When a scared goat touches a carcass, the carcass transforms into an angry goat
+- When a carcass touches a scared goat, the scared goat is destroyed
+
+**Win condition:**
+The player wins when there are no scared goats remaining on the screen.
+
+**Lose condition:**
+The player loses when their character is destroyed by touching an angry goat.
+
+**Objective:**
+Hunt down all the scared goats by touching them to turn them into carcasses, while avoiding the angry goats that will destroy you on contact.

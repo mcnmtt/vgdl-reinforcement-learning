@@ -1,0 +1,30 @@
+**Player role:**
+The player controls a knight character that can move in four directions (up, down, left, right) using keyboard input.
+
+**Entities:**
+- Floor tiles: Basic ground surfaces that form the walkable area of the level
+- Holes: Dark blue pits in the ground that destroy objects that fall into them
+- Boxes: Movable brown blocks that the player can push around the level
+- Walls: Immovable barriers that block movement and automatically connect to adjacent walls
+- Coins: Golden collectible items that remain stationary
+- Switches: Special floor tiles that trigger effects when stepped on
+- Knight (avatar): The player-controlled character that moves around the level
+- Piranhas: Enemies that chase the player character, moving toward the player's position but only taking action every few moments
+
+**Interactions:**
+- When any moving object hits a wall, it stops and cannot move through
+- When the knight touches a piranha, the knight is destroyed
+- When a box is pushed by the knight, the box slides forward in the direction of the push
+- When a box hits a wall or another box, all recent box movements are reversed
+- When a box falls into a hole, the box is destroyed and the player gains 1 point
+- When the knight collects a coin, the coin disappears and the player gains 1 point
+- When the knight steps on a switch, a wall appears behind the knight and the switch disappears
+
+**Win condition:**
+The player wins when all boxes have been removed from the level (typically by pushing them into holes).
+
+**Lose condition:**
+The player loses if the knight is destroyed by touching a piranha.
+
+**Objective:**
+Push all the boxes into holes to clear them from the level while avoiding the chasing piranhas and collecting coins for extra points.

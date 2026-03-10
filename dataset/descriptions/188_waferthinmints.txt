@@ -1,0 +1,24 @@
+**Player role:**
+The player controls a black character that can move in four directions using keyboard input. The character moves one step at a time and cannot pass through solid objects.
+
+**Entities:**
+- Gray walls that block movement and form barriers throughout the level
+- Red floor tiles that serve as the walkable surface
+- A black avatar (the player character) that moves around the level
+- A white chef character that stands in place and randomly creates green butter items every few seconds with a 20% chance when its cooldown timer resets every 4 turns
+- Green butter items that serve as collectible resources scattered around the level, with a maximum limit of 11 that can exist at once
+
+**Interactions:**
+- When any moving character tries to enter a wall, they are pushed back and cannot move through it
+- When the avatar touches a green butter item, the butter is collected and the player's score increases by 1
+- When the avatar touches a green butter item while already carrying 11 or more butter items, the avatar is destroyed
+- When a green butter item touches the avatar, the butter item disappears
+
+**Win condition:**
+There is no win condition defined for this game.
+
+**Lose condition:**
+The player loses when their avatar is destroyed (which happens when collecting butter while already at the limit of 11).
+
+**Objective:**
+Collect green butter items to increase your score, but be careful not to collect more than 11 or you'll be destroyed. Avoid the chef character that continuously spawns more butter items throughout the level.

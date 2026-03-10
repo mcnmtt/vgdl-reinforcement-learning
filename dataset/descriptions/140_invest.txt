@@ -1,0 +1,31 @@
+Player role:
+The player controls a character that can move in four directions using keyboard input. The character cannot pass through walls and will be blocked when trying to move into them.
+
+Entities:
+- Floor: Basic walkable ground surface that appears throughout the level
+- Avatar: The player-controlled character that moves around the level
+- Wall: Solid barriers that block movement and have connected textures that automatically tile together
+- Coin: Collectible golden objects that remain stationary on the floor
+- Switch1: A stationary object that looks like a rogue character and can be activated by the player
+- Switch2: A stationary object that looks like a knight and can be activated by the player  
+- Switch3: A stationary object that looks like a queen and can be activated by the player
+- Switch1n: An inactive version of switch1 that appears as floor after switch1 is used
+- Switch2n: An inactive version of switch2 that appears as floor after switch2 is used
+- Switch3n: An inactive version of switch3 that appears as floor after switch3 is used
+
+Interactions:
+- When the avatar touches a wall, the avatar is pushed back and cannot move through
+- When the avatar touches a coin, the coin disappears and the player gains 1 point
+- When the avatar touches switch1, a timer starts for 30 time units that will transform all switch1n objects back into switch1 objects, the player gains 5 points, a switch1n object appears, and the switch1 disappears while reducing the score by 8 points
+- When the avatar touches switch2, a timer starts for 60 time units that will transform all switch2n objects back into switch2 objects, the player gains 15 points, a switch2n object appears, and the switch2 disappears while reducing the score by 22 points
+- When the avatar touches switch3, a timer starts for 90 time units that will transform all switch3n objects back into switch3 objects, the player gains 10 points, a switch3n object appears, and the switch3 disappears while reducing the score by 15 points
+- When the avatar is on floor and the score becomes negative, the avatar is destroyed
+
+Win condition:
+The player wins if they survive for 1500 time units without being destroyed.
+
+Lose condition:
+The player loses if their avatar is destroyed (which happens when the score becomes negative while standing on floor).
+
+Objective:
+Collect coins and strategically activate switches to maintain a positive score while surviving for the full time limit. Be careful when activating switches as they provide temporary points but cost more when used, so timing is crucial.

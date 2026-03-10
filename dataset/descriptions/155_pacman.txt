@@ -1,0 +1,38 @@
+**Player role:**
+The player controls a character that moves in four directions (up, down, left, right) at medium speed. The character can wrap around the screen edges, appearing on the opposite side when it exits one edge. The character has two states: a normal hungry state (appears yellow) and a powered-up state (appears orange).
+
+**Entities:**
+- Floor tiles that provide the basic walkable surface
+- Walls that block movement and have connected tiling
+- Small pellets (light yellow, half-size) that can be collected for points
+- Fruits (pink cherries) that provide bonus points when collected
+- Power orbs (light green, slightly smaller than normal) that temporarily change the player's abilities
+- Four spawn points (invisible portals) that generate ghosts of different colors
+- Four ghosts (red, orange, blue, pink) that each have two behavioral states:
+  - Normal state: each ghost moves randomly but switches to chasing behavior when encountering the hungry player or powered player, with a brief cooldown between direction changes
+  - Scared state: the ghost flees from the player within a certain range, moving more frequently and appearing as a generic frightened ghost
+- The player character appears as either a yellow hungry character or an orange powered character
+
+**Interactions:**
+- All moving entities bounce back when hitting walls
+- The player wraps around to the opposite side when reaching the edge of the screen
+- Ghosts bounce back when reaching the edge of the screen or hitting other ghosts
+- When the hungry player touches a power orb, the orb is destroyed and the player gains 10 points
+- When the player touches a pellet, the pellet is destroyed and the player gains 1 point  
+- When the player touches a fruit, the fruit is destroyed and the player gains 5 points
+- When a power orb touches the hungry player, the orb is destroyed and triggers multiple effects
+- When the hungry player touches a ghost, the ghost is destroyed and the player loses 1 point
+- When the hungry player collects a power orb, all ghosts immediately transform from their normal state to their scared state
+- When the hungry player collects a power orb, a timer starts that will revert all scared ghosts back to normal after a set duration
+- When the hungry player collects a power orb, another timer starts that will change the player back from powered to hungry state after the same duration
+- When the hungry player collects a power orb, the player immediately transforms to the powered state
+- When the powered player touches a ghost, the ghost is destroyed and the player gains 40 points
+
+**Win condition:**
+The player wins when all food items (pellets, fruits, and power orbs) have been collected from the level.
+
+**Lose condition:**
+The player loses if the player character is destroyed (which happens when the hungry player touches a ghost).
+
+**Objective:**
+Navigate the maze to collect all food items while avoiding ghosts in their dangerous state, and use power orbs strategically to temporarily turn the tables and hunt the ghosts for bonus points.

@@ -1,0 +1,38 @@
+Player role:
+The player controls an explorer character that can move in all directions using key presses. The explorer has 30 health points and cannot pass through walls or holes. When the explorer tries to move into an obstacle, it is pushed back to its previous position.
+
+Entities:
+- Explorer: The player character that can move around the level and has health points
+- Round holes: Dark blue circular pits that remain stationary and can destroy certain objects
+- Square holes: Dark blue square-shaped pits that remain stationary and can destroy certain objects  
+- Door: The exit target that the player must reach, remains stationary
+- Crates: Movable brown boxes that can be pushed around by the player and other objects
+- Boulders: Movable round barrel-like objects that can be pushed around
+- Pink tree enemies: Hostile creatures that wander around randomly at half normal speed, moving in random directions
+- Walls: Immovable brown barriers that block movement for all characters and objects
+- Background: Hidden brown floor tiles that fill empty spaces
+
+Interactions:
+- When the explorer touches a wall, round hole, or square hole, the explorer is pushed back to its previous position
+- When a boulder touches the explorer, both are pushed away from each other
+- When a boulder touches another boulder, crate, wall, or door, all movements are undone except for enemies
+- When a boulder falls into a round hole, both the boulder and hole disappear and the player gains 1 point
+- When a boulder falls into a square hole, only the boulder disappears
+- When a crate touches the explorer, both are pushed away from each other
+- When a crate touches another crate, they bounce apart repeatedly
+- When a crate touches a wall, boulder, door, or round hole, all movements are undone except for enemies
+- When a crate falls into a square hole, both the crate and hole disappear and the player gains 1 point
+- When the explorer reaches the door, the door disappears and the player gains 5 points
+- When an enemy touches a crate, square hole, round hole, door, or boulder, the enemy is pushed back
+- When a crate touches an enemy, all movements are undone except for enemies
+- When an enemy touches a wall, the enemy is pushed back
+- When the explorer touches an enemy, the explorer loses health points
+
+Win condition:
+The player wins when all doors have been reached and removed from the level.
+
+Lose condition:
+The player loses when the explorer's health reaches zero.
+
+Objective:
+Guide your explorer through the level to reach the exit door while avoiding enemies that drain your health. Use crates and boulders strategically to fill holes and clear your path.

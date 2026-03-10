@@ -1,0 +1,40 @@
+Player role:
+The player controls a swordsman character that can move in all directions and shoot swords as projectiles using collected weapons as ammunition. The character has health points and can take damage from enemies.
+
+Entities:
+- Floor tiles that form the ground of the game world but are invisible to the player
+- A green exit door that serves as the goal destination
+- Swords that appear briefly when fired by the player before disappearing after a short time
+- Blue weapon pickups that serve as ammunition for shooting swords, with a maximum capacity of 10,000
+- Red heart pickups that restore health, with a maximum of 10 hearts that can be collected
+- Locks that block passage and require keys to open
+- Gold coins that can be collected, with a maximum of 11 coins
+- Keys that can unlock locks, with only 1 key allowed at a time
+- Markets where the player can spend gold to purchase items
+- Invisible transaction zones at market locations
+- Spiders that move randomly around the game world at normal speed, pausing briefly between moves, and consume 3 units when defeated
+- Brown phantoms that actively chase the player at half speed, pausing between moves
+- Stone walls that block movement for all moving entities
+
+Interactions:
+- When the player touches a weapon pickup, they collect it and gain 2 points
+- When the player touches gold, they collect it and gain 1 point  
+- When the player touches a key, they collect it and gain 1 point
+- When the player touches a lock while carrying at least 1 key, the lock is destroyed
+- When any moving entity touches a wall or lock, they are pushed back to their previous position
+- When the player touches the exit, the player is removed from the game and gains 10 points
+- When the player touches a spider, they lose 2 health points
+- When a sword hits a spider, the spider is destroyed and the player gains 2 points
+- When the player touches a phantom, they lose 1 health point
+- When a sword hits a phantom, the phantom is destroyed and the player gains 1 point
+- When the player touches a market while carrying at least 1 gold coin, a health pickup is created and 1 gold is spent
+- When the player touches a health pickup, they gain 1 health point and the health pickup disappears
+
+Win condition:
+The player wins when they reach and enter the exit door.
+
+Lose condition:
+The player loses when their health points reach zero and they are eliminated from the game.
+
+Objective:
+Navigate through the game world, collect weapons and keys, defeat enemies with sword projectiles, and reach the exit door while managing your health and resources.

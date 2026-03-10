@@ -1,0 +1,38 @@
+**Player role:**
+The player controls a cop character that can move in four directions and shoot bullets. The cop has 5 health points and can only fire one bullet at a time.
+
+**Entities:**
+- Floor: Hidden background tiles that provide the base surface
+- White bases: Stationary white barrier objects that block movement and projectiles
+- Cop (avatar): The player character that can move and shoot, starts with 5 health points
+- Bullet: A small projectile fired by the cop, shrunk to half size, only one can exist at a time
+- Turn markers: Invisible direction indicators placed on the floor that redirect moving enemies
+- Bandits: Enemy characters that move horizontally at normal speed and occasionally drop missiles (10% chance every 6 time units). There are four types based on their movement direction and which direction they drop missiles
+- Missiles: Small enemy projectiles dropped by bandits, move at 60% normal speed and shrunk to half size
+- Exits: Door objects that can be empty or occupied by witnesses
+- Witnesses: Female characters that can either stay still or chase toward exits at 40% speed when activated
+- Walls: Immovable dirt wall barriers that use auto-tiling for seamless appearance
+
+**Interactions:**
+- When the cop touches a white base or wall, the cop is pushed back
+- When a white base is hit by a missile or bullet, both objects are destroyed
+- When a missile and bullet collide, both are destroyed
+- When a bullet hits a wall, the bullet is destroyed
+- When a missile or bullet reaches the edge of the screen, it is destroyed
+- When bandits moving in any direction hit turn markers, they transform to move in the new direction indicated by the marker
+- When a bandit is hit by a bullet, both are destroyed and the player gains 1 point
+- When the cop is hit by a missile, the cop loses 1 health point
+- When a missile hits the cop, the missile is destroyed
+- When a missile hits a witness, both are destroyed
+- When a witness reaches an empty exit, the exit becomes occupied and the player gains 5 points
+- When a witness touches an occupied exit, the witness stops moving
+- When the cop touches an occupied exit, the exit is destroyed
+
+**Win condition:**
+The player wins when all exits have been destroyed.
+
+**Lose condition:**
+The player loses if the cop's health reaches zero or if all witnesses are destroyed.
+
+**Objective:**
+Guide witnesses to exits while protecting them from bandit missiles, then touch each occupied exit to destroy it and complete the level.

@@ -1,0 +1,30 @@
+Player role:
+The player controls a spaceship that can move horizontally and fire blue missiles upward. The spaceship cannot move off the edge of the screen - it stops when it reaches the boundary.
+
+Entities:
+- A white planetary base that remains stationary and serves as the object to protect
+- Blue missiles that move upward when fired by the player's spaceship, with only one able to exist at a time
+- Red bombs that move downward at moderate speed
+- Green aliens that move horizontally at moderate speed, occasionally drop red bombs with a small chance each moment, and must wait a short time between drops
+- Blue aliens that behave identically to green aliens - moving horizontally, occasionally dropping red bombs, and having the same cooldown between drops
+- Invisible spawn points that periodically create blue aliens at a slower rate, producing up to 20 total aliens
+- Invisible spawn points that periodically create green aliens at a faster rate, also producing up to 20 total aliens
+
+Interactions:
+- When aliens reach the edge of the screen, they reverse direction and continue moving
+- When missiles reach the edge of the screen, they disappear
+- When the base is hit by a red bomb, both the base and bomb are destroyed
+- When the base is hit by a blue missile, both are destroyed and the player gains 1 point
+- When an alien touches the base, the alien is destroyed
+- When an alien touches the player's spaceship, the alien is destroyed and the player loses 1 point
+- When a red bomb hits the player's spaceship, the bomb is destroyed and the player loses 1 point
+- When a blue missile hits an alien, the alien is destroyed and the player gains 2 points
+
+Win condition:
+The player wins when all spawn points have finished creating aliens and no aliens remain on the screen.
+
+Lose condition:
+The player loses when their spaceship is destroyed.
+
+Objective:
+Defend your base by shooting aliens while avoiding their bombs and direct contact, surviving until all enemy waves are eliminated.

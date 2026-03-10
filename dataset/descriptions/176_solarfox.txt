@@ -1,0 +1,36 @@
+Player role:
+You control a yellow spaceship that moves in all directions at moderate speed. The spaceship can move freely around the playable area.
+
+Entities:
+- A yellow spaceship (your character) that moves at moderate speed in any direction
+- Gray floor tiles that form the background of safe areas
+- Blue water-like enemy territory where hostile creatures move
+- Small blue diamonds scattered throughout the level that can be collected
+- Larger red diamonds that are special collectible items with enhanced properties
+- Sparkling items that flicker rapidly and disappear after a short time
+- Dark robed enemies that move horizontally - some move rightward along the top areas, others move leftward along the bottom areas
+- Projectiles fired upward from bottom enemies, appearing as upward-pointing flames
+- Projectiles fired downward from top enemies, appearing as downward-pointing flames
+- Green diamond-shaped resources that track your collection progress
+- Gray walls that block movement and form boundaries
+
+Interactions:
+- When your spaceship touches walls, enemy territory, enemies, or their projectiles, it is destroyed and you lose 10 points
+- When your spaceship touches small blue diamonds, the diamonds disappear and you gain 1 point
+- When your spaceship touches large red diamonds, they transform into sparkling flickering items
+- When sparkling items touch your spaceship, they disappear
+- When large red diamonds are near small blue diamonds, the small diamonds disappear and you gain 1 point
+- When large red diamonds transform into sparkling items, your resource count increases
+- When enemies hit walls, they reverse direction and continue moving
+- Bottom enemies occasionally fire upward projectiles with a small random chance
+- Top enemies occasionally fire downward projectiles with a small random chance
+- When sparkling items appear and you have collected enough resources, small blue diamonds may spawn elsewhere
+
+Win condition:
+You win when all small blue diamonds and large red diamonds have been collected from the level.
+
+Lose condition:
+You lose if your spaceship is destroyed by touching walls, enemies, enemy territory, or projectiles.
+
+Objective:
+Navigate your spaceship through a dangerous area filled with moving enemies and their projectiles to collect all diamonds while avoiding hazards that will destroy you.

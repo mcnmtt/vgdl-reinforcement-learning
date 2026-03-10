@@ -1,0 +1,33 @@
+**Player role:**
+The player controls a character that can move in four directions and shoot shovels. The character cannot pass through walls, rocks, or houses - when it tries to move into these objects, it gets pushed back to its previous position.
+
+**Entities:**
+- Floor: Brown background tiles that form the walkable surface
+- Player character: A human figure that the player directly controls
+- Shovel: A gray tool that the player can shoot in any direction, appears briefly and disappears after a short time
+- Ground: Tree-like terrain that blocks movement and can be dug
+- Rock: Wall-like stone blocks that cannot be moved or destroyed
+- Hole: Invisible empty spaces created when ground is dug up
+- Dry house: A building that needs water, appears as a cloak-like structure
+- Flooded house: A house that has been reached by water, appears as a different colored cloak-like structure
+- Water source: Blue water that continuously spawns new water
+- Flowing water: Blue water that spreads outward in all directions automatically
+- Settled water: Water that has stopped flowing and remains in place
+- Wall: Dirt barriers that block movement and water flow
+
+**Interactions:**
+- When the player character touches walls, rocks, or houses, it gets pushed back and cannot enter that space
+- When water touches ground, rocks, houses, walls, or the edge of the screen, the water disappears
+- When settled water reaches a hole, it transforms into a water source and the hole is filled
+- When settled water touches an existing water source, the settled water disappears
+- When a dry house is touched by water, it transforms into a flooded house and the player scores 1 point
+- When ground is hit by a shovel, the ground transforms into an invisible hole
+
+**Win condition:**
+The player wins when all dry houses have been flooded with water.
+
+**Lose condition:**
+The player loses if their character is destroyed or if the time limit of 1250 game steps is reached.
+
+**Objective:**
+Dig strategic holes with your shovel to redirect water flow and flood all the dry houses before time runs out.

@@ -1,0 +1,36 @@
+Player role:
+The player controls a character that can move in all directions at normal speed using keyboard input.
+
+Entities:
+- A player character that appears as a person and can transform into different betting states
+- Four types of camels that move rightward at different speeds: one moves quite fast, one moves moderately fast, one moves slowly, and one moves very slowly
+- Colored floor tiles representing different betting areas: light blue, light green, light orange, and light gray
+- A neutral yellow arena area where the player returns to normal state
+- A green goal area where camels finish the race
+- Spike traps that destroy camels on contact
+- Barriers that block movement
+- Walls that block movement
+- Four types of winner markers that appear when each camel type reaches the goal
+
+Interactions:
+- When the player steps on the light blue betting area, they transform into a state betting on the fastest camel
+- When the player steps on the light green betting area, they transform into a state betting on the moderately fast camel  
+- When the player steps on the light orange betting area, they transform into a state betting on the slow camel
+- When the player steps on the light gray betting area, they transform into a state betting on the slowest camel
+- When the player steps on the yellow arena area, they return to their normal non-betting state
+- When the fastest camel reaches the goal, it creates a winner marker for that camel type
+- When the moderately fast camel reaches the goal, it creates a winner marker for that camel type
+- When the slow camel reaches the goal, it creates a winner marker for that camel type
+- When the slowest camel reaches the goal, it creates a winner marker for that camel type
+- When the player touches a wall, they are pushed back and cannot pass through
+- When any camel touches a wall or barrier, it is pushed back and cannot pass through
+- When any camel touches a spike trap, it is destroyed
+
+Win condition:
+The player wins when there is both a winner marker for a specific camel type and the player is in the corresponding betting state for that same camel type.
+
+Lose condition:
+The player loses when any camel reaches the goal but the player is not in the correct betting state for that winning camel.
+
+Objective:
+Watch the camel race and predict which camel will win by stepping on the correct colored betting area before that camel crosses the finish line.

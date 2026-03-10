@@ -1,0 +1,30 @@
+**Player role:**
+This is a two-player game. Player 1 controls a girl character that moves around the game area. Player 2 controls a cop character that can shoot sparkling projectiles at the other player.
+
+**Entities:**
+- Floor tiles that provide the basic walkable surface but are invisible during gameplay
+- Black background tiles that fill empty areas but are invisible during gameplay
+- A girl character (player 1's avatar) that moves around the game area with animated frames
+- A cop character (player 2's avatar) that can shoot projectiles and moves around the game area with animated frames
+- A sparkling projectile that flickers and can only exist one at a time, fired by the cop
+- Black open doorways that appear as death spots and kill any character that touches them
+- Invisible safe spots that mark certain locations on the game board
+- Invisible portals that transport characters to safe spots when activated
+- Walls that block movement and automatically connect with adjacent walls to form continuous barriers
+
+**Interactions:**
+- When the girl and cop characters collide, they both bounce away from each other in the direction they were moving
+- When either character hits a wall, they are pushed back and cannot pass through
+- When the girl character touches a sparkling projectile, an invisible portal appears at that location
+- When an invisible portal touches the girl character, it destroys the portal
+- When the girl character touches an invisible portal, she is transported to the nearest safe spot
+- When either character touches a black doorway, they are destroyed
+
+**Win condition:**
+Player 2 wins if the girl character is eliminated. Player 1 wins if the cop character is eliminated.
+
+**Lose condition:**
+If the cop character is eliminated, player 2 loses. If time runs out (after 1500 time units), player 1 loses and player 2 wins.
+
+**Objective:**
+Player 2 must use the cop to shoot projectiles and eliminate the girl character before time runs out, while Player 1 must survive and try to eliminate the cop character while avoiding death spots and projectile attacks.

@@ -1,0 +1,37 @@
+**Player role:**
+This is a two-player game. Player 1 controls Santa, who moves around the level and can shoot gifts. Player 2 controls the Grinch, who moves around the level and can shoot kicks and steal actions. Both characters cannot move through walls, doors, children, or the edge of the screen.
+
+**Entities:**
+- Floor tiles that provide the ground surface for movement
+- Doors that can be either open or closed - open doors allow most movement through them, closed doors block movement
+- Presents that appear as red gift boxes and can be collected by Santa
+- Santa, controlled by player 1, who can shoot gifts and kick actions, and collects presents as ammunition
+- The Grinch, controlled by player 2, who can shoot kick projectiles and steal projectiles
+- Gift projectiles that flicker and are shot by Santa
+- Kick projectiles that flicker and are shot by Santa, appearing smaller than normal size
+- Steal projectiles that flicker and are shot by the Grinch, appearing smaller than normal size
+- Invisible portals that serve as teleportation destinations
+- Invisible starting points that mark spawn locations
+- Sad children who move randomly around the level at slow speed, appearing as cursed figures
+- Happy children who move randomly around the level at slow speed, appearing as blessed figures
+- Walls that block movement and automatically connect to adjacent walls
+
+**Interactions:**
+- When Santa touches an open door, Santa is pushed back and cannot pass through
+- When the Grinch's kick projectile hits the Grinch, an invisible portal spawns at that location
+- When the Grinch's kick projectile hits any object, all open doors transform into closed doors
+- When an invisible portal touches the Grinch, the portal is destroyed
+- When the Grinch touches an invisible portal, the Grinch teleports to a starting point location
+- When the Grinch touches a starting point, a 150-tick timer begins that will transform all closed doors back into open doors when it expires
+- When a present touches Santa, Santa collects it as ammunition but the present remains in place
+- When a sad child touches a gift projectile, the child transforms into a happy child and the gift is destroyed
+- When a happy child touches a steal projectile, the child transforms back into a sad child and the steal projectile is destroyed
+
+**Win condition:**
+Player 1 (Santa) wins if all children become happy. Player 2 (Grinch) wins if time runs out.
+
+**Lose condition:**
+Player 1 (Santa) loses if time runs out. Player 2 (Grinch) loses if all children become happy.
+
+**Objective:**
+Santa must collect presents and shoot gifts at sad children to make them happy, while the Grinch tries to prevent this by stealing happiness from children and manipulating doors to block Santa's movement before time runs out.

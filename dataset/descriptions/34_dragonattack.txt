@@ -1,0 +1,43 @@
+Player role:
+This is a two-player game. Player 1 controls a mage that faces downward and can shoot blue orbs downward. Player 2 controls a necromancer that faces upward and can shoot red orbs upward. Each player can only have one projectile on screen at a time.
+
+Entities:
+- A mage (player 1's character) that appears as a robed figure facing downward and shoots blue orbs
+- A necromancer (player 2's character) that appears as a dark robed figure facing upward and shoots red orbs  
+- Blue orbs that move downward at moderate speed, shrink over time, and disappear after a while
+- Red orbs that move upward at moderate speed, shrink over time, and disappear after a while
+- Two dragons that fly horizontally - one moves left and occasionally shoots blue fire downward, the other moves right and occasionally shoots red fire upward
+- Dragon fire projectiles that move slowly and shrink over time - blue fire moves downward, red fire moves upward
+- Special dragon kill projectiles that move faster than regular fire - green ones move downward, pink ones move upward
+- Colored blocks arranged in layers: green blocks (top layer), blue blocks (middle layer), and red blocks (bottom layer)
+- Base structures - one for each player that can be destroyed
+- Gold items that appear when bases are hit - yellow mushrooms that give different point values
+- Trigger switches that can be activated to change dragon behavior - they appear as treasure chests that open and close
+- Walls that block movement
+- A hidden background
+
+Interactions:
+- When players hit walls, they are pushed back and cannot pass through
+- When dragons hit walls, they turn around and are pushed back
+- When any projectile hits a wall, the projectile is destroyed
+- When blue and red orbs collide, both are destroyed
+- When dragon fire projectiles of opposite colors collide, both are destroyed  
+- When dragon kill projectiles of opposite colors collide, both are destroyed
+- When any player orb hits any dragon fire, both are destroyed
+- When a green block is hit by any orb, it transforms into a blue block
+- When a green block is hit by a blue orb, both are destroyed and player 1 gets 2 points
+- When a green block is hit by a red orb, both are destroyed and player 2 gets 2 points
+- When a blue block is hit by any orb, it transforms into a red block
+- When a blue block is hit by a blue orb, both are destroyed and player 1 gets 1 point
+- When a blue block is hit by a red orb, both are destroyed and player 2 gets 1 point
+- When a red block is hit by a blue orb, both are destroyed, player 1 gets 1 point, and player 2 loses 1 point
+- When a red block is hit by a red orb, both are destroyed, player 2 gets 1 point, and player 1 loses 1 point
+- When a dragon is hit by a blue orb, both are destroyed, player 1 gets 20 points, and player 2 loses 5 points
+- When a dragon is hit by a red orb, both are destroyed, player 2 gets 20 points, and player 1 loses 5 points
+- When a base is hit by blue dragon fire, the base is destroyed, the fire is destroyed, and a yellow gold item appears
+- When a base is hit by red dragon fire, the base is destroyed, the fire is destroyed, and a different yellow gold item appears
+- When player 1 touches a yellow gold item, the item is destroyed, player 1 gets 10 points, and player 2 loses 5 points
+- When player 2 touches a yellow gold item, the item is destroyed, player 2 gets 10 points, and player 1 loses 5 points
+- When player 2 is hit by a green dragon kill projectile, both are destroyed, player 1 gets 1000 points, and player 2 loses 10 points
+- When player 1 is hit by a pink dragon kill projectile, both are destroyed, player 2 gets 1000 points, and player 1 loses 10 points
+- When any block is hit by a green dragon kill projectile, both are destroyed and player

@@ -1,0 +1,43 @@
+**Player role:**
+The player controls an avatar that can move in four directions and shoot shovels. The avatar can carry up to 10 units of sand as a resource. When moving into water, the avatar automatically uses one unit of sand to turn the water into dry land, but dies if it has no sand when touching water.
+
+**Entities:**
+- **Avatar**: The player character that moves around, shoots shovels, and collects sand
+- **Water**: Blue liquid terrain that blocks movement and kills the avatar if it has no sand
+- **Dry land without sand**: Brown solid ground that can be walked on safely
+- **Dry land with sand**: Beige solid ground that contains sand deposits
+- **Shovel**: A gray projectile that the avatar can shoot, which disappears after one use
+- **Bomb**: A stationary explosive object that blocks movement
+- **Spark generator**: A sparkling object that creates fire when activated
+- **Starting fire**: Orange flames that spread automatically to adjacent spaces
+- **Ending fire**: Orange flames that don't spread but destroy most objects they touch
+- **Whirlpool**: A swirling water hazard that kills the avatar on contact
+- **Goal**: A hole that serves as the level exit
+- **Sand**: Yellow granules that can be collected as a resource (up to 10 units)
+- **Treasure**: A valuable chest that gives points when collected
+
+**Interactions:**
+- The avatar bounces back when hitting the edge of the screen, walls, or bombs
+- The avatar dies when touched by ending fire
+- When a bomb is hit by ending fire or a shovel, it transforms into a spark generator
+- When water is touched by ending fire, it becomes dry land without sand
+- Ending fire is destroyed when it touches land, whirlpools, goals, treasure, the edge of the screen, or walls
+- When two ending fire sprites meet, they both turn into dry land without sand
+- The avatar collects sand when touching it
+- The avatar dies if it touches water while having no sand
+- When the avatar has sand and touches water, it loses one sand and the water becomes dry land without sand
+- The avatar dies when touching treasure but gains 100 points
+- When a shovel hits sandy land and the avatar has sand, it spawns sand granules
+- When sand touches sandy land, the land becomes regular dry land
+- When a shovel hits water and the avatar has more than 1 sand, it spawns sand granules
+- The avatar dies when touching a whirlpool
+- The avatar dies when touching the goal but gains 1 point (completing the level)
+
+**Win condition:**
+The player wins when all goals have been removed from the level (by touching them).
+
+**Lose condition:**
+The player loses if the avatar dies or if 1000 time units pass without completing the level.
+
+**Objective:**
+Navigate through a water-filled landscape by collecting sand and using it to create safe paths across water, while avoiding fire and whirlpools, to reach the goal and complete the level.

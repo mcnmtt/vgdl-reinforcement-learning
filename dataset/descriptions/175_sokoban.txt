@@ -1,0 +1,24 @@
+**Player role:**
+The player controls a knight character that moves in response to key presses. The knight moves on a grid-based floor and can push objects around.
+
+**Entities:**
+- Floor: Brown tile surfaces that form the walkable ground throughout the level
+- Knight: The player's character that can move around and interact with objects
+- Box: A movable brown block that can be pushed by the knight and falls into holes
+- Wall: Gray stone barriers that block movement and have connecting edges between adjacent wall pieces
+- Hole: Dark blue pits in the floor that destroy boxes that fall into them
+
+**Interactions:**
+- When the knight tries to move into a wall, the knight is prevented from moving and stays in its current position
+- When the knight moves into a box, the box is pushed forward in the direction the knight was moving
+- When a box is pushed against a wall or another box, both the box and the knight return to their previous positions
+- When a box moves into a hole, the box disappears and the player scores one point
+
+**Win condition:**
+The player wins when all boxes have been removed from the level (by pushing them into holes).
+
+**Lose condition:**
+There is no way to lose this game.
+
+**Objective:**
+Push all the boxes into holes to clear them from the level while navigating around walls and tight spaces.

@@ -1,0 +1,35 @@
+**Player role:**
+The player controls a swordsman who can move in four directions and shoot a sword that briefly appears and disappears. The swordsman changes appearance when carrying a key, showing an orange-colored version to indicate the key is held.
+
+**Entities:**
+- Floor tiles that form the walkable surface of the game world
+- A small green door that serves as one type of goal
+- A large gold door that serves as another type of goal  
+- An orange key that can be picked up by the player
+- A red vase that can be destroyed for points
+- A sword projectile that flickers briefly when shot, with a maximum of 5 uses
+- The player's swordsman character, which appears as a regular swordsman or an orange swordsman when holding a key
+- A quick bat enemy that moves randomly and changes direction every 2 time units
+- A normal spider enemy that moves randomly and changes direction every 4 time units  
+- A slow scorpion enemy that moves randomly and changes direction every 8 time units
+- Walls that block movement and form barriers in the level
+
+**Interactions:**
+- All moving objects bounce back when they hit walls
+- The swordsman without a key bounces back when trying to enter the small green door
+- The small green door disappears when the swordsman with a key enters it, awarding 1 point
+- The large gold door disappears when any version of the swordsman enters it, awarding 10 points
+- Enemies are destroyed when hit by the sword, awarding 2 points each
+- Vases are destroyed when hit by the sword, awarding 1 point
+- Enemies bounce back when they collide with each other
+- The swordsman is destroyed when touched by an enemy, losing 1 point
+- When the swordsman without a key touches the key, he transforms into the orange key-holding version, the key disappears, and 1 point is awarded
+
+**Win condition:**
+The player wins when all small green doors and large gold doors have been entered and destroyed.
+
+**Lose condition:**
+The player loses if the swordsman is destroyed by touching an enemy.
+
+**Objective:**
+Guide the swordsman through the level to collect the key and enter all doors while avoiding or destroying enemies with the sword to maximize your score.

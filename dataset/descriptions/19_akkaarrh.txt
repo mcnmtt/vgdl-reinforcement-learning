@@ -1,0 +1,34 @@
+**Player role:**
+This is a two-player game where each player controls a spaceman avatar. The avatars can move around and shoot explosive projectiles when the player presses the shoot button.
+
+**Entities:**
+- Two spaceman avatars (one for each player) that can move freely and shoot explosive projectiles
+- A green spaceship that serves as the extraction point, appearing in two states: locked (without key) and unlocked (with key)
+- Explosive projectiles that flicker briefly when created by the avatars' shooting
+- An invisible enemy spawner that periodically creates incoming enemies with a small chance each time, moving at moderate speed
+- Orange alien enemies that move slowly and always chase toward the spaceship
+- Yellow alien enemies that move faster and always chase toward the spaceship  
+- A key that appears smaller than normal size and can be collected
+- Immovable wall planets that block movement
+- A winner spaceship that represents successful extraction
+
+**Interactions:**
+- When the enemy spawner hits a wall, it reverses direction
+- When any movable object hits a wall, it is pushed back to its previous position with pixel-perfect collision
+- When an avatar touches the locked spaceship, it is pushed back and cannot enter
+- When an incoming alien reaches any spaceship, both the alien and spaceship are destroyed, and both players lose 1 point
+- When an avatar's explosion hits an incoming alien, the alien is destroyed and the first player gains 2 points
+- When an avatar's explosion hits an incoming alien, the alien is destroyed and the second player gains 2 points  
+- When an avatar touches a key, all locked spaceships transform into unlocked spaceships
+- When the first player's avatar touches a key, the key is destroyed and the first player gains 10 points
+- When the second player's avatar touches a key, the key is destroyed and the second player gains 10 points
+- When an avatar touches an unlocked spaceship, the avatar transforms into a winner spaceship
+
+**Win condition:**
+Both players win when there are 2 winner spaceships on the screen (meaning both players have successfully reached unlocked spaceships).
+
+**Lose condition:**
+Both players lose when there are no spaceships left on the screen (meaning all spaceships have been destroyed by incoming aliens).
+
+**Objective:**
+Work together to collect the key to unlock the spaceship, defend it from incoming alien attackers by shooting them, then both players must reach the unlocked spaceship to escape together.

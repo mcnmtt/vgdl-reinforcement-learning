@@ -1,0 +1,20 @@
+BasicGame
+    SpriteSet
+        avatar > MovingAvatar gravity=True jump=True steer=True
+        goomba > HorizontalAvatar
+        paratroopa > HorizontalAvatar
+        elevator > Conveyor color=BLUE
+        goal > Immovable color=GREEN
+        wall > Immovable
+    LevelMapping
+        0 > elevator
+        1 > goomba
+        2 > paratroopa
+    InteractionSet
+        avatar goomba > killIfAlive
+        avatar paratroopa > killIfAlive
+        avatar elevator > conveySprite
+        avatar goal > teleportToExit
+        avatar wall > wallStop
+    TerminationSet
+        SpriteCounter stype=avatar limit=0 win=True

@@ -1,0 +1,44 @@
+Player role:
+The player controls a swordsman character that moves in four directions at normal speed. The player can shoot pickaxes in the direction they're facing by pressing a button. The character wraps around to the opposite side when reaching the edge of the screen.
+
+Entities:
+- A swordsman avatar that the player controls directly
+- Flying bat enemies that slowly chase after the player wherever they go
+- Four types of tanks (facing right, up, left, and down) that move very slowly in their facing direction like missiles
+- Breakable dirt walls that can be destroyed
+- Unbreakable tombstone walls that block movement
+- A green staircase that serves as the exit goal
+- Pickaxe items that can be collected as ammunition
+- Gold treasure that awards points when collected
+- Coins that award points when collected
+- Pickaxe projectiles that fly straight when shot by the player
+- Various invisible timing and scoring systems that track pickaxe usage and award time bonuses
+- Invisible spawn points that occasionally create new pickaxes in designated locations
+
+Interactions:
+- When a pickaxe projectile hits a breakable wall, both are destroyed
+- When a pickaxe projectile hits an unbreakable wall, only the projectile is destroyed
+- When the player touches gold treasure, it disappears and awards 500 points
+- When the player collects a pickaxe item, it disappears and awards 100 points while giving ammunition
+- When a pickaxe projectile reaches the edge of the screen, it wraps around to the opposite side
+- When a pickaxe projectile hits an enemy, the enemy transforms into a pickaxe item
+- When an enemy touches a pickaxe projectile, the enemy is destroyed and awards 250 points
+- When a tank hits a breakable wall, the wall is destroyed and awards 10 points
+- When a tank hits an unbreakable wall, the tank reverses direction
+- When any moving object hits a wall, it steps back to its previous position
+- When any moving object reaches the edge of the screen, it wraps around
+- When the player touches the goal staircase, the player disappears and awards 2000 points
+- When enemies bump into each other, they step back
+- When the player touches an enemy or tank, the player is destroyed and loses 15 points
+- When the player collects a coin, it disappears and awards 2 points
+- When a pickaxe projectile hits a tank, the projectile is destroyed
+- Various invisible interactions manage pickaxe flight timers, spawn prevention, and time-based scoring bonuses
+
+Win condition:
+The player wins by reaching and touching the green staircase exit.
+
+Lose condition:
+The player loses if they touch any enemy or tank.
+
+Objective:
+Navigate through the level while avoiding enemies and tanks, collect treasure and coins for points, and use pickaxe projectiles to destroy breakable walls and convert enemies into pickaxe ammunition to reach the exit staircase.

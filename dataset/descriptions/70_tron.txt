@@ -1,0 +1,23 @@
+Player role:
+This is a two-player game. Player 1 controls a blue block that moves forward continuously at constant speed and can turn left or right. Player 2 controls a red block that moves forward continuously at constant speed and can turn left or right. Both blocks leave a trail of colored walls behind them as they move - the blue block creates blue walls and the red block creates red walls.
+
+Entities:
+- Floor: An invisible surface that covers the entire game area
+- Blue block (Player 1's avatar): A blue square that moves forward continuously and leaves blue wall segments behind it
+- Red block (Player 2's avatar): A red square that moves forward continuously and leaves red wall segments behind it  
+- Blue walls: Blue rectangular barriers created by the blue block's movement that remain stationary once placed
+- Red walls: Red rectangular barriers created by the red block's movement that remain stationary once placed
+- Border walls: Gray permanent barriers that form the outer boundaries of the game area
+
+Interactions:
+- When the blue block touches any wall (blue walls, red walls, or border walls), the blue block is destroyed and player 2 gains a point
+- When the red block touches any wall (blue walls, red walls, or border walls), the red block is destroyed and player 1 gains a point
+
+Win condition:
+Player 1 wins if the red block is destroyed (by hitting a wall). Player 2 wins if the blue block is destroyed (by hitting a wall).
+
+Lose condition:
+A player loses when their block hits any wall. If neither player hits a wall within the time limit, both players lose.
+
+Objective:
+Maneuver your block to avoid crashing into walls while trying to force your opponent to crash into the growing maze of wall trails you both create.

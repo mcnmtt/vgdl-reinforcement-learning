@@ -1,0 +1,31 @@
+Player role:
+This is a two-player game. Player 1 controls a knight character that can move in four directions using keyboard input. Player 2 controls a guard character that can also move in four directions. Both characters move by stepping from square to square on the game grid.
+
+Entities:
+- A knight character controlled by player 1 that moves around the level
+- A guard character controlled by player 2 that moves around the level  
+- Light-colored boxes belonging to player 1 that can be pushed around
+- Light-colored boxes belonging to player 2 that can be pushed around
+- Dark-colored boxes belonging to player 1 that appear when light boxes fall into holes
+- Dark-colored boxes belonging to player 2 that appear when light boxes fall into holes
+- Blue holes scattered around the level that boxes can fall into
+- Floor tiles that make up the ground surface
+- Wall tiles that block movement and are automatically connected to adjacent walls
+
+Interactions:
+- When either character touches a wall, they are prevented from moving into that space
+- When either character touches any box, the box is pushed forward in the direction the character was moving
+- When any box touches a wall, all boxes return to their previous positions
+- When a light box belonging to player 1 touches a hole, it transforms into a dark box and player 1 gains one point
+- When a light box belonging to player 2 touches a hole, it transforms into a dark box and player 2 gains one point
+- When a dark box belonging to player 1 touches the ground, it transforms back into a light box and player 1 loses one point
+- When a dark box belonging to player 2 touches the ground, it transforms back into a light box and player 2 loses one point
+
+Win condition:
+Player 1 wins when there are no light boxes belonging to player 1 remaining on the level. Player 2 wins when there are no light boxes belonging to player 2 remaining on the level.
+
+Lose condition:
+A player loses when their opponent successfully gets all of their own light boxes into holes first.
+
+Objective:
+Each player must push all of their light-colored boxes into the blue holes to transform them into dark boxes while preventing them from touching the ground again. The first player to get all their boxes transformed wins.

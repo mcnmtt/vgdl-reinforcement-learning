@@ -1,0 +1,32 @@
+Player role:
+This is a two-player game where each player controls a camel-like creature that can shoot swords. Player 1 controls a camel with one appearance, and Player 2 controls a camel with a different appearance. The camels move around the game area and can fire light gray swords as projectiles. Both camels cannot pass through walls or boxes and will be pushed back if they try to move into them.
+
+Entities:
+- Floor tiles that form the ground of the game area, appearing as beige background tiles
+- Hidden gems that are invisible until revealed, then appear as diamonds
+- Visible gems that appear as diamonds and can be collected for points
+- Two player-controlled camels that can move and shoot swords
+- Light gray swords that flicker and disappear after a short time, fired by the camels
+- A green exit door that serves as the goal
+- A red winner marker for Player 1 that appears when they reach the goal
+- A pink winner marker for Player 2 that appears when they reach the goal  
+- Brown barrier boxes that block movement
+- Dirt walls with connected tile appearance that block movement
+
+Interactions:
+- When Player 1's camel touches the goal, it transforms into a red winner marker and Player 1 gains 1 point
+- When Player 2's camel touches the goal, it transforms into a pink winner marker and Player 2 gains 1 point
+- When Player 1's camel touches a visible gem, the gem is destroyed and Player 1 gains 1000 points
+- When Player 2's camel touches a visible gem, the gem is destroyed and Player 2 gains 1000 points
+- When either camel tries to move into a box or wall, they are pushed back and cannot pass through
+- When a sword hits a box, the box is destroyed
+- When a sword hits a hidden gem, the gem transforms into a visible gem that can be collected
+
+Win condition:
+A player wins when their camel reaches the green exit door and transforms into their colored winner marker.
+
+Lose condition:
+A player loses when the other player reaches the goal first.
+
+Objective:
+Race against the other player to reach the green exit door first, using your sword to destroy boxes blocking your path and reveal hidden gems for bonus points along the way.

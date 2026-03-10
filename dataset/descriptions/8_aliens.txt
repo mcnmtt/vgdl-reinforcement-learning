@@ -1,0 +1,32 @@
+**Player role:**
+The player controls a spaceship that can move left and right along the bottom of the screen and fire blue missiles upward. The spaceship cannot move past the edges of the screen.
+
+**Entities:**
+- A white base structure that serves as a protective barrier
+- A player-controlled spaceship that fires blue missiles upward
+- Blue missiles fired by the player's spaceship that travel upward
+- Red bombs that fall downward at moderate speed
+- Green aliens that move horizontally across the screen, occasionally drop red bombs, and turn around when they reach screen edges
+- Blue aliens that move horizontally across the screen, occasionally drop red bombs, and turn around when they reach screen edges
+- Invisible spawn points that periodically create blue aliens (every 16 time units, up to 20 total)
+- Invisible spawn points that periodically create green aliens (every 12 time units, up to 20 total)
+
+**Interactions:**
+- When the spaceship reaches the edge of the screen, it stops and cannot move further
+- When aliens reach the edge of the screen, they turn around and move in the opposite direction
+- When missiles reach the edge of the screen, they disappear
+- When the base is hit by a bomb, both the base and bomb are destroyed
+- When the base is hit by the player's missile, both the base and missile are destroyed
+- When an alien touches the base, the alien is destroyed
+- When an alien touches the spaceship, the spaceship is destroyed and the player loses 1 point
+- When a bomb hits the spaceship, the spaceship is destroyed and the player loses 1 point
+- When the player's missile hits an alien, the alien is destroyed and the player gains 2 points
+
+**Win condition:**
+The player wins when all spawn points have finished creating aliens and no aliens remain on the screen.
+
+**Lose condition:**
+The player loses when their spaceship is destroyed by contact with an alien or bomb.
+
+**Objective:**
+Defend your spaceship by shooting all the aliens while avoiding their bombs and preventing them from reaching your base.

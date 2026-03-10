@@ -1,0 +1,53 @@
+Player role:
+The player controls a character that can move in four directions and turn to face different orientations without rotating in place. The character moves one space at a time on a grid.
+
+Entities:
+- A controllable character that the player moves around the level
+- Brown floor tiles that form the walkable surface
+- Dark blue holes in the ground that act as portals
+- An exit portal that serves as the goal destination
+- Movable boxes that can be pushed around
+- Immovable dirt walls that block movement and have connected tile graphics
+- Red master boulders that normally stay stationary but can be activated
+- Moving red master boulders that travel in straight lines when activated
+- Gray target boulders that normally stay stationary
+- Moving gray target boulders that travel in straight lines when activated
+- Stationary gray boulders that temporarily stop moving boulders
+
+Interactions:
+- When the player touches a stationary red master boulder, it becomes a moving red master boulder
+- When a moving red master boulder touches the player, it follows the player's gaze direction
+- When the player touches any boulder or wall, the player is pushed back
+- When the player touches a box, the box is pushed forward in the direction of contact
+- When a box touches a wall, another box, a hole, or the goal, all recent moves are undone
+- When a box touches any type of boulder, the player is pushed back
+- When a moving red master boulder touches a wall, it becomes stationary again
+- When a stationary red master boulder touches a wall, all recent moves are undone
+- When a moving red master boulder touches a box, it becomes stationary again
+- When a stationary red master boulder touches a box, all recent moves are undone
+- When a gray target boulder touches a moving gray target boulder, it follows that boulder's direction
+- When a moving gray target boulder touches a stationary gray target boulder, it becomes a stationary stopping boulder
+- When a gray target boulder touches a stationary stopping boulder, it becomes a moving gray target boulder
+- When a stationary stopping boulder touches a gray target boulder, it becomes a normal stationary boulder
+- When two gray target boulders touch each other, they push each other back
+- When a gray target boulder touches a moving red master boulder, it follows that boulder's direction
+- When a moving red master boulder touches a gray target boulder, it becomes stationary again
+- When a gray target boulder touches a stationary red master boulder, it becomes a moving gray target boulder
+- When a stationary red master boulder touches a gray target boulder, the boulder is pushed back
+- When a moving gray target boulder touches a wall, it becomes stationary again
+- When a stationary gray target boulder touches a wall, it is pushed back
+- When a moving gray target boulder touches a box, it becomes stationary again
+- When a stationary gray target boulder touches a box, it is pushed back
+- When a moving red master boulder falls into a hole or reaches the goal, it is destroyed and the score decreases by 10 points
+- When a moving gray target boulder falls into a hole, it is destroyed and the score decreases by 5 points
+- When a moving gray target boulder reaches the goal, it is destroyed and the score increases by 2 points
+- When the player falls into a hole, the player is destroyed and the score decreases by 10 points
+
+Win condition:
+The player wins when all target boulders (both gray stationary and moving types) have been removed from the level.
+
+Lose condition:
+The player loses if they are destroyed by falling into a hole, if all master boulders are destroyed, or if the time limit of 1500 steps is reached.
+
+Objective:
+Guide the moving boulders to the goal portal to score points while avoiding holes and ensuring at least one master boulder remains active to complete the puzzle within the time limit.

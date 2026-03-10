@@ -1,0 +1,30 @@
+**Player role:**
+This is a two-player game. Player 1 controls a bunny that can move in all directions. Player 2 controls a girl who can rotate in place and shoot bushes as projectiles.
+
+**Entities:**
+- Ground: Hidden terrain that forms the base layer of the game world
+- Floor: Another hidden terrain layer
+- Bunny: A small chicken-like sprite controlled by Player 1 that moves around the game area
+- Girl: A sprite controlled by Player 2 that can rotate and shoot projectiles
+- Bush: A projectile that the girl can shoot, appears as a bush sprite
+- Egg: A collectible resource that exists in two states - visible (white) and hidden (red and invisible)
+- Wall: Immovable tree obstacles that block movement and destroy certain objects
+
+**Interactions:**
+- When either player touches a wall, they are pushed back and cannot pass through
+- When an egg touches the girl, the egg bounces away from her
+- When an egg touches a wall, the egg is pushed back
+- When the bunny touches an egg, the bunny collects it, the egg disappears, and Player 1 scores 5 points
+- When a bush projectile hits a wall, the bush is destroyed
+- When a visible egg touches a bush projectile, the egg becomes hidden and Player 2 scores 1 point
+- When a bush projectile touches the ground, the bush is destroyed
+- When a hidden egg touches the ground, it becomes visible again
+
+**Win condition:**
+Player 1 wins if they collect all the eggs before time runs out. Player 2 wins if the time limit of 1500 time units is reached.
+
+**Lose condition:**
+Player 1 loses if time runs out before collecting all eggs. Player 2 loses if Player 1 collects all the eggs.
+
+**Objective:**
+Player 1 must collect all the eggs on the screen to win, while Player 2 must prevent this by shooting bushes to hide the eggs and running down the clock.

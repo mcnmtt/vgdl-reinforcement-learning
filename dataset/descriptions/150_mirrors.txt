@@ -1,0 +1,41 @@
+Player role:
+The player controls an archer that can rotate in place and shoot boulders in the direction it's facing. The archer moves by stepping in cardinal directions and can turn to face any of the four directions before shooting.
+
+Entities:
+- Floor tiles that provide the basic walkable surface (invisible background)
+- Black cliff areas that are deadly to touch
+- An archer (the player character) that can rotate and shoot projectiles
+- Code tokens in three colors: red slime-like tokens, green slime-like tokens, and blue slime-like tokens
+- Activated code tokens (marked versions of the colored tokens that have been hit)
+- Colored blocks in three varieties each:
+  - Red diamond blocks and three types of red slime blocks
+  - Green diamond blocks and three types of green slime blocks  
+  - Blue diamond blocks and three types of blue slime blocks
+- Mirrors that face different directions (up, down, left, right) and can redirect projectiles
+- Blue orb projectiles (boulders) that the archer shoots
+- Walls that block movement and destroy projectiles
+
+Interactions:
+- When the archer hits a wall, it steps back to its previous position
+- When the archer hits a mirror, it bounces forward in the direction the mirror faces
+- When a mirror tries to move into a wall, all movements are undone
+- When a mirror touches a cliff, the mirror is destroyed
+- When the archer touches a cliff, the archer is destroyed
+- When a boulder hits a wall or reaches the edge of the screen, the boulder is destroyed
+- When a boulder hits a mirror, it redirects to follow the mirror's orientation and aligns with the grid
+- When a boulder hits a red, green, or blue block, that block transforms into the corresponding activated code token
+- When a boulder hits a red code token, it transforms into a red slime block based on how many total code tokens exist: red slime type 1 if 3 or more codes exist, red slime type 2 if 2 or more exist, or red slime type 3 if 1 or more exists, and increases the score by 1
+- When a boulder hits a blue code token, it transforms into a blue slime block using the same counting rules and increases the score by 1
+- When a boulder hits a green code token, it transforms into a green slime block using the same counting rules and increases the score by 1
+- When a boulder hits an activated red code token, it transforms back into a regular red code token and decreases the score by 1
+- When a boulder hits an activated green code token, it transforms back into a regular green code token and decreases the score by 1
+- When a boulder hits an activated blue code token, it transforms back into a regular blue code token and decreases the score by 1
+
+Win condition:
+The player wins when there are exactly 6 blocks remaining and they include all 3 different color types.
+
+Lose condition:
+The player loses if the archer is destroyed or if 1500 time units pass.
+
+Objective:
+Use mirrors to redirect boulders and strategically convert colored blocks into code tokens, then transform those tokens into the right combination of colored slime blocks while managing the limited time.

@@ -1,0 +1,43 @@
+**Player role:**
+This is a two-player game. Player A controls a girl character who can move around and shoot projectiles. Player B controls a man character who can also move around and shoot projectiles. Both players can move in four directions and fire shots to affect the game.
+
+**Entities:**
+- Player A's avatar: A girl character that can move in all directions and shoot blue orb projectiles
+- Player B's avatar: A man character that can move in all directions and shoot purple orb projectiles
+- Player A's minions: Small ogre-like creatures that move slowly in one of four directions (right, left, down, or up) and belong to Player A
+- Player B's minions: Small ogre-like creatures that move slowly in one of four directions and belong to Player B, visually distinct from Player A's minions
+- Winner minions: Smaller versions of the regular minions that appear when a minion reaches its goal
+- Blue orb projectiles: Shot by Player A's avatar, these move in straight lines
+- Purple orb projectiles: Shot by Player B's avatar, these move in straight lines
+- Directional control switches: Four colored book-like objects (yellow for left, red for right, blue for up, green for down) that change minion directions when touched
+- Spike traps: Stationary hazardous objects that destroy minions
+- Goal zones: Two exit areas, one for each player's minions
+- Walls: Immovable barriers that block movement
+- Ground: The basic floor surface
+
+**Interactions:**
+- When any moving object hits a wall, it stops and cannot pass through
+- When a minion touches a spike trap, the minion is destroyed
+- When Player A's avatar touches the left control switch, all of Player A's minions change direction to face left
+- When Player A's avatar touches the right control switch, all of Player A's minions change direction to face right
+- When Player A's avatar touches the down control switch, all of Player A's minions change direction to face down
+- When Player A's avatar touches the up control switch, all of Player A's minions change direction to face up
+- When Player B's avatar touches the left control switch, all of Player B's minions change direction to face left
+- When Player B's avatar touches the right control switch, all of Player B's minions change direction to face right
+- When Player B's avatar touches the down control switch, all of Player B's minions change direction to face down
+- When Player B's avatar touches the up control switch, all of Player B's minions change direction to face up
+- When one of Player A's minions reaches Player A's goal zone, it transforms into a winner minion and Player A scores 10 points
+- When one of Player A's minions tries to enter Player B's goal zone, it bounces back and cannot enter
+- When one of Player B's minions reaches Player B's goal zone, it transforms into a winner minion and Player B scores 10 points
+- When one of Player B's minions tries to enter Player A's goal zone, it bounces back and cannot enter
+- When Player B's projectile hits one of Player A's minions, the minion reverses direction and Player B scores 1 point
+- When Player A's projectile hits one of Player B's minions, the minion reverses direction and Player A scores 1 point
+
+**Win condition:**
+A player wins if they get 3 of their minions to their goal zone, or if the opponent loses all their minions, or when time runs out and they have the higher score.
+
+**Lose condition:**
+A player loses if the opponent gets 3 minions to their goal zone first, or if they lose all their minions, or when time runs out and they have the lower score.
+
+**Objective:**
+Guide your minions to your goal zone by using the directional control switches while using your projectiles to disrupt your opponent's minions. Be the first to get 3 minions safely to your goal or eliminate all of your opponent's minions.

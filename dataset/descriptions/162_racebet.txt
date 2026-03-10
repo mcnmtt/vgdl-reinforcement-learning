@@ -1,0 +1,35 @@
+Player role:
+The player controls a character that can move in all directions at normal speed. The character can transform into different betting states depending on which colored tile they step on.
+
+Entities:
+- A player character that moves freely and changes form based on the tiles it touches
+- Four different camels that move rightward at different speeds: one moves quite fast, one moves moderately fast, one moves moderately slow, and one moves slowly
+- Colored floor tiles in four varieties: light blue, light green, light orange, and light gray, which transform the player into corresponding betting states when stepped on
+- A light yellow arena area that returns the player to their normal state when stepped on
+- A green goal area where camels finish their race
+- Barriers that block movement for both the player and camels
+- Walls that block the player's movement
+- Hidden floor sections that provide a base surface
+- Winner tokens that appear in four varieties corresponding to each camel, created when camels reach the goal
+
+Interactions:
+- When the player steps on the light blue tile, they enter a betting state for the first camel
+- When the player steps on the light green tile, they enter a betting state for the second camel  
+- When the player steps on the light orange tile, they enter a betting state for the third camel
+- When the player steps on the light gray tile, they enter a betting state for the fourth camel
+- When the player steps on the light yellow arena area, they return to their normal state
+- When the player hits a wall, they are pushed back and cannot pass through
+- When any camel hits a wall or barrier, it is pushed back and cannot pass through
+- When the first camel reaches the goal, it creates a winner token for that camel
+- When the second camel reaches the goal, it creates a winner token for that camel
+- When the third camel reaches the goal, it creates a winner token for that camel
+- When the fourth camel reaches the goal, it creates a winner token for that camel
+
+Win condition:
+The player wins if they are in the correct betting state when the corresponding camel wins the race (meaning both the winner token and the player's betting state match for the same camel).
+
+Lose condition:
+The player loses if any camel reaches the goal and creates a winner token while the player is not in the corresponding betting state for that winning camel.
+
+Objective:
+Watch the four camels race toward the goal and position yourself on the correct colored betting tile to match whichever camel you think will win the race.

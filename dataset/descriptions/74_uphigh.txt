@@ -1,0 +1,41 @@
+**Player role:**
+This is a two-player cooperative game. Player A controls a girl character and Player B controls a man character. Both avatars move in response to player input and can push moveable objects around the game area.
+
+**Entities:**
+- Floor tiles that form the base surface of the game area, normally hidden from view
+- Invisible boundary markers at the edges of the screen that block movement
+- Avatar A: a girl character that the first player controls
+- Avatar B: a man character that the second player controls  
+- A key that can be collected, appears as a small golden key
+- A lock that blocks passage until opened with the key
+- Moveable blocks in three sizes: small (half-size), medium (70% size), and large (90% size) that can be pushed around
+- Blue bases where blue blocks should be placed, in four varieties: regular base, hidden base, and bases already containing large, medium, or small blue blocks
+- Red bases where red blocks should be placed, in four varieties: regular base, hidden base, and bases already containing large, medium, or small red blocks  
+- Blue blocks in three sizes (small, medium, large) that have been correctly placed and are now fixed in position
+- Red blocks in three sizes (small, medium, large) that have been correctly placed and are now fixed in position
+- Wall tiles that form immovable barriers
+
+**Interactions:**
+- When an avatar touches a moveable block, the block is pushed forward in the direction of contact
+- When an avatar, wall, or fixed block is touched, the touching object steps back and cannot pass through
+- When a moveable block touches the edge of the screen, another block, a key, or a lock, it steps back and cannot pass through
+- When a large moveable block is placed on a blue base, it transforms into a fixed large blue block, the base disappears, and player A scores 2 points
+- When a large moveable block is placed on a red base, it transforms into a fixed large red block, the base disappears, and player B scores 2 points
+- When a medium moveable block is placed on a blue base, it transforms into a fixed medium blue block, the base disappears, and player A scores 5 points
+- When a medium moveable block is placed on a red base, it transforms into a fixed medium red block, the base disappears, and player B scores 5 points
+- When a small moveable block is placed on a blue base, it transforms into a fixed small blue block, the base disappears, and player A scores 9 points
+- When a small moveable block is placed on a red base, it transforms into a fixed small red block, the base disappears, and player B scores 9 points
+- Moveable blocks can also be stacked on already-placed blocks of the same color, with reduced point values
+- When blocks of the wrong size are placed on smaller fixed blocks, the player loses points and the fixed block reverts to an empty base
+- When an avatar touches the key, it collects the key and scores 1 point
+- When an avatar with a key touches the lock, the lock is destroyed
+- Avatars without keys cannot pass through locks
+
+**Win condition:**
+The players win when all moveable blocks have been correctly placed on matching colored bases.
+
+**Lose condition:**
+The players lose if the time limit of 1500 steps expires before all blocks are placed.
+
+**Objective:**
+Work together to push all the moveable blocks onto bases of matching colors, with each size of block earning different point values for the respective players, while managing the key to unlock barriers blocking your path.

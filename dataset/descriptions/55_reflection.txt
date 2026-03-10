@@ -1,0 +1,34 @@
+Player role:
+This is a two-player game. Player 1 controls a cop character and Player 2 controls a sheriff character. Both players can rotate in place and shoot projectiles. The characters cannot move around the level, only turn to face different directions before firing.
+
+Entities:
+- Floor tiles that provide the basic ground surface (invisible)
+- Black cliff areas that destroy anything that touches them
+- A cop character (Player 1's avatar) that can rotate and shoot blue orb projectiles
+- A sheriff character (Player 2's avatar) that can rotate and shoot different blue orb projectiles
+- Mirror objects that reflect and redirect projectiles, oriented in four directions (up, down, left, right)
+- Blue projectiles that travel in straight lines when fired - the cop shoots one type of orb and the sheriff shoots a different type
+- Wall blocks that stop movement and projectiles
+- When projectiles hit mirrors, they transform into special "attracted" versions that are drawn toward the mirror
+
+Interactions:
+- When either player character touches a wall, they are pushed back
+- When a mirror touches a player character, the player bounces forward
+- When a mirror touches a wall, the mirror is pushed back
+- When a mirror touches a cliff, the mirror is destroyed
+- When a player character touches a cliff, that player is destroyed
+- When any projectile hits a wall or reaches the edge of the screen, it is destroyed
+- When the cop's projectile hits a mirror, it transforms into a special version that is attracted to mirrors
+- When the sheriff's projectile hits a mirror, it transforms into a different special version that is attracted to mirrors
+- When any projectile hits a mirror, it becomes aligned and attracted to that mirror's orientation
+- When the cop character is hit by the sheriff's attracted projectile, the cop is destroyed
+- When the sheriff character is hit by the cop's attracted projectile, the sheriff is destroyed
+
+Win condition:
+Player 1 wins if the sheriff (Player 2's character) is destroyed. Player 2 wins if the cop (Player 1's character) is destroyed.
+
+Lose condition:
+A player loses if their character is destroyed by the opponent's projectile or by touching a cliff. If neither player is eliminated within the time limit, both players lose.
+
+Objective:
+Use mirrors strategically to redirect your projectiles and eliminate your opponent while avoiding being hit by their ricocheted shots or falling into the deadly cliff areas.

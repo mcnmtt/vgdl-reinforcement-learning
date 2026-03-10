@@ -1,0 +1,30 @@
+**Player role:**
+This is a two-player cooperative puzzle game. Player A controls a girl character who can move in any direction and rotate in place to shoot blue projectiles. Player B controls a man character who can move in any direction but cannot shoot. Both players cannot move through walls and will be pushed back when they hit them. After a brief period at the start, the players automatically switch roles - Player A becomes frozen while Player B gains the ability to shoot.
+
+**Entities:**
+- Floor tiles that provide the basic walkable surface (hidden from view)
+- Wall blocks that prevent movement and have decorative tiling
+- A girl character (Player A's avatar) that can move and shoot blue flickering projectiles
+- A man character (Player B's avatar) that can move but cannot shoot
+- When players switch roles, they transform into frozen versions of themselves with the opposite player gaining control
+- Nine A-type switch blocks (labeled 1-9) that appear as green slime and can toggle between OFF (darker green) and ON (lighter green) states
+- Nine B-type logic blocks (labeled 1-9) that appear as purple slime when OFF, and have special logic states when activated - they can be either in a "correct" or "incorrect" state when ON
+- Blue flickering orb projectiles that shrink over time and are fired by the active shooting player
+- A starting position marker (invisible) that triggers the role-switching timer
+
+**Interactions:**
+- When any character hits a wall, they are pushed back and cannot pass through
+- When Player A touches their starting position, a timer begins that will switch player roles after a short delay
+- When a projectile hits an A-type switch block that is ON, the block turns OFF, the first counter decreases by 1, and the projectile disappears
+- When a projectile hits an A-type switch block that is OFF, the block turns ON, the first counter increases by 1, and the projectile disappears
+- When a projectile hits a B-type logic block that is ON, the block turns OFF, and the second counter changes based on whether the corresponding A-type block is ON (counter decreases) or OFF (counter increases), then the projectile disappears
+- When a projectile hits a B-type logic block that is OFF, the block turns to either a "correct" or "incorrect" ON state depending on whether the corresponding A-type block is ON, the second counter changes accordingly, and the projectile disappears
+
+**Win condition:**
+The game has a time limit, and players win by achieving the correct configuration of blocks within that time limit using the counter system.
+
+**Lose condition:**
+Players lose if they fail to complete the puzzle before the time limit expires.
+
+**Objective:**
+Work together as a team, switching roles partway through, to manipulate the A-type switches and B-type logic blocks to solve the puzzle. The challenge involves coordinating the states of corresponding numbered blocks while managing the timing of the role switch.

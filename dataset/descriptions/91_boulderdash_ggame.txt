@@ -1,0 +1,39 @@
+**Player role:**
+The player controls an avatar that can move around and shoot a sword-like weapon (pickaxe). The avatar can shoot this weapon to attack enemies and interact with the environment.
+
+**Entities:**
+- Avatar: A character that the player controls, capable of moving and shooting a pickaxe weapon
+- Pickaxe: A flickering weapon that the avatar shoots, appears briefly when fired
+- Boulder: A gray rock that moves downward slowly, acting as a falling obstacle
+- Crab: A red scorpion-like enemy that moves randomly around the level
+- Butterfly: A pink bat-like enemy that moves randomly around the level
+- Diamond: A yellow collectible resource that appears smaller than normal size
+- Dirt: Brown immovable ground tiles that form the terrain
+- Wall: Immovable stone barriers that block movement
+- Exit door: A green door that serves as the level exit
+- Background: Hidden black tiles that fill empty spaces
+
+**Interactions:**
+- When the avatar touches a diamond, the diamond is collected as a resource
+- When the avatar touches a crab, the avatar is destroyed
+- When the avatar touches a butterfly, the avatar is destroyed
+- When the avatar touches the exit door, the avatar is destroyed
+- When a boulder hits the avatar, the avatar is destroyed and the score increases by 1
+- When the avatar hits a wall, the avatar is pushed back
+- When the pickaxe hits a wall, the pickaxe reverses direction
+- When a boulder hits a wall, the boulder reverses direction
+- When a crab hits a wall, the crab wraps around to the opposite side of the screen
+- When a butterfly hits a wall, the butterfly wraps around to the opposite side of the screen
+- When a crab touches the pickaxe, the crab is destroyed and the score increases by 1
+- When the pickaxe touches a crab, the pickaxe is destroyed
+- When a butterfly touches the pickaxe, the butterfly is destroyed and the score increases by 1
+- When the pickaxe touches a butterfly, the pickaxe is destroyed
+
+**Win condition:**
+The player wins when there are no exit doors remaining in the level.
+
+**Lose condition:**
+The player loses when the avatar is destroyed.
+
+**Objective:**
+Navigate through the level while avoiding falling boulders and dangerous creatures, use your pickaxe to defeat enemies, and reach the exit door to complete the level.

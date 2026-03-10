@@ -1,0 +1,39 @@
+Player role:
+You control a character that can move in four directions (up, down, left, right) and turn to face the direction of movement. The character cannot move through walls or doors, and will be pushed back if it tries to enter these spaces.
+
+Entities:
+- Floor: Hidden ground surface that serves as the base for all other objects
+- Avatar: Your controllable character that can move around and collect items
+- Green gems: Stationary collectible items that are slightly smaller than normal size and award 1 point when collected
+- Red gems: Stationary collectible items that are slightly smaller than normal size and award 5 points when collected  
+- Blue gems: Stationary collectible items that are slightly smaller than normal size and award 2 points when collected
+- Keys: Stationary items that can be picked up and transform into flying keys when touched by the avatar
+- Flying keys: Moving projectiles created when the avatar touches a regular key; they are attracted toward the avatar and slightly smaller than regular keys
+- Exit: A stationary portal that awards 10 points when reached and serves as the level goal
+- Doors: Immovable barriers that block movement and can only be opened by flying keys
+- Boulders: Movable stone blocks that can be pushed around
+- Walls: Immovable barriers that block movement and automatically connect with adjacent walls for seamless appearance
+
+Interactions:
+- When flying keys hit walls, gems, boulders, or regular keys, they transform back into regular keys
+- When the avatar tries to move into walls or doors, it is pushed back to its previous position
+- When boulders are pushed by the avatar, they move forward in the direction of the push
+- When the avatar touches a regular key, the key transforms into a flying key
+- Flying keys are attracted toward the avatar's position
+- When the avatar tries to move into regular keys or flying keys, it is pushed back
+- When flying keys hit doors, both the key and door are destroyed and 4 points are awarded
+- When the avatar collects green gems, the gem disappears and 1 point is awarded
+- When the avatar collects blue gems, the gem disappears and 2 points are awarded
+- When the avatar collects red gems, the gem disappears and 5 points are awarded
+- When boulders are pushed into walls, keys, gems, or other boulders, all movements are undone
+- When keys are pushed into walls, gems, or other keys, all movements are undone
+- When the avatar reaches the exit, the avatar disappears and 10 points are awarded
+
+Win condition:
+You win when there are no more exits left on the screen (meaning you have reached the exit).
+
+Lose condition:
+You lose if your avatar is destroyed (though this appears unlikely given the interaction rules).
+
+Objective:
+Navigate through the level by collecting gems for points, using keys to open doors that block your path, and pushing boulders strategically to reach the exit while avoiding getting stuck due to the undo mechanics when objects collide improperly.

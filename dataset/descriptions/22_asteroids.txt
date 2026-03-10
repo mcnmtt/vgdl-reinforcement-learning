@@ -1,0 +1,44 @@
+**Player role:**
+This is a two-player game where each player controls a spaceship that can move around and shoot missiles. Player 1 controls a blue spaceship, and Player 2 controls a red spaceship. Both spaceships move at moderate speed and can fire projectiles.
+
+**Entities:**
+- Two spaceships (avatars) - one blue and one red, each controlled by a different player, can move and shoot
+- Blue missiles - fired by the blue spaceship, appear as blue orbs that are smaller than normal size, only one can exist at a time, disappear after a short time
+- Red missiles - fired by the red spaceship, appear as red orbs that are smaller than normal size, only one can exist at a time, disappear after a short time
+- White bases - stationary rectangular blocks that act as obstacles
+- Large static asteroids - big objects that move very slowly in straight lines
+- Medium static asteroids - smaller objects that move at moderate speed, 80% of normal size
+- Small static asteroids - smallest objects that move quickly, 50% of normal size
+- Large random asteroids - big objects that move very slowly in random directions
+- Medium random asteroids - smaller objects that move at moderate speed in random directions, 80% of normal size
+- Small random asteroids - smallest objects that move quickly in random directions, 50% of normal size
+- Spawn points - invisible locations that periodically create new asteroids
+
+**Interactions:**
+- When spaceships or random asteroids reach the edge of the screen, they wrap around to the opposite side
+- When static asteroids reach the edge of the screen, they bounce back
+- When both spaceships collide with each other, both are destroyed
+- When the blue spaceship is hit by a red missile, the blue spaceship is destroyed, Player 1 loses 2 points, and Player 2 gains 10 points
+- When the red spaceship is hit by a blue missile, the red spaceship is destroyed, Player 2 loses 2 points, and Player 1 gains 10 points
+- When a missile hits a large static asteroid, the asteroid splits into two medium asteroids and both the missile and large asteroid are destroyed
+- When a missile hits a medium static asteroid, the asteroid splits into two small asteroids and both the missile and medium asteroid are destroyed
+- When a missile hits a large random asteroid, the asteroid splits into two medium random asteroids and both the missile and large asteroid are destroyed
+- When a missile hits a medium random asteroid, the asteroid splits into two small random asteroids and both the missile and medium asteroid are destroyed
+- When a blue missile hits a small asteroid (static or random), both are destroyed and Player 1 gains 3 points
+- When a red missile hits a small asteroid (static or random), both are destroyed and Player 2 gains 3 points
+- When the blue spaceship collides with any asteroid, both are destroyed and Player 1 loses 1 point
+- When the red spaceship collides with any asteroid, both are destroyed and Player 2 loses 1 point
+- When an asteroid hits a base, the asteroid bounces off in the opposite direction
+- When a base is hit by an asteroid, the asteroid is destroyed
+- When a blue missile hits a base, both are destroyed and Player 1 gains 1 point
+- When a red missile hits a base, both are destroyed and Player 2 gains 1 point
+- When a spaceship tries to move into a base, the spaceship is pushed back
+
+**Win condition:**
+The game has multiple ways to end: if one player's spaceship is destroyed while the other survives, the surviving player wins; if all asteroids are cleared, both players can win; if time runs out, both players can win.
+
+**Lose condition:**
+A player loses if their spaceship is destroyed while the opponent's spaceship survives, or if both spaceships are destroyed simultaneously (both players lose).
+
+**Objective:**
+Navigate your spaceship to shoot and destroy asteroids while avoiding collisions, and try to eliminate your opponent's spaceship with your missiles to be the last player standing.

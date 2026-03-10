@@ -1,0 +1,41 @@
+**Player role:**
+The player controls a character that can move in four directions and shoot shovels. The character moves freely without being affected by gravity or other physics.
+
+**Entities:**
+- Floor: An invisible surface that covers most of the game area
+- Gold coins: Small golden collectible items that remain stationary
+- Green gems: Small green diamond-shaped collectible items that remain stationary
+- Shovels: Gray pickaxe tools that flicker briefly when shot, lasting only a short time before disappearing
+- Resting weapon: A stationary round object that doesn't move
+- Boulder: A round projectile that moves slowly forward
+- Player character: The main character that can move and shoot shovels
+- Red monster: A red scorpion-like enemy that moves downward with brief pauses between movements
+- Falling object: A yellow round object that falls downward at moderate speed
+- Monster entrance: A hole that periodically spawns up to 5 monsters with long intervals between spawns
+- Walls: Brown dirt barriers that block movement and interact with various objects
+
+**Interactions:**
+- When a boulder hits gold, the gold transforms into a falling object
+- When the player touches a gem, the gem disappears and the player gains 1 point
+- When a boulder hits a wall, the boulder becomes a resting weapon
+- When a resting weapon touches a wall, it bounces back
+- When the player touches gold, the player bounces back without collecting it
+- When the player touches a monster, the player is destroyed and loses 1 point
+- When a monster hits a wall, the edge of the screen, or a resting weapon, it reverses direction
+- When a monster touches a boulder, the monster is destroyed and the player gains 2 points
+- When a falling object hits a wall, it disappears
+- When two shovels collide, they transform into a boulder
+- When a boulder or resting weapon reaches the edge of the screen, it bounces back
+- When a boulder or resting weapon touches the player, the player is destroyed
+- When a shovel hits a wall, the shovel disappears
+- When any moving object hits a wall, the edge of the screen, or a resting weapon, it bounces back
+- When any moving object touches a falling object, the moving object is destroyed
+
+**Win condition:**
+The player wins when all gems and gold are collected AND all monsters are eliminated.
+
+**Lose condition:**
+The player loses when their character is destroyed.
+
+**Objective:**
+Collect all gems while avoiding monsters and managing the dangerous boulders created by combining shovels. Clear all monsters from the level to achieve victory.

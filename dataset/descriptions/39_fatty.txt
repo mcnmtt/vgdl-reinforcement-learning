@@ -1,0 +1,37 @@
+Player role:
+This is a two-player game. Player 1 controls a child character and Player 2 controls a mother character. Both characters can move freely in four directions around the game area.
+
+Entities:
+- Ground: Hidden floor tiles that form the base of the game area
+- Child: A smaller character that player 1 controls, appears as a man figure
+- Mother: A character that player 2 controls, appears as a girl figure
+- Walls: Immovable barriers that block movement, with connected wall graphics
+- Flour ingredients: Small collectible items that can be gathered
+- Bed: A blue structure where the child can sleep
+- Oven: A gray structure with fire imagery where baking occurs
+- Door (open): An open doorway that can be passed through
+- Door (closed): A closed door that blocks the child's movement to the oven
+- Cake: A pink finished product that appears when baking is completed
+- Blank space: An invisible placeholder object
+
+Interactions:
+- When either character touches a wall, they are pushed back and cannot pass through
+- When the mother touches the bed, she is pushed back and cannot pass through
+- When the child touches the oven or closed door, they are pushed back and cannot pass through
+- When the child touches flour ingredients, the child collects them and the flour disappears, giving player 1 points
+- When the child touches baking ingredients, the child is destroyed
+- When the child has collected 4 or more flour ingredients and touches more flour, the child is destroyed
+- When the child has at least 3 flour ingredients and touches the bed, the child spends 3 flour to create a blank space, all open doors close, and a timer starts that will reopen all doors after some time
+- When a blank space touches the bed, the blank space disappears
+- When the mother touches flour ingredients, the flour disappears
+- When the mother touches baking ingredients, she collects them
+- When the mother has at least 5 baking ingredients and touches the oven, she spends all 5 to create a cake and player 2 gets points
+
+Win condition:
+Player 2 wins if a cake is created. Player 1 wins if the child character is destroyed or if all ingredients are collected. Both players win if time runs out.
+
+Lose condition:
+Player 1 loses if a cake is created. Player 2 loses if the child is destroyed or if all ingredients are collected.
+
+Objective:
+The child must collect flour ingredients while avoiding being destroyed, while the mother tries to gather baking ingredients and create a cake at the oven before time runs out.

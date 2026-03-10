@@ -1,0 +1,33 @@
+Player role:
+The player controls an avatar that moves in four directions at normal speed. The avatar cannot rotate and stops when it hits walls.
+
+Entities:
+- Floor: Hidden ground tiles that provide the base surface for the level
+- Passenger: A green figure that remains stationary and needs to be reached by suitcases
+- Belt: Conveyor belt sections that carry moving objects
+- Death zone: A tombstone marker that destroys suitcases on contact
+- Lever (four types): Stationary control switches that face up, right, down, or left directions
+- Joint (four types): Directional connectors that can be oriented up, right, down, or left and guide the movement of suitcases
+- Suitcase: A treasure chest that moves rightward at slow speed along the belt system
+- Wall: Immovable barriers that block movement and destroy suitcases on contact
+
+Interactions:
+- When the avatar touches an upward-facing lever, all joints in the level change to point upward
+- When the avatar touches a rightward-facing lever, all joints in the level change to point rightward  
+- When the avatar touches a downward-facing lever, all joints in the level change to point downward
+- When the avatar touches a leftward-facing lever, all joints in the level change to point leftward
+- When a suitcase reaches a joint, it changes direction to match the joint's orientation
+- When a passenger touches a suitcase, the passenger is removed and the score increases by 1
+- When a suitcase touches a death zone, the suitcase is destroyed and the score decreases by 1
+- When a suitcase hits a wall, the suitcase is destroyed and the score decreases by 1
+- When a suitcase touches the floor, it bounces back slightly
+- When the avatar hits a wall, it stops and cannot pass through
+
+Win condition:
+The player wins when all passengers have been collected by suitcases.
+
+Lose condition:
+The player loses when all suitcases have been destroyed or removed from the level.
+
+Objective:
+Guide suitcases to passengers by operating levers that control the direction of joints in the conveyor system, while avoiding death zones and walls that destroy the suitcases.

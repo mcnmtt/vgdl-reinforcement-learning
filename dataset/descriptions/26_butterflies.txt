@@ -1,0 +1,25 @@
+Player role:
+This is a two-player game. Player A controls an angel-like character that can move in all directions. Player B controls a second angel-like character that also moves in all directions. Both characters cannot pass through walls and will be stopped when they try to move into one.
+
+Entities:
+- Floor: Green grass tiles that cover the background and can be walked on
+- Cocoons: Blue stationary objects that serve as breeding spots for butterflies
+- Angel characters: Two player-controlled sprites that look like angels and can move freely around the level
+- Butterflies: Creatures that move randomly around the level at moderate speed with animated wings
+- Walls: Tree-like barriers that block movement for all moving characters
+
+Interactions:
+- When any moving character (angel or butterfly) tries to move into a wall, they are pushed back and cannot pass through
+- When a butterfly touches Player A's angel, the butterfly is destroyed and Player A gains 2 points
+- When a butterfly touches Player B's angel, the butterfly is destroyed and Player B gains 2 points  
+- When a butterfly touches a cocoon, a new butterfly is created at that location
+- When a cocoon touches a butterfly, the butterfly is destroyed
+
+Win condition:
+The game continues indefinitely as butterflies can reproduce by touching cocoons.
+
+Lose condition:
+The game ends when all cocoons are destroyed, preventing new butterflies from being created.
+
+Objective:
+Compete against the other player to catch as many butterflies as possible to earn points, while managing the butterfly population that can reproduce at cocoon locations.

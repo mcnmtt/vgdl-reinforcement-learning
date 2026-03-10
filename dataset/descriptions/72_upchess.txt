@@ -1,0 +1,41 @@
+**Player role:**
+This is a two-player game where each player controls their own avatar that can move around the board. Player A controls a knight-like character, and Player B controls a guard-like character. The avatars move freely but cannot move off the board, through walls, or through the opponent's queen.
+
+**Entities:**
+- Two avatars: a knight (Player A) and a guard (Player B) that players control to move around the board
+- Floor tiles that form the game board, appearing in white, black, and neutral colors
+- Three types of blue pawns belonging to Player A, displayed at 70% normal size: basic blue pawns, intermediate blue pawns, and advanced blue pawns
+- Three types of red pawns belonging to Player B, displayed at 70% normal size: basic red pawns, intermediate red pawns, and advanced red pawns
+- A blue queen belonging to Player A
+- A red queen belonging to Player B
+- Invisible boundary markers that define the edges of the playable area
+
+**Interactions:**
+- When an avatar tries to move into a wall, the edge of the screen, another avatar, or an opponent's queen, it is pushed back to its previous position
+- When Player A's avatar touches an opponent's red pawn, the avatar is pushed back
+- When Player B's avatar touches an opponent's blue pawn, the avatar is pushed back
+- When a blue pawn is touched by Player A's avatar, the pawn moves forward in the direction it was pushed
+- When a red pawn is touched by Player B's avatar, the pawn moves forward in the direction it was pushed
+- If any pawn reaches the boundary or touches its own queen, all moves are undone
+- If two intermediate pawns of the same color touch each other or an advanced pawn, all moves are undone
+- If two advanced pawns of the same color touch each other or a basic pawn, all moves are undone
+- When an intermediate blue pawn touches a basic blue pawn, the basic pawn becomes advanced, the intermediate pawn is destroyed, and Player A gains 2 points
+- When two basic blue pawns touch each other, one becomes intermediate, the other is destroyed, and Player A gains 1 point
+- When an intermediate red pawn touches a basic red pawn, the basic pawn becomes advanced, the intermediate pawn is destroyed, and Player B gains 2 points
+- When two basic red pawns touch each other, one becomes intermediate, the other is destroyed, and Player B gains 1 point
+- When pawns of the same level but opposite colors touch, both are destroyed and points are awarded based on their level (1 point for basic, 2 for intermediate, 3 for advanced)
+- When a red pawn captures a blue pawn of lower level, the red pawn is downgraded and Player B gains points while Player A loses points
+- When a blue pawn captures a red pawn of lower level, the blue pawn is downgraded and Player A gains points while Player B loses points
+- When Player A's queen encounters both an intermediate and advanced red pawn, the queen is destroyed, Player A loses 5 points, and Player B gains 10 points
+- When Player B's queen encounters both an intermediate and advanced blue pawn, the queen is destroyed, Player B loses 5 points, and Player A gains 10 points
+- When a basic blue pawn touches the red queen, the queen is destroyed and Player A loses 1 point
+- When a basic red pawn touches the blue queen, the queen is destroyed and Player B loses 1 point
+
+**Win condition:**
+A player wins immediately when the opponent's queen is destroyed.
+
+**Lose condition:**
+A player loses when their own queen is destroyed, or when time runs out after 1500 turns and they have fewer points than their opponent.
+
+**Objective:**
+Control your avatar to push your pawns strategically while protecting your queen, aiming to either destroy the opponent's queen or accumulate more points than your opponent before time expires.

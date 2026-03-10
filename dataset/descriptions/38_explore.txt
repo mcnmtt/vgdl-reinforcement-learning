@@ -1,0 +1,36 @@
+**Player role:**
+This is a two-player cooperative game. Player A controls a red girl character and Player B controls a yellow girl character. Both players can move in four directions and can shoot projectiles. All characters and enemies bounce back when they hit walls or the edge of the screen.
+
+**Entities:**
+- **Floor tiles**: Hidden ground surfaces that provide the base terrain
+- **Yellow buttons (type A)**: Stationary switches that start in an inactive state (solid yellow blocks) and change to an activated state (different yellow appearance) when shot
+- **Red buttons (type B)**: Stationary switches that start in an inactive state (solid red blocks) and change to an activated state (different red appearance) when shot  
+- **Exit doors**: Two flag-like doors (one for each player) that are initially hidden and become visible when the corresponding buttons are activated
+- **Hidden exit zones**: Invisible areas behind where the doors appear that detect when players reach them
+- **Victory markers**: Invisible objects that spawn when players successfully exit
+- **Guard patrol**: An enemy that moves around and chases players when they come into line of sight, moving at half normal speed and appearing smaller than normal
+- **Black walls**: Immovable barriers that block movement
+- **Player A (red girl)**: The first player's character that can move and shoot red projectiles
+- **Player B (yellow girl)**: The second player's character that can move and shoot yellow projectiles
+- **Red projectiles**: Flickering staff-like shots fired by Player A that are smaller than normal size
+- **Yellow projectiles**: Flickering staff-like shots fired by Player B that are smaller than normal size
+
+**Interactions:**
+- When the guard patrol hits walls or the edge of the screen, it bounces back
+- When either player hits walls, they bounce back
+- When either player touches the guard patrol, the player is destroyed
+- When Player A's red projectile hits a yellow button, all hidden exit zones for Player A transform into visible doors
+- When a yellow button is hit by Player A's projectile, it changes to its activated appearance
+- When Player B's yellow projectile hits a red button, all hidden exit zones for Player B transform into visible doors  
+- When a red button is hit by Player B's projectile, it changes to its activated appearance
+- When Player A reaches their activated door, a victory marker for Player A is created
+- When Player B reaches their activated door, a victory marker for Player B is created
+
+**Win condition:**
+Player A wins if Player A reaches their exit door while Player B is destroyed, or if only Player B is destroyed. Player B wins if Player B reaches their exit door while Player A is destroyed, or if only Player A is destroyed. Both players can win simultaneously if both reach their respective exit doors.
+
+**Lose condition:**
+Both players lose if both characters are destroyed by the guard patrol, or if the time limit of 1000 game cycles is reached.
+
+**Objective:**
+Work together to activate your respective buttons by shooting them with your projectiles, then reach your individual exit doors to escape while avoiding the patrolling guard.

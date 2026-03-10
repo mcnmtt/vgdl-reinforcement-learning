@@ -1,0 +1,37 @@
+**Player role:**
+This is a two-player cooperative game. Player 1 controls a wolf character and Player 2 controls a bear character. Both players can move in all directions using keyboard controls.
+
+**Entities:**
+- Wolf (Player 1): A wolf sprite that the first player controls, can move freely in all directions
+- Bear (Player 2): A bear sprite that the second player controls, can move freely in all directions
+- Walls: Tree-like barriers that block movement
+- Closed doors: Impassable door barriers that appear closed - there are two types, one for each player
+- Open doors: Passable door openings that appear open - there are two types, one for each player
+- Switches: Wall-like objects that activate doors when stepped on - there are two switches, one for each player
+- Exit: A special door that represents the goal location
+- Floor: Hidden green background tiles that provide walkable surface
+- Ground: Visible green background tiles that provide walkable surface
+
+**Interactions:**
+- When either player touches walls or closed doors, they are pushed back and cannot pass through
+- When Player 1 steps on Switch 1, all of Player 1's closed doors transform into open doors and Player 1's score increases by 1
+- When Player 1 steps on Switch 1, Player 1 transforms into a "push" state
+- When Player 2 steps on Switch 2, all of Player 2's closed doors transform into open doors and Player 2's score increases by 1  
+- When Player 2 steps on Switch 2, Player 2 transforms into a "push" state
+- When Player 1 steps on ground tiles, all of Player 1's open doors transform back into closed doors
+- When Player 2 steps on ground tiles, all of Player 2's open doors transform back into closed doors
+- When Player 1 reaches the exit, they transform into a winner state and gain 10 points
+- When Player 2 reaches the exit, they transform into a winner state and gain 10 points
+- When Player 1 in winner state steps on ground, they transform back to normal player state and lose 10 points
+- When Player 2 in winner state steps on ground, they transform back to normal player state and lose 10 points
+- When Player 1 in push state steps on ground, they return to normal state and lose 1 point
+- When Player 2 in push state steps on ground, they return to normal state and lose 1 point
+
+**Win condition:**
+Both players win when both players have reached the exit simultaneously (both are in winner state at the same time).
+
+**Lose condition:**
+There is no explicit lose condition - players can retry indefinitely.
+
+**Objective:**
+Work together to help both players reach the exit at the same time by coordinating the use of switches to open doors, while being careful not to step on ground tiles that will close the doors or reset your progress.

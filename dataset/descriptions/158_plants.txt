@@ -1,0 +1,35 @@
+Player role:
+The player controls a rogue character that can move in all directions and shoot shovels. The avatar can shoot up to 2 shovels that flicker and have limited uses.
+
+Entities:
+- Brown floor tiles that serve as the basic ground surface
+- Brown marsh areas that are stationary obstacles
+- Red eaten brains that appear when zombies reach certain locations
+- Gray tombstones that are smaller than normal size and block movement
+- Green bush-like plants that occasionally shoot peas to the right with a small chance every few moments, and have a brief pause between shots
+- Brown zombies that move slowly to the left and very rarely shoot red axes in the same direction
+- Red axes that fly to the left at medium speed and are smaller than normal size
+- Green peas that fly to the right at medium speed and are much smaller than normal size
+- A green goal that looks like a cloak and serves as the exit
+- Red spike-like portals that spawn zombies - some spawn zombies rarely, others spawn them very rarely
+- Light gray shovels that flicker and can only be used twice, shot by the player
+- Brown walls that block movement
+
+Interactions:
+- When a shovel hits marsh, the marsh transforms into a plant and the shovel is destroyed
+- When a zombie reaches the goal, it transforms into eaten brains and the player loses a point
+- When an axe hits a plant, the plant transforms back into marsh and the axe is destroyed
+- When a pea hits a zombie, both are destroyed and the player gains a point
+- When a pea hits a tombstone, the pea is destroyed
+- When the avatar hits a wall, it is pushed back and cannot pass through
+- When a zombie hits a wall, it is pushed back and cannot pass through
+- When any projectile (axe or pea) reaches the edge of the screen, it is destroyed
+
+Win condition:
+The player wins if they survive for the full time limit without letting any zombies reach the goal.
+
+Lose condition:
+The player loses if their avatar is destroyed or if any zombie reaches the goal (creating eaten brains).
+
+Objective:
+Transform marsh areas into defensive plants using your shovel, then protect the goal from zombies by having the plants shoot them down before they can reach the exit.

@@ -1,0 +1,35 @@
+**Player role:**
+The player controls a spaceship that can move in four directions and shoot bullets upward. The spaceship cannot move through walls or off the edge of the screen - it stops when it hits these boundaries. The spaceship comes in two types: white and black, which determine what kind of bullets it fires.
+
+**Entities:**
+- White spaceship: A player-controlled ship that fires blue spell-like bullets upward when shooting
+- Black spaceship: A player-controlled ship that fires blue orb bullets upward when shooting  
+- White bullets: Blue spell-like projectiles that move upward and can only exist one at a time
+- Black bullets: Blue orb projectiles that move upward and can only exist one at a time
+- White aliens: Bird-like enemies that move downward and occasionally drop red bombs
+- Black aliens: Different bird-like enemies that move downward and occasionally drop red bombs
+- Red bombs: Explosive projectiles dropped by aliens that move downward
+- White changers: Mineral-like objects that move downward slowly and can transform spaceships
+- Black changers: Different mineral-like objects that move downward slowly and can transform spaceships
+- Walls: White planetary objects that block movement
+- Invisible spawn points: Hidden locations that periodically create aliens at different rates - some spawn 10 aliens every 28 time units, others spawn 5 aliens every 56 time units
+- Invisible changer spawn points: Hidden locations that create changer objects every 100 time units, up to 40 total
+
+**Interactions:**
+- When the spaceship hits a wall or the edge of the screen, it stops and cannot move further in that direction
+- When aliens, changers, or any bullets reach the edge of the screen, they are destroyed
+- When bombs hit either type of bullet, both objects are destroyed
+- When the black spaceship touches a white changer, the spaceship transforms into a white spaceship and the changer is destroyed
+- When the white spaceship touches a black changer, the spaceship transforms into a black spaceship and the changer is destroyed
+- When the spaceship touches any alien or bomb, the spaceship is destroyed and the player loses a point
+- When a black alien is hit by a black bullet, both are destroyed and the player gains a point
+- When a white alien is hit by a white bullet, both are destroyed and the player gains a point
+
+**Win condition:**
+The player wins when all spawn points have finished creating aliens and all aliens on screen have been destroyed.
+
+**Lose condition:**
+The player loses when their spaceship is destroyed.
+
+**Objective:**
+Survive waves of alien attacks while shooting down aliens of the matching color to your spaceship. Transform between white and black ship types using the falling changer objects to effectively destroy all aliens before they can destroy you.

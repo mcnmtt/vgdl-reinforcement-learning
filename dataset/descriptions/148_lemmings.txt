@@ -1,0 +1,28 @@
+**Player role:**
+The player controls a character that can move around and shoot shovels. The character moves normally without special physics.
+
+**Entities:**
+- Floor: Brown background tiles that form the ground surface
+- Hole: Dark blue pits that are dangerous to fall into
+- Shovel: Light gray digging tools that flicker and disappear after a short time. Only one can exist at a time, and they appear smaller than normal size
+- Entrance: A spawn point that continuously creates lemmings. It produces up to 20 lemmings total with a brief delay between each spawn
+- Exit: A green door that serves as the destination for lemmings
+- Avatar: The player's character that can shoot shovels
+- Lemming: Small red creatures that automatically chase toward the exit door with a slight delay in their movement. They move at a smaller size than normal and animate quickly
+- Wall: Dirt walls that automatically connect to adjacent walls and block movement
+
+**Interactions:**
+- When the avatar touches a hole, the avatar is destroyed and the score decreases by 5 points
+- When a lemming touches a hole, the lemming is destroyed and the score decreases by 2 points
+- When any moving object (avatar or lemming) touches a wall or reaches the edge of the screen, it is pushed back to its previous position
+- When a wall is hit by a shovel, the wall is destroyed and the score decreases by 1 point
+- When a lemming reaches the exit, the lemming is destroyed and the score increases by 2 points
+
+**Win condition:**
+The player wins when both the entrance has finished spawning all lemmings AND no lemmings remain on the field (meaning all have either reached the exit or fallen into holes).
+
+**Lose condition:**
+The player loses if the avatar is destroyed.
+
+**Objective:**
+Guide lemmings safely to the exit by digging through walls with your shovel while avoiding holes yourself. You must help all the lemmings that spawn from the entrance reach their destination.

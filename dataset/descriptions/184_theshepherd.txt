@@ -1,0 +1,45 @@
+Player role:
+The player controls a character that can move in four directions and shoot dog treats. The player can only carry one treat at a time and must collect more treats from the game world to replenish their supply.
+
+Entities:
+- Floor: Hidden grass tiles that cover the ground throughout the level
+- Scared sheep: Blue sheep that flee from the player, moving at normal speed
+- Seeking sheep: Sheep that move toward entry points, also moving at normal speed
+- Tamed sheep: Sheep that move randomly and slowly after being successfully herded
+- Hidden auxiliary markers: Invisible objects used internally for game logic
+- Player character: The controllable character that can shoot dog treats
+- Hungry dog: A dog that chases after dog treats when they appear
+- Helpful dog: A dog that chases after scared sheep to help herd them
+- Dog treat: An item the player shoots that can be picked up by dogs, bounces off the player, and disappears when hitting walls or fences
+- Treat supply: Brown collectible items that replenish the player's ability to shoot dog treats
+- Entry points: Invisible locations where sheep can be converted to tamed sheep
+- Door: An opening that blocks tamed sheep from passing through
+- Fence: Barrier walls made of spikes that block movement
+- Wall: Barrier walls made of trees that block movement
+
+Interactions:
+- Sheep bounce back when touching walls or fences
+- Sheep bounce back when touching other untamed sheep
+- The player bounces back when touching walls or fences
+- Dogs bounce back when touching walls or fences
+- Tamed sheep bounce forward when touching the player
+- Dog treats bounce forward when touching the player
+- Dog treats disappear when touching walls or fences
+- When a hungry dog reaches a dog treat, the dog becomes helpful and the treat disappears
+- When a helpful dog reaches a scared sheep, the sheep transforms into an auxiliary marker
+- When a helpful dog touches an auxiliary marker, the dog becomes hungry again
+- When a hungry dog touches an auxiliary marker, the marker becomes a seeking sheep
+- Tamed sheep bounce back when touching doors
+- All sheep bounce back when touching fences
+- When scared sheep reach entry points, they become tamed sheep and the player scores 5 points
+- When seeking sheep reach entry points, they become tamed sheep and the player scores 1 point
+- The player can collect treat supplies to replenish ammunition
+
+Win condition:
+The player wins when all untamed sheep (both scared and seeking sheep) have been converted to tamed sheep.
+
+Lose condition:
+There is no explicit lose condition in this game.
+
+Objective:
+Guide all the sheep into the pen by using dog treats to control the dog's behavior, making it help herd the scared sheep toward entry points where they become tamed.

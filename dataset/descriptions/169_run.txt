@@ -1,0 +1,33 @@
+Player role:
+The player controls a character that can move in four directions using keyboard input. The character moves at normal speed and is not affected by gravity or momentum.
+
+Entities:
+- A character (the player's avatar) that appears as an animated girl sprite
+- Ground tiles that form the basic walkable surface, appearing as brown background tiles
+- Cliff tiles that are deadly obstacles, appearing as water-like surfaces
+- Wall tiles that block movement, appearing as dirt walls that connect seamlessly when adjacent
+- An exit door that the player must reach to complete the level
+- A key that can be collected, with only one key available per level and appearing smaller than normal size
+- Lock obstacles that block the player's path and appear as white lock symbols
+- Damaged ground areas that continuously spawn ground-eating projectiles every 2 time units, with each area creating up to 6 projectiles total, appearing as animated water-like sprites
+- Ground-eating projectiles that move randomly at slow speed and are completely invisible to the player
+
+Interactions:
+- When the character touches a wall, the character is pushed back to its previous position
+- When the character steps on damaged ground, the character is protected from being destroyed by cliffs
+- When the character touches a cliff without protection, the character is destroyed
+- When the character reaches the exit, the character disappears and the player scores 1 point
+- When a ground-eating projectile touches normal ground, that ground transforms into damaged ground
+- When a ground-eating projectile touches normal ground or walls, the projectile is destroyed
+- When the character touches a key, the character collects it as a resource
+- When the character approaches a lock while carrying at least one key, the lock is destroyed
+- When the character touches a lock, the character loses one key from inventory and is pushed back
+
+Win condition:
+The player wins when there are no exit doors remaining on the screen (meaning the player has successfully reached the exit).
+
+Lose condition:
+The player loses when the character is destroyed (typically by touching a cliff without protection).
+
+Objective:
+Navigate through the level while avoiding deadly cliffs, collect keys to unlock barriers, and reach the exit door. Be cautious of damaged ground areas that spawn invisible projectiles which gradually destroy the safe walking surfaces.

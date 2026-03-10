@@ -1,0 +1,33 @@
+**Player role:**
+The player controls an avatar that can move around and shoot swords. The avatar has two states: normal (appearing white) or carrier (appearing red and flickering). The player can shoot swords that flicker briefly before disappearing.
+
+**Entities:**
+- Floor: Hidden grey background tiles that cover the playable area
+- Sword: A flickering weapon that appears briefly when shot and then disappears after a short time
+- Entrance: A door that periodically spawns doctors, with a total limit of 5 doctors that can be created
+- Virus: Small red stationary objects scattered around the level
+- Avatar (normal): A white character controlled by the player
+- Avatar (carrier): A red flickering version of the player character that moves at the same speed
+- Host: A green character that moves randomly at quarter speed around the level
+- Infected: An orange flickering character that moves randomly at half speed around the level
+- Doctor: A blue character that moves randomly at one-fifth speed around the level
+- Wall: Immovable barriers that automatically connect to adjacent walls
+
+**Interactions:**
+- When a doctor touches a sword, the doctor is destroyed and the player gains 2 points
+- When any moving character touches a wall, they are pushed back and cannot pass through
+- When a carrier avatar touches a doctor, the avatar transforms back to normal state and the player loses 1 point
+- When a host touches a carrier avatar, the host transforms into an infected character and the player gains 2 points
+- When an infected character touches a doctor, the infected transforms back into a host
+- When a normal avatar touches both an infected character and a virus, the avatar transforms into a carrier
+- When a host touches both an infected character and a virus, the host transforms into an infected character
+- When a doctor touches a virus, the doctor is destroyed
+
+**Win condition:**
+The player wins when there are no host characters remaining on the level.
+
+**Lose condition:**
+There is no explicit lose condition in this game.
+
+**Objective:**
+Eliminate all green host characters from the level by strategically managing infections and using doctors while avoiding becoming a permanent carrier yourself.

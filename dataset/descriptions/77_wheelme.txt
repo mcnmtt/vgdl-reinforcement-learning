@@ -1,0 +1,35 @@
+Player role:
+This is a two-player cooperative game. Player 1 controls a wheelchair user who moves in four directions and has health points that slowly decrease over time. Player 2 controls a caregiver who can move in four directions and can activate objects by shooting or using them.
+
+Entities:
+- Floor: White street-like surface that characters can walk on
+- Gap: Grass-textured holes in the ground that block the wheelchair
+- Wall: Tree-like barriers that block all characters
+- Ramp: Log-like objects that can be placed to cover gaps
+- Charging point: Laser cannon-like stations that restore and increase the wheelchair's maximum health
+- Wheelchair user: A guard-like character with 50 health points that gradually lose health over time
+- Caregiver: An ogre-like character who can activate objects
+- Use action: A flickering belt-like effect that appears when the caregiver activates something
+- Hostile person: A man who chases the wheelchair user at slow speed
+- Exit door: The goal location that ends the level
+- Invisible portals: Hidden teleportation objects that move characters to starting positions
+
+Interactions:
+- All characters are pushed back when they hit walls or the edge of the screen
+- The wheelchair is pushed back when it tries to enter gaps
+- The hostile person and caregiver are pushed back when they hit walls
+- The caregiver is pushed back when touching charging points
+- When the wheelchair touches a hostile person, both are teleported back to their starting positions
+- When the caregiver uses their ability on a gap, a ramp appears and covers the gap
+- When the wheelchair reaches a charging point, its health is restored and maximum health increases by 10 points
+- When the wheelchair reaches the exit door, it disappears from that location
+- The wheelchair loses health points automatically every few seconds
+
+Win condition:
+Both players win when the wheelchair user reaches the exit door.
+
+Lose condition:
+Both players lose if the wheelchair user's health reaches zero.
+
+Objective:
+Work together to help the wheelchair user navigate obstacles and reach the exit while managing their declining health and avoiding hostile characters.

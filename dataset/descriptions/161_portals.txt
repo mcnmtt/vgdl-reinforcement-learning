@@ -1,0 +1,34 @@
+**Player role:**
+The player controls a mage character that can move in all four directions using keyboard input. The avatar moves freely around the game area without being affected by gravity or momentum.
+
+**Entities:**
+- Floor tiles that form the ground surface throughout the level
+- Wall blocks that form barriers and obstacles, with edges that automatically connect to adjacent walls
+- A green door that serves as the goal object
+- Portal entry points that transport the player to other locations:
+  - Light blue entry portals that connect to brown exit portals of the first type
+  - Blue entry portals that connect to brown exit portals of the second type
+- Brown exit portals where the player emerges after using entry portals
+- Red bullets that behave in different ways:
+  - Stationary bullets that remain in place
+  - Moving bullets that wander randomly at slow speed, changing direction frequently
+  - Fast-moving bullets that travel in straight lines:
+    - Some move upward continuously
+    - Others move leftward continuously
+
+**Interactions:**
+- When randomly moving bullets hit walls or structures, they bounce back and change direction
+- When the player touches a wall, they are blocked and cannot pass through
+- When the player reaches the green goal door, the door disappears and the player earns one point
+- When the player touches any bullet, the player is destroyed
+- When straight-moving bullets hit walls, they reverse direction and continue moving
+- When the player enters a portal entry point, they are instantly transported to the corresponding exit portal
+
+**Win condition:**
+The player wins when all goal doors have been collected (when there are no more green doors remaining on the level).
+
+**Lose condition:**
+The player loses if their character is destroyed by touching a bullet.
+
+**Objective:**
+Navigate through the level using portals to avoid bullets and collect all the green goal doors without getting hit by any of the moving or stationary bullets.

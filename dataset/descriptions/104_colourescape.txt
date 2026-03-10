@@ -1,0 +1,39 @@
+**Player role:**
+The player controls a character that can move in four directions using arrow keys. The character can transform between four different forms - normal, red, blue, and green - each with a distinct appearance and ability to interact with matching colored objects.
+
+**Entities:**
+- Floor tiles that are invisible and provide the base surface for the level
+- A green exit door that the player must reach to complete the level
+- Dark blue holes that act as deadly traps and destroy anything that falls into them
+- Four types of pushable boxes: normal (gray), blue, red, and green boxes, all slightly smaller than a grid cell
+- Four types of transformation switches placed on the floor: normal, blue, red, and green switches that change the player's form when stepped on
+- The player character that appears in four different forms: normal (one appearance), blue form, red form, and green form
+- Immovable walls that form the boundaries and obstacles of the level
+
+**Interactions:**
+- When the player touches a wall, they are pushed back and cannot move through it
+- When a green box is touched by the green form of the player, the box is pushed forward in the direction the player was moving
+- When a green box is touched by any other form of the player (blue, red, or normal), all previous moves in the level are undone
+- When a red box is touched by the red form of the player, the box is pushed forward in the direction the player was moving
+- When a red box is touched by any other form of the player (blue, green, or normal), all previous moves in the level are undone
+- When a blue box is touched by the blue form of the player, the box is pushed forward in the direction the player was moving
+- When a blue box is touched by any other form of the player (red, green, or normal), all previous moves in the level are undone
+- When a normal box is touched by the normal form of the player, the box is pushed forward in the direction the player was moving
+- When a normal box is touched by any colored form of the player (red, green, or blue), all previous moves in the level are undone
+- When any box touches a wall, switch, exit, or another box, all previous moves in the level are undone
+- When the player touches a hole, the player is destroyed and the score decreases by 1
+- When the player touches the exit door, the player is destroyed and the score increases by 1
+- When any box falls into a hole, the box is destroyed
+- When the player steps on a normal switch, they transform into their normal form
+- When the player steps on a red switch, they transform into their red form
+- When the player steps on a blue switch, they transform into their blue form
+- When the player steps on a green switch, they transform into their green form
+
+**Win condition:**
+The player wins when they successfully reach and enter the exit door, causing it to disappear from the level.
+
+**Lose condition:**
+The player loses if they fall into a hole and are destroyed, or if the time limit of 1500 moves is exceeded.
+
+**Objective:**
+Navigate through the level by transforming into the correct colored form to push matching boxes out of the way, while avoiding holes and reaching the green exit door within the time limit.

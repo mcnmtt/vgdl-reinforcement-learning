@@ -1,0 +1,43 @@
+Player role:
+The player controls a yellow motorbike that can move in all directions at moderate speed and can shoot projectiles continuously. The motorbike is affected by health mechanics, starting with 50 health points. When the player collects a boost power-up, the motorbike temporarily transforms into a faster version for 10 seconds. The motorbike cannot move beyond the edge of the screen.
+
+Entities:
+- Floor tiles that provide the road surface, appearing as highway graphics
+- Street tiles that form the road lanes, appearing as street graphics  
+- Player's motorbike that moves at moderate speed, appears yellow, can shoot projectiles, and has 50 health points
+- Fast player motorbike (temporary powered-up version) that moves at high speed
+- Enemy motorbikes that move rightward at three different speeds: slow, medium, and fast
+- Slow cars that move leftward at moderate speed
+- Fast cars that move leftward at high speed  
+- Trucks that move leftward at very high speed
+- Trees that move leftward at high speed
+- Goal objects that move leftward at moderate speed and act as teleportation points
+- Invisible car spawner that randomly creates slow cars, fast cars, or trucks every 15 time units with 50% probability, limited to 80 total spawns
+- Invisible motorbike spawner that randomly creates enemy motorbikes of varying speeds every 20 time units with 60% probability, limited to 400 total spawns
+- Invisible goal spawner that creates one goal object after 25 time units
+- Invisible tree spawner that creates trees every 2 time units, limited to 400 total spawns
+- Red sparkle effect that appears when an enemy motorbike reaches the goal
+- Pink sparkle effect that appears when the player reaches the goal
+- Invisible boost power-up that flickers and can only exist once at a time
+
+Interactions:
+- When the player's motorbike hits the edge of the screen, it is pushed back
+- When the player's motorbike touches cars or trees, it loses health points
+- After 500 time units, the car spawner transforms into the goal spawner
+- When enemy motorbikes hit cars or trees, the motorbikes are destroyed
+- When trees reach the edge of the screen, they are destroyed
+- When cars reach the edge of the screen, they are destroyed
+- When any static objects reach the edge of the screen, they are destroyed
+- When an enemy motorbike touches the goal, it transforms into a red sparkle effect
+- When the player touches the goal, a pink sparkle effect is created
+- When the goal touches the player, the goal is destroyed
+- When the player touches a boost power-up, a 10-second timer activates to transform back to normal speed, and the player immediately transforms into the fast version while the boost is destroyed
+
+Win condition:
+The player wins when a pink sparkle effect appears (indicating the player successfully reached the goal).
+
+Lose condition:
+The player loses if a red sparkle effect appears (indicating an enemy motorbike reached the goal first) or if the player's motorbike is destroyed by losing all health points.
+
+Objective:
+Navigate your motorbike through traffic and obstacles to reach the goal before any enemy motorbike does, while avoiding cars and trees that damage your health.

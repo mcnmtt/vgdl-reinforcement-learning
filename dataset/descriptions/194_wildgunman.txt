@@ -1,0 +1,30 @@
+**Player role:**
+The player controls a human character armed with a shotgun that can shoot projectiles. The character moves around the game area and cannot pass through walls or move beyond the edge of the screen.
+
+**Entities:**
+- Floor: Black background tiles that form the ground of the game area
+- City: Green buildings that serve as targets to be protected
+- Bullet: Small flickering projectiles that shrink over time and disappear after a short duration when fired by the player
+- Player character: A human with a shotgun that can move around and shoot bullets
+- Slow enemy: An orange alien with a shotgun that moves slowly toward cities to destroy them
+- Fast enemy: A yellow alien with a shotgun that moves quickly toward cities to destroy them  
+- Nice guy: An orange friendly character that moves toward cities but helps protect them instead of destroying them
+- Invisible spawn points: Hidden locations that periodically create new enemies or nice guys (each spawn point creates exactly 2 characters with delays between spawns)
+- Wall: Solid gray blocks that block movement
+- Death marker: An invisible tracker that appears when a nice guy is accidentally shot
+
+**Interactions:**
+- When any moving character reaches the edge of the screen or hits a wall, it bounces back and cannot pass through
+- When an enemy reaches a city, both the enemy and city are destroyed and the player loses 1 point
+- When a bullet hits a nice guy, the nice guy dies and transforms into a death marker, causing the player to lose 1 point
+- When a bullet hits an enemy, the enemy is destroyed and the player gains 2 points
+- When a nice guy reaches a city, the nice guy disappears and the player gains 2 points
+
+**Win condition:**
+The player wins when all enemies and nice guys are gone from the game area AND all spawn points have finished creating their characters (no more characters will appear).
+
+**Lose condition:**
+The player loses if all cities are destroyed OR if the player accidentally shoots a nice guy.
+
+**Objective:**
+Protect the cities by shooting the enemies while avoiding shooting the friendly nice guys who are also trying to help save the cities.

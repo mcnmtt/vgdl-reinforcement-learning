@@ -1,0 +1,45 @@
+**Player role:**
+The player controls an archer that can rotate in place and shoot blue boulders. The archer cannot move from its position but can turn to face different directions before shooting.
+
+**Entities:**
+- An archer (the player character) that stays in one spot but can rotate and shoot blue boulders
+- Blue boulders that are projectiles fired by the archer, appearing as small blue orbs
+- Laser cannons that come in different orientations (up, down, left, right) and can be rotated by being hit with boulders
+- A special swappable laser cannon that cycles through the rotation sequence
+- Yellow laser beams that move slowly in straight lines, fired from the laser cannons
+- A portal that periodically spawns red cars moving downward
+- Red cars that move slowly downward from the portal
+- Moveable boxes that can be pushed around
+- Immovable walls that block movement
+- Highway sections that serve as high-value targets
+- Street sections that serve as medium-value targets  
+- Spike traps that transform cars into crash debris
+- Car crash debris that appears when cars hit traps
+- Floor tiles that form the base terrain
+
+**Interactions:**
+- The archer and any projectiles bounce back when hitting walls or laser cannons
+- Laser beams are destroyed when they hit walls or reach the edge of the screen
+- Boxes bounce forward when the archer pushes against them
+- Boxes stop moving when they hit walls, other boxes, or laser cannons (unless the collision involves cars)
+- Laser beams destroy boxes on contact
+- When a boulder hits a laser cannon pointing down, it transforms into the swappable cannon
+- When a boulder hits a laser cannon pointing left, it transforms to point down
+- When a boulder hits a laser cannon pointing up, it transforms to point left  
+- When a boulder hits a laser cannon pointing right, it transforms to point up
+- When a boulder hits the swappable cannon, it transforms to point right
+- Boulders are destroyed when hitting laser cannons, walls, or the edge of the screen
+- Cars are destroyed and attract attention when touching the archer or laser beams
+- Cars are destroyed with a score penalty when hitting walls or laser cannons
+- Cars are destroyed with a small score bonus when reaching street sections
+- Cars are destroyed with a large score bonus when reaching highway sections
+- Cars transform into crash debris when hitting spike traps
+
+**Win condition:**
+The player wins if they survive for the full time limit without any cars crashing into traps.
+
+**Lose condition:**
+The player loses immediately if any car hits a spike trap and transforms into crash debris.
+
+**Objective:**
+Guide cars safely to the street and highway goal areas by rotating laser cannons with your boulders to redirect laser beams, while preventing any cars from hitting the dangerous spike traps.

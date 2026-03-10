@@ -1,0 +1,27 @@
+Player role:
+The player controls a princess character that moves around the game area using directional controls. The princess cannot pass through walls or other obstacles and will be pushed back when trying to move into them.
+
+Entities:
+- A princess (the player character) that moves based on player input
+- Blue scared goats that run away from the princess when she gets close
+- Orange angry goats that actively chase and pursue the princess
+- Brown carcasses that remain stationary where goats have died
+- Walls made of trees that block movement for all characters
+- A grass floor that covers the playing area but doesn't affect gameplay
+
+Interactions:
+- When any goat touches a wall, it is pushed back and cannot pass through
+- When the princess touches a wall, she is pushed back and cannot pass through  
+- When the princess touches an angry goat, the princess is destroyed and the player loses 1 point
+- When a carcass touches a scared goat, the carcass is destroyed
+- When a scared goat touches the princess, the scared goat transforms into a carcass and the player gains 1 point
+- When a scared goat touches a carcass, the scared goat transforms into an angry goat
+
+Win condition:
+The player wins when all scared goats have been eliminated from the game area.
+
+Lose condition:
+The player loses if the princess is destroyed by touching an angry goat.
+
+Objective:
+Guide the princess to touch all the scared goats to turn them into carcasses while avoiding the angry goats that will destroy her on contact.

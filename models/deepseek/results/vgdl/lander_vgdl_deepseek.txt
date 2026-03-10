@@ -1,0 +1,16 @@
+BasicGame
+    SpriteSet
+        avatar > MovingAvatar gravity=0.1
+        pad > Passive color=BLUE
+        wall > Immovable
+    LevelMapping
+        0 > pad
+        1 > wall
+    InteractionSet
+        avatar wall > killSprite
+        avatar EOS > killSprite
+        avatar pad > cloneSprite stype=pad
+    TerminationSet
+        SpriteCounter stype=avatar limit=0 win=True
+        SpriteCounter stype=pad limit=0 win=False
+        SpriteCounter stype=pad limit=4 win=False

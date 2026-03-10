@@ -1,0 +1,40 @@
+Player role:
+The player controls a yellow submarine that can move in any direction and shoot torpedoes. The submarine has 18 health points out of a maximum of 20. The submarine automatically loses health over time at regular intervals.
+
+Entities:
+- Sky: Light blue background areas that remain stationary and provide healing and rescue opportunities
+- Water: Blue liquid areas that form the main environment where most action takes place
+- Saved crew: Light green stationary objects that appear when rescued crew members reach the surface
+- Whirlpools: Gray spinning water formations that spawn various sea creatures at different rates
+- Shark spawning whirlpools: Create orange sharks very rarely
+- Whale spawning whirlpools: Create brown whales extremely rarely
+- Normal diver spawning whirlpools: Create green divers very rarely
+- Frequent diver spawning whirlpools: Create green divers more often but still infrequently
+- Submarine (avatar): Yellow vessel controlled by the player that can shoot and collect crew members
+- Torpedoes: Yellow projectiles fired by the submarine that destroy sea creatures on contact
+- Sharks: Orange fish that move leftward at moderate speed and destroy the submarine on contact
+- Whales: Large brown fish that move rightward slowly and occasionally release small red piranhas
+- Piranhas: Small red fish that move rightward at moderate speed and destroy the submarine on contact
+- Divers: Green people that move randomly underwater at high speed and can be rescued by the submarine
+- Crew resource: Represents rescued divers stored in the submarine, with a maximum capacity of 4
+
+Interactions:
+- The submarine loses health automatically over time at regular intervals
+- The submarine, divers, and sky areas are pushed back when they reach the edge of the screen
+- Fish are destroyed when they reach the edge of the screen
+- Fish and torpedoes destroy each other on contact, awarding 1 point to the player
+- The submarine is destroyed when it touches any fish
+- The submarine gains 1 health point when it touches sky areas
+- The submarine creates a saved crew member in sky areas if it has 4 rescued divers, consuming all 4 divers
+- Saved crew members are destroyed when touching sky areas, awarding 1000 points to the player
+- The submarine collects divers as crew members when they touch
+- Divers are destroyed when they touch the submarine
+
+Win condition:
+The player wins if they survive for 1000 time units without the submarine being destroyed.
+
+Lose condition:
+The player loses if the submarine is destroyed by either losing all health points or colliding with fish.
+
+Objective:
+Navigate the submarine through dangerous waters filled with sharks, whales, and piranhas while rescuing divers and bringing them to the surface for massive point rewards. Survive long enough by managing health, avoiding sea creatures, and using torpedoes defensively.

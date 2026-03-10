@@ -1,0 +1,33 @@
+**Player role:**
+The player controls an avatar that can move in four directions using arrow keys or similar controls. The avatar moves freely around the game area but cannot move past the edge of the screen - it will be pushed back if it tries to leave the boundaries.
+
+**Entities:**
+- Avatar: A painter character that the player controls directly
+- Ground: Gray tiles that represent unpainted areas that need to be converted
+- Paint: Dark blue tiles that represent painted/completed areas
+- Wall: Immovable barrier tiles that block movement
+- Prepaint: Invisible flickering objects that appear temporarily when the avatar touches ground tiles, lasting for a brief moment before disappearing
+- Prepainting: A counting resource that tracks prepaint interactions
+- Preground: Invisible flickering objects that appear temporarily when the avatar touches paint tiles, lasting for a brief moment before disappearing  
+- Pregrounding: A counting resource that tracks preground interactions
+
+**Interactions:**
+- When the avatar tries to move past the edge of the screen, it is pushed back and stays within the game boundaries
+- When the avatar touches a prepaint object, the prepaint object is destroyed
+- When the avatar touches a ground tile, a prepaint object appears at that location
+- When a prepaint object touches a ground tile, it increases the prepainting resource counter by 1
+- When a prepaint object touches a ground tile and the prepainting counter reaches 2, a new paint tile is created
+- When a ground tile is touched by a prepaint object and the prepainting counter reaches 2, the ground tile is destroyed and the player scores 1 point
+- When the avatar touches a paint tile, a preground object appears at that location
+- When a preground object touches a paint tile, it increases the pregrounding resource counter by 1
+- When a preground object touches a paint tile and the pregrounding counter reaches 2, a new ground tile is created
+- When a paint tile is touched by a preground object and the pregrounding counter reaches 2, the paint tile is destroyed
+
+**Win condition:**
+The player wins when all ground tiles have been removed from the game area.
+
+**Lose condition:**
+There is no explicit lose condition - the game continues until the win condition is met.
+
+**Objective:**
+Convert all gray ground tiles into blue paint tiles by moving over them repeatedly, then remove all ground tiles from the level to complete it.

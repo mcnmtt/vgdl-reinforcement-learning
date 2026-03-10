@@ -1,0 +1,28 @@
+**Player role:**
+The player controls a camel that can move in four directions using keyboard input. The camel moves at a normal speed and can navigate freely around the game area.
+
+**Entities:**
+- Floor: An invisible surface that covers the playable area with a beige background
+- Player's camel: A controllable camel that faces left or right depending on movement direction
+- Random camel: A brown camel that moves randomly in all directions at a slow pace, changing direction frequently
+- Fast camels: Brown camels that move quickly in straight lines, either left or right, never changing direction
+- Medium camels: Brown camels that move at moderate speed in straight lines, either left or right, never changing direction  
+- Slow camels: Brown camels that move slowly in straight lines, either left or right, never changing direction
+- Goal: A green exit door that serves as the finish line
+- Winner markers: Special sparkle effects that appear when someone reaches the goal - pink for the player, red for other camels
+- Walls: Immovable brown dirt barriers that block movement
+
+**Interactions:**
+- When the player's camel reaches the goal, it transforms into a pink sparkle effect and the player gains one point
+- When any other camel reaches the goal, it transforms into a red sparkle effect and the player loses one point
+- When the player's camel hits a wall, it bounces back and cannot pass through
+- When any other camel hits a wall, it bounces back and cannot pass through
+
+**Win condition:**
+The player wins when their camel reaches the goal first, creating a pink sparkle effect.
+
+**Lose condition:**
+The player loses if any of the other camels reaches the goal before them, creating a red sparkle effect.
+
+**Objective:**
+Race against the other camels to be the first to reach the green goal door while navigating around walls and obstacles.

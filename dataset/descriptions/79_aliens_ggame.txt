@@ -1,0 +1,29 @@
+**Player role:**
+The player controls a spaceship that can move left and right across the bottom of the screen. The spaceship can fire blue missiles upward, but can only have one missile on screen at a time.
+
+**Entities:**
+- A spaceship (the player's character) that moves horizontally at the bottom of the screen and fires blue missiles upward
+- Blue alien ships that move horizontally at moderate speed and occasionally drop red bombs downward
+- Green alien ships that move horizontally at moderate speed and occasionally drop red bombs downward  
+- Two types of invisible spawn points: one that creates green aliens every 12 time units (up to 20 total), and another that creates blue aliens every 16 time units (up to 20 total)
+- Red bombs that fall downward slowly after being dropped by aliens
+- Blue missiles that travel upward when fired by the player's spaceship
+- Gray walls that block movement
+- A white base or planet that sits stationary
+- A space background that fills empty areas
+
+**Interactions:**
+- When aliens or the player's spaceship hit the base, they reverse direction and the player loses 2 points
+- When aliens hit the player's spaceship, the spaceship takes damage and the player loses 2 points
+- When spawn points reach the edge of the screen, they bounce back toward the center
+- When aliens reach the edge of the screen, they turn around and continue moving in the opposite direction
+- All movements that would go past the screen edge are prevented
+
+**Win condition:**
+The player wins by surviving for 1023 time units without being destroyed.
+
+**Lose condition:**
+The player loses if their spaceship is destroyed.
+
+**Objective:**
+Survive waves of alien attackers for as long as possible while protecting your base, using your limited firepower to defend against incoming enemies and their bombs.

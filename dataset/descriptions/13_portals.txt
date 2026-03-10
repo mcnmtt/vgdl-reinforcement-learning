@@ -1,0 +1,30 @@
+**Player role:**
+The player controls a character that can move in four directions (up, down, left, right) using keyboard input. The character moves freely around the game area without being affected by gravity or momentum.
+
+**Entities:**
+- Floor tiles that serve as the background surface throughout the level
+- A goal object that appears as a green door, marking the target destination
+- Portal entry points that transport the player to other locations - there are two types: light blue entry points and blue entry points, each leading to their corresponding exits
+- Portal exit points that appear brown - there are two types that correspond to the different colored entry points
+- Walls that block movement and appear as dirt-colored barriers with connected edges
+- Stationary red projectiles that remain in fixed positions
+- Moving red projectiles that wander around randomly at slow speed, changing direction unpredictably
+- Fast-moving projectiles that travel in straight lines - some move upward continuously while others move leftward continuously
+- The player's character, which appears as a mage
+
+**Interactions:**
+- When randomly moving projectiles hit walls or structures, they bounce back and change direction
+- When the player touches a wall, they are blocked and cannot move through it
+- When the player reaches the goal, the goal disappears and the player earns one point
+- When the player touches any projectile, the player is destroyed
+- When straight-moving projectiles hit walls, they reverse direction and continue moving
+- When the player enters a portal entry point, they are instantly transported to the matching portal exit
+
+**Win condition:**
+The player wins when all goal objects have been collected (when no goals remain on the level).
+
+**Lose condition:**
+The player loses when their character is destroyed by touching a projectile.
+
+**Objective:**
+Navigate through the level filled with dangerous projectiles to reach and collect the goal while using portals strategically to avoid hazards and access different areas of the map.

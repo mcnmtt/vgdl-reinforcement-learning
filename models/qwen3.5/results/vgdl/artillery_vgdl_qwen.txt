@@ -1,0 +1,18 @@
+BasicGame
+    SpriteSet
+        avatar > AimedAvatar
+        bullet > Missile gravitation=TRUE
+        pad > Passive color=BLUE
+        wall > Immovable
+    LevelMapping
+        0 > pad
+        1 > wall
+    InteractionSet
+        bullet wall > killSprite
+        bullet pad > transformTo stype=wall
+        avatar wall > stepBack
+        avatar EOS > stepBack
+        bullet EOS > killSprite
+    TerminationSet
+        SpriteCounter stype=pad limit=0 win=True
+        SpriteCounter stype=avatar limit=0 win=False

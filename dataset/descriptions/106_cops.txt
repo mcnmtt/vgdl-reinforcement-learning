@@ -1,0 +1,40 @@
+**Player role:**
+You control a police officer who moves in four directions using keyboard input. The officer moves at normal speed and is not affected by gravity or special physics.
+
+**Entities:**
+- Floor tiles that provide the basic walkable surface, invisible to the player
+- Walls that block movement for all characters
+- A jail door (white) that can only be opened with a key
+- A depot (white, key-shaped icon) where you can pick up keys when you don't have one
+- A jail building (white) where you deposit captured criminals
+- A key (light blue) that you can carry to open jail doors - you can only hold one at a time
+- Red thugs that flee from you at high speed with animated sprites
+- Green thugs that flee from you at high speed with animated sprites  
+- Yellow thugs that flee from you at high speed with animated sprites
+- A boss thug that flees from you at high speed with animated sprites
+- Invisible transaction zones that appear at the jail when you have criminals to deposit
+- Resource counters that track how many of each color criminal you've captured
+
+**Interactions:**
+- You bounce back when walking into walls
+- All thugs bounce back when walking into walls or jail doors
+- When you touch a key, you pick it up and the key disappears
+- When you touch a jail door while carrying a key, the door opens, you lose the key, but are pushed back
+- When you touch the depot without a key, a new key appears there
+- When you touch any color thug, you capture them (they disappear and increase your count of that color criminal)
+- When you touch the jail while carrying green criminals, an invisible green transaction zone appears
+- When you touch a green transaction zone, you deposit one green criminal and gain 2 points
+- When you touch the jail while carrying yellow criminals, an invisible yellow transaction zone appears  
+- When you touch a yellow transaction zone, you deposit one yellow criminal and gain 5 points
+- When you touch the jail while carrying red criminals, an invisible red transaction zone appears
+- When you touch a red transaction zone, you deposit one red criminal and gain 100 points
+- When the boss thug touches you, you die but gain 100 points
+
+**Win condition:**
+You win when you defeat the boss thug (there are no more boss thugs remaining on the level).
+
+**Lose condition:**
+You lose if the time limit of 1900 game ticks expires, or if the boss thug catches and kills you.
+
+**Objective:**
+Capture criminals by chasing them down, then deposit them at the jail for points while avoiding the dangerous boss thug. Defeat the boss to win the level.

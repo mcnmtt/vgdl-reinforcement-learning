@@ -1,0 +1,32 @@
+**Player role:**
+The player controls a swordsman who can move in four directions and shoot sword slashes. The swordsman appears differently depending on whether they have collected a key - without a key they look normal, but with a key they have an orange tint and carry a visible key.
+
+**Entities:**
+- A swordsman (the player character) that can move around and shoot sword attacks
+- A green door that serves as the exit
+- An orange key that can be collected
+- Sword slashes that flicker briefly when shot and disappear after a short time - only one can exist at once
+- Fast bat enemies that move randomly and change direction every 2 time units, taking 6 hits to defeat
+- Medium-speed spider enemies that move randomly and change direction every 4 time units, taking 8 hits to defeat  
+- Slow scorpion enemies that move randomly and change direction every 8 time units, taking 12 hits to defeat
+- Walls that block movement and have connected appearance
+- Floor tiles that form the background
+
+**Interactions:**
+- When any moving object hits a wall, it bounces back and cannot pass through
+- When the swordsman without a key tries to enter the door, they bounce back and cannot pass
+- When the swordsman with a key touches the door, the door disappears and the player gains 1 point
+- When a sword slash hits any enemy, the enemy is destroyed and the player gains 2 points
+- When two enemies bump into each other, they bounce off each other
+- When the swordsman touches any enemy, the swordsman is destroyed and the player loses 1 point
+- When the swordsman without a key touches the key, they transform into the key-carrying version
+- When the swordsman touches the key, the key disappears and the player gains 1 point
+
+**Win condition:**
+The player wins when no doors remain on the screen (when they have successfully exited through the door).
+
+**Lose condition:**
+The player loses when the swordsman is destroyed (by touching an enemy).
+
+**Objective:**
+Collect the key and reach the exit door while avoiding or defeating the various enemies using your sword attacks.

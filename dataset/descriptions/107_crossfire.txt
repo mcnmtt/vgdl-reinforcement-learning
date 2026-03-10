@@ -1,0 +1,26 @@
+Player role:
+The player controls a knight that can move in all directions using keyboard input.
+
+Entities:
+- Floor: Hidden background tiles that cover the game area
+- Knight (avatar): The player-controlled character that moves around the level
+- Turret: A stationary cannon that rotates in place and randomly shoots bombs with a 40% chance every 3 time units at slow speed
+- Bomb: Red projectiles fired by turrets that move quickly across the screen and appear smaller than normal size
+- Goal: A green open door that the player must reach
+- Wall: Immutable barrier blocks that automatically connect to adjacent walls for seamless appearance
+
+Interactions:
+- When the knight reaches a goal, the goal disappears and the player gains 5 points
+- When the knight hits a wall, the knight is pushed back and cannot pass through
+- When a turret hits a wall, the turret is pushed back
+- When the knight is hit by a bomb, the knight is destroyed and the player loses 1 point
+- When a bomb hits a wall, the bomb is destroyed
+
+Win condition:
+The player wins when all goals have been collected (when there are no goals remaining on the level).
+
+Lose condition:
+The player loses when the knight is destroyed by a bomb (when there are no avatars remaining on the level).
+
+Objective:
+Navigate the knight through the level to collect all the green doors while avoiding the red bombs shot by rotating turrets.

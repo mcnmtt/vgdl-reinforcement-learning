@@ -1,0 +1,27 @@
+**Player role:**
+The player controls an avatar that can move in four directions around the game area. The avatar starts with 1 health point.
+
+**Entities:**
+- Floor: An invisible gray surface that forms the background of the game area
+- Fire projectiles: Orange moving objects that spawn randomly and move in random directions at moderate speed
+- Spawn points: Red objects that randomly create fire projectiles with a 25% chance, appearing smaller than normal fire
+- Water: Blue collectible resources with a maximum of 10 that can appear in the game, each worth 2 points
+- Escape door: A green open door that serves as the exit point
+- Avatar: The player character, depicted as a druid
+- Walls: Dark gray immovable barriers that block movement
+
+**Interactions:**
+- When the avatar touches a wall, it is pushed back and cannot pass through
+- When the avatar reaches the escape door, the door disappears
+- When the avatar touches water, it gains health points and the water is consumed
+- When the avatar touches fire, it loses health points and loses 1 point from the score
+- When fire touches water, an avatar, or a wall, the fire is destroyed
+
+**Win condition:**
+The player wins when there are no escape doors remaining on the screen (meaning the avatar has reached the exit).
+
+**Lose condition:**
+The player loses when the avatar is destroyed (health reaches zero).
+
+**Objective:**
+Navigate through a dangerous area filled with randomly spawning fire projectiles, collect water to maintain your health, and reach the green escape door to win while avoiding being destroyed by the fire.

@@ -1,0 +1,35 @@
+**Player role:**
+The player controls a yellow spaceship that can move in all directions and shoot blue bullets. The spaceship cannot rotate - it always faces the same direction. The spaceship has limited ammunition that can be replenished by collecting supplies.
+
+**Entities:**
+- **Yellow spaceship (avatar):** The player's ship that can move and shoot blue bullets upward
+- **White cities:** Stationary structures that must be protected from enemy attacks
+- **Blue aliens:** Enemy ships that move leftward across the screen and occasionally drop red bombs downward
+- **Blue bullets:** Projectiles fired by the player's spaceship that travel rightward
+- **Red bombs:** Explosive projectiles dropped by aliens that fall downward at moderate speed
+- **Gold supply drops:** Items that fall slowly downward and provide ammunition when collected
+- **Invisible alien spawners:** Hidden points that periodically create new aliens (some spawn aliens more frequently than others)
+- **Invisible supply spawners:** Hidden points that occasionally create ammunition supply drops
+- **Walls:** Immovable barriers that block movement
+- **Invisible floor:** Hidden boundary surface throughout the level
+
+**Interactions:**
+- When the spaceship hits the edge of the screen, a city, or a wall, it is pushed back and cannot pass through
+- When an alien reaches the edge of the screen, it disappears
+- When any projectile (bullet or bomb) hits the edge of the screen or a city, it disappears
+- When a bomb hits a city, both the bomb and city are destroyed, and the player loses 1 point
+- When a bullet or alien touches a city, both are destroyed
+- When a supply drop touches an alien, both are destroyed
+- When a bullet hits an alien, both are destroyed and the player gains 2 points
+- When supply drops collide with each other, they bounce away from each other
+- When a supply drop hits a wall or city, it bounces back
+- When the spaceship collects a supply drop, the player gains 5 units of ammunition and the supply disappears
+
+**Win condition:**
+The player wins by surviving for 1000 time units without losing all spaceships or cities.
+
+**Lose condition:**
+The player loses if their spaceship is destroyed or if all cities are destroyed by enemy bombs.
+
+**Objective:**
+Defend the cities from alien bombers by shooting them down while collecting ammunition supplies to maintain your ability to fight, and survive long enough to achieve victory.

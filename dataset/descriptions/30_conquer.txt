@@ -1,0 +1,38 @@
+Player role:
+This is a two-player game. Player 1 controls a girl character that can move around and shoot projectiles. Player 2 controls a cop character that can also move around and shoot projectiles. Both players can move in all directions and fire shots that travel in straight lines for a limited time before disappearing.
+
+Entities:
+- Floor tiles that are invisible but provide the ground surface
+- Red button (for player 1) that can be activated by stepping on it
+- Blue button (for player 2) that can be activated by stepping on it  
+- Gold coins that player 1 can collect for points (initially hidden)
+- Silver coins that player 2 can collect for points (initially hidden)
+- Gray blocks that serve as projectiles when shot by players
+- A red castle that can take damage and has 20 health points
+- Girl character (player 1's avatar) that can move and shoot gray blocks
+- Cop character (player 2's avatar) that can move and shoot bullets
+- Bullets that travel in straight lines and disappear after a short time
+- Walls that block movement and stop projectiles
+
+Interactions:
+- When either player touches walls, castles, or gray blocks, they are pushed back and cannot pass through
+- Player 1 is pushed back when touching silver coins or blue buttons
+- Player 2 is pushed back when touching gold coins or red buttons
+- When bullets hit walls, the bullets are destroyed
+- When gray blocks hit walls or castles, the gray blocks are destroyed
+- When gray blocks hit bullets, both are destroyed
+- When bullets hit the castle, the castle loses 1 health point
+- When gray blocks hit each other, one of them is destroyed
+- When player 1 steps on the red button, all hidden gold coins become visible and the button is destroyed
+- When player 2 steps on the blue button, all hidden silver coins become visible and the button is destroyed
+- When player 1 collects gold coins, the coins disappear and player 1 gains 100 points
+- When player 2 collects silver coins, the coins disappear and player 2 gains 100 points
+
+Win condition:
+Player 2 wins if the castle is destroyed (health reaches 0). Player 1 wins if time runs out before the castle is destroyed.
+
+Lose condition:
+Player 1 loses if the castle is destroyed. Player 2 loses if time runs out.
+
+Objective:
+Player 1 must defend the castle and collect gold coins for points while preventing player 2 from destroying it within the time limit. Player 2 must attack and destroy the castle before time runs out while collecting silver coins for points.

@@ -1,0 +1,22 @@
+**Player role:**
+The player controls an avatar that moves with realistic physics, including gravity pulling it downward and inertia that keeps it moving once it starts. The avatar responds to player input but maintains momentum from previous movements.
+
+**Entities:**
+- Avatar: The player-controlled character that is affected by gravity and moves with inertia-based physics
+- Blue pads: Stationary blue objects that remain in fixed positions and serve as landing platforms
+- Walls: Solid barriers that block movement
+- The edge of the screen: Acts as a boundary that destroys objects that touch it
+
+**Interactions:**
+- When the avatar hits a wall, the avatar is destroyed
+- When the avatar touches the edge of the screen, the avatar is destroyed  
+- When a blue pad touches the avatar while the avatar is moving slowly, the avatar is destroyed
+
+**Win condition:**
+The player wins when exactly 4 blue pads remain in the game.
+
+**Lose condition:**
+The player loses when no avatars remain in the game (the avatar is destroyed).
+
+**Objective:**
+Navigate the avatar carefully using its inertial movement and gravity physics to eliminate blue pads by landing on them at high speed, while avoiding walls and screen edges. You must destroy pads until exactly 4 remain, but be careful not to touch pads when moving too slowly or you'll be destroyed instead.

@@ -1,0 +1,26 @@
+**Player role:**
+The player controls a character that can move in all directions and shoot projectiles. The character can carry up to 5 projectiles at once and fires them in the direction it's facing.
+
+**Entities:**
+- Floor tiles that serve as the basic walkable surface
+- Walls that block movement and have connected borders when adjacent to each other
+- Projectiles that travel in straight lines when fired by the player
+- The player's character that can move and shoot
+- Little sisters that can be collected as resources, with a maximum of 3 available in the level
+- Big enemies that look like scorpions and actively chase the player, moving toward the player's position with a brief delay between movements
+
+**Interactions:**
+- When any moving character hits a wall, it is pushed back to its previous position
+- When a big enemy touches the player while the player has collected 3 little sisters, the big enemy is destroyed and the player gains 17 points
+- When the player touches a big enemy under any other condition, the player is destroyed
+- When the player touches a little sister, the little sister is collected as a resource and the player gains 1 point
+- When a projectile hits a little sister, the little sister is destroyed and the player gains 2 points
+
+**Win condition:**
+The player wins when all big enemies have been eliminated from the level.
+
+**Lose condition:**
+The player loses when their character is destroyed.
+
+**Objective:**
+Collect exactly 3 little sisters to gain the power to destroy the chasing scorpion enemies by touching them. Eliminate all enemies to win while avoiding contact with them before you're fully powered up.

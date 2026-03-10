@@ -1,0 +1,25 @@
+**Player role:**
+The player controls a spaceship that can move in all directions and shoot projectiles. The spaceship can fire explosive projectiles that flicker and shrink as they travel.
+
+**Entities:**
+- Floor: Black background tiles that form the ground of the level
+- Cities: Green structures scattered across the floor that the player must protect
+- Explosions: Flickering circular effects that shrink over time and disappear after a brief moment - these are the projectiles fired by the player's spaceship
+- Slow incoming threats: Orange fire-like objects that move downward slowly, constantly chasing and targeting the cities
+- Fast incoming threats: Yellow fire-like objects that move downward quickly, also chasing and targeting the cities
+- Walls: Gray block structures that cannot be moved or destroyed
+- Spaceship: The player's blue vessel that can move freely and shoot explosions
+
+**Interactions:**
+- When any moving object touches a wall, it is pushed back and cannot pass through
+- When an incoming threat reaches a city, both are destroyed and the player loses 1 point
+- When a player's explosion hits an incoming threat, the threat is destroyed and the player gains 2 points
+
+**Win condition:**
+The player wins when all incoming threats have been destroyed.
+
+**Lose condition:**
+The player loses when all cities have been destroyed by incoming threats.
+
+**Objective:**
+Defend the cities by shooting down the incoming threats before they can destroy all the cities. Earn points by destroying threats while preventing them from reaching the cities you must protect.

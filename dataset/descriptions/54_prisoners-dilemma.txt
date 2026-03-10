@@ -1,0 +1,34 @@
+Player role:
+This is a two-player game where each player controls a character that can only shoot projectiles. Player A controls a character facing right, and Player B controls a character facing left. The characters cannot move - they can only shoot two different types of projectiles when commanded.
+
+Entities:
+- Two stationary shooter characters, one facing right (Player A) and one facing left (Player B)
+- Walls that block projectiles and are arranged to create the level boundaries
+- Two types of projectiles for each player: "agree" projectiles (planet-like appearance) and "disagree" projectiles (scroll-like appearance), each traveling at three possible speeds (fast, medium, or slow)
+- Buzzers that appear at designated locations and flash on and off alternately for each player - when a player shoots a buzzer, it transforms to show either an "agree" or "disagree" symbol based on what type of projectile hit it
+- Invisible timers that automatically trigger events at different intervals (every 50 time units or every 20 time units)
+- Invisible choice selectors that determine which speed projectiles will be created
+- A gray floor that serves as the background
+
+Interactions:
+- When any projectile hits a wall, the projectile is destroyed
+- When Player A shoots a buzzer with an "agree" projectile, the buzzer transforms to show the agree symbol and the projectile is destroyed
+- When Player A shoots a buzzer with a "disagree" projectile, the buzzer transforms to show the disagree symbol and the projectile is destroyed
+- When Player B shoots a buzzer with an "agree" projectile, the buzzer transforms to show the agree symbol and the projectile is destroyed
+- When Player B shoots a buzzer with a "disagree" projectile, the buzzer transforms to show the disagree symbol and the projectile is destroyed
+- When a choice selector contacts a buzzer showing the agree symbol, it creates an "agree" projectile of the corresponding speed
+- When a choice selector contacts a buzzer showing the disagree symbol, it creates a "disagree" projectile of the corresponding speed
+- When choice selectors contact buzzers, the choice selector is destroyed
+- When Player A's "agree" projectile meets Player B's "disagree" projectile, both are destroyed and Player A loses 3 points
+- When Player A's "agree" projectile meets Player B's "agree" projectile, both are destroyed and both players lose 1 point
+- When Player A's "disagree" projectile meets Player B's "agree" projectile, both are destroyed and Player B loses 3 points
+- When Player A's "disagree" projectile meets Player B's "disagree" projectile, both are destroyed and both players lose 2 points
+
+Win condition:
+The player with the higher score when the time limit is reached wins the game.
+
+Lose condition:
+The player with the lower score when the 500 time unit limit expires loses the game.
+
+Objective:
+Shoot the buzzers strategically to create projectiles that will collide favorably with your opponent's projectiles, aiming to lose fewer points than your opponent when projectiles meet in the middle of the playing field.

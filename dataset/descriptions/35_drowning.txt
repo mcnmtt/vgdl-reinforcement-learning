@@ -1,0 +1,26 @@
+**Player role:**
+This is a two-player game where each player controls a character that can move in any direction. Player 1 controls a girl character, and Player 2 controls a man character. Both characters have 500 health points and can move around the screen. When they reach the edge of the screen, they wrap around to the opposite side.
+
+**Entities:**
+- Water: Blue water tiles that cover most of the playing area and are dangerous to touch
+- Safe spots: Brown log platforms floating in the water where players can stand safely - there are 6 different types of safe spots that provide different point values
+- Girl character: Player 1's avatar that appears as a girl sprite
+- Man character: Player 2's avatar that appears as a man sprite
+- Characters have two states: when standing on safe spots (dry state) and when touching water (wet state)
+
+**Interactions:**
+- When characters touch each other, they bounce off each other and step backward
+- When a dry character touches water, they become wet
+- When a wet character is in water, they lose 1 health point continuously
+- When wet characters reach different safe spots, they become dry and earn points: the highest-value spot gives 6 points, then 5, 4, 3, 2, and 1 point respectively
+- When dry characters stand on safe spots, they slowly regain 3 health points
+- When a dry character stands on a safe spot, that spot starts a countdown timer before it disappears and turns into water - higher-value spots last longer (the 6-point spot lasts longest, the 1-point spot disappears fastest)
+
+**Win condition:**
+A player wins when the opposing player's character is destroyed (health reaches zero).
+
+**Lose condition:**
+A player loses when their character's health drops to zero from being in the water too long.
+
+**Objective:**
+Survive in the dangerous waters by jumping between safe log platforms to restore health, while trying to outlast your opponent by strategically using the limited safe spots before they disappear.

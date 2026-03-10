@@ -1,0 +1,41 @@
+**Player role:**
+The player controls a yellow helicopter that can move in all directions and shoot bombs downward. The helicopter cannot rotate and always faces the same direction.
+
+**Entities:**
+- A yellow helicopter (the player's character) that can move freely and shoot red bombs downward
+- White satellites that move randomly around the screen, consuming resources when present
+- Blue tanks that move horizontally, bounce off walls and the screen edges, and occasionally shoot blue missiles upward
+- Blue missiles that move upward slowly, fired by the tanks
+- Red bombs that move downward quickly, fired by the helicopter (only one bomb can exist at a time)
+- White clouds of four types: some move left slowly, some move left quickly, some move right slowly, and some move right quickly
+- Tank spawn points that periodically create new tanks
+- Supply spawn points that occasionally create supply drops
+- Gold supply drops that move left and provide ammunition when collected
+- Three atmospheric layers: a light blue stratosphere, a blue thermosphere, and a grey troposphere that create invisible boundaries
+- Ammunition as a limited resource (maximum of 20)
+
+**Interactions:**
+- When the helicopter touches the edge of the screen, it cannot move further in that direction
+- When the helicopter is hit by a blue missile, the helicopter is destroyed
+- When a blue missile hits a wall or the edge of the screen, the missile is destroyed
+- When a tank is hit by a red bomb, the tank is destroyed and the player gains 1 point
+- When a red bomb hits a tank, wall, or edge of the screen, the bomb is destroyed
+- When a red bomb collides with a blue missile, both are destroyed
+- When a tank hits a wall or the edge of the screen, it reverses direction and steps back
+- When a satellite is hit by a blue missile, both are destroyed and the player loses 1 point
+- When a satellite hits a wall or the edge of the screen, it bounces back
+- When the helicopter collects a supply drop, it gains 5 ammunition and the supply is destroyed
+- When a supply drop hits a wall or the edge of the screen, it is destroyed
+- When the helicopter tries to enter the thermosphere or troposphere layers, it cannot pass through
+- When a satellite tries to leave the stratosphere layer, it bounces back
+- When clouds are hit by blue missiles, both are destroyed
+- When clouds reach the edge of the screen, they wrap around to the opposite side
+
+**Win condition:**
+The player wins when all tank spawn points and tanks are destroyed.
+
+**Lose condition:**
+The player loses when the helicopter is destroyed or when all satellites are destroyed.
+
+**Objective:**
+Pilot the helicopter to destroy all tanks and their spawn points while protecting the satellites from enemy fire and avoiding being shot down by blue missiles.

@@ -1,0 +1,37 @@
+Player role:
+The player controls an archer character that can move in four directions and rotate in place without changing position. The archer can shoot blue orbs, but only one orb can exist at a time. The archer cannot move through walls, obstacles, or laser cannons, and will be pushed back when trying to enter these spaces.
+
+Entities:
+- Floor tiles that are invisible and provide the basic ground surface
+- An open door that serves as the exit portal
+- An archer (the player character) that can move and shoot blue orbs
+- Movable boxes that can be pushed around the level
+- Four types of mirrors facing different directions (up, down, left, right) that can redirect lasers and be rotated
+- Four types of laser cannons facing different directions that continuously fire yellow laser beams at half normal speed
+- Yellow laser beams that travel in straight lines at half speed and are slightly smaller than normal
+- Blue orbs that the player shoots, which travel in straight lines and are smaller than normal
+- Immovable obstacles that block movement and destroy lasers
+- Walls that block movement and form the boundaries of the level
+
+Interactions:
+- When the archer touches walls, obstacles, or laser cannons, it is pushed back and cannot enter that space
+- When the archer pushes boxes or mirrors, they move one space forward in the direction of the push
+- When boxes or mirrors hit walls, other boxes, mirrors, obstacles, or laser cannons, all recent movements are undone
+- When lasers hit walls, boxes, or blue orbs, the laser is destroyed
+- When obstacles are hit by lasers, the laser is destroyed
+- When blue orbs hit walls, laser cannons, mirrors, or reach the edge of the screen, the orb is destroyed
+- When the archer is hit by a laser from the front, it is destroyed
+- When the archer is hit by a laser from any direction except the front, it is destroyed
+- When the archer reaches the goal door, the archer disappears and the player scores 5 points
+- When a blue orb hits any laser cannon, the cannon rotates 90 degrees clockwise to face a new direction
+- When a laser hits a mirror, the laser changes direction to follow the mirror's orientation
+- When a blue orb hits any mirror, the mirror rotates 90 degrees clockwise to face a new direction
+
+Win condition:
+The player wins when there are no more goal doors remaining (meaning they have reached the exit).
+
+Lose condition:
+The player loses when the archer is destroyed by touching a laser.
+
+Objective:
+Navigate the archer through a maze filled with laser cannons and obstacles, using boxes and rotatable mirrors to block or redirect laser beams, and reach the exit door safely.

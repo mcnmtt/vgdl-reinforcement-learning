@@ -1,0 +1,49 @@
+**Player role:**
+The player controls an avatar that can move around and shoot attacks. The avatar can fire a flickering slash attack that appears briefly when activated.
+
+**Entities:**
+- Floor: Hidden ground tiles that serve as the base terrain
+- Avatar: The player character (appears as a girl) that can move and shoot
+- Attack: A flickering slash that the player can fire, only one can exist at a time
+- Walls: Immovable barriers that block movement
+- Pokemon0: A scorpion creature that starts with 20 health points and occasionally fires special abilities (sparkle attacks that damage bosses or heal all pokemon types)
+- Pokemon1: A bat creature that starts with 30 health points and occasionally fires abilities (sparkle attacks that transform bosses or heal all pokemon types)  
+- Pokemon2: A wolf creature that starts with 10 health points and occasionally fires abilities (sparkle attacks that heal other pokemon or damage all bosses)
+- Dragon boss: A dragon with 100 health points that very rarely spawns explosive abilities that chase and damage pokemon
+- Water boss: A blue creature with 100 health points that very rarely spawns explosive abilities and can heal itself when hit by certain pokemon abilities
+- Thunder boss: A worm-like creature with 100 health points that very rarely spawns explosive abilities
+- Boss abilities: Explosive projectiles that chase pokemon and cause damage
+- Pokemon abilities: Various sparkling projectiles that move fast and chase their targets
+
+**Interactions:**
+- When the avatar hits a wall, it steps back
+- When an attack hits a scorpion, it spawns a damage-dealing sparkle ability and the scorpion is destroyed
+- When an attack hits a bat, it spawns a boss-transforming sparkle ability and the bat is destroyed  
+- When an attack hits a wolf, it spawns a healing sparkle ability and the wolf is destroyed
+- When any attack hits any pokemon, the pokemon is destroyed
+- When a dragon boss is hit by a damage sparkle, it loses 10 health points
+- When a water boss is hit by a damage sparkle, it loses 13 health points
+- When a thunder boss is hit by a damage sparkle, it loses 17 health points
+- When any boss is hit by a transformation sparkle, it randomly changes into a different boss type
+- When a scorpion is hit by a healing sparkle, it gains 6 health points up to its maximum
+- When a bat is hit by a different healing sparkle, it gains 9 health points up to its maximum
+- When any boss is hit by an ultimate damage sparkle, it loses 32 health points
+- When a dragon boss touches any pokemon ability, it spawns a chasing explosive
+- When a water boss touches any pokemon ability, it spawns a chasing explosive
+- When a thunder boss touches any pokemon ability, it spawns a chasing explosive and gains 8 health points
+- When pokemon are hit by dragon explosives, they lose 12 health points
+- When pokemon are hit by water explosives, they lose 3 health points and transform into a random pokemon type
+- When pokemon are hit by thunder explosives, they lose 6 health points
+- When pokemon abilities hit bosses, the abilities are destroyed
+- When healing abilities hit their target pokemon, the abilities are destroyed
+- When boss explosives hit pokemon, the pokemon are destroyed
+- When any ability hits a wall, it is destroyed
+
+**Win condition:**
+The player wins when all bosses are defeated.
+
+**Lose condition:**
+The player loses if all pokemon are eliminated or if 1000 time units pass.
+
+**Objective:**
+Command your pokemon allies to defeat all the bosses using their special abilities while protecting them from the bosses' explosive attacks. You must eliminate all bosses before time runs out or your pokemon team is destroyed.

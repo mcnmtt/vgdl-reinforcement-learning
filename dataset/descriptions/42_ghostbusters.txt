@@ -1,0 +1,32 @@
+Player role:
+This is a two-player game. Player 1 controls a ghost that can move in any direction and wraps around to the opposite side when it reaches the edge of the screen. Player 2 controls a hunter that moves at moderate speed and can shoot missiles, but cannot pass through walls and must step back when hitting them.
+
+Entities:
+- Ground: A grassy surface that covers the play area and is hidden from view but provides the base terrain
+- Ghost: A spirit-like character that can move freely in any direction and teleports to the opposite edge when leaving the screen
+- Hunter: An armed human character that moves at moderate speed and fires missiles, but is blocked by walls
+- Two types of enemies: shooters and bandits that move randomly and occasionally fire missiles - shooters move slowly and fire green orbs infrequently, while bandits move faster and fire red orbs more often
+- Hunter missiles: Blue orbs fired by the hunter that travel in straight lines, shrink over time, and disappear after a moderate duration
+- Enemy missiles: Orbs fired by enemies that travel randomly - green orbs from shooters and red orbs from bandits, both shrinking over time and moving at moderate speed
+- Walls: Stone barriers that block movement for most characters
+
+Interactions:
+- When the hunter hits a wall, it steps back and cannot pass through
+- When the ghost reaches the edge of the screen, it wraps around to the opposite side
+- When enemies hit walls, they step back and cannot pass through
+- When the ghost touches a hunter missile, both are destroyed and the hunter scores 100 points
+- When the hunter touches the ghost, the ghost is destroyed and the hunter scores 100 points
+- When the ghost touches a green enemy missile, both are destroyed and the ghost loses 10 points while the enemy loses 20 points
+- When the hunter touches a red enemy missile, both are destroyed and the hunter loses 20 points while the enemy loses 10 points
+- When enemy missiles hit walls or reach the edge of the screen, they are destroyed
+- When hunter missiles hit enemies, the enemy is destroyed
+- When hunter missiles reach the edge of the screen, they wrap around to the opposite side
+
+Win condition:
+The hunter wins if the ghost is eliminated. The ghost wins if the hunter is eliminated. If time runs out (after 1500 time units), the hunter wins by default.
+
+Lose condition:
+Each player loses when their character is destroyed by the opponent or enemy fire.
+
+Objective:
+This is a competitive survival game where the ghost must avoid the hunter and enemy fire while the hunter tries to eliminate the ghost using missiles, all while both players navigate around randomly moving enemies that shoot at them.

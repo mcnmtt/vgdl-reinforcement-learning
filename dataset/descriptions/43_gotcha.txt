@@ -1,0 +1,28 @@
+**Player role:**
+This is a two-player game where each player controls their own character. Player 1 controls a girl character and Player 2 controls a man character. Both characters can move in any direction using keyboard controls.
+
+**Entities:**
+- Ground: Grass tiles that form the walkable surface of the level
+- Safe spots: Water tiles that serve as special zones, with two types (spot0 and spot1) that have different effects
+- Player 1's avatar: A girl character that can move freely around the level
+- Player 2's avatar: A man character that can move freely around the level
+- Three types of wandering characters: All appear as small men that move randomly around the level at different speeds - one moves at medium-fast speed, one moves at medium speed, and one moves slowly
+- Walls: Tree obstacles that block movement
+- Winner marker: A red-colored girl figure that appears when certain conditions are met
+
+**Interactions:**
+- When any moving character (including both players) touches a wall, they are pushed back and cannot pass through
+- When a wandering character touches either player, both are pushed back from each other
+- When the two players touch each other, Player 1's character transforms into a winner marker and Player 1 gains a point
+- When Player 1's character touches any safe spot, they are pushed back and cannot enter
+- When Player 2's character touches a spot0 safe zone, a 4-second timer starts that will transform all spot0 zones into regular ground
+- When Player 2's character touches a spot1 safe zone, a 2-second timer starts that will transform all spot1 zones into regular ground
+
+**Win condition:**
+Player 1 wins if they manage to touch Player 2 (creating a winner marker). Player 2 wins if they survive for the full time limit without being touched.
+
+**Lose condition:**
+Player 1 loses if the 20-second time limit expires without touching Player 2. Player 2 loses if Player 1 touches them before time runs out.
+
+**Objective:**
+This is an asymmetric chase game where Player 1 must catch Player 2 within the time limit, while Player 2 must use the safe spots strategically to avoid capture, knowing that they can remove these safe zones to limit Player 1's movement options.

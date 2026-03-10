@@ -1,0 +1,26 @@
+**Player role:**
+The player controls a bird that can move freely in all directions. The bird starts with 5 health points but can increase its health up to a maximum of 30 points. The bird continuously loses health over time.
+
+**Entities:**
+- A bird (the player character) that moves around and has health that decreases automatically
+- Grass floor tiles that cover the ground but are invisible during gameplay
+- Black trees that act as solid barriers
+- A green exit door that serves as the goal
+- Small worms scattered around that serve as food
+- An invisible food bank that contains multiple food portions
+
+**Interactions:**
+- The bird automatically loses 1 health point every 15 time units, and this repeats continuously
+- When the bird touches a worm, the bird gains 15 health points and the worm disappears
+- When the bird touches the food bank, the bird gains 15 health points, earns 40 points toward the score, and the food bank disappears
+- When the bird reaches the exit door, the bird disappears and the player earns 100 points toward the score
+- When the bird touches a tree, the bird is pushed back to its previous position
+
+**Win condition:**
+The player wins when there are no exit doors remaining (meaning the bird successfully reached the exit).
+
+**Lose condition:**
+The player loses when the bird's health reaches zero and disappears from the game.
+
+**Objective:**
+Guide the bird to the exit door while collecting food to maintain its health, as the bird continuously loses health over time and will die if it runs out.

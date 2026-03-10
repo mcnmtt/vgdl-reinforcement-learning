@@ -1,0 +1,30 @@
+Player role:
+Each player controls a paddle that can move horizontally along the bottom of the screen. The paddles have realistic physics with momentum and friction - they gradually slow down when not being pushed and have inertia when starting to move. Each player has 3 health points that decrease when the ball is lost.
+
+Entities:
+- Two player-controlled paddles that move horizontally with physics-based movement including friction and inertia
+- A ball that moves upward at high speed with realistic physics, bouncing off surfaces
+- Regular bricks that come in two widths (normal and double-wide) and are destroyed when hit by the ball
+- Tough bricks that come in two states - initially requiring two hits to destroy, transforming from the first state to a second state on the first hit, then being destroyed on the second hit
+- Solid blocks that form walls and cannot be destroyed, also coming in normal and double-wide versions
+- An invisible marker that tracks when balls are lost off the screen
+
+Interactions:
+- When the two player paddles touch each other, they push apart and cannot overlap
+- When the ball (in its starting state) hits any brick or wall block, it transforms from its starting state into an active bouncing ball
+- When the ball hits regular bricks, the brick is destroyed and the player scores 2 points
+- When the ball hits second-state tough bricks, the tough brick is destroyed and the player scores 5 points
+- When the ball hits first-state tough bricks, the tough brick transforms to its second state but is not destroyed
+- When the ball hits either player's paddle, it bounces away in the opposite direction
+- When the ball hits wall blocks, it bounces off them
+- When either paddle touches a wall block, the paddle stops moving
+- When the ball reaches the edge of the screen, both players lose 1 health point and the ball is removed from play
+
+Win condition:
+Both players win together when all regular and tough bricks have been destroyed.
+
+Lose condition:
+The game ends when either player runs out of health points (reaches 0 health).
+
+Objective:
+Work together to destroy all the bricks by bouncing the ball off your paddles while preventing it from falling off the screen, as losing the ball costs both players health points.

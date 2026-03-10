@@ -1,0 +1,41 @@
+Player role:
+The player controls an avatar that can move around the game area and shoot levers. The avatar can rotate in place to aim in different directions before shooting.
+
+Entities:
+- Floor tiles that serve as the basic walkable surface
+- Colored assembly stations in pink, light orange, and green that process items
+- Hidden directional lines that guide items toward assembly stations
+- The player's avatar that moves around and shoots levers
+- A lever that flickers and can be shot by the avatar to activate laser cannons
+- Laser cannons that face different directions (up, down, left, right) and can fire lasers, plus a special swappable cannon type
+- Yellow laser beams that move at medium speed in the direction they're fired
+- A goal door that serves as the exit
+- Block-like vortexes that can push objects around
+- Portals that periodically spawn potatoes moving downward
+- Various potato products: plain potatoes, potatoes with eyes, potatoes with eyes and nose, and fully assembled potatoes
+- A golden victory item that appears when potatoes are completed
+- Walls that block movement and destroy lasers
+
+Interactions:
+- The avatar bounces back when trying to move into walls, laser cannons, or other solid objects
+- The avatar gets pushed forward when touching a vortex
+- Vortexes undo their movement when hitting walls, other vortexes, or laser cannons
+- Lasers are destroyed when hitting vortexes or walls
+- When a lever hits different laser cannons, it rotates them: down cannons become swappable, left cannons become down-facing, up cannons become left-facing, right cannons become up-facing, and swappable cannons become right-facing
+- Levers are destroyed when touching any laser cannon
+- Potato products are attracted and aligned to laser beams when they intersect
+- Potato products are destroyed when hitting walls or laser cannons
+- Plain potatoes transform into potatoes with eyes when touching pink assembly stations, earning 1 point
+- Potatoes with eyes transform into potatoes with eyes and nose when touching light orange assembly stations, earning 2 points
+- Potatoes with eyes and nose transform into fully assembled potatoes when touching green assembly stations, earning 4 points
+- Potato products are attracted and aligned to directional lines near portals
+- Fully assembled potatoes transform into victory items when touching the goal door
+
+Win condition:
+The player wins when at least one victory item is created by getting a fully assembled potato to the goal door.
+
+Lose condition:
+The player loses if the time limit of 1500 time units is reached.
+
+Objective:
+Guide potatoes through the assembly line by using levers to rotate laser cannons, creating laser beams that direct potatoes through the colored assembly stations in the correct sequence, then get the completed potatoes to the goal door to create victory items.

@@ -1,0 +1,45 @@
+**Player role:**
+This is a two-player competitive arena game. Player A controls a shooter character that can move around and fire missiles, while Player B controls a bandit character with the same abilities. Both players start with 50 health points and can shoot two types of ammunition. The players are affected by collision physics that prevent them from moving through walls or the edge of the screen.
+
+**Entities:**
+- Floor tiles that serve as the background surface
+- Player A's shooter character that can move and fire missiles
+- Player B's bandit character that can move and fire missiles
+- Yellow bullets (ammunition type 1) that players can collect, limited to 10 per player, deal moderate damage and give 2 points per enemy kill
+- Orange bullets (ammunition type 2) that players can collect, limited to 5 per player, deal heavy damage and give higher point values
+- Red armor helmets that protect the wearer from opponent missiles
+- Blue armor helmets that protect the wearer from warrior attacks
+- Green armor helmets that protect the wearer from shooter enemy bullets
+- White ultimate armor cloaks that provide complete protection and push back all enemies
+- Heart symbols that restore 1 health point when touched
+- Cyclops warriors that move randomly at half speed, have 40 health points, and periodically attack nearby targets
+- Alien gunners that move randomly and occasionally fire projectiles, with 20 health points
+- Various colored orb projectiles fired by players and enemies that shrink as they travel
+- Stone walls that block movement and destroy projectiles
+
+**Interactions:**
+- When any character hits a wall or the edge of the screen, they are pushed back
+- When projectiles hit walls, the projectiles are destroyed
+- When players touch ammunition pickups, they collect the ammo without destroying the pickup
+- When Player A's heavy missiles hit Player B, both are destroyed and Player A gains 200 points
+- When Player A's heavy missiles hit enemies, both are destroyed and Player A gains 20 points
+- When Player B's heavy missiles hit Player A, both are destroyed and Player B gains 200 points
+- When Player B's heavy missiles hit enemies, both are destroyed and Player B gains 20 points
+- When light missiles hit warriors or shooters, the target loses health (4 for warriors, 2 for shooters)
+- When unarmored Player A is hit by enemy or Player B attacks, they lose significant health and points
+- When Player A wears red armor and is hit by opponent missiles, damage is reduced
+- When Player A wears blue armor and is hit by warriors, damage is greatly reduced
+- When Player A wears green armor and is hit by enemy bullets, damage is reduced
+- Similar damage reduction rules apply to Player B with different armor effectiveness
+- When players collect armor, they transform into an armored version and the armor disappears
+- When characters touch healing spots, they regain 1 health point
+- When players wear ultimate white armor, they push back all enemies and other players on contact
+
+**Win condition:**
+Player A wins if Player B is eliminated. Player B wins if Player A is eliminated.
+
+**Lose condition:**
+A player loses when their health drops to zero. The game also ends after 1500 time units, and if all warrior and shooter enemies are defeated.
+
+**Objective:**
+Survive longer than your opponent by collecting armor and ammunition, managing your health with healing spots, and using different missile types strategically to deal damage while avoiding enemy attacks and your opponent's missiles.

@@ -1,0 +1,30 @@
+Player role:
+This is a two-player game where each player controls their own character. Player A controls a red character and Player B controls a boss-like character. Both characters can move around the game area using keyboard controls. When either character tries to move into a wall or into the other character, they are pushed back and cannot pass through.
+
+Entities:
+- Floor: Hidden ground tiles that form the walkable surface of the level
+- Gold coins: Small yellow collectible items that appear smaller than normal size and remain stationary on the floor
+- Exit flags: Green flag-shaped doors that serve as goals - there are two types, one for each player
+- Red character (Player A): A red thug-like character controlled by the first player
+- Boss character (Player B): A larger boss-like character controlled by the second player
+- Enemy with gun: An alien-like creature carrying a shotgun that actively chases whichever player character it can see, with a brief delay between its movement decisions
+- Walls: Immovable barriers that automatically connect to adjacent walls to form continuous boundaries
+
+Interactions:
+- When any character tries to move into a wall or into another character, they are pushed back to their previous position
+- When enemies try to move into walls or into each other, they are pushed back to their previous position
+- When the red character touches an enemy, the enemy is destroyed and Player A loses a point while Player B's score stays the same
+- When the boss character touches an enemy, the enemy is destroyed and Player B loses a point while Player A's score stays the same
+- When the red character reaches their designated exit flag, the character disappears and Player A gains 10 points while Player B's score stays the same
+- When the boss character reaches their designated exit flag, the character disappears and Player B gains 10 points while Player A's score stays the same
+- When the red character collects a gold coin, the coin disappears and Player A gains 1 point while Player B's score stays the same
+- When the boss character collects a gold coin, the coin disappears and Player B gains 1 point while Player A's score stays the same
+
+Win condition:
+Player A wins if Player B's character is eliminated or if Player A's character successfully reaches their exit flag. Player B wins if Player A's character is eliminated or if Player B's character successfully reaches their exit flag.
+
+Lose condition:
+A player loses if their character is eliminated by touching too many enemies or if the opponent completes their objective first. The game also ends in a draw after a time limit, with the winner determined by who has the higher score.
+
+Objective:
+Collect gold coins for points while avoiding enemies, then reach your designated exit flag before your opponent reaches theirs or gets eliminated.

@@ -1,0 +1,42 @@
+**Player role:**
+This is a two-player game where each player controls their own character that can move in all directions and has the ability to shoot projectiles. Player A controls a girl character, and Player B controls a man character. Both characters move at moderate speed and are affected by water hazards.
+
+**Entities:**
+- **Land tiles**: Hidden ground surfaces that provide the base terrain
+- **Water**: Blue water areas that are deadly to both players
+- **Goal**: A green exit door that players must reach to win
+- **Winner markers**: Special markers that appear when a player reaches the goal (one for each player)
+- **Logs**: Brown log objects that move rightward slowly across the water - there are separate logs for each player (player A logs and player B logs)
+- **Spawn points**: Hidden, invisible points that occasionally create downward-moving pulling forces
+- **Pulling forces**: Invisible forces that move downward slowly and affect logs and players
+- **Player A**: A girl character that moves at moderate speed and can shoot projectiles
+- **Player B**: A man character that moves at moderate speed and can shoot projectiles
+- **Player projectiles**: Flickering projectiles that each player can shoot (separate projectiles for each player)
+- **Walls**: Black tree-like barriers that block movement
+
+**Interactions:**
+- When either player touches a wall, they are pushed back and cannot pass through
+- When player A reaches the goal, they transform into a winner marker and player A gains a point
+- When player B reaches the goal, they transform into a winner marker and player B gains a point
+- When player A's projectile hits player A's logs, all of player A's logs speed up slightly
+- When player A's projectile hits player A's logs, the projectile disappears
+- When player B's projectile hits player B's logs, all of player B's logs speed up slightly
+- When player B's projectile hits player B's logs, the projectile disappears
+- When either player touches a log, they are pulled along with it
+- When either player touches a pulling force, they are pulled along with it
+- When spawn points touch logs, the logs are pulled by the spawned forces
+- When either player is on a log, they are protected from being killed by water
+- When pulling forces affect logs, those logs are also protected from being killed by water
+- When logs hit walls, they bounce back
+- When player A touches water (without log protection), they are destroyed
+- When player B touches water (without log protection), they are destroyed
+- When pulling forces touch water near walls, the pulling forces are destroyed
+
+**Win condition:**
+Players win when they successfully reach the green exit goal. Both players can win simultaneously if both reach goals, or either player can win individually.
+
+**Lose condition:**
+A player loses if they touch the deadly water without being protected by standing on a log, or if they are the only player remaining and get eliminated.
+
+**Objective:**
+Navigate across the dangerous water by using logs as moving platforms, shoot at your logs to speed them up for better positioning, and safely reach the green exit goal before your opponent while avoiding falling into the deadly water.

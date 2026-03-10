@@ -1,0 +1,45 @@
+**Player role:**
+The player controls a character that can move in four directions using keyboard input. The character has 10 health points and can lose health from various hazards in the dungeon.
+
+**Entities:**
+- A character that the player directly controls and can move around the dungeon
+- Gold coins that can be collected for points, with a maximum of 11 appearing in the level
+- A key that can be picked up and is needed to unlock certain barriers
+- A green exit door that the player must reach to complete the level
+- A lock that blocks the player's path and can only be removed by having the key
+- Stone walls that block movement for all objects
+- Fire spawn points that look like torches and occasionally create fire
+- Fire that starts at spawn points and spreads to adjacent areas, then flickers briefly before disappearing
+- Boulder spawn holes that occasionally launch rolling boulders, some launching left and others right
+- Boulders that roll horizontally at moderate speed until they hit something
+- Hidden ground trap spawn points that occasionally create spikes
+- Spike traps that appear from the ground and flicker for a short time
+- Laser cannons that face different directions and fire laser beams when active
+- Inactive laser cannons that have been disabled and block movement
+- Laser beams that travel in straight lines at moderate speed in the direction they were fired
+- Floor tiles that provide the basic walkable surface (invisible to player)
+
+**Interactions:**
+- When the player touches gold, the gold disappears and the player gains 1 point
+- When the player touches the key, they collect it as a resource
+- When the player touches a wall, boulder hole, or inactive laser cannon, they are pushed back and cannot pass through
+- When the player with a key touches a lock, the lock is destroyed
+- When the player without a key touches a lock, they are pushed back
+- When the player touches the exit door, they are removed from the game and gain 10 points
+- When the player touches fire, they lose some health
+- When fire touches the player, walls, resources, or doors, those objects are destroyed
+- When the player touches a boulder, the player is destroyed
+- When a boulder touches walls, resources, or doors, the boulder is destroyed
+- When the player touches a ground spike trap, they lose 2 health points
+- When the player touches an active laser cannon, it becomes inactive and the player gains 2 points
+- When the player touches a laser beam, they lose some health
+- When a laser beam touches walls, resources, or doors, the laser beam is destroyed
+
+**Win condition:**
+The player wins when they successfully reach and enter the exit door, causing it to disappear from the level.
+
+**Lose condition:**
+The player loses when their character is destroyed, either by losing all health points or by being hit by a boulder.
+
+**Objective:**
+Navigate through a dangerous dungeon filled with traps and hazards, collect the key to unlock barriers, and reach the exit door while avoiding or disabling the various dangers that can harm or destroy you.

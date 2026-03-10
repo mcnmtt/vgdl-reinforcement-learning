@@ -1,6 +1,8 @@
-# DATASET
-Per la generazione del dataset:
-1) Convertire i **`.py`** in **`.txt`** contenenti solo VGDL (BasicGame) eseguendo **`dataset/extract_vgdl.py`**
-2) Generare descrizioni VGDL tramite GPT-5 con OpenAI API e salvare in DB NoSQL
-    - Configurare **`.env`**
-    - Avviare **`dataset/create_db.py`**
+Per evaluation:
+
+Check executability:
+Attivare prima env py-vgdl
+python3 evaluation/check_vgdl_executability.py models/deepseek/results/vgdl/mario_vgdl_deepseek.txt   
+
+Check similarity:
+python evaluation/eval_similarity.py

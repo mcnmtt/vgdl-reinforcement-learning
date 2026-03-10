@@ -1,0 +1,42 @@
+Player role:
+The player controls a girl character that can move in all directions using keyboard input. The avatar cannot move through walls or past the edges of the screen - it stops when hitting these boundaries.
+
+Entities:
+- Sky: Blue background tiles that fill empty spaces
+- Walls: Brown wall segments that form barriers and automatically connect to adjacent walls
+- Tree trunks: Brown immovable obstacles that block movement
+- Cursed people: Yellow cursed men who remain stationary once created
+- Demons: Red devil sprites that move around at moderate speed, occasionally shooting red fire bolts downward
+- Angels: White angel sprites that move around slightly faster than demons, occasionally shooting ice salvation projectiles downward
+- Citizens: Regular people who actively chase and move toward the player's avatar at moderate speed
+- Blessed people: Holy figures who chase and move toward the player's avatar at moderate speed
+- Input door: An open doorway that periodically spawns new citizens
+- Output door: An open doorway that serves as an exit point
+- Boxes: Gray cloud-like objects that can be pushed around
+- Fire bolts: Red downward-moving projectiles shot by demons
+- Salvation projectiles: Ice-colored downward-moving projectiles shot by angels
+
+Interactions:
+- When any moving character hits a wall, they reverse direction and step backward
+- When the avatar hits a wall or screen edge, it steps backward
+- When the avatar touches a box, the box is pushed forward in the direction of contact
+- When boxes collide with each other, they bounce forward repeatedly
+- When a box hits a wall, the box is destroyed
+- When a fire bolt hits a wall, the bolt is destroyed and the score decreases by 1
+- When a fire bolt hits a box, the bolt is destroyed and the score increases by 1
+- When a fire bolt hits a citizen, the citizen transforms into a cursed person, the bolt is destroyed, and the score decreases by 1
+- When a fire bolt hits the avatar, the bolt is destroyed and the score decreases by 5
+- When a salvation projectile hits a wall, the projectile is destroyed and the score increases by 1
+- When a salvation projectile hits a box, the projectile is destroyed and the score decreases by 1
+- When a salvation projectile hits a citizen, the citizen transforms into a blessed person, the projectile is destroyed, and the score increases by 100
+- When a citizen reaches the output door, the citizen disappears
+- When a blessed person reaches the output door, the blessed person disappears
+
+Win condition:
+The player wins if they survive for the full time limit without any citizens being cursed.
+
+Lose condition:
+The player loses immediately if even one cursed person is created.
+
+Objective:
+Guide citizens safely to the exit door while preventing demons from cursing them with fire bolts, and try to have angels bless citizens with salvation projectiles for bonus points.

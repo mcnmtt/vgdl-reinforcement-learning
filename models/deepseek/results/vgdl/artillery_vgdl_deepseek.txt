@@ -1,0 +1,14 @@
+BasicGame
+    SpriteSet
+        avatar > MovingAvatar aimRotation=0
+            bullet > Missile
+        pad > Immovable color=BLUE
+        wall > Immovable
+    LevelMapping
+        0 > pad
+        1 > wall
+    InteractionSet
+        bullet wall > killSprite
+        bullet pad > killSprite
+    TerminationSet
+        SpriteCounter stype=avatar limit=0 win=True

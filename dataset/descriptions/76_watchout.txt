@@ -1,0 +1,37 @@
+Player role:
+This is a two-player game where each player controls their own character that can move around the screen using keyboard controls.
+
+Entities:
+- Two player characters: one appears as a girl and the other as a man, both can move in all directions when controlled by their respective players
+- Blue stationary blocks that start on the field and can be pushed around by players
+- Red stationary blocks that start on the field and can be pushed around by players
+- Blue flying blocks that move automatically to the right at moderate speed
+- Red flying blocks that move automatically to the left at moderate speed
+- Blue boundary edges that form barriers on parts of the screen perimeter
+- Red boundary edges that form barriers on other parts of the screen perimeter
+- Solid walls that block movement completely
+
+Interactions:
+- When either player touches a wall, they are pushed back and cannot pass through
+- When the girl touches a red boundary edge, she is pushed back and cannot pass through
+- When the man touches a blue boundary edge, he is pushed back and cannot pass through
+- When a blue flying block reaches a red boundary edge, it transforms into a red stationary block
+- When a red flying block reaches a blue boundary edge, it transforms into a blue stationary block
+- When a player touches any block, the block is pushed away from the player
+- When a blue stationary block touches a blue boundary edge, it bounces back precisely
+- When a red stationary block touches a red boundary edge, it bounces back precisely
+- When two blue stationary blocks collide, one disappears and the other becomes a blue flying block
+- When two red stationary blocks collide, one disappears and the other becomes a red flying block
+- When a blue flying block hits a red stationary block, the red block is destroyed
+- When a red flying block hits a blue stationary block, the blue block is destroyed
+- When a blue flying block hits the man, it becomes a red flying block
+- When a red flying block hits the girl, it becomes a blue flying block
+
+Win condition:
+Player 1 (controlling the girl) wins if all red blocks are eliminated from the field. Player 2 (controlling the man) wins if all blue blocks are eliminated from the field.
+
+Lose condition:
+A player loses when their opponent eliminates all blocks of their color, or if the total number of blocks drops to 2 or fewer.
+
+Objective:
+Each player must strategically move blocks and manipulate flying blocks to eliminate all of their opponent's colored blocks while protecting their own.

@@ -1,0 +1,33 @@
+**Player role:**
+The player controls a character that can move in four directions and shoot water projectiles. The character cannot move through walls or off the edge of the screen - it will bounce back if it tries to do so.
+
+**Entities:**
+- Floor: An invisible surface that serves as the ground throughout the level
+- Player character: A animated figure that moves around and shoots water
+- Plant starter: An invisible placeholder that automatically becomes a fresh plant after a moment
+- Fresh plant: A healthy green bush that slowly begins to wilt over time
+- Wilting plant: A plant in decline that will become wilted if not watered soon
+- Wilted plant: A severely declining plant that will die if not revived with water
+- Dead plant: A red plant that has died completely
+- Overwatered plant: A blue plant that has received too much water and died from overwatering
+- Water projectile: A flickering blue droplet that the player shoots, with only one able to exist at a time
+- Wall: A black barrier that blocks movement
+
+**Interactions:**
+- When the player character touches a wall or reaches the edge of the screen, it bounces back to its previous position
+- Plant starters automatically transform into fresh plants after a brief moment
+- Fresh plants automatically begin wilting after 100 time units
+- Wilting plants automatically become wilted after 160 time units  
+- Wilted plants automatically die and turn red after 210 time units, reducing the score by 10 points
+- When water hits a fresh plant, the plant becomes overwatered and blue, the score decreases by 5 points, and the water disappears
+- When water hits a wilting plant, it becomes fresh and healthy again, the score increases by 5 points, and the water disappears
+- When water hits a wilted plant, it improves to wilting status, the score increases by 2 points, and the water disappears
+
+**Win condition:**
+The player wins by surviving for 1500 time units without any plants dying or becoming overwatered.
+
+**Lose condition:**
+The player loses immediately if any plant dies (turns red) or becomes overwatered (turns blue).
+
+**Objective:**
+Keep all plants alive and healthy by watering them at the right time - water wilting and wilted plants to revive them, but avoid overwatering fresh plants.

@@ -1,0 +1,47 @@
+**Player role:**
+This is a two-player cooperative tower defense game. Player 1 controls a horizontal-facing character that can shoot and place horizontal turrets. Player 2 controls a vertical-facing character that can shoot and place vertical turrets. Both players move freely around the map and can shoot projectiles.
+
+**Entities:**
+- Ground tiles that form the basic terrain
+- Path tiles that create routes for enemies to follow
+- Turret placement spots where players can install defensive weapons
+- Horizontal turrets that automatically fire projectiles left and right with an 80% chance every 20 time units
+- Vertical turrets that automatically fire projectiles up and down with an 80% chance every 20 time units
+- Normal enemies (red) that have 5 health points, move at medium speed, and shrink slightly when damaged, moving in one of four directions (up, down, left, right)
+- Boss enemies (brown) that have 10 health points, move slower than normal enemies, and also travel in one of four directions
+- Invisible enemy spawners that create normal enemies every 50 time units with 100% probability
+- Invisible boss spawners that create boss enemies every 500 time units with 100% probability
+- Invisible turning points that redirect enemies to face different directions (up, down, left, right)
+- Turret projectiles that move in four directions, last for 20 time units, move quickly, and shrink significantly
+- Player projectiles that flicker briefly when fired
+- A tower structure with 10 health points that must be defended
+- Wall barriers that block movement
+
+**Interactions:**
+- All moving objects bounce back when hitting walls or turrets
+- Players cannot move onto path tiles or tower tiles
+- Turret projectiles are destroyed when hitting walls
+- Normal enemies change direction when touching turning points and bounce back with pixel-perfect collision
+- Boss enemies change direction when touching turning points and bounce back with pixel-perfect collision
+- When the horizontal player touches a turret spot, it becomes a horizontal turret and player 1's score increases by 1
+- When the vertical player touches a turret spot, it becomes a vertical turret and player 2's score increases by 1
+- When horizontal turrets are hit by player projectiles, they revert to empty turret spots, the projectile is destroyed, and player 1's score decreases by 1
+- When vertical turrets are hit by player projectiles, they revert to empty turret spots, the projectile is destroyed, and player 2's score decreases by 1
+- When horizontal turrets are hit by vertical projectiles, they revert to empty turret spots, the projectile is destroyed, and player 2's score decreases by 2
+- When vertical turrets are hit by horizontal projectiles, they revert to empty turret spots, the projectile is destroyed, and player 1's score decreases by 2
+- When enemies reach the tower, they deal 1 damage to it and the total score decreases by 1
+- When normal enemies touch the tower, they are destroyed (but bosses are not)
+- When projectiles hit normal enemies, the enemy takes 1 damage and awards 5 points when killed
+- When projectiles hit boss enemies, the enemy takes 1 damage and awards 50 points when killed
+- When projectiles hit any enemy, the projectile is destroyed
+- When turrets overlap with other turrets, they destroy each other
+- Normal enemy spawners automatically create boss spawners after 50 time units
+
+**Win condition:**
+Both players win if they survive for 1500 time units without the tower being destroyed.
+
+**Lose condition:**
+Both players lose if the tower's health drops to zero.
+
+**Objective:**
+Work together to defend the tower by strategically placing turrets and shooting enemies while managing your shared resources and surviving until the time limit expires.

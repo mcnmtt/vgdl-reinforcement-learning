@@ -1,0 +1,36 @@
+**Player role:**
+The player controls a bomberman character that moves around the game area using directional controls. The bomberman can place bombs by shooting them onto the game field. The character cannot move through walls, breakable blocks, or bombs.
+
+**Entities:**
+- **Bomberman**: The player character that can move freely and place bombs
+- **Green door**: The exit goal that starts hidden behind a breakable block
+- **Enemies**: Three types of creatures that move randomly around the game area:
+  - **Bat**: Moves randomly with short pauses between movements
+  - **Spider**: Moves randomly with medium pauses between movements  
+  - **Scorpion**: Moves randomly with long pauses between movements
+- **Bombs**: Stationary explosive devices that count down through 10 stages before detonating
+- **Explosions**: Directional fire effects that appear briefly in sequence (left, right, up, down) when bombs detonate
+- **Walls**: Permanent solid barriers that block movement and stop explosions
+- **Breakable blocks**: Destructible barriers that block movement but can be destroyed by explosions
+
+**Interactions:**
+- The bomberman cannot move through walls, breakable blocks, or bombs
+- All enemies cannot move through walls, breakable blocks, or bombs
+- Enemies are destroyed by explosions and award 5 points
+- Breakable blocks are destroyed by explosions along with the explosion itself, awarding 1 point
+- Explosions are stopped by permanent walls
+- When the bomberman reaches the goal, the bomberman is removed and 10 points are awarded
+- The bomberman is destroyed by explosions
+- The bomberman is destroyed by touching any enemy
+- Bombs are destroyed when they hit walls or breakable blocks
+- Bombs automatically count down from stage 10 to stage 1, then explode
+- When bombs reach the final countdown stage, they create a sequence of directional explosions
+
+**Win condition:**
+The player wins when the goal (green door) is destroyed, which happens when the breakable block hiding it is blown up by an explosion.
+
+**Lose condition:**
+The player loses when the bomberman is destroyed, either by touching an enemy or being caught in an explosion.
+
+**Objective:**
+Place bombs strategically to destroy the breakable block covering the green door while avoiding enemies and your own explosions. Navigate carefully to reach safety after each bomb placement.

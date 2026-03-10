@@ -1,0 +1,30 @@
+**Player role:**
+The player controls a swordsman character that can move in four directions and shoot sword attacks. The avatar can appear in two forms - initially without a key, and later with a key (shown with an orange tint). The avatar can shoot flickering sword projectiles that have limited uses.
+
+**Entities:**
+- Floor tiles: Hidden background surfaces that cover most of the game area with random tiling patterns
+- Green door: An immovable green door that serves as the exit goal
+- Orange key: An immovable orange key that the player must collect
+- Sword projectile: A flickering oriented slash that can be shot by the player, with a limit of 5 uses
+- Swordsman (without key): The initial form of the player character, appears as a basic swordman
+- Swordsman (with key): The player character after collecting the key, shown with orange coloring
+- Fast bat monster: An enemy that moves randomly with short pauses between movements
+- Normal spider monster: An enemy that moves randomly with medium pauses between movements  
+- Slow scorpion monster: An enemy that moves randomly with long pauses between movements
+- Walls: Immovable barriers with automatic tiling that block movement
+
+**Interactions:**
+- When the normal spider monster touches a wall, the spider gains maximum health points
+- When the player (without key) touches the key, the player teleports to the exit location
+- When the floor touches a normal spider monster, the floor collects the spider as a resource
+- When the key reaches the edge of the screen, it reverses direction
+- When the goal door touches the floor, it teleports to the exit location
+
+**Win condition:**
+The player wins if the time limit of 856 units expires.
+
+**Lose condition:**  
+The player loses if the count of keyless swordsmen reaches zero.
+
+**Objective:**
+Survive in the dungeon environment filled with monsters while managing your limited sword attacks and collecting the key to transform your character, ultimately lasting until the time runs out to win.

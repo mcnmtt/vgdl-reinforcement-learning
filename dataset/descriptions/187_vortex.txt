@@ -1,0 +1,34 @@
+**Player role:**
+The player controls a character that can move in four directions using keyboard input. The character has two states: normally it walks around freely, but when it touches water it falls downward at a steady speed and can no longer be controlled until it reaches a whirlpool.
+
+**Entities:**
+- Floor: Hidden grass tiles that form the ground throughout the level
+- Water: Blue water tiles that come in four types - red water flowing downward, orange water flowing upward, and yellow water flowing left or right
+- Whirlpool: A visible swirling water feature that stops the player's fall
+- Hidden whirlpool: An invisible version of the whirlpool that appears when boxes are pushed into water
+- Player character: A person who can either walk around normally or fall through water
+- Exit door: A green open door that serves as the level's exit point
+- Wall: Brown bushes and trees that block movement
+- Box: A movable block that the player can push around
+- Treasure: A golden treasure chest that gives points when collected
+
+**Interactions:**
+- When the walking player touches a wall, the player is pushed back and cannot pass through
+- When a box touches the player character, the box bounces forward in the direction it was pushed
+- When a box is pushed against a wall or another box, all involved objects return to their previous positions
+- When a box is pushed into water, the water transforms into a hidden whirlpool
+- When a box touches a hidden whirlpool, the box disappears and the player gains 1 point
+- When the walking player touches water, the player transforms into a falling state
+- When the falling player reaches a whirlpool, the player returns to normal walking state
+- When the player touches the exit door, the player disappears from the level
+- When the falling player is in water, the player is pulled toward the water's flow direction
+- When the player touches treasure, the treasure disappears and the player gains 10 points
+
+**Win condition:**
+The player wins by reaching and entering the exit door.
+
+**Lose condition:**
+The player loses if their character is destroyed or if 1000 time units pass without completing the level.
+
+**Objective:**
+Navigate through a water-filled maze by pushing boxes into water to create safe whirlpool stopping points, then carefully fall through the water currents to reach the exit door while collecting treasure for bonus points.

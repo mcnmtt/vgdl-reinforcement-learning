@@ -1,0 +1,25 @@
+Player role:
+The player controls a cyclops character that can move around the screen. When the avatar reaches the edge of the screen, it bounces back and cannot leave the play area.
+
+Entities:
+- Light gray walls that form the boundaries and obstacles of the level
+- White tight entrance holes that occasionally spawn slow green moles (very rarely, about 0.2% chance)
+- Gray wide entrance holes that spawn quick blue moles more frequently (about 1% chance)
+- A red cat that moves around randomly and consumes other sprites, shrinking to half size when it does
+- Green slow moles that flicker in and out of visibility, appearing for longer periods (up to 60 time units) before disappearing
+- Blue quick moles that also flicker in and out of visibility but appear for shorter periods (up to 20 time units) before disappearing
+- The player's cyclops avatar that can move freely around the screen
+
+Interactions:
+- When any moving object (avatar or cat) reaches the edge of the screen, it bounces back
+- When a mole touches the avatar or cat, the mole is destroyed and the player gains 1 point
+- When the avatar touches the cat, the avatar is destroyed and the player loses 5 points
+
+Win condition:
+The player wins if they survive for 500 time units without being destroyed.
+
+Lose condition:
+The player loses if their avatar is destroyed by touching the cat.
+
+Objective:
+Survive for as long as possible while collecting moles for points, but avoid the dangerous cat that will destroy you and cost you points.

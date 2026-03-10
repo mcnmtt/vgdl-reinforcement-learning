@@ -1,0 +1,35 @@
+**Player role:**
+The player controls a submarine that can move in all directions and shoot torpedoes. The submarine cannot move past the edge of the screen and will be pushed back if it tries.
+
+**Entities:**
+- Water: The background environment that fills the game area
+- Submarine (avatar): A yellow submarine controlled by the player that can shoot torpedoes
+- Torpedo: A yellow projectile that shrinks as it travels and is fired by the submarine
+- Shark: An orange predator that actively chases the submarine at slow speed
+- Whale: A brown sea creature that moves rightward at slow speed
+- Piranha: A red fish that moves leftward at slow speed
+- Shell: A gold collectible resource with a limit of 20 that can be gathered
+- Shark fang: A rare gold collectible shaped like a sword, with only 1 available per game
+- Shark hole: A gray whirlpool that occasionally spawns sharks (2.5% chance each moment, maximum 1 total)
+- Whale hole: A gray whirlpool that regularly spawns whales (10% chance each moment, with a cooldown period)
+- Piranha hole: A gray whirlpool that regularly spawns piranhas (10% chance each moment, with a cooldown period)
+
+**Interactions:**
+- When a torpedo hits a whale or piranha, the fish transforms into a shell and the player scores 1 point
+- When a torpedo hits any fish, the torpedo is destroyed
+- When torpedoes or fish reach the edge of the screen, they are destroyed
+- When the submarine collects a shell, it gains 1 point
+- When the submarine collects a shark fang, it gains 1000 points
+- When the submarine encounters a shark while having 15 or more shells, a shark fang is created
+- When a shark encounters the submarine that has 15 or more shells, the shark is destroyed
+- When the submarine encounters a shark while having fewer than 15 shells, the submarine is destroyed
+- When the submarine touches a whale or piranha, the submarine is destroyed
+
+**Win condition:**
+The player wins if they survive for the full time limit of 1000 time units.
+
+**Lose condition:**
+The player loses if their submarine is destroyed by contact with sea creatures.
+
+**Objective:**
+Survive underwater hazards by collecting shells and using torpedoes to defend yourself, while avoiding or defeating dangerous sea creatures until time runs out.

@@ -1,0 +1,21 @@
+Player role:
+The player controls an avatar that moves with inertia, meaning it continues sliding in the direction of movement and requires input to change direction or stop.
+
+Entities:
+- Avatar: The player-controlled character that moves with inertia physics
+- Blue pads: Stationary blue objects that remain fixed in place throughout the game
+- Bullets: Objects that move randomly with inertial movement, bouncing around the play area
+
+Interactions:
+- When the avatar or any bullet hits a wall, it bounces off and continues moving in the opposite direction
+- When the avatar touches a bullet, the bullet is destroyed
+- When the avatar touches a blue pad, the blue pad is destroyed
+
+Win condition:
+The player wins when all blue pads have been destroyed.
+
+Lose condition:
+The player loses if the avatar is destroyed.
+
+Objective:
+Navigate the inertial avatar through the area to touch and destroy all blue pads while avoiding getting destroyed, managing the sliding physics that make precise movement challenging.

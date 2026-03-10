@@ -1,0 +1,40 @@
+Player role:
+This is a two-player game where each player controls their own character that can move in any direction and shoot projectiles. Player A controls a character that moves at moderate speed, and Player B controls an identical character that also moves at moderate speed. Both characters can rotate to face different directions and fire projectiles when commanded.
+
+Entities:
+- Floor tiles that provide the basic ground surface, invisible to players but present throughout the level
+- Conveyor belt segments that appear as metallic surfaces and affect movement
+- Bombs that appear as small explosive devices placed on conveyor belts
+- Speed boost pads that look like upward-pointing books and increase movement speed
+- Joint connectors for Player A: directional segments that appear on conveyor belts, with versions pointing up, right, down, and left
+- Joint connectors for Player B: identical directional segments for the second player, also pointing up, right, down, and left
+- Player A's character: a human figure that moves at moderate speed and can shoot
+- Player B's character: an identical human figure that also moves at moderate speed and can shoot
+- Projectiles fired by Player A: red flickering objects that are mostly invisible
+- Projectiles fired by Player B: red flickering objects that are mostly invisible
+- Walls: dirt-textured barriers that connect seamlessly with adjacent walls
+
+Interactions:
+- When Player A's character touches any of Player A's joint connectors, it automatically turns to face the same direction as the connector
+- When Player B's character touches any of Player B's joint connectors, it automatically turns to face the same direction as the connector
+- When Player A's character touches Player A's projectiles, Player A's character slows down very slightly
+- When Player B's character touches Player B's projectiles, Player B's character slows down very slightly
+- When Player A's character touches a speed boost pad, Player A's character speeds up very slightly
+- When Player B's character touches a speed boost pad, Player B's character speeds up very slightly
+- When Player A's character touches Player A's joint connectors while moving faster than moderate speed, Player A's character is destroyed
+- When Player B's character touches Player B's joint connectors while moving faster than moderate speed, Player B's character is destroyed
+- When either character touches a bomb while moving slower than very slow speed, that character is destroyed
+- When either character touches a conveyor belt while moving faster than fast speed, that character is destroyed
+- When either character touches a conveyor belt while completely motionless, that character is destroyed
+- When any projectile touches either character, that character is destroyed
+- When either character touches floor tiles or walls, that character is destroyed
+- When both characters touch each other, both are destroyed simultaneously
+
+Win condition:
+Player A wins if Player B's character is destroyed while Player A's character remains alive. Player B wins if Player A's character is destroyed while Player B's character remains alive.
+
+Lose condition:
+A player loses when their character is destroyed, either by moving at inappropriate speeds, touching hazards, being hit by projectiles, colliding with walls or floor, or crashing into the other player.
+
+Objective:
+Navigate carefully on the conveyor belt surfaces while avoiding bombs, walls, and hazards, using joint connectors to change direction and speed boosts strategically, while trying to eliminate the opponent with projectiles or force them into dangerous situations.

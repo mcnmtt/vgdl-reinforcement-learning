@@ -1,0 +1,56 @@
+Player role:
+The player controls an avatar that moves in four directions using keyboard input. The avatar can collect items and push certain objects.
+
+Entities:
+- Floor: Hidden background tiles that form the walkable surface
+- Water: Blue liquid obstacles that block movement unless the player has special equipment
+- Mud: Brown terrain that destroys the avatar on contact
+- Fire: Orange flames that destroy the avatar unless they have protective equipment
+- Red key: A red potion-like item that can be collected, appears smaller than normal size
+- Blue key: A blue potion-like item that can be collected, appears smaller than normal size
+- Green key: A green potion-like item that can be collected, appears smaller than normal size
+- Yellow key: A yellow potion-like item that can be collected, appears smaller than normal size
+- Red door: A red slime-like barrier that blocks movement and requires a matching key to pass
+- Blue door: A blue slime-like barrier that blocks movement and requires a matching key to pass
+- Green door: A green slime-like barrier that blocks movement and requires a matching key to pass
+- Yellow door: A yellow slime-like barrier that blocks movement and requires a matching key to pass
+- Flippers: Boot-like items that allow walking on water, only one pair can be held at a time
+- Fire boots: Boot-like items that allow walking on fire, only one pair can be held at a time
+- Crate: A movable block that can be pushed by the avatar
+- Gate: A closed door that only opens when the player has collected enough chips
+- Exit: The goal location that ends the level when reached
+- Chip: Small golden collectible items that are required to open the gate, maximum of 11 can exist
+- Avatar: The player character that can move and interact with objects
+- Wall: Impassable barriers with auto-connecting visual design
+
+Interactions:
+- When the avatar touches a crate, the crate is pushed forward in the direction of movement
+- When a crate hits another crate, wall, door, key, chip, gate, mud, fire, or boots, both the crate and avatar return to their previous positions
+- When a crate enters water, the water becomes mud and the crate is destroyed, increasing score by 1
+- When the avatar enters mud, the avatar is destroyed
+- When the avatar touches a gate with fewer than 11 chips, the avatar is destroyed and score increases by 4
+- When the avatar touches a gate, the avatar steps backward
+- When the avatar touches a chip, the chip is collected and score increases by 1
+- When the avatar touches any key, the key is collected
+- When the avatar touches any boots, the boots are collected and score increases by 3
+- When the avatar touches a red door with at least one red key, the door is destroyed and score increases by 2
+- When the avatar touches a red door, one red key is consumed
+- When the avatar touches a green door with at least one green key, the door is destroyed and score increases by 2
+- When the avatar touches a green door, one green key is consumed
+- When the avatar touches a blue door with at least one blue key, the door is destroyed and score increases by 2
+- When the avatar touches a blue door, one blue key is consumed
+- When the avatar touches a yellow door with at least one yellow key, the door is destroyed and score increases by 2
+- When the avatar touches a yellow door, one yellow key is consumed
+- When the avatar touches a wall or door, movement is blocked and the avatar returns to its previous position
+- When the avatar enters water without flippers, the avatar is destroyed
+- When the avatar enters fire without fire boots, the avatar is destroyed
+- When the avatar reaches the exit, the avatar is destroyed and score increases by 5
+
+Win condition:
+The player wins when they reach the exit and it disappears from the level.
+
+Lose condition:
+The player loses when the avatar is destroyed by entering mud, fire without protection, water without flippers, or touching a gate without enough chips.
+
+Objective:
+Collect all the chips and keys needed to navigate through doors and obstacles, then reach the exit while avoiding deadly terrain and using special boots to traverse dangerous areas.

@@ -1,0 +1,36 @@
+**Player role:**
+The player controls a character that can move in four directions and shoot shovels as projectiles. The character moves normally without any special physics like gravity or inertia.
+
+**Entities:**
+- A player character that can move around and shoot shovels
+- Ground tiles that form the basic walkable surface, appearing brown
+- Death tiles that are deadly gray areas scattered throughout the level  
+- Walls made of dirt that block movement and automatically connect to adjacent walls
+- Immovable boxes that block movement
+- Keys that can be collected (only one can be held at a time)
+- White locks that can be unlocked with keys
+- An exit door that ends the level
+- Smoke spawners that periodically create invisible orange projectiles that move in random directions
+- Shovels that appear as flickering gray pickaxes when shot by the player
+
+**Interactions:**
+- When the player touches a wall, they are pushed back and cannot pass through
+- When the player is on ground tiles, they are protected from death effects caused by smoke spawners
+- When the player touches death tiles, they are destroyed
+- When the player reaches the exit, they are removed from the level and gain a point
+- When smoke spawner projectiles hit ground tiles, they transform into visible smoke spawners
+- When smoke spawner projectiles hit ground tiles or walls, the projectiles are destroyed
+- When the player touches a key, they collect it as a resource
+- When the player touches a lock while carrying a key, the lock is destroyed and the player loses their key
+- When the player tries to move toward a lock without a key, they are pushed back
+- When a shovel hits a box, the box is destroyed and the player gains a point
+- When smoke spawner projectiles hit boxes, the boxes are destroyed
+
+**Win condition:**
+The player wins when there are no more exits remaining (meaning they successfully reached the exit).
+
+**Lose condition:**
+The player loses when their character is destroyed (typically by touching death tiles).
+
+**Objective:**
+Navigate through the level while avoiding deadly areas, collect keys to unlock barriers, destroy boxes with your shovel for points, and reach the exit safely.

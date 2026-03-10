@@ -1,0 +1,38 @@
+**Player role:**
+The player controls a human character that can switch between two states: standing upright (appearing as a yellow rogue) and crouching (appearing as an orange ghost). The character moves at a moderate speed and cannot rotate in place, only move in cardinal directions.
+
+**Entities:**
+- **Human character (standing)**: A yellow rogue that moves at moderate speed. This is one of the player's two forms.
+- **Human character (crouching)**: An orange ghost that moves at the same moderate speed. This is the player's alternate form.
+- **Pursuer**: A visible ogre that actively chases the player, switching between targeting the standing and crouching forms with a brief delay between target changes.
+- **Tunnel pursuer**: An invisible ogre that operates inside tunnel systems, chasing the player in the same manner as the regular pursuer.
+- **Wanderer**: An invisible ogre that moves randomly through tunnel systems, occasionally switching to chase the crouching form.
+- **Switch**: A wall-mounted device that can be activated to open doors, awarding points when used.
+- **Blue tunnel**: A blue wall section that serves as a tunnel entrance for the player.
+- **Red alien tunnel**: A red wall section that serves as a tunnel system used by alien enemies.
+- **Tunnel end**: An invisible marker that indicates where tunnels terminate.
+- **Alien tunnel end**: An invisible marker that indicates where alien tunnel systems terminate.
+- **Closed door**: A barrier that blocks movement until opened.
+- **Open door**: A door that has been activated and no longer blocks passage.
+- **Exit**: A green exit portal that represents the goal.
+- **Wall**: Standard immovable barriers that block all movement.
+
+**Interactions:**
+- When any moving entity touches a wall, it is pushed back and cannot pass through.
+- When the human touches a red alien tunnel, the human is pushed back and cannot enter.
+- When the human touches any alien enemy, the human is destroyed and the player loses 10 points.
+- When the human reaches the exit, the human is removed from the game and the player gains 10 points.
+- When the crouching human touches a tunnel end, all wandering enemies transform into pursuers and the human transforms into standing form.
+- When the standing human enters a blue tunnel, all pursuers and tunnel pursuers transform into wanderers and the human transforms into crouching form.
+- When a tunnel pursuer reaches an alien tunnel end, all tunnel pursuers transform back into regular pursuers.
+- When a regular pursuer enters a red alien tunnel, all regular pursuers transform into tunnel pursuers.
+- When the human activates a switch, all closed doors transform into open doors and the player gains 2 points.
+
+**Win condition:**
+The player wins when the human character reaches and enters the green exit.
+
+**Lose condition:**
+The player loses if the human character is caught and destroyed by any alien enemy.
+
+**Objective:**
+Navigate through a maze-like environment by switching between standing and crouching forms to use different tunnel systems, avoid alien pursuers, activate switches to open doors, and reach the exit safely.

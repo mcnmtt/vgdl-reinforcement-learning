@@ -1,0 +1,27 @@
+Player role:
+This is a two-player cooperative game. Player 1 controls a knight and Player 2 controls a guard. Both players can move their characters in four directions using keyboard controls.
+
+Entities:
+- Knight (Player 1's character): A medieval knight sprite that the first player controls
+- Guard (Player 2's character): A guard sprite that the second player controls  
+- Box: A movable block that can be pushed around by the players
+- Box in hole: A block that appears darker/different when a box has been pushed into a hole
+- Hole: A dark blue pit or depression in the ground where boxes can be placed
+- Wall: An immovable barrier that blocks movement, with connected wall segments that tile together seamlessly
+- Floor: The basic walkable ground surface (invisible background)
+
+Interactions:
+- When a player character touches a wall, the character is pushed back and cannot pass through
+- When a player character touches a box, the box is pushed forward in the direction the character was moving
+- When a box touches a wall, all recent movements of boxes are undone
+- When a box is pushed into a hole, it transforms into a "box in hole" and both players gain 1 point each
+- When a box in hole is moved back onto regular ground, it transforms back into a regular box and both players lose 1 point each
+
+Win condition:
+Both players win together when all boxes have been successfully placed into holes (no regular boxes remain on the level).
+
+Lose condition:
+There is no explicit lose condition - the game continues until the win condition is met.
+
+Objective:
+Work together to push all the boxes into the holes to solve the puzzle, being careful not to get boxes stuck against walls which will undo your progress.

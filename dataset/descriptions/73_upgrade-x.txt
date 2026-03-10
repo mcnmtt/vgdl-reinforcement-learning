@@ -1,0 +1,39 @@
+**Player role:**
+This is a two-player game where each player controls an avatar that can move around the screen and shoot special projectiles. The avatars can collect upgrade items to use as ammunition for shooting different types of enhanced projectiles.
+
+**Entities:**
+- Floor tiles that provide the ground surface (invisible)
+- Black background spaces
+- Two bases (one for each player) that serve as targets and can be destroyed
+- Three types of upgrade items: yellow upgrade that destroys other upgrade items, orange upgrade that doesn't affect the player who shot it, and blue upgrade that explodes when hitting an enemy base
+- Cannons that automatically fire projectiles, with different upgrade levels based on what they've absorbed
+- Yellow laser projectiles that move horizontally at medium speed and shrink as they travel
+- Two avatars (one female, one male) that players control, each with 200 health points and the ability to shoot upgrade projectiles
+- Flickering upgrade projectiles that players can shoot, corresponding to the three upgrade types
+- Explosion effects that spread outward and create sparkles
+- Temporary explosion effects that disappear after a short time
+- Spark effects that create the final explosion visuals
+- Walls that block movement and projectiles
+
+**Interactions:**
+- When avatars, lasers, cannons, or bases hit walls or screen edges, they are stopped or bounce back
+- When lasers hit walls, they are destroyed
+- When bases or cannons touch black background areas, they are destroyed
+- When cannons touch avatars, the avatar bounces away
+- When avatars collect upgrade items, they gain ammunition without destroying the upgrade
+- When basic cannons absorb upgrade projectiles, they transform into enhanced cannons of the corresponding type
+- When yellow-enhanced lasers hit any upgrade items, both are destroyed
+- When avatars are hit by basic lasers, they lose 1 health and the shooter gains points
+- When avatars are hit by enhanced lasers, they lose 3-5 health depending on the type
+- When blue-enhanced lasers hit enemy bases, they create spreading explosions that turn into temporary sparkle effects
+- When avatars touch explosion sparkles from enemy attacks, they are destroyed and the attacker loses points
+- Regular lasers are destroyed when hitting any base
+
+**Win condition:**
+A player wins when the opposing avatar is destroyed (either by losing all health or touching explosion effects).
+
+**Lose condition:**
+A player loses when their avatar is destroyed by enemy fire or explosion effects.
+
+**Objective:**
+Defeat the opposing player by shooting them with lasers and upgraded projectiles while avoiding their attacks. Collect upgrade items to enhance your weapons and create powerful explosive attacks against the enemy base.

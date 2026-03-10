@@ -1,0 +1,33 @@
+Player role:
+The player controls a character that can move in four directions around the game area. The character has two states: one without a key and one with a key, which changes its appearance.
+
+Entities:
+- A floor that serves as the walkable surface throughout the game area, invisible to the player
+- Dark blue holes scattered around the level that act as pits
+- The player's character, which appears as a swordsman that animates while moving and changes appearance when carrying a key
+- Mushrooms that remain stationary and can be collected for points
+- A key that can be picked up by the player
+- A goal door that remains closed until the player has the key
+- Movable boxes that can be pushed around the level
+- Walls made of dirt that block movement and have connected tile appearance
+
+Interactions:
+- When the player touches a wall, they are pushed back and cannot pass through
+- When the player falls into a hole, they are destroyed
+- When the player pushes against a box, the box slides forward in the direction of the push
+- When a box hits a wall, another box, or a mushroom, the box returns to its previous position
+- When a box falls into a hole, both the box and hole disappear and the player gains 1 point
+- When the player (without a key) touches the key, they transform into the key-carrying version
+- When the player (with a key) touches the key, the key disappears
+- When the player approaches the goal door without a key, they are pushed back
+- When the player with a key touches the goal door, the door disappears and the player gains 5 points
+- When the player touches a mushroom, the mushroom disappears and the player gains 1 point
+
+Win condition:
+The player wins when all goal doors have been removed from the level.
+
+Lose condition:
+The player loses if their character is destroyed by falling into a hole.
+
+Objective:
+Push boxes into holes to fill them while collecting the key and reaching the goal door. Use the boxes strategically to create safe paths and collect mushrooms for extra points.

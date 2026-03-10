@@ -1,0 +1,25 @@
+Player role:
+The player controls an avatar that can aim and shoot. The avatar cannot move through walls or past the edge of the screen - when it tries to do so, it is pushed back to its previous position.
+
+Entities:
+- Avatar: The player-controlled character that can aim and fire projectiles
+- Blue pad: A stationary blue object that remains in place throughout the game
+- Bullet: A projectile that the avatar fires, which is affected by gravity and moves at high speed. Only one bullet can exist at a time
+- Wall: Barriers that block movement and destroy bullets on contact
+
+Interactions:
+- When a bullet hits a wall, the bullet is destroyed
+- When a wall is hit by a bullet, the wall is destroyed  
+- When a bullet hits a blue pad, the bullet is destroyed
+- When the avatar tries to move into a wall, the avatar is pushed back
+- When the avatar tries to move past the edge of the screen, the avatar is pushed back
+- When a bullet reaches the edge of the screen, the bullet is destroyed
+
+Win condition:
+The player wins when all blue pads have been destroyed.
+
+Lose condition:
+The player loses when the avatar is destroyed.
+
+Objective:
+Use your avatar to aim and shoot bullets at all the blue pads to destroy them while avoiding getting your avatar destroyed.

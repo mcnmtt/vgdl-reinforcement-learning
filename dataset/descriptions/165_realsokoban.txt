@@ -1,0 +1,27 @@
+Player role:
+The player controls a knight character that can move around the game area. The knight moves normally but cannot pass through walls - when it tries to move into a wall, it bounces back to its previous position.
+
+Entities:
+- Knight: The player-controlled character that can move around the level
+- Walls: Immovable barriers that block movement and have decorative tiling that connects adjacent wall pieces
+- Boxes: Movable objects that the player can push around the level
+- Boxes in holes: Boxes that have fallen into holes and appear with a different visual style
+- Holes: Dark blue pits or depressions in the ground where boxes can be placed
+- Floor areas: Hidden ground tiles that provide the basic walking surface
+- Ground areas: The standard walkable surface of the level
+
+Interactions:
+- When the knight tries to move into a wall, the knight bounces back to where it was before
+- When the knight touches a box, the box gets pushed forward in the direction the knight was moving
+- When a box gets pushed against a wall while another box is also involved, all boxes return to their previous positions
+- When a box moves onto a hole, the box transforms into a box-in-hole and the player gains 1 point
+- When a box-in-hole moves onto regular ground, it transforms back into a regular box and the player loses 1 point
+
+Win condition:
+The player wins when there are no regular boxes left on the level (meaning all boxes have been successfully placed in holes).
+
+Lose condition:
+There is no way for the player to lose this game.
+
+Objective:
+Push all the boxes into holes to complete the level. Boxes that fall into holes stay there and increase your score, while removing them decreases your score.

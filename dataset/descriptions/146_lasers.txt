@@ -1,0 +1,37 @@
+Player role:
+The player controls an archer that can rotate in place to face different directions and shoot blue orbs. The archer moves in discrete steps and cannot pass through solid objects.
+
+Entities:
+- An archer (the player character) that can rotate to face any direction and shoot blue orbs
+- A goal door that serves as the exit point for the level
+- Movable boxes that can be pushed around
+- Laser cannons that come in different orientations - some point up, down, left, or right, and one special cannon that can change direction
+- Yellow laser beams that move slowly in straight lines from the cannons toward their facing direction
+- Blue orbs that the player shoots, which are limited to one at a time and move in the direction the archer was facing when fired
+- Walls that block movement and destroy projectiles
+- Floor tiles that provide the ground surface
+
+Interactions:
+- When the archer touches a wall or laser cannon, it steps back to its previous position
+- When the archer touches a box from behind, the box gets pushed forward and the archer moves into the box's previous space
+- When a box would move into a wall, another box, or laser cannon, the movement is prevented entirely
+- When the archer touches a laser beam head-on, the archer is destroyed
+- When the archer touches a laser beam from any other angle, the archer is destroyed
+- When the archer is behind a box and a laser beam hits the box from the front, the box protects the archer from destruction
+- When laser beams hit walls or boxes, the beams are destroyed
+- When blue orbs hit walls, laser cannons, or reach the edge of the screen, they are destroyed
+- When the archer reaches the goal door, the archer disappears and the player scores 5 points
+- When a blue orb hits a laser cannon pointing down, that cannon transforms into the special rotating cannon
+- When a blue orb hits a laser cannon pointing left, it transforms into a downward-pointing cannon
+- When a blue orb hits a laser cannon pointing up, it transforms into a leftward-pointing cannon
+- When a blue orb hits a laser cannon pointing right, it transforms into an upward-pointing cannon
+- When a blue orb hits the special rotating cannon, it transforms into a rightward-pointing cannon
+
+Win condition:
+The player wins when there are no goal doors remaining (meaning the archer successfully reached the exit).
+
+Lose condition:
+The player loses when the archer is destroyed by touching a laser beam.
+
+Objective:
+Navigate the archer through the level by pushing boxes and shooting orbs to rotate laser cannons, creating a safe path to reach the goal door while avoiding the deadly laser beams.

@@ -1,0 +1,25 @@
+**Player role:**
+The player controls a character that can move in four directions (up, down, left, right) using keyboard input. The character moves one space at a time and can push certain objects.
+
+**Entities:**
+- Wall: A solid barrier that blocks movement and appears as the border and some internal structures of the level
+- Exit door: A special location that the player must reach, appearing in two spots in the level
+- Player character: The controllable sprite that the player moves around the level
+- Boulder: A heavy object that can be pushed by the player character and rolls or slides when pushed
+- Diamond: A collectible item that the player must gather
+
+**Interactions:**
+- When the player character moves into a wall, movement is blocked
+- When the player character moves into a boulder, the boulder is pushed in the same direction if there's empty space behind it
+- When the player character moves into a diamond, the diamond is collected and disappears
+- When the player character reaches an exit door after collecting all diamonds, the level is completed
+- Boulders cannot move through walls or other boulders
+
+**Win condition:**
+The player wins by collecting all diamonds in the level and then reaching one of the exit doors.
+
+**Lose condition:**
+There is no explicit lose condition - the player can continue attempting the puzzle indefinitely.
+
+**Objective:**
+Navigate through the level, push boulders out of the way as needed, collect all the diamonds, and reach an exit door to complete the level.

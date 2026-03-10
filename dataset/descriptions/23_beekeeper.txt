@@ -1,0 +1,31 @@
+Player role:
+This is a two-player game. Player 1 controls an axeman character that starts facing downward and can move around the screen. Player 2 controls an identical axeman character that starts facing upward. Both players are prevented from moving off the edge of the screen - they are pushed back if they try to leave. Both players can launch projectiles.
+
+Entities:
+- A grass background that covers the entire playing field
+- Base 1: A stationary structure that looks like a bee, belonging to player 1
+- Base 2: A stationary structure that looks like a bee, belonging to player 2
+- Player 1's axeman: A character that can move around and launch projectiles, starts facing downward
+- Player 2's axeman: A character that can move around and launch projectiles, starts facing upward
+- Player 1's axe projectile: A blue axe that travels upward when launched, disappears after a short time, only one can exist at a time
+- Player 2's axe projectile: A red axe that travels downward when launched, disappears after a short time, only one can exist at a time
+
+Interactions:
+- When any player reaches the edge of the screen, they are pushed back and cannot leave
+- When any axe projectile reaches the edge of the screen, it disappears
+- When player 1's axe hits player 2, player 2 is destroyed, player 1 loses 2 points, and player 2 gains 2 points
+- When player 2's axe hits player 1, player 1 is destroyed, player 1 gains 2 points, and player 2 loses 2 points
+- When the two axe projectiles collide with each other, both are destroyed
+- When player 2's axe hits base 1, both the axe and base are destroyed, and player 2 gains 5 points
+- When player 1's axe hits their own base 1, both the axe and base are destroyed, and player 1 loses 1 point
+- When player 1's axe hits base 2, both the axe and base are destroyed, and player 1 gains 5 points
+- When player 2's axe hits their own base 2, both the axe and base are destroyed, and player 2 loses 1 point
+
+Win condition:
+Player 1 wins if all of base 2 structures are destroyed. Player 2 wins if all of base 1 structures are destroyed. The game ends in a draw if the time limit is reached.
+
+Lose condition:
+A player loses if their opponent destroys all of their base structures, or if time runs out and they have a lower score.
+
+Objective:
+Destroy your opponent's base while protecting your own by launching axes at targets and avoiding enemy fire. Score points by hitting the enemy base and lose points by accidentally hitting your own base or getting hit by enemy axes.

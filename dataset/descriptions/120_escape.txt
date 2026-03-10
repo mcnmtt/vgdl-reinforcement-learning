@@ -1,0 +1,27 @@
+**Player role:**
+The player controls a rat that moves in four directions using arrow keys or WASD. The rat moves one space at a time on a grid-based floor.
+
+**Entities:**
+- A rat (the player character) that can move around the level
+- Brown floor tiles that form the walkable surface throughout the level
+- Movable blocks that can be pushed around by the player
+- Green cheese that serves as the exit point
+- Dark blue holes in the floor that act as traps
+- Dirt walls that form barriers and cannot be moved through
+
+**Interactions:**
+- When the rat tries to move into a wall, it is blocked and stays in its current position
+- When the rat pushes against a block, the block slides forward one space in the direction of the push
+- When a block is pushed against a wall, exit, or another block, the push is cancelled and nothing moves
+- When the rat falls into a hole, the rat is destroyed and the player loses a point
+- When the rat reaches the cheese exit, the rat disappears and the player gains a point
+- When a block is pushed into a hole, the block disappears
+
+**Win condition:**
+The player wins when all cheese exits have been collected (no cheese remains on the level).
+
+**Lose condition:**
+The player loses if the rat is destroyed by falling into a hole, or if 1000 time units pass without completing the level.
+
+**Objective:**
+Guide the rat to collect all the cheese while avoiding holes and using movable blocks strategically to reach the exits safely.

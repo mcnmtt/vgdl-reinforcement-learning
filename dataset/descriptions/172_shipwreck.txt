@@ -1,0 +1,42 @@
+Player role:
+The player controls a ship that can move freely in all directions across the water using keyboard input.
+
+Entities:
+- Water: Blue background areas where the ship can sail freely
+- Land: Grass terrain that blocks the ship's movement
+- Gold port: A dock where the player can trade gold and other resources
+- Gems port: A dock where the player can trade gems and other resources  
+- Diamonds port: A dock where the player can trade diamonds and other resources
+- Shipwreck: A sunken ship that acts as a portal and spawning location for treasures
+- Gold: A valuable yellow resource that appears randomly near shipwrecks with low probability
+- Gems: A valuable blue diamond resource that appears randomly near shipwrecks with low probability
+- Diamonds: A valuable gold sack resource that appears randomly near shipwrecks with low probability
+- Whirlpool: A dangerous water hazard that destroys the ship on contact
+- High-value treasure: Invisible reward items worth 10 points each
+- Medium-value treasure: Invisible reward items worth 5 points each  
+- Low-value treasure: Invisible reward items worth 1 point each
+
+Interactions:
+- When the ship hits the edge of the screen, it is pushed back and cannot leave the play area
+- When the ship hits land, it is pushed back and cannot move onto grass
+- When the ship touches a whirlpool, it is destroyed and the player loses 10 points
+- When the ship touches gold, gems, or diamonds, it automatically collects them
+- When the ship visits the gold port while carrying gold, it spawns a high-value treasure
+- When the ship visits the gems port while carrying gems, it spawns a high-value treasure
+- When the ship visits the diamonds port while carrying diamonds, it spawns a high-value treasure
+- When the ship visits the gold port while carrying diamonds, it spawns a medium-value treasure
+- When the ship visits the gems port while carrying gold, it spawns a medium-value treasure
+- When the ship visits the diamonds port while carrying gems, it spawns a medium-value treasure
+- When the ship visits the gold port while carrying gems, it spawns a low-value treasure
+- When the ship visits the gems port while carrying diamonds, it spawns a low-value treasure
+- When the ship visits the diamonds port while carrying gold, it spawns a low-value treasure
+- When the ship touches any treasure, it consumes one unit of the corresponding resource, removes the treasure, and gains points
+
+Win condition:
+The player wins if they survive for 1000 time steps without being destroyed.
+
+Lose condition:
+The player loses if their ship is destroyed by touching a whirlpool.
+
+Objective:
+Navigate your ship around the waters to collect valuable resources from shipwrecks, then trade them at the appropriate ports for points while avoiding dangerous whirlpools. Survive long enough to win the game.

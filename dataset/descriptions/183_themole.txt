@@ -1,0 +1,46 @@
+**Player role:**
+The player controls an avatar that can move in four directions at moderate speed and can wrap around from one edge of the screen to the opposite edge. The avatar exists in two forms - one for moving on the surface level and one for moving underground. The player can switch between these two levels by entering special portal holes.
+
+**Entities:**
+- Floor: Gray background tiles that fill the game area but remain hidden from view
+- Hole down: A blue portal that allows the avatar to travel from the surface to the underground level
+- Hole up: A blue portal that allows the avatar to travel from the underground to the surface level  
+- Surface walls: Visible gray barriers that block movement on the surface level
+- Underground walls: Visible dark barriers that block movement on the underground level
+- Hidden surface walls: Invisible barriers that block movement on the surface level but are only active when the player is underground
+- Hidden underground walls: Invisible barriers that block movement on the underground level but are only active when the player is on the surface
+- Surface enemies: Guard-like creatures that move randomly at moderate speed, changing direction every 2 time units, visible only on the surface level
+- Underground enemies: Monster-like creatures that move randomly at moderate speed, changing direction every 2 time units, visible only on the underground level  
+- Hidden surface enemies: Guard creatures that are invisible but active when the player is underground
+- Hidden underground enemies: Monster creatures that are invisible but active when the player is on the surface
+- Surface gems: Diamond-shaped collectibles visible on the surface level
+- Underground gems: Diamond-shaped collectibles visible on the underground level
+- Hidden surface gems: Collectible diamonds that are invisible when the player is underground
+- Hidden underground gems: Collectible diamonds that are invisible when the player is on the surface
+- Good resource: A golden resource counter that tracks collected gems up to a maximum of 10
+
+**Interactions:**
+- When the surface avatar touches a surface wall, the avatar is pushed back
+- When the underground avatar touches an underground wall, the avatar is pushed back  
+- When the avatar reaches the edge of the screen, it wraps around to the opposite side
+- When the surface avatar touches a surface enemy, the avatar is destroyed and the score decreases by 1
+- When the underground avatar touches an underground enemy, the avatar is destroyed and the score decreases by 1
+- When any hole touches another hole, both holes are destroyed
+- When a hole touches any wall, the hole is destroyed
+- When surface enemies touch surface walls, they bounce back with precise collision detection
+- When underground enemies touch underground walls, they bounce back with precise collision detection
+- When hidden surface enemies touch hidden surface walls, they bounce back with precise collision detection
+- When hidden underground enemies touch hidden underground walls, they bounce back with precise collision detection
+- When the surface avatar enters a hole down, all surface gems become hidden while hidden underground gems become visible, all surface enemies become hidden while hidden underground enemies become visible, all surface walls become hidden while hidden underground walls become visible, the avatar aligns with the hole, and transforms into the underground avatar
+- When the underground avatar enters a hole up, all underground gems become hidden while hidden surface gems become visible, all underground enemies become hidden while hidden surface enemies become visible, all underground walls become hidden while hidden surface walls become visible, the avatar aligns with the hole, and transforms into the surface avatar
+- When the surface avatar touches a surface gem, the good resource increases by 1, the gem is destroyed, and the score increases by 1
+- When the underground avatar touches an underground gem, the good resource increases by 1, the gem is destroyed, and the score increases by 1
+
+**Win condition:**
+The player wins when all gems have been collected from both the surface and underground levels.
+
+**Lose condition:**
+The player loses when the avatar is destroyed by touching an enemy.
+
+**Objective:**
+Navigate between the surface and underground levels through portal holes to collect all diamonds while avoiding enemies that patrol each level.

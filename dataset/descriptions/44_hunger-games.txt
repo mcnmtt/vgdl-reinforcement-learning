@@ -1,0 +1,52 @@
+**Player role:**
+This is a two-player competitive survival game. Each player controls an archer that can move in all directions and shoot arrows. Both players constantly lose health over time and must collect food to survive. The archers can shoot at each other to deal damage, and they can also hunt animals for food.
+
+**Entities:**
+- **Land tiles**: Hidden ground tiles that form the base terrain
+- **Fog of war**: Dark gray areas that create visibility limitations - each player can only see objects in areas they've explored or that are visible to them specifically
+- **Fog removal markers**: Invisible spreading effects that clear fog when players move through unexplored areas
+- **Berry bushes**: Small bushes that spawn berries over time, appearing differently to each player based on fog visibility
+- **Berries**: Small food items from bushes that restore 5 health when collected
+- **Arrow pickups**: Arrow-shaped items that give 5 arrows when collected, with visibility based on fog
+- **Flying food**: Pink mushroom items worth 15 health that appear when butterflies are killed
+- **Regular food**: Blue mushroom items worth 30 health that appear when bears or wolves are killed
+- **Animal spawn points**: Invisible locations that occasionally spawn bears
+- **Flying spawn points**: Invisible locations that occasionally spawn butterflies  
+- **Arrow spawn points**: Invisible locations that occasionally spawn arrow pickups
+- **Wolf spawn points**: Invisible locations that spawn wolves for each player
+- **Bears**: Brown animals that move randomly, consume 2 movement points per action, and can be hunted for food
+- **Wolves**: Predatory animals that chase their assigned player, spawning periodically and dealing damage on contact
+- **Trees**: Green obstacles that block movement and visibility
+- **Walls**: Black barriers that block movement and projectiles
+- **Player A (red archer)**: Shoots red projectiles and red melee attacks, starts with arrows as ammunition
+- **Player B (yellow archer)**: Shoots yellow projectiles and yellow melee attacks, starts with arrows as ammunition
+- **Melee attacks**: Flickering staff-like effects that appear briefly when players attack up close
+- **Projectiles**: Bullet-like missiles that travel in straight lines with limited range
+- **Arrows**: Blue ammunition resource with a maximum limit of 10
+- **Butterflies**: Small flying creatures that move randomly and provide flying food when killed
+
+**Interactions:**
+- Wolves spawn automatically every 500 time units for each player
+- Both players lose 1 health every 5 time units automatically
+- When fog meets a player's fog removal marker, it transforms to be visible only to the other player
+- When players enter fog areas, they spawn fog removal effects that spread outward
+- Players, animals, and wolves bounce back when hitting walls, trees, or each other
+- Flying creatures bounce back when hitting the edge of the screen
+- When players collect berries, they gain 5 health and 1 point (berries are destroyed)
+- When players collect flying food, they gain 15 health and 2 points (food is destroyed)
+- When players collect regular food, they gain 30 health and 3 points (food is destroyed)  
+- When players collect arrows, they gain 5 arrows and 5 points (pickup is destroyed)
+- When a player is hit by the other player's melee attack, they lose 5 health (attacker gains 5 points, victim loses 2)
+- When a player is hit by the other player's projectile, they lose 10 health (shooter gains 10 points, victim loses 5)
+- When flying creatures are hit by attacks, they spawn flying food and both the creature and weapon are destroyed (attacker gains 5 points)
+- When bears are hit by attacks, they spawn regular food and both the bear and weapon are destroyed (attacker gains 10 points)
+- When wolves are hit by attacks, they spawn regular food and both the wolf and weapon are destroyed (attacker gains 15 points)
+- When players touch wolves, they lose 2 health and 1 point
+- Wolves bounce back when hitting obstacles or other entities
+- Weapons are destroyed after hitting any target or obstacle
+- All visibility of entities changes based on fog state - objects become visible or hidden to specific players as fog is cleared
+
+**Win condition:**
+A player wins if the other player's health reaches zero, or after 2000 time units the player with the higher score wins.
+
+**Lose condition:**

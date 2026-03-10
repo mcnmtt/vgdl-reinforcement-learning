@@ -1,0 +1,15 @@
+BasicGame
+    SpriteSet
+        avatar > InertialAvatar physicstype=GravityPhysics
+        pad > Passive
+        wall > Immovable
+    LevelMapping
+        0 > pad
+        1 > wall
+    InteractionSet
+        avatar wall > killSprite
+        avatar EOS > killSprite
+        avatar pad > killIfSlow
+    TerminationSet
+        SpriteCounter stype=pad limit=4 win=True
+        SpriteCounter stype=avatar limit=0 win=False

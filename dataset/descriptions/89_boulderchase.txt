@@ -1,0 +1,36 @@
+**Player role:**
+The player controls an avatar that can move in all directions and shoot a sword weapon. The avatar can fire the sword at a moderate rate to break through dirt blocks.
+
+**Entities:**
+- Avatar: A spelunker character that the player controls, can move freely and shoot a sword
+- Sword: A gray pickaxe-like weapon that flickers briefly when fired, only one can exist at a time
+- Wall: Brown dirt walls that block movement and have connected tile patterns
+- Dirt: Brown dirt blocks that can be destroyed
+- Diamond: Yellow gem resources that shrink slightly when collected, up to 10 can exist
+- Boulder: Gray rock that falls downward slowly due to gravity
+- Exit door: A green door that serves as the level exit
+- Crab: A red scorpion-like enemy that chases the avatar slowly
+- Butterfly: A pink bat-like enemy that chases the avatar slowly
+
+**Interactions:**
+- When the sword hits dirt, the dirt is destroyed
+- When the avatar touches a diamond, the diamond is collected and the player gains 2 points
+- When any moving object (avatar or enemies) hits a wall or boulder, they are pushed back and cannot pass through
+- When the avatar is hit by a boulder from above, the avatar is destroyed and the player loses 1 point
+- When the avatar touches a butterfly or crab, the avatar is destroyed and the player loses 1 point
+- When an enemy is hit by a boulder, the enemy is destroyed and the player gains 5 points
+- When a boulder hits dirt, walls, diamonds, or other boulders, it stops moving
+- When dirt is touched by a butterfly, the butterfly is destroyed
+- When dirt is touched by a crab, the crab transforms into a diamond
+- When a crab and butterfly touch each other, both are destroyed
+- When a butterfly touches a crab, the butterfly transforms into a diamond and the player gains 1 point
+- When the avatar reaches the exit door while carrying at least 10 diamonds, the avatar exits the level
+
+**Win condition:**
+The player wins when the avatar successfully exits through the door (which requires collecting at least 10 diamonds first).
+
+**Lose condition:**
+The player loses when the avatar is destroyed by touching an enemy or being crushed by a falling boulder.
+
+**Objective:**
+Navigate through the underground cavern, collect at least 10 diamonds while avoiding or eliminating enemies and falling boulders, then reach the exit door to escape.

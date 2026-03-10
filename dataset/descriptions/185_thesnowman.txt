@@ -1,0 +1,36 @@
+Player role:
+The player controls an elf character that moves around the game area in response to directional input.
+
+Entities:
+- An elf character that the player controls directly
+- A key that can be collected by the player, with only one key available at a time
+- A lock that blocks the player's path and can only be opened if the player has collected a key
+- Four snowman parts: a base piece, a body piece, a chest piece, and a head piece that can be pushed around
+- Correctly placed snowman parts that form a completed snowman when assembled in the right order
+- Incorrectly placed snowman parts that appear when parts are stacked in the wrong order
+- Walls that block movement for all characters and objects
+- Floor areas that provide the basic walking surface (invisible to the player)
+
+Interactions:
+- When the player touches a wall, they are pushed back and cannot pass through
+- When the player touches snowman body, chest, or head pieces, the pieces are pushed forward in the direction the player was moving
+- When any snowman part, key, wall, or lock is moved, all recent moves are undone
+- When the player touches correctly placed snowman parts, they are pushed back and cannot pass through them
+- When the body piece touches the base piece, the body transforms into a correctly placed body piece and the player gains 2 points
+- When the body piece touches the head or chest pieces, it transforms into an incorrectly placed piece and the player loses 1 point
+- When the chest piece touches a correctly placed body piece, the chest transforms into a correctly placed chest piece and the player gains 5 points
+- When the chest piece touches the base or head pieces, it transforms into an incorrectly placed piece and the player loses 1 point
+- When the head piece touches a correctly placed chest piece, the head transforms into a correctly placed head piece and the player gains 13 points
+- When the head piece touches the base or incorrectly placed body piece, it transforms into an incorrectly placed piece and the player loses 1 point
+- When the player touches a key, they collect it and gain 1 point
+- When a lock touches the player and the player has at least one key, the lock is destroyed
+- When the player touches a lock, they are pushed back and cannot pass through unless they have a key
+
+Win condition:
+The player wins when they successfully assemble one complete snowman by placing the head piece on top of a correctly stacked body and chest.
+
+Lose condition:
+The player loses if they create any incorrectly placed snowman piece by stacking parts in the wrong order.
+
+Objective:
+Build a snowman by carefully stacking the parts in the correct order from bottom to top (base, body, chest, head) while avoiding incorrect combinations that will end the game.

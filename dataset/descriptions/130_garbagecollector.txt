@@ -1,0 +1,22 @@
+**Player role:**
+The player controls a character that can turn and move continuously in the direction it's facing at a steady pace. The character can rotate to face different directions and moves forward automatically.
+
+**Entities:**
+- Floor: Hidden background surface that covers the playing area
+- Player walls: Immovable wall barriers that the player can create or that serve as obstacles
+- Avatar: The player character that moves forward continuously and can turn to change direction
+- Garbage: Stationary objects scattered throughout the level that the player needs to collect
+- Walls: Immovable barrier walls that automatically connect to adjacent walls for seamless appearance
+
+**Interactions:**
+- When the avatar touches player walls or regular walls, the avatar is destroyed and the player loses 1 point
+- When the avatar touches garbage, the garbage is destroyed and the player gains 2 points
+
+**Win condition:**
+The player wins when all garbage has been collected (no garbage remains on the screen).
+
+**Lose condition:**
+The player loses if the avatar is destroyed by hitting a wall, or if the time limit of 1000 time units expires.
+
+**Objective:**
+Navigate your character through the level to collect all the garbage while avoiding walls and player-created barriers before time runs out.

@@ -1,0 +1,29 @@
+**Player role:**
+The player controls a character that can move in any direction using arrow keys or WASD. The character cannot pass through walls and will be pushed back when trying to move into them.
+
+**Entities:**
+- Floor tiles that form the walkable ground surface throughout the level
+- Walls that block movement and form barriers in the level
+- The player character that moves around the level
+- Seeds that are placed on the ground and automatically spawn small flowers after a short delay, up to a maximum number of spawns
+- Small flowers (stage 1) that automatically spawn medium flowers after a moderate delay, up to a maximum number of spawns - these are very small in size
+- Medium flowers (stage 2) that automatically spawn large flowers after a longer delay, up to a maximum number of spawns - these are small in size
+- Large flowers (stage 3) that automatically spawn fully grown flowers after an even longer delay, up to a maximum number of spawns - these are medium in size
+- Fully grown flowers (stage 4) that remain stationary once created - these are large in size
+
+**Interactions:**
+- When the player touches a wall, the player is pushed back and cannot move through
+- When the player touches a small flower (stage 1), the flower is destroyed and no points are awarded
+- When the player touches a medium flower (stage 2), the flower is destroyed and the player gains 1 point
+- When the player touches a large flower (stage 3), the flower is destroyed and the player gains 3 points  
+- When the player touches a fully grown flower (stage 4), the flower is destroyed and the player gains 10 points
+- When any flower stage touches another flower of a different stage, one of the flowers is destroyed
+
+**Win condition:**
+The player wins when the time limit is reached (after a long duration).
+
+**Lose condition:**
+The player loses if the player character is destroyed.
+
+**Objective:**
+Collect flowers of different growth stages to earn points, with larger/more mature flowers being worth more points. Survive until the time limit expires while managing the constantly growing flower population.

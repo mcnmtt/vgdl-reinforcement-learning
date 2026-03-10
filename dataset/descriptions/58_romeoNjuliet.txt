@@ -1,0 +1,40 @@
+Player role:
+This is a two-player cooperative game. Player 1 controls Romeo, a prince who can move in all directions and shoot swords. Romeo is affected by poison that slowly drains his health over time when poisoned. Player 2 controls Juliet, a queen who can move in all directions. Both players cannot move through walls or the edges of the screen, and they cannot move through each other.
+
+Entities:
+- Romeo: A prince sprite that can shoot sword projectiles and has health points that decrease when poisoned
+- Juliet: A queen sprite that can move freely around the level
+- Poisoned Romeo: Romeo in a poisoned state that continuously loses health over time
+- Healthy Romeo: Romeo in a healthy, non-poisoned state
+- Incoming enemies (slow): Orange bandit sprites that chase Juliet at a moderate speed
+- Incoming enemies (fast): Yellow bandit sprites that chase Juliet at a faster speed
+- Enemy spawner: An invisible object that randomly creates slow or fast incoming enemies with a delay between spawns
+- Door: A closed door that serves as the exit point for each player
+- Winner: A door sprite that represents a player who has successfully reached the exit
+- Sword: A flickering sword projectile that shrinks over time and disappears after a short duration
+- Potion: A healing item that remains stationary on the ground
+- Wall: Immovable barrier sprites that block movement and cause the enemy spawner to change direction
+- Floor: Hidden ground tiles that provide the base terrain
+
+Interactions:
+- When Romeo is in a poisoned state, he continuously loses health points over time
+- When the enemy spawner hits a wall, it changes direction
+- When any movable object hits a wall or the edge of the screen, it steps back to its previous position
+- When poisoned Romeo touches a door, he steps back and cannot enter
+- When any avatar touches a door, they transform into a winner sprite
+- When Romeo touches an incoming enemy, the enemy is destroyed and player 1 loses 20 points
+- When Juliet touches an incoming enemy, the enemy is destroyed and player 2 loses 20 points
+- When Romeo and Juliet touch each other, Romeo gains 1 health point
+- When Juliet touches a potion, all poisoned Romeo sprites become healthy and player 2 gains 50 points
+- When a potion touches Juliet, the potion is destroyed
+- When a sword hits an incoming enemy, both are destroyed and player 1 gains 2 points
+- When the two avatars touch each other, they step back
+
+Win condition:
+Both players win when both Romeo and Juliet have successfully reached doors and transformed into winners.
+
+Lose condition:
+Both players lose if only one player reaches a door while the other doesn't, if no players reach doors, or if the time limit of 1500 game cycles is reached.
+
+Objective:
+Romeo and Juliet must work together to both reach the exit doors while avoiding enemies and managing Romeo's health through cooperation and potion collection.

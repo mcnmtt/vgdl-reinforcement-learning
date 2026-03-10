@@ -1,0 +1,38 @@
+**Player role:**
+This is a two-player game where each player controls an avatar that can move horizontally left and right. Player A controls a girl character and Player B controls a man character. The avatars can collect colored blocks to claim them and change their appearance when they have claimed blocks.
+
+**Entities:**
+- Background tiles that fill empty spaces and don't interact with anything
+- Five different spawn points that are invisible and create falling colored blocks at different rates and speeds:
+  - Spawn point 0: creates red, green, and yellow blocks rarely with medium speed
+  - Spawn point 1: creates red and green blocks occasionally with medium speed  
+  - Spawn point 2: creates red, green, and yellow blocks occasionally with slow speed
+  - Spawn point 3: creates red and green blocks rarely with medium-slow speed
+  - Spawn point 4: creates red, green, yellow, and blue blocks rarely with medium speed
+- Player A's avatar: a girl character that moves horizontally and changes appearance when she has claimed blocks
+- Player B's avatar: a man character that moves horizontally and changes appearance when he has claimed blocks
+- Unclaimed colored blocks (red, green, yellow, blue) that fall downward slowly from spawn points
+- Player A's claimed blocks in four colors that fall downward slowly and belong to Player A
+- Player B's claimed blocks in four colors that fall downward slowly and belong to Player B  
+- Walls that don't move and block other objects
+
+**Interactions:**
+- When spawn points hit walls, they reverse direction
+- When any moving object hits a wall, it steps back to its previous position
+- When any falling block hits a wall, the block is destroyed
+- When Player A touches an unclaimed colored block, all unclaimed blocks of that color become claimed by Player A, the spawn points start creating Player A's version of that color, and Player A's avatar changes to show she has claimed blocks
+- When Player B touches an unclaimed colored block, all unclaimed blocks of that color become claimed by Player B, the spawn points start creating Player B's version of that color, and Player B's avatar changes to show he has claimed blocks
+- When Player B's claimed blocks touch Player A's claimed avatar, the block is destroyed and Player B gets 2 points
+- When Player B's claimed blocks touch Player B's claimed avatar, the block is destroyed and Player B gets 1 point  
+- When Player A's claimed blocks touch Player B's claimed avatar, Player B gets 1 point and the block is destroyed
+- When Player A's claimed blocks touch Player A's claimed avatar, Player A gets 2 points and the block is destroyed
+- When either claimed avatar touches an unclaimed block, points are subtracted and the unclaimed block is destroyed
+
+**Win condition:**
+The player with the higher score when time runs out wins.
+
+**Lose condition:**
+Having a lower score than the opponent when the time limit is reached.
+
+**Objective:**
+Claim colored blocks by touching them, then position yourself to collect your own claimed blocks for points while avoiding unclaimed blocks that will cost you points. Compete against the other player to have the highest score when time runs out.

@@ -1,0 +1,25 @@
+Player role:
+This is a two-player game. Player 1 controls a robber that can move in all four directions using the arrow keys. Player 2 controls a cop that can move in all four directions and can shoot a sword projectile.
+
+Entities:
+- Floor: Hidden background tiles that cover the playable area
+- Robber: A red thug character controlled by Player 1 that can move freely around the level
+- Cop: A police officer character controlled by Player 2 that can move around and shoot weapons
+- Sword: A light gray sword projectile that appears briefly when shot by the cop, then disappears automatically after a short time
+- Diamond: A red diamond collectible item that appears smaller than normal size, with a maximum of 10 diamonds in the level
+- Wall: Immovable barrier blocks that prevent movement
+
+Interactions:
+- When either the robber or cop touches a wall, they are pushed back and cannot pass through
+- When the robber is hit by the cop's sword, the robber is destroyed and Player 2 (cop) gains 4 points
+- When the robber touches a diamond, the diamond is collected and Player 1 (robber) gains 1 point
+- When the cop touches a diamond, the cop is pushed back and cannot collect it
+
+Win condition:
+Player 1 (robber) wins if all diamonds are collected. Player 2 (cop) wins if the robber is eliminated by being hit with a sword.
+
+Lose condition:
+Player 1 loses if the robber is hit by the cop's sword. Player 2 loses if all diamonds are collected by the robber. Both players lose if the time limit of 2000 time units is reached.
+
+Objective:
+The robber must collect all the diamonds while avoiding the cop's attacks, while the cop must eliminate the robber by hitting them with sword projectiles before all diamonds are collected.

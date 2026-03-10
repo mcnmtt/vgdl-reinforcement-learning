@@ -1,0 +1,27 @@
+**Player role:**
+The player controls an avatar that is affected by gravity and can steer while in the air. The avatar behaves like a classic platformer character that can jump and move around.
+
+**Entities:**
+- Avatar: The player-controlled character that is affected by gravity and can steer while airborne
+- Brown enemy that moves horizontally: An enemy that walks back and forth, bouncing off walls when it hits them
+- Red enemy that moves and jumps: An enemy that walks horizontally like the brown enemy but also jumps periodically
+- Blue moving platform: A blue object that moves upward slowly and continuously travels through the screen
+- Green goal: A stationary green target object that the player needs to reach
+
+**Interactions:**
+- When an enemy touches the avatar from any direction except above, the avatar is destroyed
+- When the avatar lands on top of an enemy (from above), the enemy is destroyed and the player gains 1 point
+- When any gravity-affected object (avatar or enemies) reaches the edge of the screen, it is destroyed
+- When the avatar touches the green goal, the avatar disappears
+- When any gravity-affected object hits a wall, it stops moving and slows down slightly upon contact
+- When any gravity-affected object touches the blue moving platform, it gets carried along with the platform's movement
+- When the blue moving platform reaches the edge of the screen, it wraps around to the opposite side
+
+**Win condition:**
+The player wins when all green goal objects are removed from the level.
+
+**Lose condition:**
+The player loses when the avatar is destroyed (either by touching an enemy from the wrong angle or falling off the screen).
+
+**Objective:**
+Navigate the platformer level by jumping on enemies to destroy them while avoiding being touched by them, and reach the green goal to complete the level. Use the blue moving platforms to help traverse difficult areas.

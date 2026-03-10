@@ -1,0 +1,37 @@
+**Player role:**
+The player controls an avatar that can move in all directions and shoot a sword-like tool. The avatar can dig through dirt by walking into it and can shoot the sword tool to dig dirt from a distance.
+
+**Entities:**
+- Avatar: The player character that can move freely and shoot a digging tool
+- Sword: A gray pickaxe-like tool that the avatar shoots to dig dirt remotely, appears briefly when used
+- Wall: Immovable brown stone barriers that block movement
+- Dirt: Brown dirt blocks that can be dug through by the avatar or the sword tool
+- Exit door: A green door that serves as the level exit
+- Diamond: Yellow gems that the player can collect for points, they shrink when collected
+- Boulder: Gray rocks that constantly fall downward at a slow speed
+- Crab: Red scorpion-like enemies that move randomly around the level
+- Butterfly: Pink bat-like enemies that move randomly around the level
+
+**Interactions:**
+- When the avatar touches dirt, the dirt is destroyed
+- When the sword touches dirt, the dirt is destroyed
+- When the avatar touches a diamond, the player gains 5 points and the diamond is collected
+- When any moving object (avatar or enemies) touches a wall, they are pushed back and cannot pass through
+- When any moving object touches a boulder, they are pushed back and cannot pass through
+- When the avatar touches a boulder from above, the boulder is destroyed
+- When the avatar touches a butterfly, the butterfly is destroyed
+- When the avatar touches a crab, the crab is destroyed
+- When a boulder touches dirt, wall, diamond, or another boulder, it is pushed back and cannot pass through
+- When enemies touch dirt or diamonds, they are pushed back and cannot pass through
+- When a crab touches a butterfly, the butterfly is destroyed
+- When a butterfly touches a crab, the butterfly turns into a diamond and the player gains 1 point
+- When the avatar touches the exit door while carrying 10 or more diamonds, the exit door is destroyed (triggering the win condition)
+
+**Win condition:**
+The player wins when the exit door is destroyed, which happens when the avatar reaches it while carrying at least 10 diamonds.
+
+**Lose condition:**
+The player loses if the avatar is destroyed.
+
+**Objective:**
+Collect at least 10 diamonds by digging through dirt and navigating around falling boulders and enemies, then reach the green exit door to win the level.

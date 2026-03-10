@@ -1,0 +1,23 @@
+Player role:
+The player controls an angel character that can move in any direction (up, down, left, right) around the game area.
+
+Entities:
+- An angel character that the player directly controls and can move freely
+- Orange floor tiles that serve as targets to be stepped on
+- Green floor tiles that appear after the player has stepped on orange tiles
+- Rock walls that block movement and form boundaries
+- A flickering indicator that appears briefly on green tiles when the player steps on them
+
+Interactions:
+- When the angel touches the edge of the screen, rock walls, or green floor tiles, it is pushed back to its previous position and cannot move through them
+- When the angel steps on an orange floor tile, the tile transforms into a green floor tile and the player scores 1 point
+- When the angel steps on a green floor tile, a flickering indicator briefly appears on that tile
+
+Win condition:
+The player wins when there are no orange floor tiles remaining on the screen (all have been turned green by stepping on them).
+
+Lose condition:
+The player loses if the angel character is somehow removed from the game.
+
+Objective:
+Step on every orange floor tile to turn them all green while navigating around the rock walls that block your path.

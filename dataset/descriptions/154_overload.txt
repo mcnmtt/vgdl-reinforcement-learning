@@ -1,0 +1,33 @@
+Player role:
+You control a prince character that can move in all directions and shoot swords. The prince is affected by the game's movement physics and can collect resources.
+
+Entities:
+- A prince (avatar) that moves around and can shoot sword projectiles
+- Grass floor tiles that serve as the basic ground surface
+- Castle floor tiles that provide walkable surfaces
+- Brown marsh areas with tree imagery that act as obstacles
+- A green open door that serves as the exit goal
+- Wandering NPCs that move randomly at moderate speed, changing direction every few moments, with a limited number allowed on screen
+- Sword projectiles that flicker briefly when shot and disappear after a short time, with only one existing at once
+- Blue weapon resources that provide a large amount of ammunition when collected and appear smaller than normal
+- Gold resources that appear smaller than normal and are limited to 11 total in the level
+- Dirt walls that block movement and have connected tile appearances
+
+Interactions:
+- When the prince touches a weapon resource, he collects it and gains 2 points
+- When a sword hits a marsh area, the marsh is destroyed and the player gains 1 point
+- When the prince touches gold, he collects it and gains 1 point
+- When a random NPC touches gold, the NPC collects it
+- When any moving object hits a wall, it is pushed back and cannot pass through
+- When the prince enters a marsh area, he is destroyed only if he has more than 11 gold
+- When a random NPC enters a marsh area, it is destroyed only if it has more than 11 gold
+- When the prince reaches the goal door, the door is removed only if the prince has more than 10 gold
+
+Win condition:
+The player wins when all goal doors have been removed from the level.
+
+Lose condition:
+The player loses when the prince is destroyed.
+
+Objective:
+Collect enough gold to safely pass through marsh areas and reach the exit door. Use your sword to clear marsh obstacles while avoiding being destroyed by entering them without sufficient gold.

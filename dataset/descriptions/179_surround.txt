@@ -1,0 +1,27 @@
+**Player role:**
+The player controls an avatar that can move in four directions and shoot swords. The avatar moves freely across the game area without being affected by gravity or momentum.
+
+**Entities:**
+- Snow: White stationary ground tiles that remain in place throughout the game
+- Mud: Light green stationary ground tiles that block movement  
+- Grass: Green stationary ground tiles that block movement
+- Sword: An invisible flickering projectile that can be shot by the player's avatar
+- Avatar: The player-controlled character that can move and shoot swords
+- Dog: An enemy that moves randomly around the game area, changing direction every 5 time units, with a constraint value of 15
+- Wall: Immovable barrier tiles that block movement and have automatic tiling appearance
+
+**Interactions:**
+- When the avatar touches a dog, the dog is destroyed
+- When the avatar steps on mud, the avatar is pushed back to its previous position  
+- When any moving object (avatar or dog) touches a wall or grass, it is pushed back to its previous position
+- When a dog steps on snow, the snow tile transforms into a mud tile
+- When the avatar steps on snow, the snow tile transforms into a grass tile and the player gains 1 point
+
+**Win condition:**
+The player wins when there is exactly 1 sword present in the game.
+
+**Lose condition:**
+The player loses if the avatar is destroyed or if 1000 time units pass without winning.
+
+**Objective:**
+Navigate the snowy terrain while avoiding or destroying dogs, transforming snow into grass by walking on it, and ultimately create the winning condition by having exactly one sword projectile active in the game area.

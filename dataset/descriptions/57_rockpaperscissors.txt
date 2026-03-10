@@ -1,0 +1,53 @@
+Player role:
+This is a two-player game where each player controls a bandit character that can only shoot projectiles. Player A controls a bandit facing right, and Player B controls a bandit facing left. The players can shoot rock, paper, scissors, lizard, or spock projectiles (depending on the game variant) toward their opponent.
+
+Entities:
+- Floor: An invisible grey background surface that covers the playable area
+- Bandit avatars: Two bandit characters, one facing right (Player A) and one facing left (Player B), that can shoot different types of projectiles
+- Walls: Grey stone barriers that block projectiles, with connected wall segments forming larger structures
+- Rock projectiles: Planet-shaped missiles that move horizontally at medium or slow speed and shrink as they travel
+- Paper projectiles: Scroll-shaped missiles that move horizontally at medium or slow speed and shrink as they travel  
+- Scissors projectiles: Axe-shaped missiles that move horizontally at medium or slow speed and shrink as they travel
+- Lizard projectiles: Dragon-shaped missiles that move horizontally at medium or slow speed and shrink as they travel
+- Spock projectiles: Druid-shaped missiles that move horizontally at medium or slow speed and shrink as they travel
+- Choice indicators: Flickering visual displays that show what each player has selected, with Player A's choices visible to Player A and Player B's choices visible to Player B
+- Buzzers: Small visual indicators that appear at specific locations and transform to show the current choice when touched by a selection
+- Timers: Invisible objects that trigger events at regular intervals - some every 50 time units, others every 20 time units
+- Choose triggers: Invisible objects that activate the shooting of projectiles based on current selections
+
+Interactions:
+- Any projectile hitting a wall is destroyed
+- When a buzzer touches a rock choice, it transforms into a rock buzzer and the choice disappears
+- When a buzzer touches a paper choice, it transforms into a paper buzzer and the choice disappears
+- When a buzzer touches a scissors choice, it transforms into a scissors buzzer and the choice disappears
+- When a buzzer touches a lizard choice, it transforms into a lizard buzzer and the choice disappears
+- When a buzzer touches a spock choice, it transforms into a spock buzzer and the choice disappears
+- When a medium-speed timer trigger touches a rock buzzer, it creates a medium-speed rock projectile
+- When a medium-speed timer trigger touches a paper buzzer, it creates a medium-speed paper projectile
+- When a medium-speed timer trigger touches a scissors buzzer, it creates a medium-speed scissors projectile
+- When a medium-speed timer trigger touches a lizard buzzer, it creates a medium-speed lizard projectile
+- When a medium-speed timer trigger touches a spock buzzer, it creates a medium-speed spock projectile
+- When a slow-speed timer trigger touches any buzzer, it creates the corresponding slow-speed projectile
+- Any timer trigger touching a buzzer destroys the trigger
+- When identical projectiles from different players collide, both are destroyed
+- Paper projectiles destroy rock projectiles (paper beats rock)
+- Paper projectiles destroy spock projectiles (paper beats spock)
+- Scissors projectiles destroy paper projectiles (scissors beats paper)
+- Scissors projectiles destroy lizard projectiles (scissors beats lizard)
+- Rock projectiles destroy scissors projectiles (rock beats scissors)
+- Rock projectiles destroy lizard projectiles (rock beats lizard)
+- Spock projectiles destroy rock projectiles (spock beats rock)
+- Spock projectiles destroy scissors projectiles (spock beats scissors)
+- Lizard projectiles destroy paper projectiles (lizard beats paper)
+- Lizard projectiles destroy spock projectiles (lizard beats spock)
+- When Player B's projectile hits Player A's avatar, Player A is destroyed and Player B gains a point
+- When Player A's projectile hits Player B's avatar, Player B is destroyed and Player A gains a point
+
+Win condition:
+The player with the higher score when time runs out wins the game.
+
+Lose condition:
+The player with the lower score when the 500 time unit limit expires loses the game.
+
+Objective:
+Engage in rock-paper-scissors-lizard-spock combat by shooting projectiles at your opponent while avoiding their attacks, trying to score more hits than them before time

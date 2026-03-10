@@ -1,0 +1,25 @@
+**Player role:**
+The player controls a paddle that moves vertically along one side of the screen. The paddle moves at a moderate speed and can be controlled with alternate key bindings.
+
+**Entities:**
+- A green goal area on the player's side that represents the player's scoring zone
+- A green goal area on the opponent's side that represents the opponent's scoring zone  
+- The player's paddle that moves vertically and can be controlled by the player
+- The opponent's blue paddle that moves vertically on the opposite side
+- An orange ball that moves horizontally at high speed without friction, bouncing around the playing field
+- Walls that form the boundaries of the playing area
+
+**Interactions:**
+- When the ball touches either goal area, the ball disappears
+- When the ball hits either paddle, it bounces off and changes direction
+- When the ball hits a wall, it bounces off the wall
+- When either paddle tries to move into a wall, it is pushed back and cannot pass through
+
+**Win condition:**
+The player wins when the ball has entered the opponent's goal area 6 times.
+
+**Lose condition:**
+The player loses when the ball has entered their own goal area 6 times.
+
+**Objective:**
+Use your paddle to deflect the ball toward the opponent's goal while preventing it from reaching your own goal. Score 6 points before your opponent does to win.

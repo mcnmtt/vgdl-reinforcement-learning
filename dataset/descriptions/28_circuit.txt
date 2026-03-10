@@ -1,0 +1,34 @@
+**Player role:**
+This is a two-player game where each player controls a spaceship that can shoot a projectile and flip pipes. Both players can move around the level but are blocked by walls and the edge of the screen. Each player can fire their projectile and use a special flip ability to rotate pipe segments.
+
+**Entities:**
+- Two spaceships (one for each player) that can move around and shoot projectiles
+- Two projectiles (one per player) that move in straight lines in four directions (left, right, up, down) and start stationary
+- Six types of pipe segments: horizontal pipes (red), vertical pipes (blue), and four corner pipes that connect different directions - left-up (pink), left-down (green), right-up (yellow), and right-down (orange)
+- Two exit points where the projectiles need to reach
+- Empty space areas where entities can move
+- Hidden starting points that store the initial positions for resetting projectiles
+- Invisible reset portals that teleport projectiles back to their starting positions
+- Temporary invisible markers that indicate whether a projectile's interaction with a pipe is correct or incorrect
+- A flickering effect that appears when the flip ability is activated
+
+**Interactions:**
+- When a spaceship hits a wall or the edge of the screen, it is pushed back and cannot pass through
+- When a projectile hits the edge of the screen, it is destroyed and the controlling player loses 10 points
+- When a projectile reaches its corresponding exit, the projectile is destroyed
+- When the flip ability is activated, all pipe segments rotate to the next type in sequence
+- When a projectile encounters a pipe while the flip ability is active, it gets reset to its starting position and begins moving rightward again
+- When a projectile's starting point encounters the flip ability, that projectile begins moving at normal speed
+- When a projectile moving in the correct direction encounters a straight pipe, it continues moving and maintains its speed
+- When a projectile moving in the wrong direction encounters any pipe, it stops moving
+- When a projectile encounters a corner pipe from the correct direction, it changes direction according to the pipe's shape and continues moving
+- Temporary markers clean themselves up by destroying duplicates or conflicting markers
+
+**Win condition:**
+Player 1 wins if their projectile reaches the exit or if Player 2's projectile is destroyed. Player 2 wins if their projectile reaches the exit or if Player 1's projectile is destroyed. Both players win if both projectiles reach their respective exits.
+
+**Lose condition:**
+A player loses if their projectile is destroyed by hitting the edge of the screen or if the opponent's projectile successfully reaches its exit first.
+
+**Objective:**
+Guide your projectile through the pipe maze to reach your exit while using the flip ability strategically to create the correct path and potentially disrupt your opponent's progress.

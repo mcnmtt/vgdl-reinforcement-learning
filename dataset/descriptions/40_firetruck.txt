@@ -1,0 +1,30 @@
+Player role:
+This is a two-player cooperative game. One player controls a character that can only move left and right, while the other player controls a character that can only move up and down. Both players work together to control a fire truck indirectly through directional control panels scattered around the level.
+
+Entities:
+- Two firefighter characters: one that moves horizontally and one that moves vertically, each controlled by a different player
+- A fire truck that starts motionless but can be made to move in four directions (left, right, up, down) depending on which direction it's facing
+- Four types of directional control panels (left, right, up, down) that change the fire truck's direction and give it a small speed boost when touched by either player
+- Citizens that wander around randomly at slow speed
+- Spawn points that occasionally create new citizens in the level
+- Traps that destroy citizens who step on them and teleport the fire truck back to its starting position if it drives over them
+- Fire goals that represent locations that need to be reached
+- Walls that block movement for all moving objects
+- Ground areas that can be walked on
+
+Interactions:
+- When either player touches a directional control panel, the fire truck turns to face that direction and gains a small amount of speed
+- When the fire truck drives over a trap, it gets teleported back to its starting position and stops moving
+- When the fire truck reaches a fire goal, the goal is extinguished and disappears
+- When the fire truck collects a citizen, the citizen is rescued and the players earn 5 points
+- When a citizen steps on a trap, the citizen is eliminated
+- All moving objects bounce back when they hit walls
+
+Win condition:
+The players win when all fire goals have been extinguished by driving the fire truck to them.
+
+Lose condition:
+There is no explicit lose condition - the game continues until all goals are reached.
+
+Objective:
+Work together as a team to navigate the fire truck through the level by using the directional control panels, rescue citizens for bonus points, avoid traps that reset your position, and reach all the fire locations to extinguish them.

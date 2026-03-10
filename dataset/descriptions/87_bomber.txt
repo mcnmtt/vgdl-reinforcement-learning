@@ -1,0 +1,46 @@
+**Player role:**
+The player controls an avatar that can move in four directions and shoot bombs. The avatar has 10 health points and will be destroyed if health reaches zero.
+
+**Entities:**
+- Ground: Hidden floor tiles that provide a base surface
+- Water: Blue water tiles that are deadly to touch
+- Mud: Brown muddy ground created when water is transformed
+- Box: Immovable brown blocks that can be destroyed
+- Wall: Gray stone walls that block movement and projectiles
+- Goal: A green open door that ends the level when reached
+- Laser cannon (up-facing): Spawns upward-moving yellow lasers
+- Laser cannon (right-facing): Spawns rightward-moving yellow lasers  
+- Laser cannon (down-facing): Spawns downward-moving yellow lasers
+- Laser cannon (left-facing): Spawns leftward-moving yellow lasers
+- Yellow laser beams: Move slowly in their designated direction and destroy objects they hit
+- Bomb (item): A bomb that the player can pick up and shoot - only one exists in the level
+- Bomb (projectile): The moving bomb after being shot by the player
+- Spark: A small spawning point created when bombs explode against solid objects
+- Fire start: Orange spreading fire that expands to adjacent areas with certainty
+- Fire end: Stationary orange fire created by the spreading fire
+
+**Interactions:**
+- When the avatar touches walls or boxes, it is pushed back and cannot pass through
+- When the avatar touches water, the avatar is destroyed
+- When the avatar reaches the goal, the goal is removed (winning the level)
+- When the avatar touches a bomb item, the bomb transforms into a moving projectile
+- When a bomb item touches the avatar, boxes, or water, the bomb item is destroyed
+- When a moving bomb touches the avatar or lasers, the bomb changes direction toward them
+- When a moving bomb hits walls, boxes, or laser cannons, it transforms into a spark
+- When lasers hit boxes, the edge of the screen, the goal, or walls, the laser is destroyed
+- When boxes touch fire, the box is destroyed and the player gains 1 point
+- When water touches fire, the water transforms into mud
+- When bomb items touch fire, they transform into sparks
+- When fire touches boxes, the fire transforms into sparks
+- When fire touches walls, water, or bomb items, the fire is destroyed
+- When the avatar touches fire, the avatar loses health points
+- When stationary fire touches ground or mud, the fire is destroyed
+
+**Win condition:**
+The player wins when the goal door is removed (by touching it).
+
+**Lose condition:**
+The player loses if the avatar is destroyed (health reaches zero) or if 1000 time units pass without completing the level.
+
+**Objective:**
+Navigate through a dangerous environment filled with water, laser cannons, and spreading fire to reach the green door. Use bombs strategically to clear destructible boxes while avoiding deadly hazards.

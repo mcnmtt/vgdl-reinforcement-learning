@@ -1,0 +1,24 @@
+**Player role:**
+The player controls a spaceship that can move in all directions and shoot explosive projectiles.
+
+**Entities:**
+- Floor: Black background tiles that cover the playing area
+- City: Green buildings scattered across the floor that the player must protect
+- Explosion: A shrinking circular effect that appears when the player shoots, flickering briefly before disappearing
+- Incoming slow enemy: An orange fireball that moves slowly toward the nearest city, seeking it out automatically
+- Incoming fast enemy: A yellow fireball that moves faster toward the nearest city, seeking it out automatically
+- Wall: Gray blocks that act as barriers and cannot be moved through
+
+**Interactions:**
+- When any movable object (the spaceship or enemies) hits a wall, it is pushed back and cannot pass through
+- When an incoming enemy reaches a city, both the enemy and the city are destroyed, and the player loses 1 point
+- When an explosion hits an incoming enemy, the enemy is destroyed and the player gains 2 points
+
+**Win condition:**
+The player wins when all incoming enemies have been destroyed.
+
+**Lose condition:**
+The player loses when all cities have been destroyed by incoming enemies.
+
+**Objective:**
+Protect the cities by shooting down the incoming enemies before they can reach and destroy the buildings. Use your spaceship to fire explosive projectiles at the orange and yellow fireballs while maneuvering around the walls.

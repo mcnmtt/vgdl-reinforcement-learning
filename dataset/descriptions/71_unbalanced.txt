@@ -1,0 +1,39 @@
+Player role:
+This is a two-player game. Player 1 controls a queen character and Player 2 controls a rogue character. Both players can move in four directions using keyboard controls. The players cannot move through each other or walls - they bounce back when they try to occupy the same space.
+
+Entities:
+- Player 1 appears as a queen character that moves freely around the game area
+- Player 2 appears as a rogue character that moves freely around the game area
+- Walls are immovable barriers that block movement
+- Neutral blocks are gray/balanced blocks that can be pushed around by players
+- Player 1's blocks are blue blocks that belong to Player 1 and award points to Player 1 over time
+- Player 2's blocks are green blocks that belong to Player 2 and award points to Player 2 over time
+- Fixed obstacles are invisible immovable blocks that cannot be pushed
+- Zone Area 1 is an invisible blue zone associated with Player 1
+- Center Zone is an invisible white neutral area
+- Zone Area 2 is an invisible green zone associated with Player 2
+- Different ground tiles mark the different zones but don't affect gameplay
+
+Interactions:
+- When a player tries to move into a wall, they are pushed back and cannot pass through
+- When players try to move into each other, they are pushed back and cannot occupy the same space
+- When a player pushes against a block, the block moves in the direction of the push
+- When a player pushes multiple blocks in a line, all blocks move together
+- When blocks are pushed against walls or fixed obstacles, the push is cancelled and blocks return to their original positions
+- When a neutral block enters Player 1's zone, it becomes Player 2's block and Player 2 gains 10 points
+- When a neutral block enters Player 2's zone, it becomes Player 1's block and Player 1 gains 10 points
+- When Player 1's block enters the center zone, it becomes neutral and Player 2 gains 20 points
+- When Player 1's block enters Player 1's zone, it becomes Player 2's block and Player 2 gains 30 points
+- When Player 2's block enters the center zone, it becomes neutral and Player 1 gains 20 points
+- When Player 2's block enters Player 2's zone, it becomes Player 1's block and Player 1 gains 30 points
+- Player 1's blocks continuously award 1 point to Player 1 and subtract 1 point from Player 2 every 2 time units
+- Player 2's blocks continuously award 1 point to Player 2 and subtract 1 point from Player 1 every 2 time units
+
+Win condition:
+Player 1 wins if all blocks on the field belong to Player 1 (no neutral or Player 2 blocks remain). Player 2 wins if all blocks on the field belong to Player 2 (no neutral or Player 1 blocks remain).
+
+Lose condition:
+A player loses when their opponent achieves the win condition, or when the time limit of 1000 time units is reached (whoever has the higher score wins at timeout).
+
+Objective:
+Push blocks strategically to convert them to your ownership while preventing your opponent from doing the same. Control territory by getting blocks into favorable zones while maximizing your score through block ownership over time.

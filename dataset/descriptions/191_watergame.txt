@@ -1,0 +1,27 @@
+**Player role:**
+The player controls a mage character that can move in all four directions using keyboard input. The mage moves one step at a time when direction keys are pressed.
+
+**Entities:**
+- Floor tiles that form the background of the level and can be walked on
+- A mage (the player character) that moves around the level
+- Walls that block movement and appear as solid barriers
+- Water areas that are dangerous to touch
+- Boxes (appearing as potions) that can be pushed around the level
+- Doors that the player needs to interact with
+
+**Interactions:**
+- When the mage tries to move into a wall, it is pushed back to its previous position
+- When the mage moves into a box, the box is pushed forward in the same direction
+- When a box is pushed into a wall or into another box, all affected objects return to their previous positions
+- When a box touches water, both the box and water disappear
+- When the mage touches water, the mage is destroyed
+- When the mage touches a door, the door disappears
+
+**Win condition:**
+The player wins when all doors have been removed from the level.
+
+**Lose condition:**
+The player loses if the mage is destroyed (by touching water).
+
+**Objective:**
+Guide the mage through the level to touch and remove all doors while avoiding water and using boxes strategically to help navigate safely.

@@ -1,0 +1,36 @@
+**Player role:**
+The player controls a character that can move in all four directions using keyboard input. The character moves one step at a time and cannot move through walls or off the edge of the screen - attempting to do so causes the character to stay in place.
+
+**Entities:**
+- **Character**: The player's avatar that can move around the game area
+- **Goal**: A green exit point that the player must reach to win
+- **Water**: Blue water areas that are dangerous - stepping on them reduces the player's safety and can kill them if they don't have enough safety points
+- **Logs**: Brown objects that float leftward slowly and provide safety when the player steps on them; they also carry the player along as they move
+- **Fast orange trucks**: Orange vehicles that move quickly either left or right depending on their type
+- **Slow red trucks**: Red vehicles that move slowly either left or right depending on their type  
+- **Walls**: Black tree-like barriers that block movement
+- **Dense forest spawners**: Areas that frequently create new logs (40% chance every 10 time units)
+- **Sparse forest spawners**: Areas that occasionally create new logs (10% chance every 5 time units)
+- **Grass**: Hidden ground terrain
+- **Highway**: Hidden road terrain
+- **Safety**: An invisible resource that tracks how protected the player is
+
+**Interactions:**
+- When the character reaches the goal, the character disappears and the player gains one point
+- When the character steps on a log, the character gains 2 safety points
+- When the character steps on a log, the character is pulled along with the log as it moves
+- When the character tries to move into a wall or off the edge of the screen, the character steps back to its previous position
+- When the character enters water with less than 0 safety points, the character is destroyed
+- When the character enters water, the character loses 1 safety point
+- When the character touches any truck, the character is destroyed
+- When logs reach the edge of the screen, they disappear
+- When trucks reach the edge of the screen, they wrap around to the opposite side
+
+**Win condition:**
+The player wins when they reach the goal (when there are no more goal sprites remaining on the screen).
+
+**Lose condition:**
+The player loses if their character is destroyed by trucks or by entering water without sufficient safety points.
+
+**Objective:**
+Navigate safely across dangerous roads filled with moving trucks and through water areas by riding on logs to maintain your safety, ultimately reaching the green exit goal.

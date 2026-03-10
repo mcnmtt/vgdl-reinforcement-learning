@@ -1,0 +1,32 @@
+**Player role:**
+The player controls a character that moves in response to key presses. The character cannot move through walls or holes, and is pushed back when trying to enter these spaces.
+
+**Entities:**
+- A player character that can move around and push objects
+- Walls that block movement and cannot be moved or destroyed
+- Square holes that can destroy certain objects that fall into them
+- Round holes that can destroy certain objects that fall into them, awarding points when this happens
+- Crates that can be pushed by the player and other crates, but are blocked by walls, boulders, goals, and round holes
+- Boulders that can be pushed by the player but are blocked by other boulders, crates, walls, and goals
+- A goal door that the player must reach to complete the level
+
+**Interactions:**
+- When the player touches a wall, square hole, or round hole, the player is pushed back and cannot enter that space
+- When the player touches a boulder, the player pushes the boulder forward in the direction of movement
+- When a boulder hits another boulder, crate, wall, or goal, both the boulder and the obstacle return to their previous positions
+- When a boulder falls into a round hole, both the boulder and hole disappear and the player gains 1 point
+- When a boulder falls into a square hole, the boulder disappears but the hole remains
+- When the player touches a crate, the player pushes the crate forward
+- When a crate hits another crate, both crates push against each other repeatedly
+- When a crate hits a wall, boulder, goal, or round hole, the crate returns to its previous position
+- When a crate falls into a square hole, both the crate and hole disappear and the player gains 1 point
+- When the player reaches the goal door, the door disappears and the player gains 5 points
+
+**Win condition:**
+The player wins when all goal doors have been removed from the level.
+
+**Lose condition:**
+The player loses if the player character is destroyed or removed from the game.
+
+**Objective:**
+Push crates and boulders into the correct holes to clear a path to the goal door, then reach the door to complete the level.

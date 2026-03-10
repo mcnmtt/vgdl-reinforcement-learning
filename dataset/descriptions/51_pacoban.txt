@@ -1,0 +1,34 @@
+Player role:
+This is a two-player Pac-Man style game. Player A controls a yellow character that can move in four directions and wraps around the screen edges when reaching them. Player B controls an identical yellow character. Both players move at normal speed and cannot rotate in place. When a player collects a power orb, they temporarily transform into an orange powered-up form that can destroy ghosts.
+
+Entities:
+- Floor tiles that form the walkable surface of the maze
+- Wall blocks that form barriers and automatically connect to adjacent walls
+- Small yellow pellets worth 1 point each
+- Pink cherries (fruit) worth 5 points each  
+- Green power orbs worth 10 points that give temporary ghost-destroying abilities
+- Four different colored ghosts (red, blue, pink, orange) that normally chase the players but flee when players are powered up
+- Invisible spawn points where ghosts respawn after being destroyed
+
+Interactions:
+- When a player hits a wall, they bounce back and stop moving forward
+- When walls touch each other, any conflicting movements are undone
+- When a wall reaches the edge of the screen, it is destroyed
+- When the two players collide, they both step back from each other
+- When a ghost hits a wall, it steps back and changes direction
+- When a player reaches the edge of the screen, they wrap around to the opposite side
+- When a ghost reaches the edge of the screen while another ghost is there, the first ghost steps back
+- When an unpowered player touches a ghost, the player is destroyed and loses 1 point
+- When a player collects a power orb, all ghosts transform from their normal chasing state to a fleeing state for a limited time, the power orb is destroyed, the player gains 10 points, and the player becomes powered up temporarily
+- When a player collects a pellet, the pellet is destroyed and the player gains 1 point
+- When a player collects fruit, the fruit is destroyed and the player gains 5 points  
+- When a powered-up player touches a ghost, the ghost is destroyed and the player gains 40 points
+
+Win condition:
+Player A wins if all of Player B's characters are destroyed, or if more food items are collected when time runs out or all food is eaten. Player B wins if all of Player A's characters are destroyed.
+
+Lose condition:
+A player loses if their character is destroyed by touching a ghost while unpowered, or if they collect fewer food items than their opponent when the game ends.
+
+Objective:
+Compete against the other player to collect pellets, fruit, and power orbs while avoiding ghosts, and try to eliminate your opponent by having them run into ghosts.

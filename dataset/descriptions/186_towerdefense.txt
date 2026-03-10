@@ -1,0 +1,45 @@
+Player role:
+The player controls a shooter character that can move around the game area and fire projectiles. The avatar cannot pass through walls or the tower it's defending.
+
+Entities:
+- Ground tiles that form the basic terrain
+- Path tiles that mark routes through the level
+- Walls that block movement for all moving objects
+- A blue tower that the player must defend, which can take 10 points of damage before being destroyed
+- Turret placement spots that appear as dirt walls, some oriented horizontally and others vertically
+- Pink turrets that automatically spawn projectiles periodically with an 80% chance, shooting orb-like missiles in different directions depending on their orientation
+- Red normal enemies that move in straight lines with moderate speed, can take 5 hits to destroy, and appear smaller than other sprites
+- Brown boss enemies that move more slowly but can take 10 hits to destroy
+- Invisible enemy spawners that create normal enemies every 50 time units and boss enemies every 500 time units, sending them in specific directions
+- Invisible turning points that redirect enemies when they pass over them, changing their movement direction
+- Small orb missiles fired by turrets that travel in straight lines and disappear after a short time
+- Flickering projectiles fired by the player's avatar
+
+Interactions:
+- When any moving object hits a wall or turret, it bounces back
+- When the avatar touches the tower, it bounces back
+- When turret missiles hit walls, the missiles are destroyed
+- When normal enemies pass over turning points, they change direction to match the turning point's orientation and bounce back slightly with precise positioning
+- When boss enemies pass over turning points, they change direction to match the turning point's orientation and bounce back slightly with precise positioning
+- When the avatar touches a horizontal turret spot, it transforms into a horizontal turret and the player gains 1 point
+- When the avatar touches a vertical turret spot, it transforms into a vertical turret and the player gains 1 point
+- When a horizontal turret is hit by the player's projectile, it reverts to a vertical turret spot, the projectile is destroyed, and the player loses 1 point
+- When a vertical turret is hit by the player's projectile, it reverts to a horizontal turret spot, the projectile is destroyed, and the player loses 1 point
+- When horizontal turrets are hit by vertical turret missiles, the turret reverts to a turret spot, the missile is destroyed, and the player loses 2 points
+- When vertical turrets are hit by horizontal turret missiles, the turret reverts to a turret spot, the missile is destroyed, and the player loses 2 points
+- When any enemy reaches the tower, the tower loses 1 health point and the player loses 10 points
+- When normal enemies are destroyed at the tower, the player gains 9 points
+- When normal enemies are hit by any missile, they lose 1 health point, and if destroyed this way, the player gains 5 points
+- When boss enemies are hit by any missile, they lose 1 health point, and if destroyed this way, the player gains 50 points
+- When missiles hit any enemy, the missile is destroyed
+- When turrets collide with each other, both are destroyed
+- Enemy spawners automatically create boss versions of enemies after 50 time units have passed
+
+Win condition:
+The player wins if they survive for 1500 time units without the tower being destroyed.
+
+Lose condition:
+The player loses if the tower's health drops to zero from enemy attacks.
+
+Objective:
+Defend the blue tower by strategically placing turrets and using your own projectiles to destroy waves of red and brown enemies before they can reach and damage the tower. Survive for the full time limit while managing your score through effective turret placement and enemy elimination.

@@ -1,0 +1,42 @@
+Player role:
+The player controls a superman character that can move in all directions using arrow keys or similar controls. The superman moves on streets and can fly through the sky areas of the game world.
+
+Entities:
+- Superman: The player's character that can move freely around the game world
+- Sky: Background areas that characters can move through
+- Buildings: Solid structures that block movement and provide platforms for civilians
+- Streets: Ground-level areas where the superman moves
+- Empty spaces: Invisible areas that represent destroyed parts of buildings
+- Jail: A structure where captured villains are deposited
+- Portal doors: Special doors that continuously spawn bandits - there are left-facing and right-facing versions that produce bandits moving in their respective directions
+- Bandits: Enemy characters that move horizontally at medium speed, bounce off walls, and occasionally fire missiles upward
+- Missiles: Fast-moving projectiles fired by bandits that travel upward
+- Standing civilians: People who stand on buildings and fall down when buildings beneath them are destroyed
+- Falling civilians: Civilians who are dropping down after losing their footing
+- Hurt civilians: Civilians who have been injured by hitting walls while falling
+- Walls: Solid barriers that block movement
+- Villain counter: An invisible counter that tracks how many bandits the player has caught
+- Villain gang counter: An invisible counter used when depositing a full group of villains at the jail
+
+Interactions:
+- When superman touches walls, the edge of the screen, or portals, he cannot pass through and is pushed back
+- When bandits hit walls, they reverse direction and are pushed back
+- When missiles reach the edge of the screen, they disappear
+- When missiles hit buildings, the building transforms into an empty space and the missile is destroyed
+- When standing civilians touch buildings, they cannot pass through
+- When standing civilians touch empty spaces, they transform into falling civilians
+- When falling civilians touch buildings, they transform back into standing civilians
+- When falling civilians hit walls, they transform into hurt civilians
+- When falling civilians touch superman, they disappear and the player gains 1 point
+- When superman touches bandits, the villain counter increases by 1, the bandit disappears, and the player gains 1 point
+- When superman touches the jail while having 8 or more villains, a villain gang marker appears at the jail and 8 villains are removed from the counter
+- When the villain gang marker touches the jail, it disappears and the player gains 1000 points
+
+Win condition:
+The player wins when all portals and bandits have been eliminated from the game.
+
+Lose condition:
+The player loses if any civilian becomes hurt, or if superman is destroyed.
+
+Objective:
+Guide superman to capture bandits and deposit them at the jail while protecting civilians from falling and getting hurt when buildings are destroyed by bandit missiles.

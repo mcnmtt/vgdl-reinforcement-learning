@@ -1,0 +1,34 @@
+**Player role:**
+The player controls a sheriff character that can move in four directions and shoot bullets. The sheriff cannot move through walls or certain barriers and will be stopped if trying to move into blocked areas.
+
+**Entities:**
+- Floor: Background surface that forms the walkable area of the game
+- White base walls: Immovable barrier blocks that stop movement and destroy projectiles
+- Sheriff (player character): The player-controlled character that can shoot bullets
+- Yellow surround barriers: Invisible boundary markers that prevent the sheriff from moving into certain areas
+- Player bullet: A small blue orb projectile that the sheriff fires, travels in straight lines, and only one can exist at a time
+- Turn markers: Four types of invisible directional markers (up, down, left, right) that change bandit movement direction
+- Bandits: Four types of enemies that move in different directions (up, down, left, right) at normal speed, occasionally shooting missiles perpendicular to their movement direction
+- Enemy missiles: Small red orb projectiles fired by bandits that travel slower than player bullets
+- Walls: Immovable stone barriers that block movement and destroy bullets
+
+**Interactions:**
+- When the sheriff touches surround barriers, base walls, or regular walls, the sheriff is pushed back and cannot pass through
+- When base walls are hit by either enemy missiles or player bullets, both the wall and projectile are destroyed
+- When enemy missiles or player bullets reach the edge of the screen, the projectile is destroyed
+- When a bandit moving left touches a turn-down marker, it transforms into a bandit moving down
+- When a bandit moving right touches a turn-up marker, it transforms into a bandit moving up  
+- When a bandit moving down touches a turn-right marker, it transforms into a bandit moving right
+- When a bandit moving up touches a turn-left marker, it transforms into a bandit moving left
+- When a bandit is hit by a player bullet, both are destroyed and the player gains 1 point
+- When the sheriff is hit by an enemy missile, both are destroyed and the player loses 1 point
+- When a player bullet hits a wall, the bullet is destroyed
+
+**Win condition:**
+The player wins by destroying all bandits in the level, or by surviving for 1000 time units without being killed.
+
+**Lose condition:**
+The player loses if the sheriff is destroyed by enemy fire.
+
+**Objective:**
+Shoot all the bandits while avoiding their missiles and navigating around walls and barriers to clear each level.

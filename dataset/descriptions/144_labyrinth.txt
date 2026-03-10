@@ -1,0 +1,23 @@
+Player role:
+The player controls a character that can move in all directions using arrow keys or similar controls. The character moves freely across the game area without any special physics like gravity or momentum.
+
+Entities:
+- A character (appears as a girl) that the player directly controls and can move in any direction
+- A green exit door that serves as the goal destination for the level
+- Walls that block movement and cannot be passed through
+- Spike traps that are dangerous obstacles placed on the ground
+- A grass floor that covers the entire play area as the background surface
+
+Interactions:
+- When the character tries to move into a wall, it is pushed back and cannot pass through
+- When the character reaches the exit door, the character disappears and the player gains one point
+- When the character touches a spike trap, the character is destroyed and the player loses one point
+
+Win condition:
+The player wins when all exit doors have been reached and used (typically there is one exit per level).
+
+Lose condition:
+The player loses if the character is destroyed by touching a trap, or if the time limit of 1000 game steps is reached.
+
+Objective:
+Navigate the character through the level while avoiding deadly spike traps and reach the green exit door to complete the level successfully.

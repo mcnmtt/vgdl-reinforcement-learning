@@ -1,0 +1,41 @@
+**Player role:**
+This is a two-player game where each player controls an avatar that can move around and shoot food pellets. Player A controls a knight character, while Player B controls a guard character. The avatars can shoot two types of food: green food (type 0) and orange food (type 1).
+
+**Entities:**
+- Grass tiles that form the background and are invisible to players
+- Walls that block movement for all characters
+- Baby dragons that move randomly around the screen at slow speed, have 70 health points, and consume 2 food units when eating
+- Adult fertile dragons that move randomly at slightly slower speed, have 50 health points, and consume 8 food units when eating
+- Adult infertile dragons that move randomly at the same speed as fertile adults, have 100 health points, and consume 8 food units when eating
+- Special hybrid adult dragons that appear from cross-breeding, have 100 health points, and move at the same speed as other adults
+- Green food pellets (type 0) that flicker and appear smaller than normal size
+- Orange food pellets (type 1) that flicker and appear smaller than normal size
+- Food transformation stations that can change one type of food pellet into another type
+
+**Interactions:**
+- All dragons gradually lose 1 health point every 26 time units automatically
+- All moving characters bounce back when they hit walls
+- Baby dragons gain 10 health when eating green food
+- Adult fertile dragons gain 8 health when eating green food
+- Adult infertile dragons gain 12 health when eating green food and award points to their respective player
+- Adult fertile dragons are destroyed when eating orange food and cause point penalties for their player
+- Adult infertile dragons are destroyed when eating orange food and cause point penalties for their player
+- Baby dragons transform into adult fertile dragons when eating orange food and award points to their player
+- Adult fertile dragons gain 100 health when eating orange food (only after transformation)
+- Food pellets are consumed when any dragon eats them
+- When two adult fertile dragons of the same type meet, they produce a baby dragon and one transforms into an infertile adult
+- When an infertile adult meets a fertile adult of the same type, the fertile adult gains 100 health
+- When fertile adults of different types meet, they produce one baby of each type and create a special hybrid adult
+- When the hybrid adult meets other adults, it triggers transformations between infertile types
+- When adults collide, they bounce back from each other
+- When the hybrid adult eats any food, it spawns an infertile adult and both the hybrid and food are destroyed, awarding 50 points
+- Food pellets transform into the opposite type when touching the appropriate transformation station
+
+**Win condition:**
+Player A wins if all of Player B's dragons (babies and fertile adults) are eliminated. Player B wins if all of Player A's dragons (babies and fertile adults) are eliminated.
+
+**Lose condition:**
+A player loses when all their dragons are eliminated. The game also ends when the time limit of 1500 time units is reached, or when the total dragon population reaches 20, or drops to just 1 dragon remaining.
+
+**Objective:**
+Manage your dragon population by strategically feeding them the right types of food while trying to eliminate your opponent's dragons through careful breeding, feeding strategies, and food type manipulation.

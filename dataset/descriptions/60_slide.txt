@@ -1,0 +1,34 @@
+Player role:
+This is a two-player game where each player controls their own character. Player 1 controls a blue block-shaped character that moves in response to keyboard input. Player 2 controls a red block-shaped character that also moves in response to keyboard input. Both characters can move in four directions and cannot move through walls or off the edge of the screen - they bounce back when they try to move into these obstacles.
+
+Entities:
+- Floor: A gray background surface that covers the playing area but is invisible during gameplay
+- Wall: Solid gray stone barriers that block movement and cannot be passed through
+- Player 1 character: A blue block that moves around the level and can transform into a directional form that moves automatically
+- Player 2 character: A red block that moves around the level and can transform into a directional form that moves automatically
+- Player 1 directional forms: Four versions of the blue character that move automatically upward, downward, leftward, or rightward until hitting an obstacle
+- Player 2 directional forms: Four versions of the red character that move automatically upward, downward, leftward, or rightward until hitting an obstacle
+- Direction markers for Player 1: Four colored invisible helper objects (red for up, blue for down, green for left, yellow for right) that transform the character when touched
+- Direction markers for Player 2: Four colored invisible helper objects (red for up, blue for down, green for left, yellow for right) that transform the character when touched
+- Flag: The exit point that both players must reach to win
+- Spikes: Dangerous traps that destroy any character that touches them
+- Winner marker: An invisible object that appears when a player reaches the exit
+
+Interactions:
+- When a directional form of either character hits a wall, that character stops moving and returns to its normal controllable form
+- When either character in normal form hits a wall, they cannot pass through and are pushed back, and direction markers appear around the wall
+- When a character touches their corresponding direction marker, they transform into the directional form moving in that direction and the marker disappears
+- When either character touches any part of their direction marker system, all of their direction markers disappear
+- When either character tries to move off the edge of the screen, they are pushed back
+- When Player 1's character reaches the flag, a winner marker appears and the character disappears
+- When Player 2's character reaches the flag, a winner marker appears and the character disappears
+- When either character touches spikes, that character is destroyed
+
+Win condition:
+Both players win when both characters successfully reach the flag.
+
+Lose condition:
+Both players lose if either character is destroyed by touching spikes, or if the time limit of 1000 steps is reached, or if the number of active characters drops to 1 or fewer.
+
+Objective:
+Guide both characters to the flag while avoiding spike traps, using the directional transformation system to navigate around walls and obstacles efficiently.

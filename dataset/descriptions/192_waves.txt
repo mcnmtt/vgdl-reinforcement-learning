@@ -1,0 +1,38 @@
+Player role:
+The player controls a yellow spaceship that can move in all directions and shoot blue orbs to the right. The spaceship cannot rotate in place and bounces back when it hits the edge of the screen or asteroids.
+
+Entities:
+- A yellow spaceship (avatar) that the player controls, can move and shoot blue orbs to the right
+- Brown aliens that move slowly to the left and occasionally shoot red lasers to the left
+- Blue orbs (sam) that move to the right at normal speed when fired by the player
+- Blue rocks that move to the left at a slightly slower speed when spawned from portals
+- Red lasers that move slowly to the left when fired by aliens, appearing smaller than normal size
+- Gold shields that can be collected as resources, with a maximum limit of 4
+- Asteroids that block movement and destroy projectiles
+- Slow portals (whirlpool-like) that occasionally spawn aliens
+- Rock portals (whirlpool-like) that frequently spawn blue rocks moving left
+
+Interactions:
+- When the spaceship hits the edge of the screen, it bounces back
+- When aliens hit the edge of the screen, they are destroyed
+- When any projectile hits the edge of the screen, it is destroyed
+- When a blue orb hits an alien, both are destroyed and the player gains 2 points
+- When a blue orb hits a red laser, the laser is destroyed and transforms into a gold shield
+- When the spaceship touches a gold shield, it collects it as a resource and the shield disappears
+- When the spaceship has no shields and touches a rock, the spaceship is destroyed
+- When the spaceship has shields and touches a rock, it loses one shield and the rock is destroyed
+- When the spaceship has no shields and touches an alien, the spaceship is destroyed
+- When the spaceship has shields and touches an alien, it loses one shield and the alien is destroyed
+- When the spaceship has no shields and touches a laser, the spaceship is destroyed
+- When the spaceship has shields and touches a laser, it loses one shield and the laser is destroyed
+- When projectiles or aliens hit asteroids, the projectile or alien is destroyed
+- When the spaceship hits an asteroid, it bounces back
+
+Win condition:
+The player wins by surviving for 1000 time units without their spaceship being destroyed.
+
+Lose condition:
+The player loses if their spaceship is destroyed by touching enemies or projectiles when they have no shields remaining.
+
+Objective:
+Survive waves of aliens and projectiles by shooting enemies, collecting shields for protection, and avoiding hazards until the time limit expires.

@@ -1,0 +1,46 @@
+Player role:
+This is a two-player cooperative game. Each player controls their own character that can move in four directions and shoot projectiles. Both characters are affected by the same movement rules and can push objects around the game world.
+
+Entities:
+- Ground tiles that form the basic walkable surface of the level
+- Water areas that appear as dark blue sections and are dangerous to touch
+- Reset tiles that are special ground areas where boxes can be converted to reset boxes
+- Invisible barriers at the edges of playable areas
+- Regular boxes that can be pushed around and serve as the main puzzle elements
+- Boxes inside water that have been partially submerged and gained special properties
+- A single reset box that appears red and has special teleportation abilities
+- A goal door that players must reach to complete the level
+- A winner marker that appears when a player reaches the goal
+- Player A, displayed as a girl character who can shoot reset projectiles of type A
+- Player B, displayed as a man character who can shoot reset projectiles of type B
+- Sparkling reset projectiles of two types (A and B) that flicker when created
+- Invisible teleportation portals of two types (A and B) that can transport the reset box
+- Wall obstacles that block movement, appearing as trees
+
+Interactions:
+- When a player touches a wall, they are pushed back and cannot pass through
+- When a player touches a box that's inside water, they are protected from being destroyed by water
+- When a regular box touches a box inside water, the regular box is protected from transforming when touching water
+- When a regular box touches water, it transforms into a box inside water and both players gain 1 point
+- When player A touches water directly, player A is destroyed
+- When player B touches water directly, player B is destroyed
+- When player A's reset projectile hits a box inside water, it creates an invisible portal of type A
+- When player B's reset projectile hits a box inside water, it creates an invisible portal of type B
+- When any reset projectile hits a box inside water, the box transforms into a reset box and the projectile disappears
+- When an invisible portal touches any type of box, the box is destroyed
+- When the reset box touches player A's portal, it teleports to the goal area and player A loses 2 points
+- When the reset box touches player B's portal, it teleports to the goal area and player B loses 2 points
+- When a reset box touches regular ground, it transforms back into a regular box
+- When a regular box touches a reset tile, it transforms into a reset box
+- When a player touches any box (regular or reset), the box is pushed forward in the direction the player is moving
+- When any box hits the edge of the screen, it bounces back
+- When a player reaches the goal door, they transform into a winner marker
+
+Win condition:
+Both players win when there are exactly 2 winner markers present (meaning both players have reached the goal).
+
+Lose condition:
+Both players lose if there are fewer than 2 players remaining in the game (if one or both players have been destroyed by water or other hazards).
+
+Objective:
+Work together to manipulate boxes and navigate around dangerous water areas to get both players safely to the goal door. Use your reset projectiles strategically to create teleportation portals for boxes when needed.

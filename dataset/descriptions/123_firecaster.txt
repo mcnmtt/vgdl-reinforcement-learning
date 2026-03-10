@@ -1,0 +1,36 @@
+Player role:
+The player controls a character that can move in all directions and shoot projectiles. The character has 3 health points and can only shoot if they have collected green mana gems as ammunition. The character will be pushed back when trying to move into walls or boxes.
+
+Entities:
+- Floor: Hidden ground tiles that form the base of the level
+- Green door: The exit that the player must reach, appears as an open doorway
+- Brown boxes: Immovable obstacles that block movement and can be destroyed by bullets
+- Green mana gems: Collectible resources that serve as ammunition, appear smaller than normal size
+- Red bullet: A projectile that moves at medium speed when fired, only one can exist at a time
+- Orange fire: Dangerous flames that spread to adjacent areas with a 25% chance of creating sparks
+- Spark: A brief effect that appears when fire spreads and leaves behind ash
+- Fire ash: Residue left behind by sparks that can destroy boxes on contact
+- Gray walls: Immovable barriers that connect seamlessly with adjacent walls
+- Avatar: The player's character that appears animated
+
+Interactions:
+- When fire touches a box, the fire spreads further
+- When mana gems touch fire, the mana gem is destroyed
+- When the avatar tries to move into walls or boxes, it is pushed back to its previous position
+- When the avatar touches mana gems, it collects them and gains 1 point
+- When the avatar reaches the goal, the goal is destroyed (triggering win condition)
+- When the avatar touches fire, it loses 1 health point and loses 2 points
+- When fire touches the avatar, the avatar is destroyed
+- When a bullet hits a wall, the bullet is destroyed
+- When a bullet hits a box, the box transforms into fire, the box is destroyed, and the player gains 1 point
+- When a box touches fire ash, both the box and ash are destroyed
+- When fire ash touches walls or the avatar, the fire ash is destroyed
+
+Win condition:
+The player wins when there are no more green doors remaining (when the avatar reaches the goal).
+
+Lose condition:
+The player loses when the avatar is destroyed (health reaches 0).
+
+Objective:
+Navigate through the level, collect mana gems for ammunition, and use bullets to strategically destroy boxes while avoiding the spreading fire to reach the green exit door.

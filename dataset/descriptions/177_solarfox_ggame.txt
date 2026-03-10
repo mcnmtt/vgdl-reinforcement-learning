@@ -1,0 +1,33 @@
+Player role:
+You control a yellow spaceship that moves at moderate speed. The spaceship cannot leave the screen - if you try to move it beyond the edge, it will be pushed back to stay within the boundaries.
+
+Entities:
+- Yellow spaceship: The player-controlled vessel that moves around the screen
+- Downward-moving projectiles: Small fire-like sprites that travel downward at moderate speed and wrap around to the top when they reach the bottom edge
+- Upward-moving projectiles: Small fire-like sprites that travel upward at moderate speed and wrap around to the bottom when they reach the top edge
+- Top enemies: Necromancer-like sprites that face right and can fire projectiles, with a brief pause between shots
+- Bottom enemies: Necromancer-like sprites that face left and can fire projectiles, with a brief pause between shots
+- Regular collectible items: Diamond-shaped objects that can be picked up for points
+- Special collectible items: Larger diamond-shaped objects that can be collected
+- Flickering power-up effects: Sparkle animations that appear briefly
+- Walls: Solid barriers that block movement, with connected wall segments forming continuous barriers
+- Floor tiles: Gray background surfaces that can be walked on
+- Water areas: Blue liquid surfaces that serve as enemy territory
+
+Interactions:
+- When the spaceship touches a downward-moving projectile, the projectile is destroyed
+- When the spaceship touches an upward-moving projectile, the projectile is destroyed
+- When a top enemy touches the spaceship, the spaceship is destroyed and the score increases by 1
+- When a bottom enemy touches the spaceship, the spaceship is destroyed and the score increases by 1
+- When the spaceship touches a regular collectible item, the item is destroyed and the score increases by 1
+- When projectiles reach the edge of the screen, they wrap around to the opposite side
+- When the spaceship tries to move beyond the edge of the screen, it is prevented from leaving
+
+Win condition:
+You win if you survive for the full time limit of the level.
+
+Lose condition:
+You lose if your spaceship is destroyed by touching any enemy.
+
+Objective:
+Navigate your spaceship around the level while avoiding enemies and collecting diamond items for points. Survive until the time runs out to complete the level.

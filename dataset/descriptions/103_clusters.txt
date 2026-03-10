@@ -1,0 +1,35 @@
+Player role:
+The player controls a knight character that moves in four directions (up, down, left, right) in response to key presses. The knight cannot pass through walls or blocks and will be pushed back when trying to move into them.
+
+Entities:
+- A knight (the player character) that moves around the game area
+- Walls that form barriers and cannot be moved through
+- Blue, red, and green boxes that can be pushed by the player and slide when contacted
+- Blue, red, and green blocks that are immovable obstacles
+- Holes that appear as spike-like pits and destroy anything that falls into them
+- Broken boxes that appear when regular boxes fall into holes
+- Floor tiles that form the walkable surface (invisible background)
+
+Interactions:
+- When the knight touches a wall, the knight is pushed back to its previous position
+- When the knight touches a hole, the knight is destroyed and the player loses a point
+- When the knight touches any box, the box is pushed forward in the direction the knight was moving
+- When a blue box touches a blue block, the blue box transforms into a blue block and the player gains a point
+- When a red box touches a red block, the red box transforms into a red block and the player gains a point  
+- When a green box touches a green block, the green box transforms into a green block and the player gains a point
+- When any block touches another block of the same color, the moving block is pushed back
+- When the knight tries to move into any block, the knight is pushed back to its previous position
+- When a green box touches both a blue block and red block simultaneously, all recent moves are undone
+- When a red box touches both a blue block and green block simultaneously, all recent moves are undone
+- When a blue box touches both a green block and red block simultaneously, all recent moves are undone
+- When any box gets stuck between another box and a wall, all recent moves are undone
+- When any box falls into a hole, it transforms into a broken box
+
+Win condition:
+The player wins when all boxes (blue, red, and green) have been eliminated from the game area by successfully matching them with their corresponding colored blocks.
+
+Lose condition:
+The player loses if the knight falls into a hole, if any box becomes a broken box by falling into a hole, or if the time limit of 1500 moves is exceeded.
+
+Objective:
+Push all the colored boxes to their matching colored blocks to make them disappear, while avoiding holes and managing the puzzle mechanics that undo moves when boxes are mixed incorrectly.

@@ -1,0 +1,33 @@
+**Player role:**
+The player controls a character that moves in four directions using keyboard input. The character has health points and can collect resources.
+
+**Entities:**
+- Floor: Static ground tiles that form the base terrain
+- Flower: A pink spawning point that occasionally creates bees with a low probability
+- Fast hell: A red tombstone that frequently spawns zombies with moderate probability
+- Slow hell: A red tombstone that spawns zombies less frequently than fast hell
+- Honey: A golden collectible resource with a maximum limit of 10 that can be gathered
+- Avatar: The player's character, a swordsman that can move in all directions and has health points
+- Bee: A yellow creature that moves randomly around the map at normal speed with brief pauses between movements
+- Zombie: A brown undead creature that actively chases the player character at half speed with longer pauses between movements
+- Wall: Static barrier tiles that block movement and use connected textures
+
+**Interactions:**
+- When the avatar touches honey, it collects the resource and gains one point
+- When the avatar touches honey, the honey disappears
+- When any moving creature hits a wall, it bounces back and cannot pass through
+- When the avatar encounters a zombie while having less than one honey, the avatar is destroyed and the score decreases by one
+- When the avatar encounters a zombie, one honey is removed from the avatar's inventory
+- When a zombie touches the avatar, the avatar is destroyed
+- When a bee encounters a zombie, the bee transforms into honey
+- When a zombie touches a bee, the bee is destroyed
+- When the avatar steps on any hell spawn point, the avatar is destroyed
+
+**Win condition:**
+The player wins if they survive for the full time limit of 1000 game steps.
+
+**Lose condition:**
+The player loses if their avatar is destroyed.
+
+**Objective:**
+Survive as long as possible while collecting honey to protect yourself from zombies. Avoid spawn points and use honey strategically since you need it to survive zombie encounters.

@@ -1,0 +1,34 @@
+**Player role:**
+The player controls an avatar that moves around at moderate speed. The avatar can sit in chairs and change appearance based on its state (standing, sitting, or leaving). When sitting in different chair orientations, the avatar faces the appropriate direction.
+
+**Entities:**
+- Ground tiles that form the floor surface
+- Hidden floor tiles that provide underlying structure
+- An exit door (dark blue, closed door image) that serves as a portal
+- Black walls that block movement
+- Various tables: empty tables, tables with items brought by waiters, and tables that have been served by seated customers
+- A blue table object that doesn't change states
+- A kitchen entrance (light gray, open door image) that occasionally spawns waiters and serves as a portal
+- Chairs arranged in different orientations (front-facing, back-facing, left-facing, right-facing) that customers can sit in
+- Single chairs in various orientations for individual seating
+- The player's avatar that can be standing, leaving, or sitting in different orientations
+- A waiter that chases tables, moves at double the avatar's speed, and appears as a single animated character. The waiter can carry items or be empty-handed.
+
+**Interactions:**
+- When a table with waiter items meets a seated customer, the table transforms into a served table and the player gains 1 point
+- When an empty table meets a waiter carrying items, the table transforms to have those items
+- When the avatar touches the exit, the avatar disappears
+- When a seated avatar touches the ground, it transforms into a leaving avatar
+- When a leaving avatar touches any single chair, it transforms into the appropriately oriented sitting avatar
+- When a standing avatar touches any single chair, it transforms into the appropriately oriented sitting avatar
+- When the waiter touches tables, other tables, walls, or the edge of the screen, it steps back
+- When the avatar touches other tables, walls, the edge of the screen, or regular tables, it steps back
+
+**Win condition:**
+The player wins when there are no empty tables or tables with waiter items remaining (all tables have been served).
+
+**Lose condition:**
+The player loses if the avatar enters a leaving state, if the exit disappears, or if 1500 time units pass.
+
+**Objective:**
+Manage a restaurant by sitting at tables to serve customers after waiters deliver items, ensuring all tables are served before time runs out while avoiding leaving the restaurant.

@@ -1,0 +1,36 @@
+Player role:
+The player controls a person who can move in all four directions using keyboard input. The avatar has 5 health points and can walk freely around the game area.
+
+Entities:
+- Floor tiles that form horizontal roads, invisible to the player but provide the surface for gameplay
+- Vertical floor tiles that form vertical roads, also invisible but part of the road network
+- Crossing tiles that appear as street intersections where roads meet
+- A green goal that serves as an exit portal, appearing as a visible target the player must reach
+- An invisible deadly portal that appears when the player is hit by a car
+- Fast rightward-moving cars that are orange and move quickly (speed 0.9) from left to right across horizontal roads
+- Slow rightward-moving cars that are red and move at moderate speed (speed 0.7) from left to right across horizontal roads  
+- Fast downward-moving cars that are orange and move quickly (speed 0.9) from top to bottom on vertical roads
+- Slow downward-moving cars that are red and move at moderate speed (speed 0.7) from top to bottom on vertical roads
+- An invisible starting position marker where the player begins
+- Black walls that block movement
+- Green trees that block movement
+- An invisible spawn point that has a 5% chance every 16 game ticks to create the goal portal, with a maximum of 1 total spawn
+
+Interactions:
+- When the goal touches the avatar, the goal disappears and the player gains 10 points
+- When the avatar touches the goal, the avatar is transported to the exit
+- When the avatar touches any car, the avatar loses health points and loses 5 points
+- When the avatar touches any car, a deadly portal is created at that location
+- When the deadly portal touches the avatar, the avatar is destroyed
+- When the avatar touches the deadly portal, the avatar is transported to the exit
+- When the avatar touches a tree or wall, the avatar is pushed back to its previous position
+- When any car reaches the edge of the screen, it wraps around to the opposite side and continues moving
+
+Win condition:
+The player wins if they survive for 1000 game ticks without losing all their health.
+
+Lose condition:
+The player loses if their avatar is destroyed (health reaches 0).
+
+Objective:
+Navigate through traffic on busy roads while avoiding cars to survive as long as possible. Reach the goal portal when it appears to earn points, but be careful not to get hit by the moving vehicles.

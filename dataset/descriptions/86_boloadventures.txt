@@ -1,0 +1,40 @@
+Player role:
+You control an explorer character that moves in four directions (up, down, left, right) using arrow keys or similar controls. The character cannot rotate in place and will face the direction it's moving.
+
+Entities:
+- Ground: Hidden brown surface that forms the base of the level
+- Holes: Dark blue pits that appear as openings in the ground
+- Goal: A closed door that represents the exit point
+- Explorer (your character): A spelunky-style character that moves around the level
+- Boxes: Movable wooden blocks that can be pushed around
+- Boulders: Heavy stone blocks that behave differently when stationary versus moving
+- Moving boulders: Boulders that are currently in motion and follow the player's gaze
+- Laser cannons: Fixed devices that shoot lasers, with four types facing different directions (up, down, left, right)
+- Lasers: Yellow projectiles that move slowly in straight lines from the cannons toward their target direction
+- Walls: Immovable stone barriers that block movement and connect seamlessly with adjacent walls
+
+Interactions:
+- When a moving boulder hits a wall, box, stationary boulder, or laser cannon, it transforms back into a stationary boulder
+- When a moving boulder falls into a hole, both the boulder and hole are destroyed and you gain 1 point
+- When you try to move into a wall or laser cannon, you are pushed back to your previous position
+- When you push against a box while a laser is coming from the front, the box acts as a shield and protects you from the laser
+- When a box is pushed by you, it moves forward in the direction you're pushing
+- When a box hits a wall, another box, a hole, or laser cannon, all movements are undone
+- When you touch a stationary boulder, it transforms into a moving boulder
+- Moving boulders will follow your gaze and move toward where you're facing
+- When you try to move into any boulder (stationary or moving), you are pushed back
+- When a stationary boulder hits a wall, box, another boulder, or laser cannon, all movements are undone
+- When a laser hits any solid object (wall, boulder, box) or falls into a hole, the laser is destroyed
+- When you try to move into a hole, you are pushed back to your previous position
+- When a laser hits you from the front, you are destroyed
+- When a laser hits you from any other direction, you are also destroyed
+- When you reach the goal door, you are removed from the level and gain 5 points
+
+Win condition:
+You win when you successfully reach and enter the goal door, causing it to disappear from the level.
+
+Lose condition:
+You lose if you are destroyed by contact with a laser from any direction.
+
+Objective:
+Navigate through the level using boxes as shields and manipulating boulders to clear paths or fill holes, while avoiding laser fire from fixed cannons, until you reach the exit door safely.

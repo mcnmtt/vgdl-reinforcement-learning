@@ -1,0 +1,33 @@
+Player role:
+This is a two-player game. Each player controls a character that can move around and shoot projectiles. Player A controls a girl character, and Player B controls a man character. Both characters move at the same speed and can shoot flickering projectiles.
+
+Entities:
+- Green landscape elements that move leftward continuously, creating a scrolling background effect
+- A brown train that moves rightward slowly and is invisible to players
+- Moving rocky obstacles that travel rightward at medium speed
+- Static mineral obstacles of two types - one type can only be destroyed by Player A, the other only by Player B
+- Spawn points that occasionally create new moving obstacles
+- Flickering projectiles shot by players - each player's shots have a unique type
+- The two player characters - a girl (Player A) and a man (Player B)
+
+Interactions:
+- When either player touches the moving landscape elements or reaches the edge of the screen, they are destroyed
+- When Player A touches moving obstacles or Player B's type of static obstacles, Player A is pushed backward
+- When Player B touches moving obstacles or Player A's type of static obstacles, Player B is pushed backward  
+- When the train or landscape elements reach the edge of the screen, they wrap around to the other side
+- When either player touches the train, they are pulled along with it
+- When moving obstacles are hit by Player A's shots, both the obstacle and shot disappear, and Player A gains 4 points
+- When moving obstacles are hit by Player B's shots, both the obstacle and shot disappear, and Player B gains 4 points
+- When Player B's type of static obstacles are hit by Player A's shots, both disappear and Player A gains 2 points
+- When Player A's type of static obstacles are hit by Player B's shots, both disappear and Player B gains 2 points
+- When Player A's shots hit the train, they transform into Player A's type of static obstacle
+- When Player B's shots hit the train, they transform into Player B's type of static obstacle
+
+Win condition:
+Player A wins if Player B is eliminated. Player B wins if Player A is eliminated. If neither player is eliminated within the time limit, both players win.
+
+Lose condition:
+A player loses if their character is destroyed by touching landscape elements or falling off the screen.
+
+Objective:
+Survive on the moving train while shooting obstacles to score points and trying to eliminate the opposing player by creating hazardous obstacles they must avoid.

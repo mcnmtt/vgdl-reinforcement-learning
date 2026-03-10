@@ -1,0 +1,20 @@
+Player role:
+The player controls an avatar that moves with inertia and is affected by gravity. The avatar does not stop immediately when the player releases the controls — it carries momentum and drifts. Gravity pulls it downward continuously.
+Entities:
+
+The avatar is the player-controlled character. It moves with inertia under gravity, meaning it accelerates, drifts, and is difficult to stop precisely.
+The pad is a blue object that can be pushed or interacted with. It does not move on its own.
+Walls are static objects that instantly destroy the avatar on contact.
+
+Interactions:
+
+When the avatar touches a wall, the avatar is instantly destroyed.
+When the avatar reaches the edge of the screen, it is instantly destroyed.
+When the avatar collides with a pad while moving slowly enough relative to the pad, the pad is destroyed. If the avatar is moving too fast, nothing happens to the pad.
+
+Win condition:
+The player wins when the number of remaining pads is reduced to exactly four or fewer.
+Lose condition:
+The player loses if the avatar is destroyed.
+Objective:
+Navigate carefully using inertial gravity-based movement to gently collide with pads and remove them, while avoiding walls and the edges of the screen which instantly destroy the avatar.

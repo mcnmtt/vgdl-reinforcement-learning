@@ -1,0 +1,37 @@
+Player role:
+The player controls a spaceship that can move in four directions and shoot a special "flip" projectile. The spaceship stops at the edge of the screen rather than wrapping around or leaving the play area.
+
+Entities:
+- A spaceship avatar that the player controls directly
+- A ball projectile that starts stationary but can be set in motion, moving in one of four cardinal directions (left, right, up, or down)
+- Straight horizontal pipes (red) that allow balls to pass through when moving left or right
+- Straight vertical pipes (blue) that allow balls to pass through when moving up or down
+- L-shaped corner pipes in four orientations: left-up (pink), left-down (green), right-up (yellow), and right-down (orange) that redirect balls around corners
+- An exit door that serves as the target destination
+- Gold pickups that award points when collected by the ball
+- A flip projectile that briefly appears when fired and affects pipes and game state
+- Hidden start points that activate ball movement when hit by the flip projectile
+- Hidden reset points that return the ball to its starting position and direction
+- Invisible helper objects that manage pipe transformations and ball collision detection
+
+Interactions:
+- When the spaceship hits the edge of the screen, it is pushed back and cannot leave the play area
+- When the ball reaches the exit door, both the ball and door are destroyed
+- When the ball hits the edge of the screen, it is destroyed and the score decreases by 10 points
+- When the ball collects a gold pickup, the pickup is destroyed and the score increases by 100 points
+- When the flip projectile hits a pipe, the ball is teleported back to its starting position and reset to move right
+- When the flip projectile hits the start point, all balls begin moving at normal speed
+- When the flip projectile hits any pipe, that pipe transforms into the next pipe type in a rotation cycle
+- When the ball enters a straight pipe from the correct direction, it continues through normally
+- When the ball enters a straight pipe from the wrong direction, it stops moving
+- When the ball enters a corner pipe from a valid direction, it changes direction according to the pipe's bend and continues moving
+- When the ball enters a corner pipe from an invalid direction, it stops moving
+
+Win condition:
+The player wins when all exit doors have been destroyed by balls reaching them.
+
+Lose condition:
+The player loses when all balls have been destroyed (either by hitting the edge of the screen or through other means).
+
+Objective:
+Guide the ball through a network of pipes to reach the exit door by using the flip projectile to rotate pipes into the correct orientations and collect gold pickups along the way for bonus points.

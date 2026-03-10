@@ -1,0 +1,39 @@
+**Player role:**
+This is a two-player game. Player 1 controls a rogue character that can move in four directions and shoot blue bombs. Player 2 controls a spelunky character that can move in four directions and shoot red bombs. Both players move on a grid-based system.
+
+**Entities:**
+- Ground: invisible grass tiles that form the walkable surface
+- Player 1's avatar: a rogue character that can shoot blue bombs
+- Player 2's avatar: a spelunky character that can shoot red bombs  
+- Blue minion: a small blue ogre that randomly drops blue bombs with a 5% chance, waiting at least 10 steps between drops
+- Red minion: a small red ogre that randomly drops red bombs with a 5% chance, waiting at least 10 steps between drops
+- Boxes: immovable block obstacles that can be destroyed
+- Blue bombs: explosive devices that detonate after being placed, only one can exist at a time per player
+- Red bombs: explosive devices that detonate after being placed, only one can exist at a time per player
+- Blue explosion center: the initial explosion point that spreads outward with 100% probability
+- Red explosion center: the initial explosion point that spreads outward with 100% probability
+- Blue sparks: explosion effects that spread from the explosion center and create final explosion effects
+- Red sparks: explosion effects that spread from the explosion center and create final explosion effects
+- Blue final explosions: the lasting explosion effects that disappear after a short time
+- Red final explosions: the lasting explosion effects that disappear after a short time
+- Walls: immovable barriers that block movement and stop explosions
+
+**Interactions:**
+- When any movable object touches a wall, box, or bomb, it is pushed back and cannot pass through
+- When a bomb touches a wall, box, or avatar, the bomb is destroyed
+- When a final explosion touches a wall, the explosion is destroyed
+- When a box is touched by blue explosions or blue final explosions, the box is destroyed and Player 1 scores 1 point
+- When a box is touched by red explosions or red final explosions, the box is destroyed and Player 2 scores 1 point
+- When Player 2's avatar is touched by blue explosions or blue final explosions, Player 2's avatar is destroyed and Player 1 scores 50 points
+- When a red minion is touched by blue explosions or blue final explosions, the red minion is destroyed and Player 1 scores 10 points
+- When Player 1's avatar is touched by red explosions or red final explosions, Player 1's avatar is destroyed and Player 2 scores 50 points
+- When a blue minion is touched by red explosions or red final explosions, the blue minion is destroyed and Player 2 scores 10 points
+
+**Win condition:**
+Player 1 wins if Player 2's avatar is destroyed. Player 2 wins if Player 1's avatar is destroyed. If all boxes are destroyed or time runs out, the player with the higher score wins.
+
+**Lose condition:**
+A player loses if their avatar is destroyed by the opponent's explosions.
+
+**Objective:**
+Destroy your opponent's avatar with your bombs while avoiding their explosions, or score more points by destroying boxes and enemy minions before time runs out.

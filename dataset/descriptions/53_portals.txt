@@ -1,0 +1,41 @@
+Player role:
+Two players each control a character that can move in four directions and shoot portal projectiles. One player controls a blue character that shoots blue portal projectiles, and the other controls an orange character that shoots orange portal projectiles. Both characters are affected by solid obstacles and boundaries.
+
+Entities:
+- Floor: Hidden surface that provides the ground level
+- Wall: Solid barriers that block movement and projectiles
+- Trap: Deadly hazards that destroy characters on contact
+- Cake: A target object that destroys any character that touches it
+- Laser: Projectiles fired by turrets that travel in straight lines until hitting obstacles
+- Blue portal projectile: A projectile shot by the blue character that creates blue portals on walls
+- Orange portal projectile: A projectile shot by the orange character that creates orange portals on walls
+- Blue portal (disabled): An inactive blue portal that appears as a blue wall section
+- Orange portal (disabled): An inactive orange portal that appears as an orange wall section  
+- Blue portal (working): An active blue portal that teleports characters to the orange portal
+- Orange portal (working): An active orange portal that teleports characters to the blue portal
+- Blue character (normal): A blue character that can move and shoot blue portal projectiles
+- Orange character (normal): An orange character that can move and shoot orange portal projectiles
+- Blue character (no shooting): A blue character that can only move, cannot shoot
+- Orange character (no shooting): An orange character that can only move, cannot shoot
+- Turret: A stationary enemy that shoots laser projectiles at regular intervals
+
+Interactions:
+- When any movable object hits a wall or the edge of the screen, it is pushed back to its previous position
+- When a laser hits a wall, the laser is destroyed
+- When a turret encounters cake or any portal, the turret is pushed back
+- When any character touches a laser, trap, or cake, the character is destroyed
+- When a portal projectile hits the edge of the screen, it is destroyed
+- When a shooting character touches a working portal, they are teleported to the corresponding portal
+- When a blue shooting character touches a working portal, they become unable to shoot for a brief period
+- When an orange shooting character touches a working portal, they become unable to shoot for a brief period
+- When a blue portal projectile hits a wall, the blue character transforms into the orange character, the projectile is destroyed, the wall transforms into a blue working portal, and all existing blue portals are destroyed
+- When an orange portal projectile hits a wall, the orange character transforms into the blue character, the projectile is destroyed, the wall transforms into an orange working portal, and all existing orange portals are destroyed
+
+Win condition:
+Player 1 wins when all cakes are destroyed and Player 2's character is eliminated. Player 2 wins when all cakes are destroyed and Player 1's character is eliminated.
+
+Lose condition:
+A player loses when their character is destroyed while the other player's character survives.
+
+Objective:
+Work together or compete to destroy the cake while avoiding traps, lasers, and other hazards, using portal projectiles to create teleportation links between walls for strategic movement.

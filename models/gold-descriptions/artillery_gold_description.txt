@@ -1,0 +1,23 @@
+Player role:
+The player controls an avatar that can rotate its aim direction and shoot a projectile. The avatar cannot move around the level freely — it can only adjust its aiming angle. It cannot pass through walls or the edge of the screen and is pushed back if it tries.
+Entities:
+
+The avatar is the player-controlled character. It stays in place but rotates to aim, and fires a projectile when the player shoots.
+The bullet is a fast-moving projectile fired by the avatar. It is affected by gravity, so it follows a curved trajectory. Only one bullet can exist at a time — a new one cannot be fired until the previous one disappears.
+The pad is a blue static target object placed in the level. It does not move.
+Walls are static objects that block the avatar and destroy bullets on contact.
+
+Interactions:
+
+When a bullet hits a wall from either direction, the bullet is destroyed.
+When a bullet hits a pad, the pad is destroyed.
+When the avatar tries to move into a wall, it is pushed back to its previous position.
+When the avatar reaches the edge of the screen, it is pushed back to its previous position.
+When a bullet reaches the edge of the screen, it is destroyed.
+
+Win condition:
+The player wins when all blue pad objects have been destroyed.
+Lose condition:
+The player loses if the avatar is destroyed.
+Objective:
+Carefully aim and fire the gravity-affected projectile to destroy all blue pads in the level, taking into account the bullet's curved trajectory caused by gravity.

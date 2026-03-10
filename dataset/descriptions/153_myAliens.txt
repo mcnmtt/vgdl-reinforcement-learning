@@ -1,0 +1,26 @@
+Player role:
+The player controls an avatar that moves horizontally left and right across the screen. The avatar cannot move through walls and will be stopped if it tries to walk into one.
+
+Entities:
+- Base: A white immovable structure that serves as a protective barrier
+- Avatar: The player-controlled character that moves horizontally
+- Alien: A hostile creature that moves downward at moderate speed and appears as an alien sprite
+- Ghost: A hostile creature that moves downward at moderate speed, similar to aliens but appears as a ghost sprite and moves slightly faster
+- Alien Portal: A spawn point that periodically creates aliens, with a 16-tick cooldown between potential spawns, 8% chance of spawning each time it activates, and can create up to 20 aliens total
+- Ghost Portal: A spawn point that periodically creates ghosts, with a 12-tick cooldown between potential spawns, 8% chance of spawning each time it activates, and can create up to 20 ghosts total
+
+Interactions:
+- When the avatar tries to move into a wall, it is pushed back and cannot pass through
+- When an alien reaches the edge of the screen, it reverses direction and starts moving the opposite way
+- When a base is hit by an alien, the alien is destroyed
+- When an alien touches the avatar, the alien is destroyed and the player gains 1 point
+- When the avatar touches a ghost, the avatar is destroyed and the player loses 10 points
+
+Win condition:
+The player wins if they survive for 1000 time units without being destroyed.
+
+Lose condition:
+The player loses if their avatar is destroyed by touching a ghost.
+
+Objective:
+Survive the constant stream of aliens and ghosts falling from above while using your base for protection, earning points by letting aliens hit your base or by touching them yourself, but avoid the ghosts at all costs as they will destroy you.

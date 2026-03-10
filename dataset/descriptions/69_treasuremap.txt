@@ -1,0 +1,38 @@
+**Player role:**
+This is a two-player cooperative game where each player controls a different character - one appears as a girl and the other as a man. Both players can move in four directions around the game area. When players enter certain doorways, they gain the ability to shoot projectiles, but lose this ability when they exit through specific exit points.
+
+**Entities:**
+- Floor tiles that serve as walkable surfaces with a street appearance
+- Two player characters: a girl (Player A) and a man (Player B), both capable of movement and conditional shooting
+- Three types of switches that look like different colored slimes - when touched, they reveal hidden areas
+- Three sets of doorways that appear closed initially but open when their corresponding switch is activated
+- Three sets of walls that are initially invisible but become visible when switches are activated
+- Three sets of treasure chests that start closed and invisible, becoming visible when switches are activated
+- Exit points that return players to their basic movement state when entered
+- Ground trigger areas that hide the revealed areas when stepped on
+- Flickering projectiles that players can shoot when in certain states
+- Invisible starting positions for both players
+- Invisible teleportation points that connect to the starting positions
+
+**Interactions:**
+- When any player touches the edge of the screen, walls, treasure chests, or closed doorways, they are pushed back and cannot pass through
+- When Player A enters an open doorway of area 1, 2, or 3, they transform into a shooting version specific to that area
+- When Player A exits through the corresponding exit point, they return to basic movement mode
+- When Player B enters an open doorway of area 1, 2, or 3, they transform into a shooting version specific to that area  
+- When Player B exits through the corresponding exit point, they return to basic movement mode
+- When any player touches switch 1, all area 1 elements (doorways, walls, treasures) become visible and any players in that area become active
+- When any player touches switch 2, all area 2 elements become visible and any players in that area become active
+- When any player touches switch 3, all area 3 elements become visible and any players in that area become active
+- When any player steps on ground trigger 1, all area 1 elements become invisible and any players in that area become inactive
+- When any player steps on ground trigger 2, all area 2 elements become invisible and any players in that area become inactive
+- When any player steps on ground trigger 3, all area 3 elements become invisible and any players in that area become inactive
+- When a projectile hits a closed treasure chest, the chest opens
+
+**Win condition:**
+The players win when all treasure chests in the game have been opened.
+
+**Lose condition:**
+There is no explicit lose condition - the game continues until the players achieve victory.
+
+**Objective:**
+Work together to activate switches that reveal hidden areas, then use the shooting abilities gained by entering doorways to open all the treasure chests scattered throughout the different areas.

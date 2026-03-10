@@ -1,0 +1,26 @@
+Player role:
+The player controls a character that can move around and shoot cigarettes. The player can rotate in place and fire cigarettes as projectiles.
+
+Entities:
+- Floor: Hidden ground tiles that provide the base surface for the level
+- Player character: A controllable character that can move around and shoot cigarettes
+- Quiet citizens: Non-player characters that move randomly around the level at moderate speed
+- Annoyed citizens: Non-player characters that move randomly around the level at moderate speed and appear more agitated
+- George: A character that actively chases after quiet citizens at moderate speed
+- Cigarette: A flickering projectile that can be shot by the player, with a maximum of 5 existing at once, and only one can be fired at a time
+- Wall: Immovable barrier objects that block movement
+
+Interactions:
+- When George touches a quiet citizen, the quiet citizen becomes an annoyed citizen
+- When George touches the player, the player is destroyed and the score decreases by 1
+- When a cigarette touches an annoyed citizen, the annoyed citizen becomes a quiet citizen and the score increases by 1
+- When any human character touches a wall, they are pushed back from the wall
+
+Win condition:
+The player wins if they survive for the full time limit of 1000 time units.
+
+Lose condition:
+The player loses if their character is destroyed by George, or if all quiet citizens are eliminated from the game.
+
+Objective:
+Survive George's pursuit while using cigarettes to calm down annoyed citizens and prevent all quiet citizens from being eliminated before the time runs out.

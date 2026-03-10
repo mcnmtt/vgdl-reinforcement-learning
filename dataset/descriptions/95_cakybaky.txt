@@ -1,0 +1,35 @@
+Player role:
+The player controls a character that can move in any direction and rotate to face different orientations. The character moves at normal walking speed and can collect ingredients in a specific sequence.
+
+Entities:
+- A player character that moves around the kitchen and collects cooking ingredients
+- A chef enemy that chases the player character, moving slowly but persistently within a limited range, appearing orange in color
+- Flour ingredient that can be collected first in the cooking sequence
+- Milk ingredient that can only be collected after obtaining flour
+- Egg ingredient that can only be collected after obtaining milk
+- Sugar ingredient that can only be collected after obtaining egg
+- Butter ingredient that can only be collected after obtaining sugar
+- Cherries ingredient that can only be collected after obtaining butter (the final ingredient)
+- Tables that serve as immovable obstacles
+- Walls that serve as immovable barriers, appearing black
+- Floor tiles that provide the walkable surface (invisible to players)
+
+Interactions:
+- When the player character touches a wall or table, it is pushed back and cannot pass through
+- When the chef touches a wall or table, it is pushed back and cannot pass through  
+- When the player character touches the chef, the player character is destroyed and the score decreases by 1 point
+- When the player character touches flour, it collects the flour and gains 1 point
+- When the player character touches milk while holding flour, it collects the milk and gains 1 point
+- When the player character touches egg while holding milk, it collects the egg and gains 1 point
+- When the player character touches sugar while holding egg, it collects the sugar and gains 1 point
+- When the player character touches butter while holding sugar, it collects the butter and gains 1 point
+- When the player character touches cherries while holding butter, it collects the cherries and gains 1 point
+
+Win condition:
+The player wins when all cherries have been collected from the level.
+
+Lose condition:
+The player loses if they are caught by the chef or if time runs out before collecting all ingredients.
+
+Objective:
+Collect all cooking ingredients in the correct sequence (flour, milk, egg, sugar, butter, then cherries) while avoiding the pursuing chef enemy within the time limit.

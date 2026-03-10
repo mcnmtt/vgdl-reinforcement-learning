@@ -1,0 +1,36 @@
+**Player role:**
+This is a two-player cooperative game where each player controls a spaceship that can move around and fire missiles upward. The spaceships cannot move off the edge of the screen and bounce back when they try to move into each other.
+
+**Entities:**
+- Two player spaceships that can move in all directions and fire blue missiles upward
+- A white base/planet that must be protected from enemy attacks
+- Blue missiles fired by the spaceships that travel upward
+- Red bombs dropped by aliens that travel downward at half the speed of regular missiles
+- Green aliens that move horizontally at high speed, turn around when hitting the screen edge, and occasionally drop bombs
+- Blue aliens that move horizontally at high speed, turn around when hitting the screen edge, and occasionally drop bombs
+- Two invisible spawn points: one that creates blue aliens every 16 time units (up to 20 total), and another that creates green aliens every 12 time units (up to 20 total)
+
+**Interactions:**
+- When a spaceship hits the edge of the screen, it stops and cannot move further in that direction
+- When the two spaceships collide, they both stop and bounce back
+- When an alien hits the edge of the screen, it turns around and moves in the opposite direction
+- When any missile hits the edge of the screen, it disappears
+- When the base is hit by a bomb, both the base and bomb are destroyed
+- When the base is hit by player 1's missile, both are destroyed and player 1 loses a point
+- When the base is hit by player 2's missile, both are destroyed and player 2 loses a point
+- When the base is hit by an alien, the alien is destroyed
+- When player 1's spaceship is hit by an alien, the spaceship is destroyed and player 1 loses a point
+- When player 2's spaceship is hit by an alien, the spaceship is destroyed and player 2 loses a point
+- When player 1's spaceship is hit by a bomb, the spaceship is destroyed and player 1 loses a point
+- When player 2's spaceship is hit by a bomb, the spaceship is destroyed and player 2 loses a point
+- When an alien is hit by player 1's missile, the alien is destroyed and player 1 gains 2 points
+- When an alien is hit by player 2's missile, the alien is destroyed and player 2 gains 2 points
+
+**Win condition:**
+Both players win together when all spawn points stop producing aliens and all existing aliens are destroyed.
+
+**Lose condition:**
+Both players lose together when only one or no spaceships remain on the screen.
+
+**Objective:**
+Work together to destroy all the aliens while protecting your base and keeping both spaceships alive. Be careful not to accidentally shoot your own base while defending it from alien attacks and bombs.

@@ -1,0 +1,31 @@
+**Player role:**
+The player controls a knight character that moves in four directions (up, down, left, right) using keyboard input. The knight moves one space at a time on a grid-based layout.
+
+**Entities:**
+- Knight: The player character that can move around the level and push objects
+- Floor tiles: Hidden background surfaces that make up the walkable area
+- Four types of boxes: Moveable blocks that the player can push around, each with identical appearance but different internal types (numbered 0-3)
+- Four types of holes: Dark blue circular pits that serve as targets, each corresponding to a specific box type (numbered 0-3)
+- Four types of doors: Closed door barriers that block movement, each linked to a specific box-hole pair (numbered 0-3)
+- Exit door: An open doorway that serves as the level's final goal
+- Walls: Immovable barriers that block movement and have connecting graphics that automatically adjust based on adjacent walls
+
+**Interactions:**
+- When the knight touches a wall or any door, the knight is pushed back to its previous position
+- When the knight touches a box, the box is pushed forward in the direction the knight was moving
+- When a box touches a wall, another box, or any door, the box returns to its previous position
+- When box type 0 falls into hole type 0, all doors of type 0 disappear and the player gains 1 point, then both the box and hole are destroyed
+- When box type 1 falls into hole type 1, all doors of type 1 disappear and the player gains 2 points, then both the box and hole are destroyed  
+- When box type 2 falls into hole type 2, all doors of type 2 disappear and the player gains 4 points, then both the box and hole are destroyed
+- When box type 3 falls into hole type 3, all doors of type 3 disappear and the player gains 8 points, then both the box and hole are destroyed
+- When any box falls into a mismatched hole type, both the box and hole are destroyed without opening doors or awarding points
+- When the knight reaches the exit door, the exit disappears and the player gains 16 points
+
+**Win condition:**
+The player wins when they reach the exit door, causing it to disappear.
+
+**Lose condition:**
+The player loses if they don't complete the level within the time limit.
+
+**Objective:**
+Push the correct boxes into their matching holes to open doors and clear a path to the exit, then reach the exit door to complete the level.

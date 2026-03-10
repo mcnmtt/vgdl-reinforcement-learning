@@ -1,0 +1,41 @@
+**Player role:**
+This is a two-player game where each player controls their own character that can move around and shoot magical projectiles. Player A controls a girl character that shoots blue sparkles, while Player B controls a man character that shoots different colored sparkles. Both characters have 3 health points and cannot move through each other or walls.
+
+**Entities:**
+- Ground tiles that form the floor of the level (hidden from view)
+- A base station where players can spend collected items to restore health
+- Various types of boxes that can be transformed by magic: some boxes are neutral (empty or reward types), while others are owned by specific players (player A boxes and player B boxes, each with subtypes that affect different targets)
+- Flags in two colors (blue and red) that represent the transformed state of boxes, with subtypes that determine their harmful effects
+- Bombs in two varieties that appear when certain flags are hit by the wrong player's magic
+- Wall tiles that block movement
+- Red heart-shaped collectible items (maximum 3 can be held)
+- Health restoration items that appear temporarily when created at the base
+- Invisible off-limit markers that appear behind players when they collect their own boxes
+- Magic projectiles that flicker briefly when shot and can transform or destroy certain objects
+
+**Interactions:**
+- When a player touches a wall or another player, they are pushed back and cannot pass through
+- When magic hits a player, the magic disappears and damages the player
+- When Player A touches their own type of box, an off-limit marker appears behind them and Player A gains 1 point, while the box becomes inactive
+- When Player B touches their own type of box, an off-limit marker appears behind them and Player B gains 1 point, while the box becomes inactive
+- When a player touches their own off-limit marker, all inactive boxes of their type become active again, they lose 1 point, and the marker disappears
+- When Player A's magic hits any box, it transforms into a blue flag of the corresponding type and the magic disappears
+- When Player B's magic hits any box, it transforms into a red flag of the corresponding type and the magic disappears
+- When Player B's magic hits a blue flag targeting Player A, Player A loses 1 health point, the flag becomes a bomb, Player B gains 10 points, and the magic disappears
+- When Player B's magic hits a blue flag targeting Player B, Player B loses 1 health point, the flag becomes a bomb, Player A gains 10 points, and the magic disappears
+- When Player A's magic hits a red flag targeting Player A, Player A loses 1 health point, the flag becomes a bomb, Player B gains 10 points, and the magic disappears
+- When Player A's magic hits a red flag targeting Player B, Player B loses 1 health point, the flag becomes a bomb, Player A gains 10 points, and the magic disappears
+- When magic hits empty or reward-type flags, the flag disappears and the magic disappears
+- When magic hits reward-type flags, they become collectible heart items and the magic disappears
+- When a player touches the base while holding at least 3 heart items, they spend the items to create a health restoration item
+- When a player touches a health restoration item, they gain 1 health point and the item disappears
+- When a player touches a collectible heart item, they collect it (up to maximum 3) and the item disappears
+
+**Win condition:**
+Player A wins if Player B's character is eliminated. Player B wins if Player A's character is eliminated. The game can also end in a draw if time runs out.
+
+**Lose condition:**
+A player loses when their character's health drops to zero and they are eliminated from the game.
+
+**Objective:**
+Transform boxes into flags using your magic, then trick your opponent into hitting flags that will damage them, while collecting heart items to maintain your own health and avoid hitting dangerous flags yourself.

@@ -1,0 +1,33 @@
+Player role:
+The player controls a character that can move in four directions using arrow keys. The character normally walks around the level, but when it hits a wall, it transforms into a projectile that flies in the direction it was moving when it hit the wall. The character cannot move through walls and bounces back when trying to walk into them. The character also bounces back when reaching the edge of the screen.
+
+Entities:
+- Floor: Hidden background tiles that make up the walkable surface
+- Walls: Solid barriers that block movement and trigger the character's transformation into a projectile
+- Directional markers: Four types of invisible markers (up, down, left, right) that transform the walking character into projectiles moving in their respective directions
+- Exit: A flag that serves as the goal location
+- Trap: A spike that destroys the character on contact
+- Walking character: The player's character in its normal walking state
+- Projectile character: The player's character when transformed into a flying projectile, which can move in four directions (up, down, left, right)
+- Winner marker: An invisible object that appears when the player reaches the exit
+
+Interactions:
+- When a projectile hits a wall, it stops moving and transforms back into the walking character
+- When the walking character hits a wall, directional markers appear on all four sides of the wall and the character bounces back
+- When the walking character touches an up marker, it transforms into an upward-moving projectile and the marker disappears
+- When the walking character touches a down marker, it transforms into a downward-moving projectile and the marker disappears  
+- When the walking character touches a left marker, it transforms into a leftward-moving projectile and the marker disappears
+- When the walking character touches a right marker, it transforms into a rightward-moving projectile and the marker disappears
+- When any form of the character touches any directional marker, all directional markers on the level disappear
+- When any form of the character reaches the edge of the screen, it bounces back
+- When any form of the character touches the exit, a winner marker appears and the character disappears
+- When any form of the character touches a trap, the character is destroyed
+
+Win condition:
+The player wins when their character reaches the exit flag.
+
+Lose condition:
+The player loses if their character is destroyed by touching a trap, or if 1000 time units pass without completing the level.
+
+Objective:
+Navigate your character to the exit flag by walking normally and using walls to transform into projectiles that can fly across gaps or reach difficult areas. Avoid the deadly spikes while finding the correct path to the goal.

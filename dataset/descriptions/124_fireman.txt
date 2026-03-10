@@ -1,0 +1,34 @@
+**Player role:**
+The player controls a firefighter that can move in all directions and shoot water. The firefighter has 10 health points and starts with a limited supply of water ammunition that can be replenished.
+
+**Entities:**
+- Ground: Hidden street tiles that form the walkable surface
+- Water ammunition: Blue resource items that track the player's water supply, with a maximum limit of 10
+- Water projectiles: Blue slime-like sprites that the firefighter shoots, moving at normal speed and shrinking slightly over time
+- Boxes: Stationary city building sprites that block movement
+- Fire extinguishers: Stationary hydrant sprites that provide water refills
+- Fire locations: Areas where fire can spawn, appearing as burning city buildings
+- Active fire spreaders: Orange fire sprites that randomly spread to adjacent areas with a 60% probability
+- Burned areas: Stationary sprites representing areas where fire has finished spreading
+- Firefighter avatar: The player character appearing as a fireman sprite
+- Walls: Stationary wall sprites that block movement
+
+**Interactions:**
+- When the firefighter touches walls or boxes, it is pushed back and cannot pass through
+- When boxes touch burned areas, the box is destroyed and the player loses 1 point
+- When burned areas touch boxes, the burned area transforms back into an active fire location
+- When fire touches walls, the fire is destroyed
+- When fire and water projectiles touch each other, both are destroyed and the player gains 2 points
+- When water projectiles hit fire, boxes, or walls, the water projectile is destroyed
+- When the firefighter touches fire, the firefighter loses health points
+- When burned areas touch the ground, they are destroyed
+- When the firefighter touches fire extinguishers, the water ammunition supply increases by 2
+
+**Win condition:**
+The player wins when all fire sprites are eliminated from the level.
+
+**Lose condition:**
+The player loses if the firefighter's health reaches zero or if the time limit of 1500 time units expires.
+
+**Objective:**
+Extinguish all fires by shooting water at them while avoiding direct contact with flames and preventing the fire from spreading to and destroying buildings.

@@ -1,0 +1,32 @@
+**Player role:**
+The player controls a character that can move in all four directions using arrow keys or similar controls. The character moves one space at a time and stops immediately when not being directed.
+
+**Entities:**
+- **Grass**: Green ground tiles that form the basic terrain
+- **Highway**: Road surface that serves as pathways for vehicles
+- **Dense forest spawner**: Blue water-colored areas that frequently create new logs (40% chance every 10 time units)
+- **Sparse forest spawner**: Blue water-colored areas that occasionally create new logs (10% chance every 5 time units)
+- **Water**: Blue impassable barriers that block movement
+- **Goal**: Green exit door that the player must reach to complete the level
+- **Log**: Brown objects that move leftward slowly and can be ridden by the player
+- **Fast orange trucks**: Orange vehicles that move quickly (either leftward or rightward depending on type)
+- **Slow red trucks**: Red vehicles that move slowly (either leftward or rightward depending on type)
+- **Player character**: The main character controlled by the player
+- **Walls**: Black impassable tree barriers that block movement
+
+**Interactions:**
+- When the player touches the goal, the goal disappears and the player scores a point
+- When the player touches a log, the player is protected from being destroyed by water and moves along with the log
+- When the player touches a wall or reaches the edge of the screen, the player is pushed back to their previous position
+- When the player touches a truck or water (without log protection), the player is destroyed
+- When a log reaches the edge of the screen, it disappears
+- When a truck reaches the edge of the screen, it wraps around to the opposite side
+
+**Win condition:**
+The player wins when all goals have been collected (no goals remain on the screen).
+
+**Lose condition:**
+The player loses when their character is destroyed by touching trucks or water without protection.
+
+**Objective:**
+Navigate safely across dangerous highways filled with moving trucks and use floating logs to cross water obstacles in order to reach the exit door.

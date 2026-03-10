@@ -1,0 +1,38 @@
+Player role:
+The player controls a character that can move in four directions at medium speed. The character has 20 health points that can be reduced by enemy attacks.
+
+Entities:
+- A white base structure that blocks movement and appears as a wall
+- The player's character, depicted as a girl, that can move around the level
+- A protector character that looks like a police officer, moves rightward at slow speed, and can shoot missiles with no chance of firing automatically
+- Four types of bandits that move at fast speed and can shoot missiles with a 40% chance every 3 time units. Some face left and shoot downward, others face right and shoot upward, some face left and shoot upward, and others face right and shoot downward
+- Invisible turning points that change bandit direction: one turns them left, one right, one up, and one down
+- Two sets of doors: closed doors that block passage and opened doors that allow passage
+- Two switches that control the door sets
+- Missiles that appear as small orbs, move at moderate speed toward their target
+- An exit door that ends the level when reached
+- Walls that block all movement
+
+Interactions:
+- When the player's character touches a base structure, protector, or wall, they are pushed back and cannot pass through
+- When a missile hits a base structure, both the missile and base are destroyed
+- When a missile reaches the edge of the screen or hits a wall, the missile is destroyed
+- When bandits encounter turning points, they change direction accordingly (left-facing bandits become right-facing when hitting a right turn, etc.)
+- When the protector encounters any turning point, it changes direction to face that way
+- When a missile hits the player's character, the character loses health points
+- When a missile hits the player's character or protector, the missile is destroyed
+- When the protector reaches the exit, it disappears
+- When the player's character touches closed doors, they are pushed back and cannot pass
+- When the protector touches closed doors, it is also blocked
+- When the player touches switch 1, all closed doors of type 1 transform into opened doors
+- When the player touches switch 2, all closed doors of type 2 transform into opened doors
+- When the player reaches the exit, they disappear from the level
+
+Win condition:
+The player wins when the exit disappears from the level (which happens when the player reaches it).
+
+Lose condition:
+The player loses when their character is destroyed (health reaches zero).
+
+Objective:
+Navigate through the level while avoiding bandit missiles, activate switches to open doors that block your path, and reach the exit to win.

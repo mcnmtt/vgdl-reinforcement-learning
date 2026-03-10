@@ -1,0 +1,27 @@
+Player role:
+The player controls an avatar that is affected by gravity and moves with jump mechanics. The avatar can steer left and right even while airborne.
+Entities:
+
+The avatar is the player-controlled character, affected by gravity, capable of jumping and steering in the air.
+The goomba is a brown enemy that moves horizontally and bounces off walls. It is affected by gravity and initially moves to the left.
+The paratroopa is a red enemy that moves horizontally and occasionally jumps. It is affected by gravity and initially moves to the left.
+The elevator is a blue platform that moves upward slowly and continuously. When it reaches the edge of the screen, it reappears on the opposite side.
+The goal is a green static object placed in the level that the player must reach.
+Walls are static objects that block movement.
+
+Interactions:
+
+When the avatar lands on an enemy from above, the enemy is destroyed and the player scores one point.
+When the avatar touches a living enemy from any direction other than above, the avatar is destroyed.
+When the avatar, a goomba, or a paratroopa reaches the edge of the screen, it is destroyed.
+When the avatar reaches the goal object, the goal is destroyed.
+When the avatar, a goomba, or a paratroopa hits a wall, it slows down slightly and stops against it.
+When the avatar, a goomba, or a paratroopa touches an elevator, it is carried upward along with it.
+When an elevator reaches the edge of the screen, it reappears on the opposite side.
+
+Win condition:
+The player wins when all goal objects have been removed from the level.
+Lose condition:
+The player loses if the avatar is destroyed.
+Objective:
+Navigate the level using gravity-based movement, ride elevators to reach higher areas, stomp enemies by jumping on them from above, and reach the green goal object to win.

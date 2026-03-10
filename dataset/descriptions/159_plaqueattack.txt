@@ -1,0 +1,30 @@
+Player role:
+The player controls a character that can move around the game area and shoot yellow projectiles. The character moves using directional controls and can fire projectiles to destroy enemies.
+
+Entities:
+- A floor that serves as the background surface, appearing black and invisible to gameplay
+- Two types of healthy teeth: upper teeth and lower teeth, both stationary objects that represent the player's dental health
+- Two types of damaged teeth: decayed upper teeth and decayed lower teeth, which are the damaged versions of the healthy teeth
+- A character (the player's avatar) that can move freely and shoot yellow projectiles
+- Fast food enemies that actively chase the player: hotdogs that move slowly toward the player and burgers that also move slowly toward the player
+- Food truck spawn points that appear as light gray portals: hotdog trucks that have a 15% chance every 8 time units to create a new hotdog (up to 5 total), and burger trucks that work the same way for burgers
+- Yellow projectiles that the player can shoot, which appear smaller than normal sprites and move in straight lines until they hit something
+- Walls that block movement and destroy projectiles
+
+Interactions:
+- When any moving object hits a wall, it is pushed back and cannot pass through
+- When food enemies are hit by the player's projectiles, both the food and projectile are destroyed and the player gains 2 points
+- When projectiles hit walls, the projectiles are destroyed
+- When food enemies touch healthy lower teeth, the tooth transforms into a decayed lower tooth, the food is destroyed, and the player loses 3 points
+- When the player touches a decayed lower tooth, it transforms back into a healthy lower tooth and the player gains 1 point
+- When food enemies touch healthy upper teeth, the tooth transforms into a decayed upper tooth, the food is destroyed, and the player loses 3 points
+- When the player touches a decayed upper tooth, it transforms back into a healthy upper tooth and the player gains 1 point
+
+Win condition:
+The player wins when all spawn points stop producing food enemies and no food enemies remain on the screen.
+
+Lose condition:
+The player loses when all teeth (both upper and lower) have been damaged by food enemies.
+
+Objective:
+Protect your teeth from fast food enemies by shooting them while they chase you, and heal any damaged teeth by touching them. Survive until all the food trucks stop producing enemies and clear the remaining threats.

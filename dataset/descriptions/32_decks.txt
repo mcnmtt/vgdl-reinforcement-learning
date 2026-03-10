@@ -1,0 +1,41 @@
+Player role:
+This is a two-player game where each player controls an avatar that can move around the game area and shoot cards. Player A controls a girl character and Player B controls a man character. Both avatars can move freely and shoot different types of cards when activated.
+
+Entities:
+- Floor tiles that form the game area background
+- Player A's avatar: a girl character that can move and shoot cards
+- Player B's avatar: a man character that can move and shoot cards
+- Card deck for Player A containing: a 5 of spades, 10 of hearts, 2 of diamonds, and 3 of clubs, all displayed at half size
+- Card deck for Player B containing: a 10 of spades, 2 of hearts, 3 of diamonds, and 5 of clubs, all displayed at half size
+- Joker cards for both players that appear as blocks and can substitute for any regular card
+- A central play area that starts with a neutral block and displays the currently active card
+- Flickering projectiles that represent shot cards in different colors: blue blocks for spades, red blocks for hearts, yellow blocks for diamonds, green blocks for clubs, and gray blocks for jokers
+- Hidden auxiliary markers used to track joker activation states
+- A red genie character that moves randomly around the game area at moderate speed
+- Walls that block movement and create boundaries
+
+Interactions:
+- When avatars, walls, or play area objects meet each other, the moving object is pushed back
+- When Player A touches their deck cards, they transform to shoot the corresponding card type
+- When Player B touches their deck cards, they transform to shoot the corresponding card type
+- When players touch joker cards, hidden markers are spawned to track activation
+- When Player A touches all four joker markers simultaneously, they can shoot joker cards
+- When Player B touches all four joker markers simultaneously, they can shoot joker cards
+- When joker cards meet their corresponding markers, the jokers revert to regular deck cards
+- When avatars touch auxiliary markers, they are pushed back
+- Any shot card can be played on the starting play area or on joker cards in the play area
+- Playing the same card type that's already in play destroys the shot and penalizes the shooter by 1 point
+- Playing cards in ascending order within the same suit gives the playing player 2 points
+- Playing cards of the same rank in different suits gives the playing player 1 point
+- Joker shots on joker play areas are destroyed and award 100 points to the shooting player
+- When the genie touches any deck card, it transforms that card into a joker
+- The genie is pushed back when it encounters walls, other deck cards, play areas, or avatars
+
+Win condition:
+The player with the highest score when time runs out wins the game.
+
+Lose condition:
+There is no explicit lose condition - the game ends when the time limit of 1500 time units is reached.
+
+Objective:
+Play cards strategically to score points by creating sequences and matching ranks while avoiding penalties, all while managing your deck as the genie randomly converts cards to jokers.

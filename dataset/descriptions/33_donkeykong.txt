@@ -1,0 +1,37 @@
+Player role:
+This is a two-player game. Player 1 controls a rogue character and Player 2 controls a spelunky character. Both avatars move at medium speed and can be controlled in all directions. The avatars cannot pass through walls or the edge of the screen - they are blocked and must step back when hitting these obstacles.
+
+Entities:
+- Two player avatars: a rogue (player 1) and a spelunky character (player 2) that move at medium speed
+- Walls that block movement, appearing as black barriers
+- Floor sections that provide walkable surfaces
+- Ground areas that serve as the base terrain
+- Ladders that allow vertical movement between levels
+- Barriers of two types (A and B) that block certain barrels but allow avatars to pass
+- Goals of two types: green exits, one for each player
+- Spawn points that automatically create barrels: one creates barrels moving right every 250 time units, another creates barrels moving left every 300 time units
+- Two types of barrels that behave differently:
+  - Rolling barrels that move horizontally at slow speed, either left or right depending on type
+  - Falling barrels that move downward slowly
+- Each barrel type comes in two variants (A and B) with different colored appearances
+
+Interactions:
+- When a rolling barrel hits its corresponding player (A-type barrel hits player 1, B-type barrel hits player 2), the barrel reverses direction and the player scores 1 point
+- When a player hits the opposite type of rolling barrel (player 1 hits B-type, player 2 hits A-type), the barrel is destroyed and the player scores 500 points
+- When a falling barrel hits its corresponding player, the barrel is destroyed and the player scores 2 points
+- When a falling barrel hits the opposite player, the barrel is destroyed, the hitting player loses 10 points, and the other player gains 5 points
+- When rolling barrels hit their matching barrier type, they reverse direction
+- When falling barrels hit floor sections, they align to the surface and transform into rolling barrels of the same type
+- When rolling barrels encounter ladders, they align to the ladder and transform into falling barrels of the same type
+- When rolling barrels hit walls, they reverse direction
+- When rolling barrels reach the edge of the screen, they are destroyed
+- When a player reaches their corresponding goal, they are removed from the game and score 1 point
+
+Win condition:
+Player 1 wins if Player 2's avatar is destroyed or if Player 1's goal is removed (meaning Player 1 reached it). Player 2 wins if Player 1's avatar is destroyed or if Player 2's goal is removed (meaning Player 2 reached it).
+
+Lose condition:
+A player loses if their avatar is destroyed by barrels or if the opponent reaches their goal first.
+
+Objective:
+Navigate through a dangerous obstacle course filled with rolling and falling barrels to reach your designated goal while avoiding being hit by the wrong type of barrels and trying to eliminate your opponent.

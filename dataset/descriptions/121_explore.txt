@@ -1,0 +1,30 @@
+**Player role:**
+The player controls a character that can move in four directions and shoot projectiles. The character bounces back when hitting walls or the edge of the screen.
+
+**Entities:**
+- Floor tiles that are invisible but mark walkable areas
+- Yellow button blocks that can be activated
+- Blue button blocks that appear when yellow buttons are activated
+- Hidden exit zones that become visible doors when activated
+- Flag doors that appear when buttons are properly activated
+- Guards that patrol the area, chase the player when they have line of sight, move at half normal speed, and appear smaller than normal size
+- Black walls that block movement and cause sprites to bounce back
+- The player character (a girl in red) that can shoot projectiles
+- Flickering projectiles that the player shoots, which disappear after a short time
+
+**Interactions:**
+- When guards hit other guards, walls, or the edge of the screen, they bounce back
+- When the player hits walls, they bounce back  
+- When the player touches a guard, the player is destroyed
+- When a projectile hits a yellow button, all hidden exits transform into visible flag doors
+- When a projectile hits a yellow button, that button transforms into a blue button
+- When the player touches a flag door, a winner object is created
+
+**Win condition:**
+The player wins when a winner object is created (by reaching an activated exit door).
+
+**Lose condition:**
+The player loses if they are destroyed by touching a guard, or if 1000 time units pass.
+
+**Objective:**
+Navigate through the level while avoiding guards, shoot the yellow buttons to activate the exit doors, then reach an exit door to win.

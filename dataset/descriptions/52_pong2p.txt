@@ -1,0 +1,28 @@
+Player role:
+This is a two-player game. Player 1 controls a racket that can move up and down vertically at medium speed. Player 2 controls a blue racket that also moves up and down vertically at the same speed. Both rackets move three times faster horizontally than their base speed when moving side to side.
+
+Entities:
+- Two rackets that players control to move vertically up and down, with faster horizontal movement
+- Balls that move automatically in straight lines - some move left at high speed, others move left or right at slower speed
+- Green goal zones that serve as targets
+- Goals marked as "mine" belonging to one player
+- Goals marked as "other" belonging to the opposing player  
+- Red victory indicators that appear when someone wins
+- An invisible floor surface that fills empty spaces
+- Walls that form boundaries
+
+Interactions:
+- When a ball hits any racket, the ball bounces off in a new direction based on the angle of contact
+- When a ball hits a wall, the ball bounces off the wall
+- When a racket hits a wall, the racket is pushed back and cannot pass through
+- When a ball hits the "other player's" goal, all of those goals transform into victory indicators for player 1
+- When a ball hits "my" goal, all of those goals transform into victory indicators for player 2
+
+Win condition:
+Player 1 wins if all of the opponent's goals are eliminated, or if time runs out. Player 2 wins if all of player 1's goals are eliminated.
+
+Lose condition:
+Player 1 loses if all of their own goals are eliminated. Player 2 loses if all of their goals are eliminated. The game can end in a draw under certain conditions.
+
+Objective:
+Use your racket to hit balls toward your opponent's goals while protecting your own goals from incoming balls. Eliminate all enemy goals to win, or survive until time runs out.

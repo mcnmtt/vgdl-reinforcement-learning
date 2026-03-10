@@ -1,0 +1,44 @@
+Player role:
+The player controls a chef character that can move in all four directions using arrow keys or WASD. The chef moves freely around the screen but cannot pass through walls or locks.
+
+Entities:
+- Floor tiles that provide the background surface for the game area
+- A chef character that the player controls directly
+- A key that can be collected by the player, with only one key available in the level
+- A lock that blocks movement until the player has collected the key
+- Boiling water that bubbles and animates
+- Raw pasta that needs to be cooked
+- A tomato ingredient used for making sauce
+- A tuna ingredient used for making sauce
+- Cooked pasta on a plate that appears when raw pasta is properly combined with boiling water
+- Tomato sauce that appears when tomato and tuna are properly combined
+- A completed pasta dish with sauce that represents the final goal
+- Wrong combination markers that appear when ingredients are combined incorrectly
+- Black walls that block movement
+
+Interactions:
+- When the chef touches any food ingredient, both the chef and ingredient bounce away from each other
+- When any food ingredient touches a wall, lock, or key, the ingredient returns to its previous position
+- When raw pasta touches boiling water, the raw pasta transforms into cooked pasta on a plate, the boiling water disappears, and the player gains 4 points
+- When raw pasta touches tuna, the raw pasta transforms into a wrong combination marker, the tuna disappears, and the player loses 1 point
+- When raw pasta touches tomato, the raw pasta transforms into a wrong combination marker, the tomato disappears, and the player loses 1 point
+- When raw pasta touches tomato sauce, the raw pasta transforms into a wrong combination marker, the tomato sauce disappears, and the player loses 1 point
+- When tomato touches tuna, the tomato transforms into tomato sauce, the tuna disappears, and the player gains 4 points
+- When tomato touches boiling water, the tomato transforms into a wrong combination marker, the boiling water disappears, and the player loses 1 point
+- When tomato touches cooked pasta on a plate, the tomato transforms into a wrong combination marker, the cooked pasta disappears, and the player loses 1 point
+- When boiling water touches tomato sauce, the boiling water transforms into a wrong combination marker, the tomato sauce disappears, and the player loses 1 point
+- When tuna touches boiling water, the tuna transforms into a wrong combination marker, the boiling water disappears, and the player loses 1 point
+- When tuna touches cooked pasta on a plate, the tuna transforms into a wrong combination marker, the cooked pasta disappears, and the player loses 1 point
+- When cooked pasta on a plate touches tomato sauce, the cooked pasta transforms into the completed pasta dish, the tomato sauce disappears, and the player gains 17 points
+- When the chef touches the key, the key is collected and the player gains 1 point
+- When the chef touches a lock while carrying the key, the lock is destroyed
+- When the chef touches a wall or lock (without the key), the chef is pushed back to the previous position
+
+Win condition:
+The player wins when they successfully create one completed pasta dish with sauce.
+
+Lose condition:
+The player loses if they create any wrong combination of ingredients.
+
+Objective:
+Combine ingredients in the correct order to make a complete pasta dish. First combine tomato and tuna to make sauce, then combine raw pasta with boiling water to cook it, and finally combine the cooked pasta with the sauce to complete the dish while avoiding wrong ingredient combinations.

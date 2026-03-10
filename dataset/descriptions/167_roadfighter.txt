@@ -1,0 +1,31 @@
+Player role:
+The player controls a yellow car that can move in any direction at moderate speed. The car has a health system starting with 10 health points and can have up to 20 health points maximum. The car automatically loses health over time.
+
+Entities:
+- Floor tiles that form the road surface where cars can drive
+- Street tiles that form areas where trees appear
+- The player's yellow car that can move around the screen and has a health system
+- Blue slow-moving cars that move downward at a leisurely pace
+- Green fast-moving cars that move downward at moderate speed  
+- Fuel containers that move downward quickly and can restore the player's health
+- Trees that move downward quickly and act as obstacles
+- An invisible boundary at the bottom of the screen
+- Four types of invisible spawn points: one creates slow blue cars every 50 time units (up to 16 total), one creates fast green cars every 100 time units (up to 8 total), one creates fuel containers every 25 time units (up to 32 total), and one creates trees every 2 time units (up to 400 total)
+
+Interactions:
+- The player's car automatically loses 1 health point every 10 time units
+- When the player's car touches a fuel container, it gains 10 health points and the fuel container disappears
+- When the player's car tries to move past the edge of the screen, it is pushed back onto the screen
+- When the player's car touches any other car or a tree, the player's car is destroyed
+- When trees reach the bottom edge of the screen, they disappear
+- When other cars reach the bottom edge of the screen, they disappear
+- When fuel containers reach the bottom edge of the screen, they disappear
+
+Win condition:
+The player wins by surviving for 500 time units.
+
+Lose condition:
+The player loses when their car is destroyed, either by running out of health or by colliding with another car or tree.
+
+Objective:
+Navigate your car through oncoming traffic and falling trees while collecting fuel to maintain your health, surviving long enough to reach the time limit.

@@ -1,0 +1,30 @@
+BasicGame
+    SpriteSet
+        avatar > MarioAvatar
+        goomba > Walker
+        paratroopa > WalkJumper
+        elevator > Conveyor
+        goal > Immovable
+        wall > Immovable
+    LevelMapping
+        0 > goal
+        1 > wall
+    InteractionSet
+        avatar goomba > killIfFromAbove
+        goomba avatar > killIfAlive
+        avatar paratroopa > killIfFromAbove
+        paratroopa avatar > killIfAlive
+        avatar EOS > killSprite
+        goomba EOS > killSprite
+        paratroopa EOS > killSprite
+        avatar goal > killSprite
+        avatar wall > wallStop friction=0.1
+        goomba wall > wallStop friction=0.1
+        paratroopa wall > wallStop friction=0.1
+        avatar elevator > conveySprite
+        goomba elevator > conveySprite
+        paratroopa elevator > conveySprite
+        elevator EOS > wrapAround
+    TerminationSet
+        SpriteCounter stype=goal limit=0 win=True
+        SpriteCounter stype=avatar limit=0 win=False

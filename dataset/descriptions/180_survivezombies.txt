@@ -1,0 +1,29 @@
+**Player role:**
+The player controls a sword-wielding character that moves in response to player input. The character has a health system, starting with 1 health point but capable of gaining up to 10 health points maximum.
+
+**Entities:**
+- Floor tiles that serve as the basic ground surface
+- Pink flowers that occasionally spawn yellow bees (2% chance each moment)
+- Red tombstones that spawn brown zombies - some spawn zombies frequently (5% chance each moment) while others spawn them less often (3% chance each moment)
+- Golden honey drops that remain stationary once placed
+- The player's sword-wielding character that can move around and has a health system
+- Yellow bees that move randomly around the game area at normal speed, with brief pauses between movements
+- Brown zombies that actively chase the player character at half speed, with longer pauses between movements
+- Walls that block movement and cannot be destroyed
+
+**Interactions:**
+- When the player character touches honey, the character gains one health point, the honey disappears, and the player gains one point
+- When any moving character (player, bee, or zombie) hits a wall, they are pushed back and cannot pass through
+- When the player character touches a zombie, the player loses one health point and loses one point
+- When a zombie touches the player character, the player character is destroyed
+- When a bee touches a zombie, the zombie is destroyed and transforms into a honey drop
+- When the player character touches a tombstone, the character is destroyed and the player loses one point
+
+**Win condition:**
+The player wins if they survive for 1000 time units without being destroyed.
+
+**Lose condition:**
+The player loses if their character is destroyed by touching a zombie or tombstone.
+
+**Objective:**
+Survive in an arena filled with zombie-spawning tombstones by avoiding enemies and collecting honey (created when bees destroy zombies) to maintain your health, while lasting long enough to achieve victory through endurance.

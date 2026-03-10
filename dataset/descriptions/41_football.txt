@@ -1,0 +1,33 @@
+**Player role:**
+This is a two-player game where each player controls a character that can move around and kick a ball. Player A controls a girl character, and Player B controls a man character. Both players can move in any direction and can kick the ball by shooting, which creates a temporary boot sprite that interacts with the ball.
+
+**Entities:**
+- A girl character (Player A's avatar) that can move around and kick the ball
+- A man character (Player B's avatar) that can move around and kick the ball
+- A football that bounces around the field and can be kicked by players
+- Two goal posts: a dark blue goal that scores points for Player A, and another dark blue goal that scores points for Player B
+- Three types of computer-controlled players that move randomly around the field at different speeds: slow players, fast players, and medium-speed players
+- Temporary boot sprites that appear briefly when a player kicks and can contact the ball
+- Walls that block movement around the field
+- Hidden grass tiles that cover the playing field
+- Invisible teleportation portals that briefly appear when the ball enters a goal
+- Hidden starting positions for the ball
+
+**Interactions:**
+- When any player character, computer player, wall, or goal contacts each other, they push back and cannot overlap
+- When the ball contacts a player character, it bounces forward in the direction the player was moving
+- When the ball contacts computer players, walls, or player characters, all sprites involved return to their previous positions
+- When the ball enters Player A's goal (goalA), Player B scores 15 points and a teleportation portal appears
+- When the ball enters Player B's goal (goalB), Player A scores 15 points and a teleportation portal appears
+- When a teleportation portal contacts the ball, the portal disappears and the ball is moved to a starting position
+- When Player A's boot contacts the ball, Player A loses 1 point, the boot disappears, and a teleportation portal appears that will reset the ball
+- When Player B's boot contacts the ball, Player B loses 1 point, the boot disappears, and a teleportation portal appears that will reset the ball
+
+**Win condition:**
+The player with the highest score when time runs out wins the game.
+
+**Lose condition:**
+The player with the lower score when the 1500-step time limit expires loses the game.
+
+**Objective:**
+Score points by getting the ball into your opponent's goal while preventing them from scoring in yours. Avoid using your kick ability directly on the ball as it will cost you points.

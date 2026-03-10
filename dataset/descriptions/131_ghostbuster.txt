@@ -1,0 +1,32 @@
+**Player role:**
+The player controls a human character armed with a shotgun, facing left initially. The character can move around and shoot missiles. The character cannot pass through walls or move off the edge of the screen - instead, it stops when hitting these boundaries.
+
+**Entities:**
+- A human avatar with a shotgun that the player controls, which can shoot projectiles
+- A ghost spawn point that looks like a hole and can create up to 10 ghosts total throughout the game
+- A single ghost that chases other characters along paths, can only act every 4 time units, and appears as a translucent spirit
+- Standing civilians that move randomly at half normal speed and appear as regular people
+- Fleeing civilians that chase toward escape routes, can only act every 2 time units, and appear as distressed people
+- Missiles that are small glowing orbs, shrink over time, and disappear after 15 time units
+- Walls that form barriers and automatically connect to adjacent walls for seamless appearance
+- An escape door that provides a way out for fleeing civilians
+- Ground tiles that form the floor but remain invisible during gameplay
+
+**Interactions:**
+- When the avatar, ghost, or any civilian touches a wall or reaches the edge of the screen, they are pushed back and cannot pass through
+- Standing civilians cannot enter the escape door and are pushed back from it
+- When a ghost touches a missile, both are destroyed and the player gains 10 points
+- When the avatar touches a ghost, the avatar is destroyed and the player loses 100 points
+- When a missile hits a wall or reaches the edge of the screen, the missile is destroyed
+- When a standing civilian encounters the ghost, they line up with the ghost's position and transform into a fleeing civilian, costing the player 1 point
+- When a fleeing civilian touches the avatar, they transform back into a standing civilian and the player gains 1 point
+- When a fleeing civilian reaches the escape door, they are removed from the game and the player loses 10 points
+
+**Win condition:**
+The player wins when the ghost spawn point has created all its ghosts and no ghosts remain on the screen.
+
+**Lose condition:**
+The player loses if either the avatar is destroyed or if all civilians are eliminated from the game.
+
+**Objective:**
+Survive while protecting civilians from a ghost that turns them into panicked fleeing people, and prevent the fleeing civilians from escaping through the exit door while eliminating all ghosts that spawn.
