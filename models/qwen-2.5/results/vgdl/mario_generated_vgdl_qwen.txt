@@ -1,0 +1,21 @@
+BasicGame
+    SpriteSet
+        "player" "mario"
+        "goomba" "enemy"
+        "paratroopa" "enemy"
+        "goal" "target"
+        "elevator" "elevator"
+    TerminationSet
+        "die" "player" "hit by enemy"
+        "win" "player" "at goal"
+    InteractionSet
+        "jump" "player" "enemy" "on top of"
+        "collide" "player" "enemy" "while enemy alive"
+        "move" "moving entity" "wall"
+        "elevator" "moving entity" "carry"
+    LevelMapping
+        "player" "start"
+        "goomba" "random"
+        "paratroopa" "random"
+        "goal" "end"
+        "elevator" "random"

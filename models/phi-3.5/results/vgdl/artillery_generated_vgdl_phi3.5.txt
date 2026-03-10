@@ -1,0 +1,21 @@
+BasicGame
+    SpriteSet
+        avatar > MovingAvatar
+        pad > Immovable
+        wall > Immovable
+        bullet > MovingBullet
+    InteractionSet
+        avatar bullet > fireBullet
+        bullet wall > killSprite
+        bullet pad > killSprite
+        avatar wall > pushBack
+        avatar edge > pushBack
+    TerminationSet
+        SpriteCounter stype=avatar win=True
+        SpriteCounter stype=pad win=False
+    LevelMapping
+        w > wall
+        p > pad
+        edge > edge
+        bullet > bullet
+        avatar > avatar

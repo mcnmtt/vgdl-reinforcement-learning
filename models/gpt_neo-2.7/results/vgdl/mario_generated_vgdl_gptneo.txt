@@ -1,0 +1,20 @@
+BasicGame
+    SpriteSet
+        avatar > ShootAvatar
+            bullet > Missile speed=2
+        enemy > Passive
+        wall > Immovable
+    LevelMapping
+        E > enemy
+        W > wall
+    InteractionSet
+        avatar wall > stepBack
+        bullet enemy > killSprite
+        bullet wall > killSprite
+        bullet EOS > killSprite
+        SpriteCounter stype=enemy limit=0 win=True
+        SpriteCounter stype=avatar limit=0 win=False
+        MultiSpriteCounter
+            enemy limit=0
+            enemy limit=0
+            enemy limit
