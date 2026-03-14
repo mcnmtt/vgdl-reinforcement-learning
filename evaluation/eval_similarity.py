@@ -203,46 +203,69 @@ def main():
 
     target_vgdl = """
 BasicGame
-    SpriteSet    
-        pad    > Immovable color=BLUE 
-        avatar > AimedAvatar stype=bullet
-        bullet > Missile physicstype=GravityPhysics speed=25 singleton=True
+    SpriteSet
+        goal > Immovable color=GREEN
+            othergoal > 
+            mygoal    >
+        racket > VerticalAvatar speed=0.25
+            avatar      > alternate_keys=True
+            otheravatar > color=BLUE 
+        ball > Missile orientation=LEFT speed=15 color=ORANGE physicstype=NoFrictionPhysics
             
-    TerminationSet
-        SpriteCounter stype=pad    win=True     
-        SpriteCounter stype=avatar win=False     
+    TerminationSet # from the perspective of player 1 (on the left)
+        SpriteCounter stype=othergoal limit=6 win=False     
+        SpriteCounter stype=mygoal    limit=6 win=True     
            
     InteractionSet
-        wall bullet > killSprite 
-        bullet wall > killSprite 
-        pad bullet > killSprite
-        avatar wall > stepBack
-        avatar EOS > stepBack
-        bullet EOS > killSprite
-
+        goal ball   > killSprite
+        ball racket > bounceDirection
+        ball wall   > wallBounce
+        racket wall > stepBack
+        
     LevelMapping
-        G > pad
+        - > mygoal
+        + > othergoal
+        a > otheravatar
+        o > ball
 """
 
     generated_vgdl = """
-BasicGame
+ BasicGame square_size=30 no_players=2
     SpriteSet
-        avatar > AimedAvatar
-        bullet > Missile gravitation=TRUE
-        pad > Passive color=BLUE
-        wall > Immovable
+        background > Immovable hidden=True img=oryx/backBlack
+        winner > Immovable hidden=True color=GREEN
+            goalA > img=newset/goal1
+            goalB > img=newset/goal2
+        moving >
+            pad > Missile orientation=UP img=newset/pad1
+                padA > speed=0.5
+                    padA1 >
+                    padA2 >
+                padB > speed=0.5
+                    padB1 >
+                    padB2 >
+            puck > OrientedFlak img=oryx/orbH speed=0.8
+        wall > Immovable img=oryx/wall3 autotiling=true
+        
     LevelMapping
-        0 > pad
-        1 > wall
+        A > padA background
+        B > padB background
+        . > background
+        w > wall
+    
     InteractionSet
-        bullet wall > killSprite
-        bullet pad > transformTo stype=wall
-        avatar wall > stepBack
-        avatar EOS > stepBack
-        bullet EOS > killSprite
+        goalA puck > killSprite
+        goalB puck > killSprite
+        puck padA > bounceForward
+        puck padB > bounceForward
+        puck wall > stepBack
+        padA wall > stepBack
+        padB wall > stepBack
+    
     TerminationSet
-        SpriteCounter stype=pad limit=0 win=True
-        SpriteCounter stype=avatar limit=0 win=False
+        SpriteCounter stype=puck limit=0 win=False
+        MultiSpriteCounter stype1=padA stype2=goalA limit=6 win=True,False
+        MultiSpriteCounter stype1=padB stype2=goalB limit=6 win=False,True
 """
 
     result = vgdl_similarity(target_vgdl, generated_vgdl)

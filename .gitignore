@@ -8,6 +8,7 @@ __pycache__
 *.pyo
 *.pyd
 progetto-venv
+dataset_hf
 env/
 venv/
 ENV/
@@ -15,3 +16,7 @@ env.bak/
 venv.bak/  
 pyvgdl-venv/
 dataset/.env
+unsloth_compiled_cache
+models/qwen3.5/supervised-learning/16-32-0.05
+models/deepseek/supervised-learning/16-32-0.05-4bit
+.claude
