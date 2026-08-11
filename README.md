@@ -1,216 +1,168 @@
-# VGDL Code Generation with LLMs
+# VGDL Reinforcement Learning
 
-This repository contains the codebase for a study on **automatic generation of VGDL (Video Game Description Language) code from natural language descriptions** using Large Language Models.
+Repository per il progetto d'esame sulla generazione automatica di codice VGDL a partire da descrizioni in linguaggio naturale tramite Large Language Model.
 
-The project explores three complementary strategies: **zero-shot prompting**, **supervised fine-tuning (SFT)** via QLoRA, and **reinforcement learning (RL)**. It includes a fully automated pipeline for dataset construction, model training, structural evaluation, and training curve visualization.
+Il progetto segue una pipeline in tre fasi:
 
----
+1. costruzione del dataset VGDL/descrizione;
+2. valutazione zero-shot di diversi modelli;
+3. selezione dei modelli migliori e confronto tra supervised fine-tuning e reinforcement learning.
 
-## 🧠 Key Features
+## Pipeline
 
-- 📝 **Automated dataset construction**: 201 (description, VGDL) pairs generated via Claude Sonnet from raw VGDL files
-- 🔍 **Zero-shot inference**: baseline experiments across 6 open-source LLMs
-- 🎯 **Supervised fine-tuning**: QLoRA-based SFT with Unsloth on Qwen3.5-4B and DeepSeek-LLM 7B
-- 🤖 **Reinforcement learning**: RL experiments on Qwen3.5 and DeepSeek (in progress)
-- ✅ **Structural evaluation**: VGDL executability check via py-vgdl parser + Jaccard-based similarity score
-- 📊 **Training visualization**: interactive notebook for loss, LR schedule, and gradient norm curves
+```text
+dataset/vgdl_files/        -> specifiche VGDL originali
+dataset/create_db.py       -> genera descrizioni testuali tramite API Anthropic
+dataset/descriptions/      -> descrizioni in linguaggio naturale
+dataset/dataset_hf.py      -> converte i dati in formato Hugging Face Dataset
 
----
+models/<model>/zero-shot/              -> inferenza zero-shot
+models/<model>/supervised-learning/    -> QLoRA/SFT
+models/<model>/reinforcement-learning/ -> GRPO/RL
 
-## 🛠️ Technologies Used
-
-- **Unsloth** for memory-efficient fine-tuning (QLoRA, gradient checkpointing)
-- **TRL** (`SFTTrainer`) for supervised fine-tuning
-- **PEFT** (LoRA / QLoRA with NF4 quantization)
-- **Hugging Face** `transformers`, `datasets`, `accelerate`
-- **py-vgdl** (local fork) for VGDL parsing and executability validation
-- **Anthropic API** (`claude-sonnet`) for automated description generation
-- **PyTorch 2.10 + CUDA 13.0**, Python, Matplotlib, Jupyter
-
----
-
-## 🏗️ Pipeline Overview
-
-```
-dataset/vgdl_files/          ← 201 raw VGDL game files
-        ↓  create_db.py      (Claude Sonnet generates descriptions)
-dataset/descriptions/        ← 201 natural language descriptions
-        ↓  dataset_hf.py     (train/test split 90/10, HF format)
-dataset_hf/                  ← HuggingFace Dataset (arrow format)
-        ↓
-  ┌─────────────────────────────────────┐
-  │          Model Experiments          │
-  │                                     │
-  │  zero-shot/     → baseline inference│
-  │  supervised-learning/ → SFT QLoRA  │
-  │  reinforcement-learning/ → RL       │
-  └─────────────────────────────────────┘
-        ↓
-  evaluation/
-    check_vgdl_executability.py  ← syntax + semantic validation
-    eval_similarity.py           ← Jaccard structural similarity
-    plot_training_curves.ipynb   ← training metrics visualization
+evaluation/                 -> validazione, similarity, metriche e plot
+latex/                      -> mini-paper del progetto
 ```
 
----
+## Modelli
 
-## 📂 Project Structure
+La fase zero-shot e' stata usata come baseline esplorativa su piu' modelli open-weight. Dopo questa fase sono stati selezionati tre modelli principali per SFT e RL:
 
-```
-vgdl-reinforcement-learning/
-│
-├── dataset/
-│   ├── vgdl_files/          # 201 raw VGDL game specifications
-│   ├── descriptions/        # 201 natural language descriptions (auto-generated)
-│   ├── create_db.py         # Generates descriptions via Claude Sonnet API
-│   └── dataset_hf.py        # Converts pairs to HuggingFace Dataset format
-│
-├── dataset_hf/              # HF Dataset (train/test split 90/10, seed=42)
-│
-├── models/
-│   ├── qwen3.5/
-│   │   ├── zero-shot/       # Qwen3.5 zero-shot inference + results
-│   │   ├── supervised-learning/
-│   │   │   ├── finetune.py  # SFT training script (LoRA r=16 α=32)
-│   │   │   ├── inference.py # Inference with fine-tuned adapter
-│   │   │   └── 16-32-0.05/  # Saved adapter + training metrics
-│   │   └── reinforcement-learning/
-│   │
-│   ├── deepseek/
-│   │   ├── zero-shot/       # DeepSeek zero-shot inference + results
-│   │   ├── supervised-learning/
-│   │   │   ├── finetune.py  # SFT training script (QLoRA 4-bit NF4)
-│   │   │   ├── inference.py # Inference with fine-tuned adapter
-│   │   │   └── 16-32-0.05-4bit/  # Saved adapter + training metrics + plots
-│   │   └── reinforcement-learning/
-│   │
-│   ├── qwen-2.5/            # Qwen 2.5 zero-shot experiments
-│   ├── phi-3.5/             # Phi-3.5 zero-shot experiments
-│   ├── mistral/             # Mistral zero-shot experiments
-│   ├── minerva7b/           # Minerva 7B zero-shot experiments
-│   ├── gpt_neo-2.7/         # GPT-Neo 2.7B zero-shot experiments
-│   └── gold-descriptions/   # Reference descriptions for evaluation
-│
-├── evaluation/
-│   ├── check_vgdl_executability.py  # Validates VGDL via py-vgdl parser
-│   ├── eval_similarity.py           # Jaccard similarity (sprites/interactions/termination)
-│   └── plot_training_curves.ipynb   # Training metrics visualization
-│
-├── py-vgdl/                 # Local fork of the py-vgdl interpreter
-└── requirements.txt
-```
+- Qwen3.5
+- DeepSeek
+- Phi-3.5
 
----
+Gemma4 e' presente nella repository come esperimento aggiuntivo/di supporto, con script zero-shot, supervised learning e reinforcement learning.
 
-## 🧪 Setup Instructions
+## Setup
 
-### Main environment (fine-tuning and inference)
+L'ambiente principale usato per training, inferenza e valutazione e':
 
-```bash
-conda create -n rlia python=3.10
+```powershell
 conda activate rlia
-pip install -r requirements.txt
 ```
 
-### py-vgdl environment (executability check only)
+Le dipendenze principali sono raccolte in:
 
-```bash
-cd py-vgdl
-pip install -e .
+- `requirements.txt`
+- `environment.yml`
+
+Per la generazione delle descrizioni e' necessario creare localmente:
+
+```text
+dataset/.env
 ```
 
-> The executability check must be run under the `py-vgdl` environment, while all other scripts use the main `rlia` environment.
+partendo da:
 
-### API key (dataset construction)
-
-Create a `.env` file inside `dataset/`:
-
-```
-ANTHROPIC_API_KEY=your_key_here
+```text
+dataset/.env.example
 ```
 
----
+Il file `.env` non va versionato.
 
-## 🚀 How to Run
+## Dataset
 
-### 1. Build the dataset
+Per rigenerare il dataset:
 
-```bash
-# Step 1 – generate descriptions from VGDL files (requires Anthropic API key)
-cd dataset
-python create_db.py
-
-# Step 2 – convert to HuggingFace Dataset format
-cd ..
+```powershell
+conda activate rlia
+cd C:\Users\Mattia\Desktop\REPOs\vgdl-reinforcement-learning
+python dataset/create_db.py
 python dataset/dataset_hf.py
 ```
 
-### 2. Zero-shot inference
+La cartella `dataset_hf/` e gli archivi compressi sono esclusi dal versionamento per evitare artefatti pesanti o rigenerabili.
 
-Each model has its own inference script under `models/<model>/zero-shot/inference/`:
+## Zero-Shot
 
-```bash
-# Example: DeepSeek zero-shot
+Ogni modello ha uno script dedicato nella rispettiva cartella:
+
+```powershell
+python models/qwen3.5/zero-shot/inference/vgdl_gen_qwen_zeroshot.py
 python models/deepseek/zero-shot/inference/vgdl_gen_deepseek_zeroshot.py
+python models/gemma4/zero-shot/inference/vgdl_gen_gemma4_zeroshot.py
 ```
 
-### 3. Supervised fine-tuning
+## Supervised Fine-Tuning
 
-```bash
-# Qwen3.5-4B (QLoRA, r=16, α=32, dropout=0.05)
+Gli script SFT usano LoRA/QLoRA con configurazioni compatibili con una GPU consumer.
+
+```powershell
 python models/qwen3.5/supervised-learning/finetune.py
-
-# DeepSeek-LLM 7B (QLoRA 4-bit NF4 — required due to VRAM constraints)
 python models/deepseek/supervised-learning/finetune.py
+python models/gemma4/supervised-learning/finetune.py
 ```
 
-Training metrics are saved to `training_metrics.json` inside the output directory.
+I checkpoint e gli adapter generati sono esclusi dal commit. Nel repository restano gli script necessari a riprodurre il training.
 
-### 4. Inference with fine-tuned model
+## Reinforcement Learning
 
-```bash
-python models/deepseek/supervised-learning/inference.py
-python models/qwen3.5/supervised-learning/inference.py
+La fase RL usa GRPO con reward composita basata su:
+
+- eseguibilita' tramite parser `py-vgdl`;
+- similarita' strutturale con il VGDL target;
+- presenza dei blocchi fondamentali VGDL;
+- validita' di sprite class, interaction functions e termination conditions;
+- rispetto del formato raw VGDL senza markdown.
+
+Esempio:
+
+```powershell
+python models/gemma4/reinforcement-learning/grpo_train.py
 ```
 
----
+I modelli salvano checkpoint locali, `last-model` e `best-model`, ma questi artefatti non vengono versionati.
 
-## 📊 Evaluation
+## Evaluation
 
-### Check VGDL executability
+Per valutare un modello sul test set:
 
-```bash
-# Activate py-vgdl environment first
-conda activate py-vgdl-env
-python evaluation/check_vgdl_executability.py <path_to_vgdl.txt>
+```powershell
+python evaluation/evaluate_model_testset.py `
+  --backend ollama `
+  --model gemma4:e4b `
+  --run-name gemma4-zero-shot
 ```
 
-The script uses the py-vgdl parser to validate syntax, sprite references, and termination conditions.
-
-### Compute structural similarity (Jaccard)
-
-```bash
-python evaluation/eval_similarity.py
+```powershell
+python evaluation/evaluate_model_testset.py `
+  --backend hf `
+  --model google/gemma-4-E4B-it `
+  --adapter models/gemma4/supervised-learning/model-finetuned `
+  --run-name gemma4-supervised `
+  --max-new-tokens 400
 ```
 
-The similarity score is a weighted Jaccard over three components:
+Per creare plot comparativi:
 
-| Component      | Weight |
-|----------------|--------|
-| Sprites        | 25%    |
-| Interactions   | 50%    |
-| Termination    | 25%    |
-
-### Visualize training curves
-
-Open the notebook and set `METRICS_PATH` to the desired `training_metrics.json`:
-
-```bash
-jupyter notebook evaluation/plot_training_curves.ipynb
+```powershell
+python evaluation/plot_evaluation_results.py `
+  --runs gemma4-zero-shot gemma4-supervised `
+  --output-dir evaluation/plots/gemma4-comparison
 ```
 
----
+## Mini-Paper
 
-## 👥 Contact
+Il mini-paper si trova in:
 
-- [Mattia Maucioni](https://github.com/mcnmtt) | 📧 mattiamaucioni [at] icloud.com
+```text
+latex/main.tex
+```
+
+Contiene descrizione del dataset, selezione dei modelli, protocollo sperimentale, SFT, RL e discussione dei risultati. La sezione Phi-3.5 contiene placeholder da completare quando saranno disponibili i risultati finali.
+
+## Artefatti Esclusi Dal Versionamento
+
+Sono esclusi dal commit:
+
+- file `.env`;
+- checkpoint di training;
+- adapter `.safetensors`;
+- optimizer/scheduler state;
+- cache Unsloth;
+- dataset Hugging Face rigenerabile;
+- archivi `.zip`;
+- cartelle `model-finetuned/` e `grpo-output/`.
+
+Questa scelta mantiene la repository leggera e riproducibile.

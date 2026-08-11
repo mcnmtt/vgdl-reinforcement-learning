@@ -1,0 +1,2 @@
+run_name,backend,model,examples,executability_rate,complete_structure_rate,mean_sprite_similarity,mean_interaction_similarity,mean_termination_similarity,mean_structural_similarity,mean_generation_seconds
+gemma4-zero-shot,ollama,gemma4:e4b,21,1.0,0.0,0.0,0.0,0.0,0.0,7.817510223809569

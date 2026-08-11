@@ -1,0 +1,16 @@
+{
+  "run_name": "gemma4-supervised",
+  "backend": "hf",
+  "model": "google/gemma-4-E4B-it",
+  "adapter": "models\\gemma4\\supervised-learning\\model-finetuned",
+  "examples": 21,
+  "executability_rate": 0.0,
+  "basic_game_rate": 1.0,
+  "complete_structure_rate": 0.8571428571428571,
+  "mean_sprite_similarity": 0.3486984444127301,
+  "mean_interaction_similarity": 0.17717508067330742,
+  "mean_termination_similarity": 0.34172335600907033,
+  "mean_structural_similarity": 0.2611929904421038,
+  "mean_similarity_valid_only": 0.0,
+  "mean_generation_seconds": 107.2460552571427
+}

@@ -1,0 +1,19 @@
+BasicGame
+    SpriteSet
+        Avatar > AimedAvatar
+            Bullet > Missile gravity=true speed=5
+        BluePad > Immovable
+        Wall > Immovable
+    LevelMapping
+        0 > BluePad
+        1 > Wall
+    InteractionSet
+        Bullet wall > killSprite
+        Wall bullet > killSprite
+        Bullet BluePad > killSprite
+        Avatar Wall > stepBack
+        Avatar EOS > stepBack
+        Bullet EOS > killSprite
+    TerminationSet
+        SpriteCounter stype=BluePad limit=0 win=True
+        SpriteCounter stype=Avatar limit=0 win=False

@@ -1,0 +1,1430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>VGDL Evaluation Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; color: #222; }
+    h1, h2 { color: #17365d; }
+    img { max-width: 100%; border: 1px solid #ddd; margin: 12px 0 28px; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; }
+    th, td { border: 1px solid #ccc; padding: 7px; text-align: left; }
+    th { background: #eaf1f8; position: sticky; top: 0; }
+    pre { white-space: pre-wrap; max-width: 900px; }
+    .table-wrap { overflow-x: auto; margin-bottom: 35px; }
+    details { margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <h1>VGDL Model Evaluation</h1>
+  <p>Runs compared: gemma4-zero-shot</p>
+  <h2>Summary</h2>
+  <div class="table-wrap">
+    <table><thead><tr><th>run_name</th><th>backend</th><th>model</th><th>examples</th><th>executability_rate</th><th>complete_structure_rate</th><th>mean_sprite_similarity</th><th>mean_interaction_similarity</th><th>mean_termination_similarity</th><th>mean_structural_similarity</th><th>mean_generation_seconds</th></tr></thead>
+    <tbody><tr><td>gemma4-zero-shot</td><td>ollama</td><td>gemma4:e4b</td><td>21</td><td>1.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>7.817510223809569</td></tr></tbody></table>
+  </div>
+  <h2>Plots</h2>
+  <section><img src="01_validity_and_structure.png" alt="01_validity_and_structure"></section>
+<section><img src="02_similarity_comparison.png" alt="02_similarity_comparison"></section>
+<section><img src="03_similarity_per_example.png" alt="03_similarity_per_example"></section>
+<section><img src="04_similarity_heatmap.png" alt="04_similarity_heatmap"></section>
+<section><img src="05_generation_performance.png" alt="05_generation_performance"></section>
+  <h1>Per-example details</h1>
+  
+            <h2>gemma4-zero-shot</h2>
+            <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Index</th><th>Valid</th><th>Structure</th>
+                  <th>Sprites</th><th>Interactions</th>
+                  <th>Terminations</th><th>Overall</th>
+                  <th>Time</th><th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>9.32s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+  Entities:
+  {
+    Floor: {Type: Background, Color: Grey, Dimensions: [1000, 100]},
+    BanditA: {Type: Character, Facing: Right, Position: [100, 50], Health: 1, Score: 0},
+    BanditB: {Type: Character, Facing: Left, Position: [900, 50], Health: 1, Score: 0},
+    Wall: {Type: Static, Material: Stone, Color: Grey, Collision: True},
+    RockProjectile: {Type: Projectile, Shape: Planet, Speed: Medium, Shrink: True, Damage: 1},
+    PaperProjectile: {Type: Projectile, Shape: Scroll, Speed: Medium, Shrink: True, Damage: 1},
+    ScissorsProjectile: {Type: Projectile, Shape: Axe, Speed: 
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame no_players=2 square_size=30
+    SpriteSet
+        floor &gt; Immovable img=oryx/backGrey hidden=True
+
+        bullet &gt; Missile shrinkfactor=0.5
+            bulletA &gt; singleton=True orientation=RIGHT
+                rockAb &gt; img=oryx/planet1
+                    rockAb0 &gt; speed=0.5
+                    rockAb1 &gt; speed=0.3
+                paperAb &gt; img=oryx/scroll1
+                    paperAb0 &gt; speed=0.5
+                    paperAb1 &gt; speed=0.3
+                scissorsAb &gt; img=oryx/axe2
+                    scissorsAb0 &gt; speed=0.5
+                    scissorsAb1 &gt; speed=0.3
+                
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>1</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>7.13s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+  Player:
+  {
+    Type: &quot;Firefighter avatar&quot;
+    Health: 10
+    Movement: &quot;All directions&quot;
+    Action: &quot;Shoot water&quot;
+    Resource: &quot;Water ammunition&quot;
+    ResourceMax: 10
+    OnCollision(Wall, Box):
+    {
+      Effect: &quot;Push back&quot;
+      Block: true
+    }
+    OnCollision(Fire):
+    {
+      Effect: &quot;Lose Health (1)&quot;
+    }
+    OnCollision(FireExtinguisher):
+    {
+      Effect: &quot;Increase Water Ammunition (2)&quot;
+    }
+  }
+
+  Entities:
+  {
+    Ground:
+    {
+      Type: &quot;Walkable surface&quot;
+    }
+    WaterAmmunition:
+    {
+      Type: &quot;Resource item&quot;
+      Visual: &quot;Blue resource item&quot;
+      On
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame square_size=30 key_handler=Pulse
+    SpriteSet
+
+        ground &gt; Immovable img=newset/street3 hidden=True
+        waterAmmo &gt; Resource color=BLUE limit=10
+        water &gt; Missile img=oryx/slime1 speed=1.0 shrinkfactor=0.8
+        box &gt; Immovable img=newset/city1
+        extinguisher &gt; Immovable img=newset/hydrant
+
+        fire &gt; img=oryx/fire1
+            fireOn &gt; SpawnPoint stype=fireStart prob=0.01 img=newset/city1_fire
+            fireStart &gt; Spreader color=ORANGE spreadprob=0.6 stype=fireEnd
+            fireEnd &gt; Immovable
+        avatar  &gt; ShootAvatar ammo=waterAmmo stype=water 
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>2</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>23.97s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+  &quot;player&quot;: {
+    &quot;entity&quot;: &quot;Avatar&quot;,
+    &quot;description&quot;: &quot;The player character that can move freely and shoot a digging tool&quot;,
+    &quot;movement&quot;: &quot;free&quot;,
+    &quot;actions&quot;: [
+      {&quot;name&quot;: &quot;dig_walk&quot;, &quot;target&quot;: &quot;Dirt&quot;, &quot;effect&quot;: &quot;destroy&quot;, &quot;range&quot;: 1},
+      {&quot;name&quot;: &quot;dig_shoot&quot;, &quot;target&quot;: &quot;Dirt&quot;, &quot;effect&quot;: &quot;destroy&quot;, &quot;range&quot;: 5, &quot;tool&quot;: &quot;Sword&quot;}
+    ]
+  },
+  &quot;entities&quot;: [
+    {&quot;name&quot;: &quot;Sword&quot;, &quot;type&quot;: &quot;Tool&quot;, &quot;description&quot;: &quot;A gray pickaxe-like tool that the avatar shoots to dig dirt remotely, appears briefly when used&quot;},
+    {&quot;name&quot;: &quot;Wall&quot;, &quot;type&quot;: &quot;Static&quot;, &quot;description&quot;: &quot;Immovable 
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame block_size=5
+	SpriteSet
+		sword &gt; Flicker color=LIGHTGRAY limit=1 singleton=True img=oryx/pickaxe
+		wall &gt; Immovable autotiling=true img=oryx/dirtWall_0
+		dirt &gt; Immovable color=BROWN img=oryx/backLBrown
+		exitdoor &gt; Immovable color=GREEN img=oryx/door2
+		diamond &gt; Resource color=YELLOW limit=10 shrinkfactor=0.25 img=oryx/diamond3
+		boulder &gt; Missile orientation=DOWN color=GRAY speed=0.2 img=oryx/mineral1
+		moving &gt;
+			avatar  &gt; ShootAvatar   stype=sword img=oryx/spelunky_0
+			enemy &gt; RandomNPC
+				crab &gt; color=RED img=oryx/scorpion2
+				butterfly &gt; color=PINK img=oryx/bat2
+	LevelMap
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>3</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>6.74s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+    &quot;player&quot;: {
+        &quot;type&quot;: &quot;Submarine&quot;,
+        &quot;color&quot;: &quot;yellow&quot;,
+        &quot;movement&quot;: &quot;all_directions&quot;,
+        &quot;bounds&quot;: &quot;screen_edge&quot;,
+        &quot;action&quot;: &quot;shoot_torpedo&quot;,
+        &quot;max_shells_for_fang&quot;: 15
+    },
+    &quot;entities&quot;: [
+        {&quot;name&quot;: &quot;Water&quot;, &quot;type&quot;: &quot;background&quot;},
+        {&quot;name&quot;: &quot;Torpedo&quot;, &quot;type&quot;: &quot;projectile&quot;, &quot;color&quot;: &quot;yellow&quot;, &quot;shrinks&quot;: true},
+        {&quot;name&quot;: &quot;Shark&quot;, &quot;type&quot;: &quot;enemy&quot;, &quot;color&quot;: &quot;orange&quot;, &quot;movement&quot;: &quot;chase_player&quot;, &quot;speed&quot;: &quot;slow&quot;},
+        {&quot;name&quot;: &quot;Whale&quot;, &quot;type&quot;: &quot;enemy&quot;, &quot;color&quot;: &quot;brown&quot;, &quot;movement&quot;: &quot;right&quot;, &quot;speed&quot;: &quot;slow&quot;},
+       
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame
+    SpriteSet
+        water &gt; Immovable img=newset/water2
+        holes &gt; SpawnPoint color=LIGHTGRAY img=newset/whirlpool2 portal=True
+            sharkhole  &gt;  stype=shark  prob=0.025 total=1
+            whalehole  &gt;  stype=whale  prob=0.1 cooldown=10
+            piranhahole  &gt;  stype=piranha  prob=0.1 cooldown=10
+
+        moving &gt;
+            avatar  &gt; ShootAvatar color=YELLOW  stype=torpedo img=newset/submarine
+            torpedo &gt; Missile color=YELLOW shrinkfactor=0.3 img=oryx/orb2
+            fish &gt;
+                shark  &gt; Chaser speed=0.1 color=ORANGE img=newset/shark2 stype=
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>4</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>4.87s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+  Player:
+  {
+    Type: Bird
+    InitialHealth: 5
+    MaxHealth: 30
+    Movement: Free
+    HealthDrainRate: 1
+    HealthDrainInterval: 15
+    OnCollision(Entity: Worm):
+    {
+      Action: Heal(15)
+      Effect: Destroy(Worm)
+    }
+    OnCollision(Entity: FoodBank):
+    {
+      Action: Heal(15)
+      Action: AddScore(40)
+      Effect: Destroy(FoodBank)
+    }
+    OnCollision(Entity: ExitDoor):
+    {
+      Action: AddScore(100)
+      Effect: PlayerDies()
+      WinCondition: True
+    }
+    OnCollision(Entity: Tree):
+    {
+      Action: PushBack(PreviousPosition)
+    }
+    OnHealthUpda
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame
+    SpriteSet
+        floor &gt; Immovable img=oryx/grass autotiling=True hidden=True
+        avatar &gt; MovingAvatar img=oryx/bird1 healthPoints=5 limitHealthPoints=30
+        foodbank &gt; Immovable invisible=true
+        wall &gt; Immovable color=BLACK img=oryx/tree2
+        goal &gt; Door color=GREEN img=newset/exit2
+        food &gt; Resource img=oryx/worm1 shrinkfactor=0.5
+
+    InteractionSet
+
+        avatar TIME &gt; subtractHealthPoints timer=15 repeating=True
+        avatar food &gt; addHealthPoints value=15 killSecond=True
+        avatar foodbank &gt; addHealthPoints value=15 scoreChange=40 killSeco
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>5</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>5.05s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+  &quot;player&quot;: {
+    &quot;type&quot;: &quot;Knight&quot;,
+    &quot;movement&quot;: &quot;Keyboard&quot;,
+    &quot;initial_state&quot;: &quot;Standing&quot;
+  },
+  &quot;entities&quot;: [
+    {
+      &quot;name&quot;: &quot;Floor&quot;,
+      &quot;type&quot;: &quot;Background&quot;,
+      &quot;properties&quot;: {
+        &quot;visibility&quot;: &quot;Hidden&quot;
+      }
+    },
+    {
+      &quot;name&quot;: &quot;Knight&quot;,
+      &quot;type&quot;: &quot;Avatar&quot;,
+      &quot;description&quot;: &quot;Player-controlled character&quot;
+    },
+    {
+      &quot;name&quot;: &quot;Turret&quot;,
+      &quot;type&quot;: &quot;Stationary&quot;,
+      &quot;behavior&quot;: {
+        &quot;rotation&quot;: &quot;InPlace&quot;,
+        &quot;attack_cycle&quot;: {
+          &quot;chance&quot;: 0.4,
+          &quot;interval&quot;: 3,
+          &quot;speed&quot;: &quot;Slow&quot;
+        },
+        &quot;pro
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame
+    SpriteSet
+        floor &gt; Immovable hidden=True img=oryx/space2
+        turret &gt; RandomBomber stype=bomb prob=0.4 cooldown=3 speed=0.1 rotateInPlace=True img=newset/cannon
+        bomb &gt; Missile color=RED  speed=0.9 img=newset/bomb shrinkfactor=0.7
+        structure &gt;
+            goal  &gt; Door color=GREEN img=oryx/dooropen1
+
+        avatar &gt; MovingAvatar img=oryx/knight1
+
+        wall &gt; Immovable img=oryx/wall3 autotiling=True
+
+    InteractionSet
+
+        goal avatar &gt; killSprite scoreChange=5
+        avatar wall &gt; stepBack
+        turret wall &gt; stepBack
+        avatar bomb &gt; kill
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>6</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>8.48s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+    &quot;player&quot;: {
+        &quot;type&quot;: &quot;Ship&quot;,
+        &quot;movement&quot;: &quot;Free movement in all directions on Water&quot;,
+        &quot;collision&quot;: {
+            &quot;Land&quot;: &quot;Repel and stop movement&quot;,
+            &quot;Whirlpool&quot;: &quot;Destroy ship, lose 10 points&quot;
+        },
+        &quot;interaction&quot;: {
+            &quot;Collect&quot;: [&quot;Gold&quot;, &quot;Gems&quot;, &quot;Diamonds&quot;],
+            &quot;Boundary&quot;: &quot;Repel from screen edges&quot;
+        }
+    },
+    &quot;environment&quot;: {
+        &quot;Water&quot;: {
+            &quot;description&quot;: &quot;Blue background areas for sailing&quot;
+        },
+        &quot;Land&quot;: {
+            &quot;description&quot;: &quot;Grass terrain, blocks movement&quot;
+        },
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame square_size=30
+    SpriteSet
+
+        water &gt; Immovable img=newset/water3
+        land &gt; Immovable img=oryx/grass autotiling=True
+
+        port &gt; Immovable
+            portGold &gt; img=newset/dock1
+            portGems &gt; img=newset/dock2
+            portDiamonds &gt; img=newset/dock3
+
+        shipwreck &gt; Immovable img=newset/shipwreck portal=True
+
+        holes &gt; SpawnPoint invisible=True hidden=True
+            goldhole  &gt;  stype=gold  prob=0.01
+            gemshole  &gt;  stype=gems  prob=0.01
+            diamondshole  &gt;  stype=diamonds  prob=0.01
+
+        good &gt; Resource limit=1
+         
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>7</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>5.34s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+  Players: 2
+  Player:
+  {
+    Name: &quot;Paddle&quot;
+    Control: &quot;Horizontal Movement&quot;
+    Physics: &quot;Momentum, Friction, Inertia&quot;
+    Health: 3
+  }
+  Entities:
+  {
+    Name: &quot;Ball&quot;
+    Physics: &quot;High Speed, Realistic Bouncing&quot;
+    InitialState: &quot;Inactive&quot;
+  }
+  {
+    Name: &quot;RegularBrick&quot;
+    Type: &quot;Destructible&quot;
+    Widths: [&quot;Normal&quot;, &quot;Double-Wide&quot;]
+    OnHit:
+    {
+      Action: &quot;Destroy&quot;
+      Score: 2
+    }
+  }
+  {
+    Name: &quot;ToughBrick&quot;
+    Type: &quot;Multi-Hit&quot;
+    States: 2
+    OnHit:
+    {
+      State1:
+      {
+        Action: &quot;TransformState&quot;
+        TargetState: 2
+        Effect: &quot;N
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame square_size=25 no_players=2
+
+    SpriteSet
+        background &gt; Immovable img=oryx/space1 hidden=True
+        avatar &gt; FlakAvatar stype=ballStart physicstype=CONT wMult=4 friction=0.2 mass=0.2 healthPoints=3 limitHealthPoints=3
+            avatarA &gt; img=oryx/floor3
+            avatarB &gt; img=oryx/floor1
+
+        balls &gt; Missile orientation=UP speed=20 physicstype=CONT img=oryx/bullet2 shrinkfactor=2 singleton=True
+            ballStart &gt;
+            ball &gt;
+
+        ballLost &gt; Passive invisible=True hidden=True
+
+        brick &gt; Passive img=newset/blockG
+            brick2 &gt; wMult=2
+   
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>8</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>5.16s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+PlayerRole: Two players, each controlling a character that can move in four directions and shoot portal projectiles. Player 1 controls a blue character (blue projectiles), and Player 2 controls an orange character (orange projectiles). Both are affected by solid obstacles and boundaries.
+Entities:
+- Floor: Hidden surface, ground level.
+- Wall: Solid barrier, blocks movement and projectiles.
+- Trap: Deadly hazard, destroys characters on contact.
+- Cake: Target object, destroys any character that touches it.
+- Laser: Projectile from turrets, travels straight until hitting obstacles.
+- 
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame key_handler=Pulse no_players=2 square_size=30
+    SpriteSet
+        floor &gt; Immovable img=newset/chamber_floor hidden=True
+        trap &gt; Immovable img=newset/it_is_a_trap
+
+        cake &gt; Immovable img=newset/cake
+
+        laser &gt; Missile img=newset/shot_laser
+
+        portalShot &gt; Missile singleton=True
+            portalShotBlue &gt; img=newset/shot_portal_blue
+            portalShotOrange &gt; img=newset/shot_portal_orange
+
+        portal &gt; Immovable
+            disabledPortal &gt;
+                portalBlueDisabled &gt; img=newset/chamber_wall_blue
+                portalOrangeDisabled &gt; img=
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>9</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>4.16s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+  Player:
+  {
+    Type: Spaceship
+    Color: Blue
+    Movement: AllDirections
+    Action: Shoot
+    Projectile:
+    {
+      Type: Explosion
+      Appearance: FlickeringCircle
+      Behavior: ShrinkOverTime
+      Lifetime: Short
+    }
+  }
+  Entities:
+  {
+    Floor:
+    {
+      Type: Tile
+      Color: Black
+      Solid: True
+    }
+    Cities:
+    {
+      Type: Structure
+      Color: Green
+      Protectable: True
+    }
+    Explosions:
+    {
+      Type: Projectile
+      Appearance: FlickeringCircle
+      Behavior: ShrinkOverTime
+      Lifetime: Short
+    }
+    SlowThreats:
+    {
+      
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame
+  SpriteSet
+    floor &gt; Immovable img=oryx/backBlack
+    city  &gt; Immovable color=GREEN img=newset/city1 randomtiling=0.5
+    explosion &gt; Flicker limit=5 img=oryx/circleEffect1 shrinkfactor=0.5
+
+    movable &gt;
+      avatar  &gt; ShootAvatar stype=explosion img=oryx/spaceship1
+      incoming &gt;
+        incoming_slow  &gt; Chaser stype=city color=ORANGE speed=0.1 img=oryx/firedown1
+        incoming_fast  &gt; Chaser stype=city color=YELLOW speed=0.3 img=oryx/firedown2
+
+    wall &gt; Immovable img=newset/block2
+
+  LevelMapping
+    c &gt; floor city
+    m &gt; floor incoming_slow
+    f &gt; floor incoming_fast
+
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>10</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>8.13s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+  Player:
+  {
+    Type: Explorer,
+    Health: 30,
+    Movement: AllDirections,
+    Collision:
+    {
+      OnWall: PushBack,
+      OnRoundHole: PushBack,
+      OnSquareHole: PushBack,
+      OnEnemy: LoseHealth,
+      OnCrate: PushAway,
+      OnDoor: WinCondition
+    }
+  },
+  Entities:
+  {
+    RoundHole:
+    {
+      Type: Hazard,
+      Collision:
+      {
+        OnExplorer: PushBack,
+        OnBoulder:
+        {
+          Condition: BoulderInRoundHole,
+          Action: RemoveBoth,
+          Reward: 1
+        }
+      }
+    },
+    SquareHole:
+    {
+      Type: Hazard,
+      Collision:
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>#The Citadel: http://www.mobygames.com/game/citadel__
+
+BasicGame square_size=40 key_handler=Pulse
+    SpriteSet
+        background &gt; Immovable img=oryx/backLBrown hidden=True
+        squarehole   &gt; Immovable color=DARKBLUE img=newset/hole5
+        roundhole   &gt; Immovable color=DARKBLUE img=newset/hole4
+        avatar &gt; MovingAvatar healthPoints=30 img=oryx/spelunky_0
+        goal &gt; Immovable img=oryx/door2
+        crate    &gt; Passive img=oryx/wall2 shrinkfactor=0.8
+        boulder    &gt; Passive img=oryx/barrel1 shrinkfactor=0.8
+        enemy &gt; RandomNPC speed=0.5 color=PINK img=oryx/eviltree1 co
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>11</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>8.48s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+    Player:
+    {
+        Type: Character
+        Movement: Full
+        Collision:
+        {
+            Wall: {
+                Action: StepBack
+            }
+            Edge: {
+                Action: StepBack
+            }
+            Box: {
+                Action: Push
+            }
+        }
+    }
+
+    Entities:
+    {
+        Sky:
+        {
+            Type: Background
+            Tile: Blue
+        }
+        Walls:
+        {
+            Type: StaticObstacle
+            Tile: Brown
+            Behavior: Connect
+        }
+        TreeTrunks:
+        {
+            Type: Static
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame
+
+    SpriteSet
+        sky &gt; Immovable img=oryx/backLBlue
+        trunk   &gt; Immovable    color=BROWN  img=newset/cloud1
+        cursed &gt; Immovable    color=YELLOW img=newset/cursedman
+
+        movable &gt;
+            demon  &gt; Bomber stype=bolt   img=oryx/devil1 prob=0.15  cooldown=6 speed=0.4 frameRate=8
+            angel  &gt; Bomber stype=salvation   img=oryx/angel1 prob=0.05  cooldown=6 speed=0.45 frameRate=8
+            citizen &gt; Chaser stype=output img=newset/man2 speed=0.4
+            blessed &gt; Chaser stype=output img=newset/blessedman speed=0.4
+
+        avatar &gt; MovingAvatar img=ne
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>12</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>7.38s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+Player:
+  Type: Motorbike
+  Color: Yellow
+  InitialHealth: 50
+  Movement: All Directions
+  Speed: Moderate
+  Action: ShootProjectile(Continuous)
+  BoundaryCheck: ScreenEdge(PushBack)
+  Boost:
+    Trigger: Collect(BoostPowerUp)
+    Effect: SpeedBoost(High, 10s)
+    OnEnd: Speed(Moderate)
+  Collision:
+    With(Car, Tree): LoseHealth(DamageAmount)
+    With(Goal): Trigger(PinkSparkle)
+    With(BoostPowerUp): Trigger(ActivateBoost)
+
+Entities:
+  FloorTile:
+    Type: Static
+    Graphic: Highway
+  StreetTile:
+    Type: Static
+    Graphic: Street
+  FastPlayerMotorbike:
+    Type: Motorbike
+   
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame square_size=30
+    SpriteSet
+        floor &gt; Immovable img=newset/highway3 hidden=True
+        street &gt; Immovable img=newset/street3 hidden=True
+        moving &gt;
+
+            motorbike &gt;
+                avatar  &gt; OngoingShootAvatar speed=0.2 color=YELLOW img=newset/camel1 healthPoints=50 limitHealthPoints=50 stype=boost
+                    avatarFast &gt; MissileAvatar speed=0.5
+                mbike   &gt; Missile orientation=RIGHT  img=newset/camel2
+                    mbikeSlow &gt; speed=0.2
+                    mbikeMed &gt; speed=0.4
+                    mbikeFast &gt; speed=0.6
+            car
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>13</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>9.38s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+  Player:
+  {
+    Type: Archer
+    Movement: Stationary
+    Action: RotateAndShoot
+    Projectile: BlueBoulder
+    Collision:
+    {
+      OnWall: Bounce
+      OnLaserCannon: Bounce
+    }
+  }
+
+  Entities:
+  {
+    BlueBoulder:
+    {
+      Type: Projectile
+      Movement: Straight
+      Collision:
+      {
+        OnWall: Bounce
+        OnLaserCannon: Bounce
+        OnEdge: Destroy
+        OnLaserCannonHit:
+        {
+          If(TargetDirection == Down): TransformTo(SwappableCannon)
+          If(TargetDirection == Left): TransformTo(DownCannon)
+          If(TargetDirection == Up): Tra
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame
+    SpriteSet
+
+        floor &gt; Immovable img=oryx/floor3 hidden=True
+        avatar &gt; ShootAvatar stype=boulder rotateInPlace=true img=oryx/archer1
+        boulder &gt; Missile color=BLUE singleton=True img=oryx/orb2 shrinkfactor=0.3
+        line &gt; SpawnPoint
+            lcup &gt; img=newset/lasercannon stype=lup
+            lcdown &gt; img=newset/lasercannon_2 stype=ldown
+            lcright &gt; img=newset/lasercannon_1 stype=lright
+            lcleft &gt; img=newset/lasercannon_3 stype=lleft
+            lcswap &gt; img=newset/lasercannon_4 stype=lleft
+        laser &gt; Missile shrinkfactor=0.5 speed=
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>14</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>9.37s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+  GameName: &quot;PongClone&quot;
+  Description: &quot;A classic paddle and ball game where the objective is to score 6 points before the opponent.&quot;
+  Entities:
+  {
+    PaddlePlayer:
+    {
+      Type: &quot;Paddle&quot;
+      Color: &quot;green&quot;
+      Position: {x: 0.05, y: 0.5}
+      Size: {width: 0.02, height: 0.1}
+      Movement: &quot;Vertical&quot;
+      Speed: 5.0
+      Control: &quot;Player&quot;
+    }
+    PaddleOpponent:
+    {
+      Type: &quot;Paddle&quot;
+      Color: &quot;blue&quot;
+      Position: {x: 0.95, y: 0.5}
+      Size: {width: 0.02, height: 0.1}
+      Movement: &quot;Vertical&quot;
+      Speed: 5.0
+      Control: &quot;AI&quot;
+    }
+    Ball:
+    {
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame
+    SpriteSet
+        goal &gt; Immovable color=GREEN
+            othergoal &gt; 
+            mygoal    &gt;
+        racket &gt; VerticalAvatar speed=0.25
+            avatar      &gt; alternate_keys=True
+            otheravatar &gt; color=BLUE 
+        ball &gt; Missile orientation=LEFT speed=15 color=ORANGE physicstype=NoFrictionPhysics
+            
+    TerminationSet # from the perspective of player 1 (on the left)
+        SpriteCounter stype=othergoal limit=6 win=False     
+        SpriteCounter stype=mygoal    limit=6 win=True     
+           
+    InteractionSet
+        goal ball   &gt; killSprite
+     
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>15</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>9.33s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+	Player:
+		Movement: Grid, 4-directional, No-rotation-in-place
+		Interaction:
+			On_touch(StationaryRedMasterBoulder):
+				Set_State(Self, MovingRedMasterBoulder)
+			On_touch(Box):
+				Push(Box, Direction)
+			On_touch(Boulder):
+				Push_Back(Self)
+			On_touch(Wall):
+				Push_Back(Self)
+			On_touch(Hole):
+				Destroy(Self)
+				Set_Score(-10)
+			On_touch(Goal):
+				// No specific action defined for player touching goal, assume normal movement continues unless specified
+				{}
+	Entities:
+		BrownFloorTile:
+			Type: Walkable
+		DarkBlueHole:
+			Type: Hazard
+			On_enter(Player):
+				Destroy
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame key_handler=Pulse
+    SpriteSet
+        floor &gt; Immovable img=oryx/backLBrown
+        hole   &gt; Immovable color=DARKBLUE img=newset/hole1 portal=true
+        goal &gt; Immovable img=newset/exit2 portal=true
+
+        avatar &gt; OrientedAvatar rotateInPlace=false img=oryx/yeti2
+        box    &gt; Passive img=newset/block2
+        boulder &gt; Missile
+            master &gt; img=newset/blockR2
+                masterBoulder &gt; speed=0.0
+                mboulderm &gt; speed=1.0
+            targetBoulder &gt; img=newset/block3
+                normalBoulder &gt; speed=0.0
+                stoppingBoulder &gt; speed=0.
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>16</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>3.98s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+  Player:
+  {
+    Type: Character
+    Movement: Free
+    Collision:
+    {
+      Type: Block
+      Sources: [RockWall, GreenTile]
+      Action: PushBack
+    }
+  }
+
+  Entities:
+  {
+    Angel:
+    {
+      Type: PlayerControlled
+      InitialPosition: (1, 1)
+    }
+    OrangeTile:
+    {
+      Type: Floor
+      Collision:
+      {
+        OnEnter:
+        {
+          Action: Transform
+          Target: Self
+          NewState: GreenTile
+          Effect: Score(1)
+        }
+      }
+    }
+    GreenTile:
+    {
+      Type: Floor
+      Collision:
+      {
+        OnEnter:
+        {
+          Ac
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>#http://www.puzzlescript.net/editor.html?hack=6847423
+
+BasicGame key_handler=Pulse square_size=48
+    SpriteSet
+        background &gt; Immovable img=oryx/backBiege hidden=True
+        isincenter &gt; Flicker limit=1
+        avatar  &gt; MovingAvatar img=oryx/angel1
+        ground &gt; Immovable img=oryx/floorTileOrange
+        walked &gt; Immovable img=oryx/floorTileGreen
+        rock &gt; Immovable img=oryx/wall5
+    
+    LevelMapping
+        r &gt; background rock
+        g &gt; background ground
+        . &gt; background
+        A &gt; background avatar
+        
+    TerminationSet
+        SpriteCounter      stype=avata
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>17</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>9.51s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+Player {
+    type: avatar
+    states: [
+        walking_mode,
+        projectile_mode
+    ]
+    initial_state: walking_mode
+    movement:
+        direction: cardinal
+        speed: normal
+    collision:
+        with Water: die
+        with Wall: push_back
+        with Log: ride
+        with LandingPad: ride
+        with Catapult: trigger_catapult
+        with Goal: win
+        with ForestSpawn: push_back
+    state_transitions:
+        on enter walking_mode:
+            set_appearance: walking_avatar
+        on enter projectile_mode:
+            set_appearance: projectile_avatar
+}
+
+En
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame square_size=30 key_handler=Pulse
+    SpriteSet
+        background &gt; Immovable color=BLUE img=oryx/seaWater hidden=True
+        water &gt; Immovable color=BLUE img=oryx/seaWater
+        floor &gt; Immovable autotiling=true img=oryx/grass hidden=True
+        wall  &gt; Immovable img=oryx/bush5
+        goal  &gt; Immovable color=GREEN img=oryx/doorclosed1 portal=True
+		
+        forest &gt; SpawnPoint stype=log prob=0.25  cooldown=10 img=oryx/seaWater
+            forestR &gt; stype=logR
+            forestL &gt; stype=logL
+
+        log    &gt; Missile speed=0.1 color=BROWN img=oryx/bush1
+            logR &gt; orien
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>18</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>5.58s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+    Player:
+    {
+        Movement: FourDirections
+        States:
+        {
+            NoKey:
+            {
+                Appearance: Swordsman
+                OnMove: Animate
+            }
+            WithKey:
+            {
+                Appearance: KeyCarrierSwordsman
+                OnMove: Animate
+            }
+        }
+        Collision:
+        {
+            Wall: PushBack
+            Hole: Die
+            Key:
+            {
+                OnTouch(State.NoKey): ChangeState(WithKey)
+                OnTouch(State.WithKey): RemoveEntity(Key)
+            }
+            Goa
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>#Bait: http://www.mobygames.com/game/bait
+
+BasicGame  key_handler=Pulse square_size=50
+    SpriteSet
+
+        floor &gt; Immovable hidden=True img=oryx/backLBrown
+        hole   &gt; Immovable color=DARKBLUE img=newset/hole1
+        avatar &gt; MovingAvatar
+            nokey &gt; img=oryx/swordman1 frameRate=8
+            withkey &gt; img=oryx/swordmankey1 frameRate=8
+        mushroom &gt; Immovable img=oryx/mushroom2 shrinkfactor=0.6
+        key &gt; Passive img=oryx/key2 shrinkfactor=0.7
+        goal &gt; Immovable img=oryx/doorclosed1
+        box    &gt; Passive img=newset/block3 shrinkfactor=0.8
+        wall &gt; Immov
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>19</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>6.78s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+{
+  Player:
+  {
+    Type: Archer,
+    Movement: DiscreteStep,
+    Rotation: FullCircle,
+    Action: ShootOrb,
+    Collision:
+    {
+      OnWallOrCannon: {
+        Action: StepBack,
+        Target: PreviousPosition
+      },
+      OnBoxFromBehind: {
+        Action: PushBox,
+        Direction: Forward,
+        MovePlayerTo: BoxPreviousPosition
+      },
+      OnLaserBeam: {
+        Action: DestroyPlayer,
+        Condition: Always
+      }
+    }
+  },
+  Entities:
+  {
+    GoalDoor:
+    {
+      Type: Exit,
+      OnPlayerEnter: {
+        Action: ScorePoints,
+        Points: 5,
+        Effect: 
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame key_handler=Pulse
+    SpriteSet
+        floor &gt; Immovable img=oryx/floor3 hidden=True
+        goal &gt; Immovable img=oryx/dooropen1 portal=true
+        avatar &gt; ShootAvatar stype=boulder rotateInPlace=true img=oryx/archer1
+        box    &gt; Passive img=newset/block2
+        lasercannon &gt; SpawnPoint 
+            lcup &gt; img=newset/lasercannon stype=lup
+            lcdown &gt; img=newset/lasercannon_2 stype=ldown
+            lcright &gt; img=newset/lasercannon_1 stype=lright
+            lcleft &gt; img=newset/lasercannon_3 stype=lleft
+            lcswap &gt; img=newset/lasercannon_4 stype=lleft
+      
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td>20</td>
+                  <td>True</td>
+                  <td>False</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td>0.000</td>
+                  <td><strong>0.000</strong></td>
+                  <td>6.03s</td>
+                  <td>
+                    <details><summary>Errors</summary>
+                      <pre>None</pre>
+                    </details>
+                    <details><summary>Generated VGDL</summary>
+                      <pre>BasicGame
+PlayerCount 2
+PlayerStartPos PlayerA (1, 1)
+PlayerStartPos PlayerB (1, 5)
+PlayerHealth 3
+PlayerMaxHealth 3
+PlayerAColor Blue
+PlayerBColor Red
+MapWidth 10
+MapHeight 10
+GroundTile (0, 0) to (9, 9)
+WallTile (0, 1) to (0, 9)
+WallTile (9, 1) to (9, 9)
+BaseStation (2, 2)
+BaseStation (7, 2)
+BoxTile (3, 3) Type Neutral
+BoxTile (3, 4) Type Reward
+BoxTile (4, 3) Type PlayerA
+BoxTile (4, 4) Type PlayerA
+BoxTile (5, 3) Type PlayerB
+BoxTile (5, 4) Type PlayerB
+FlagTile (1, 7) Type Blue TargetA
+FlagTile (1, 8) Type Blue TargetB
+FlagTile (8, 7) Type Red TargetA
+FlagTile (8, 8) Type Red TargetB
+Bomb
+[...]</pre>
+                    </details>
+                    <details><summary>Reference VGDL</summary>
+                      <pre>BasicGame key_handler=Pulse no_players=2 square_size=30
+    SpriteSet
+        ground &gt; Immovable img=newset/floor2 hidden=True
+        base &gt; Immovable img=oryx/cspell5
+        bomb &gt; Immovable
+            bombA &gt; img=newset/bomb5
+            bombB &gt; img=newset/bomb4
+        box &gt; Immovable img=newset/block3
+            boxE &gt;
+            boxB &gt;
+                boxBA &gt;
+                    pA &gt;
+                    nA &gt;
+                boxBB &gt;
+                    pB &gt;
+                    nB &gt;
+            boxR &gt;
+        flag &gt; Immovable 
+            flagA &gt; img=newset/blockB2
+                flag
+[...]</pre>
+                    </details>
+                  </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+            
+</body>
+</html>

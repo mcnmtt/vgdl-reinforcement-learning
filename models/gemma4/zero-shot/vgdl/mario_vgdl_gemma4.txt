@@ -1,0 +1,29 @@
+BasicGame
+    SpriteSet
+        avatar > MarioAvatar
+        brown_enemy > Walker
+        red_enemy > WalkJumper
+        blue_platform > Conveyor
+        goal > Immovable
+    LevelMapping
+        0 > brown_enemy
+        1 > red_enemy
+        2 > blue_platform
+        3 > goal
+    InteractionSet
+        brown_enemy avatar > killIfFromAbove
+        red_enemy avatar > killIfFromAbove
+        avatar brown_enemy > killIfFromAbove
+        avatar red_enemy > killIfFromAbove
+        avatar goal > killSprite
+        avatar blue_platform > conveySprite
+        brown_enemy blue_platform > conveySprite
+        red_enemy blue_platform > conveySprite
+        avatar EOS > killSprite
+        brown_enemy EOS > killSprite
+        red_enemy EOS > killSprite
+        any_gravity_object wall > wallStop friction=0.1
+        blue_platform EOS > wrapAround
+    TerminationSet
+        SpriteCounter stype=goal limit=0 win=True
+        SpriteCounter stype=avatar limit=0 win=False
