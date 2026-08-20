@@ -1,33 +1,59 @@
-__pycache__
-.DS_Store
-.txt
-.vscode
-.idea
-*.log
-*.pyc
-*.pyo
+# Python and editor state
+__pycache__/
+*.py[cod]
 *.pyd
-*.zip
-*.safetensors
-progetto-venv
-dataset_hf
+*.log
+.vscode/
+.idea/
+.DS_Store
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local credentials and environments
+dataset/.env
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+progetto-venv/
 pyvgdl-venv/
-dataset/.env
-unsloth_compiled_cache
+
+# Regenerable data and caches
+dataset_hf/
+unsloth_compiled_cache/
 unsloth_dataset_ready/
-models/qwen3.5/supervised-learning/16-32-0.05
-models/deepseek/supervised-learning/16-32-0.05-4bit
+.cache/
+tmp/
+output/
+*.zip
+
+# Downloaded weights and training state
+*.safetensors
 models/**/checkpoint-*/
 models/**/model-finetuned/
+models/**/model-finetuned-*/
 models/**/grpo-output/
+models/**/grpo-output-*/
+models/**/runs/
 models/**/optimizer.pt
 models/**/scheduler.pt
 models/**/rng_state.pth
 models/**/training_args.bin
-.claude
-environment.yml
+# Local SFT runs whose adapter weights are deliberately excluded from Git.
+models/deepseek/supervised-learning/16-32-0.05-4bit/
+models/qwen3.5/supervised-learning/16-32-0.05/
+
+# Python package build products
+py-vgdl/build/
+py-vgdl/*.egg-info/
+
+# LaTeX build products; the reviewed report PDF is tracked explicitly.
+docs/*.aux
+docs/*.bbl
+docs/*.blg
+docs/*.log
+docs/*.out
+docs/*.spl
+docs/*.toc

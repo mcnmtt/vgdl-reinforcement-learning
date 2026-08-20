@@ -1,0 +1,30 @@
+BasicGame
+    SpriteSet
+        Avatar > physicstype=GravityPhysics steereable=true
+        EnemyBrown > physicstype=GravityPhysics walkback=false
+        EnemyRed > physicstype=GravityPhysics walkjump=true
+        PlatformBlueMovingUpwards > physicstype=ConstantSpeed vertical_speed=-0.05
+        GoalGreenTargetObject > immovable
+    LevelMapping
+        1 > EnemyBrown
+        2 > EnemyRed
+        3 > PlatformBlueMovingUpwards
+        4 > GoalGreenTargetObject
+    InteractionSet
+        Avatar EnemyBrown > killIfTouchEnemyWrongAngle
+        Avatar EnemyRed > killIfTouchEnemyWrongAngle
+        Avatar EnemyBrown > killIfLandOnTopOfEnemy
+        Avatar EnemyRed > killIfLandOnTopOfEnemy
+        Avatar EnemyBrown > killIfFallOffScreenEdge
+        Avatar EnemyRed > killIfFallOffScreenEdge
+        Avatar EnemyBrown > killIfHitWall
+        Avatar EnemyRed > killIfHitWall
+        Avatar EnemyBrown > getCarriedAlongPlatformMovement
+        Avatar EnemyRed > getCarriedAlongPlatformMovement
+        PlatformBlueMovingUpwards > killIfReachScreenEdge
+        PlatformBlueMovingUpwards > getCarriedAlongAvatarMovement
+        GoalGreenTargetObject > disappearWhenTouchedByAvatar
+        Wall > killIfHitWall slowDownAfterContact = true
+    TerminationSet
+        WinCondition : PlayerScore >= <score>
+        LoseCondition : PlayerScore <= <max_score>

@@ -1,0 +1,18 @@
+BasicGame
+    PhysicsType GravityPhysics
+    PlayerRoleControl
+    Entities
+        Avatar > Physicstype=GravityPhysics inertiaBasedMovement=true
+        BluePad > StaticObject color=Blue position=[x,y]
+        Wall > StaticObject immovable barrier
+        ScreenEdge > Boundary destructionOnTouch
+    Interactions
+        Avatar collisionWall > DestroySelf
+        Avatar collisionScreenEdge > DestroySelf
+        Avatar slowSpeedCollisionBluePad > DestroySelf
+    WinCondition
+        Count(BluePad) = 4 success
+    LoseCondition
+        All(Sprites(Avatar)) dead failure
+    Objective
+        NavigateAvatar avoid collisions achieve objective

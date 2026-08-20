@@ -1,168 +1,154 @@
-# VGDL Reinforcement Learning
+# VGDL Generation with LLMs and Reinforcement Learning
 
-Repository per il progetto d'esame sulla generazione automatica di codice VGDL a partire da descrizioni in linguaggio naturale tramite Large Language Model.
+Course project on generating **Video Game Description Language (VGDL)** programs
+from natural-language game descriptions. The repository contains the full
+experimental pipeline: dataset construction, zero-shot baselines, supervised
+fine-tuning with QLoRA, GRPO reinforcement learning, and reproducible
+evaluation.
 
-Il progetto segue una pipeline in tre fasi:
+The three models selected for the main experiments are:
 
-1. costruzione del dataset VGDL/descrizione;
-2. valutazione zero-shot di diversi modelli;
-3. selezione dei modelli migliori e confronto tra supervised fine-tuning e reinforcement learning.
+- **Qwen3.5-4B**
+- **Gemma4-E4B-it**
+- **Phi-4-mini-instruct**
 
-## Pipeline
+The accompanying report is available as
+[PDF](docs/vgdl-reinforcement-learning-report.pdf); its LaTeX source is in
+[docs/](docs).
+
+## Results at a glance
+
+The held-out evaluation currently covers 21 games and uses the VGDL parser plus
+a weighted structural Jaccard similarity over sprites, interactions, and
+termination conditions.
+
+| Gemma4 condition | Executable VGDL | Complete structure | Structural similarity | Mean generation time |
+| --- | ---: | ---: | ---: | ---: |
+| Zero-shot, Ollama gemma4:e4b | 100.0% | 0.0% | 0.0% | 7.8 s |
+| QLoRA supervised fine-tuning | 0.0% | 85.7% | 26.1% | 107.2 s |
+
+The corresponding machine-readable outputs are tracked in
+[evaluation/results/](evaluation/results), while figures and the HTML report
+are in [evaluation/plots/gemma4-comparison/](evaluation/plots/gemma4-comparison).
+GRPO training uses a reward that directly combines parsability, structural
+similarity, VGDL ontology checks, EOS handling, and output formatting.
+
+## Repository layout
 
 ```text
-dataset/vgdl_files/        -> specifiche VGDL originali
-dataset/create_db.py       -> genera descrizioni testuali tramite API Anthropic
-dataset/descriptions/      -> descrizioni in linguaggio naturale
-dataset/dataset_hf.py      -> converte i dati in formato Hugging Face Dataset
-
-models/<model>/zero-shot/              -> inferenza zero-shot
-models/<model>/supervised-learning/    -> QLoRA/SFT
-models/<model>/reinforcement-learning/ -> GRPO/RL
-
-evaluation/                 -> validazione, similarity, metriche e plot
-latex/                      -> mini-paper del progetto
+dataset/        Source VGDL files, natural-language descriptions, and dataset builder
+models/         Inference, SFT/QLoRA, and GRPO scripts for each model
+evaluation/     Executability checks, structural metrics, result files, and plots
+py-vgdl/        Local VGDL parser dependency
+docs/           Exam report (LaTeX source and compiled PDF)
 ```
 
-## Modelli
+Generated datasets, downloaded model weights, LoRA adapters, checkpoints,
+optimizer states, and caches are intentionally excluded from Git.
 
-La fase zero-shot e' stata usata come baseline esplorativa su piu' modelli open-weight. Dopo questa fase sono stati selezionati tre modelli principali per SFT e RL:
+## Environment
 
-- Qwen3.5
-- DeepSeek
-- Phi-3.5
-
-Gemma4 e' presente nella repository come esperimento aggiuntivo/di supporto, con script zero-shot, supervised learning e reinforcement learning.
-
-## Setup
-
-L'ambiente principale usato per training, inferenza e valutazione e':
+The project was developed with the Conda environment **rlia** on Windows and an
+NVIDIA GPU. Python 3.10 is the supported baseline.
 
 ```powershell
+conda env create -f environment.yml
 conda activate rlia
+python -m pip install -e .\py-vgdl
 ```
 
-Le dipendenze principali sono raccolte in:
+For GPU training, install a CUDA-compatible PyTorch build for the local driver
+before running the training scripts. The remaining Python dependencies are
+declared in requirements.txt and are installed by environment.yml.
 
-- `requirements.txt`
-- `environment.yml`
-
-Per la generazione delle descrizioni e' necessario creare localmente:
-
-```text
-dataset/.env
-```
-
-partendo da:
-
-```text
-dataset/.env.example
-```
-
-Il file `.env` non va versionato.
-
-## Dataset
-
-Per rigenerare il dataset:
+The Hugging Face models may require authentication and acceptance of their
+respective model licenses. The zero-shot Gemma experiment additionally requires
+[Ollama](https://ollama.com/):
 
 ```powershell
-conda activate rlia
-cd C:\Users\Mattia\Desktop\REPOs\vgdl-reinforcement-learning
-python dataset/create_db.py
+ollama pull gemma4:e4b
+```
+
+## Dataset preparation
+
+The source descriptions and VGDL files are versioned. Build the local Hugging
+Face dataset before SFT, GRPO, or test-set evaluation:
+
+```powershell
 python dataset/dataset_hf.py
 ```
 
-La cartella `dataset_hf/` e gli archivi compressi sono esclusi dal versionamento per evitare artefatti pesanti o rigenerabili.
+dataset/create_db.py regenerates descriptions through the Anthropic API. It is
+optional and requires dataset/.env, created from dataset/.env.example.
 
-## Zero-Shot
+## Main workflows
 
-Ogni modello ha uno script dedicato nella rispettiva cartella:
+Run all commands from the repository root after activating rlia.
+
+### Zero-shot evaluation with Gemma4
 
 ```powershell
-python models/qwen3.5/zero-shot/inference/vgdl_gen_qwen_zeroshot.py
-python models/deepseek/zero-shot/inference/vgdl_gen_deepseek_zeroshot.py
-python models/gemma4/zero-shot/inference/vgdl_gen_gemma4_zeroshot.py
+python evaluation/evaluate_model_testset.py --backend ollama --model gemma4:e4b --run-name gemma4-zero-shot
 ```
 
-## Supervised Fine-Tuning
-
-Gli script SFT usano LoRA/QLoRA con configurazioni compatibili con una GPU consumer.
+### Supervised fine-tuning
 
 ```powershell
-python models/qwen3.5/supervised-learning/finetune.py
-python models/deepseek/supervised-learning/finetune.py
 python models/gemma4/supervised-learning/finetune.py
+python models/phi4-mini/supervised-learning/finetune.py
+python models/qwen3.5/supervised-learning/finetune.py
 ```
 
-I checkpoint e gli adapter generati sono esclusi dal commit. Nel repository restano gli script necessari a riprodurre il training.
+Adapters are saved locally below each model's supervised-learning directory and
+are ignored by Git.
 
-## Reinforcement Learning
+### SFT evaluation
 
-La fase RL usa GRPO con reward composita basata su:
+```powershell
+python evaluation/evaluate_model_testset.py --backend hf --model google/gemma-4-E4B-it --adapter models/gemma4/supervised-learning/model-finetuned --run-name gemma4-supervised --max-new-tokens 400
+```
 
-- eseguibilita' tramite parser `py-vgdl`;
-- similarita' strutturale con il VGDL target;
-- presenza dei blocchi fondamentali VGDL;
-- validita' di sprite class, interaction functions e termination conditions;
-- rispetto del formato raw VGDL senza markdown.
-
-Esempio:
+### GRPO reinforcement learning
 
 ```powershell
 python models/gemma4/reinforcement-learning/grpo_train.py
+python models/phi4-mini/reinforcement-learning/grpo_train.py
+python models/qwen3.5/reinforcement-learning/grpo_train.py
 ```
 
-I modelli salvano checkpoint locali, `last-model` e `best-model`, ma questi artefatti non vengono versionati.
+Gemma4 and Phi-4-mini GRPO start from their SFT adapter. The training scripts
+preserve local best-model and last-model snapshots for resuming; these snapshots
+are deliberately not committed.
 
-## Evaluation
-
-Per valutare un modello sul test set:
+### Plots and reports
 
 ```powershell
-python evaluation/evaluate_model_testset.py `
-  --backend ollama `
-  --model gemma4:e4b `
-  --run-name gemma4-zero-shot
+python evaluation/plot_evaluation_results.py --runs gemma4-zero-shot gemma4-supervised --output-dir evaluation/plots/gemma4-comparison
 ```
+
+To validate one VGDL file directly:
 
 ```powershell
-python evaluation/evaluate_model_testset.py `
-  --backend hf `
-  --model google/gemma-4-E4B-it `
-  --adapter models/gemma4/supervised-learning/model-finetuned `
-  --run-name gemma4-supervised `
-  --max-new-tokens 400
+python evaluation/check_vgdl_executability.py models/gemma4/zero-shot/vgdl/artillery_vgdl_gemma4.txt
 ```
 
-Per creare plot comparativi:
+## Reproducing the report
+
+The report is self-contained: its charts are generated directly with TikZ/PGF,
+so no raster training plots are required.
 
 ```powershell
-python evaluation/plot_evaluation_results.py `
-  --runs gemma4-zero-shot gemma4-supervised `
-  --output-dir evaluation/plots/gemma4-comparison
+cd docs
+pdflatex main.tex
+bibtex main
+pdflatex main.tex
+pdflatex main.tex
 ```
 
-## Mini-Paper
+## Version-control policy
 
-Il mini-paper si trova in:
-
-```text
-latex/main.tex
-```
-
-Contiene descrizione del dataset, selezione dei modelli, protocollo sperimentale, SFT, RL e discussione dei risultati. La sezione Phi-3.5 contiene placeholder da completare quando saranno disponibili i risultati finali.
-
-## Artefatti Esclusi Dal Versionamento
-
-Sono esclusi dal commit:
-
-- file `.env`;
-- checkpoint di training;
-- adapter `.safetensors`;
-- optimizer/scheduler state;
-- cache Unsloth;
-- dataset Hugging Face rigenerabile;
-- archivi `.zip`;
-- cartelle `model-finetuned/` e `grpo-output/`.
-
-Questa scelta mantiene la repository leggera e riproducibile.
+The repository tracks source code, dataset source files, selected generated
+VGDL examples, evaluation outputs, plots, and documentation. It does **not**
+track model weights, checkpoints, Hugging Face caches, local API credentials,
+or regenerated dataset_hf data. This keeps the submitted project compact while
+preserving the steps needed to reproduce each experiment.

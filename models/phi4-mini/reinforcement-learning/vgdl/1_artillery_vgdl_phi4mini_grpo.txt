@@ -1,0 +1,18 @@
+BasicGame
+    SpriteSet
+        Avatar > Player controlled character aiming/shooting abilities
+        BluePad > Stationary blue objects
+        Bullet > Projectile fired by Avatar; affected by gravity & fast-moving
+        Wall > Movement-blocking barriers destroying Bullets upon collision
+    LevelMapping
+        0 > BluePad
+    InteractionSet
+        Bullet Wall > killBullet
+        Wall Bullet > killWall
+        Bullet BluePad > killBullet
+        Avatar tryMoveIntoWall > stepBackward
+        Avatar tryMovePastScreenEdge > stepBackward
+        Bullet reachScreenEdge > killBullet
+    TerminationSet
+        WinCondition = SpriteCounter stype=BluePad limit=0 win=True
+        LoseCondition = SpriteCounter stype=Avatar limit=0 win=False

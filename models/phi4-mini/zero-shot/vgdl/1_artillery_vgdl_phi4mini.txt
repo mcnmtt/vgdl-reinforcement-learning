@@ -1,0 +1,18 @@
+BasicGame
+    SpriteSet
+        Avatar > Player controlled character aiming/shooting abilities
+        BluePad > Stationary blue objects remaining unchanged during gameplay
+        Bullet > Projectile fired by Avatar; affected by gravity & moves quickly; single instance allowed
+        Wall > Movement barriers destroying Bullets upon collision
+    LevelMapping
+        0 > BluePad(s), depending on number desired within level design
+    InteractionSet
+        Bullet Wall > KillBullet
+        Wall Bullet > KillWall
+        Bullet BluePad > KillBullet
+        Avatar tryMoveIntoWall > StepBackward
+        Avatar tryMovePastScreenEdge > StepBackward
+        Bullet reachScreenEdge > KillBullet
+    TerminationSet
+        WinCondition = AllBluePadsDestroyed()
+        LoseCondition = AvatarDestruction()
