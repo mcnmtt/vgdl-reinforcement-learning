@@ -1,5 +1,10 @@
 # Generazione di VGDL con LLM e Reinforcement Learning
 
+Progetto d'esame per il corso di **Intelligenza Artificiale** del Corso di
+Laurea Magistrale in Informatica, track **Data Science e Machine Learning**,
+presso l'Universita' degli Studi di Salerno. Docente titolare del corso:
+**Vincenzo Deufemia**.
+
 Progetto d'esame sulla generazione di programmi in **Video Game Description
 Language (VGDL)** a partire da descrizioni di giochi in linguaggio naturale.
 Il repository contiene l'intera pipeline sperimentale: costruzione del dataset,
