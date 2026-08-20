@@ -39,7 +39,7 @@ formattazione dell'output.
 dataset/        File VGDL sorgenti, descrizioni in linguaggio naturale e builder del dataset
 models/         Script di inferenza, SFT/QLoRA e GRPO per ciascun modello
 evaluation/     Controlli di eseguibilita', metriche strutturali, risultati e grafici
-py-vgdl/        Dipendenza locale che fornisce il parser VGDL
+py-vgdl/        Implementazione inclusa del parser VGDL
 ```
 
 Dataset generati, pesi scaricati dei modelli, adapter LoRA, checkpoint, stati
@@ -47,25 +47,24 @@ dell'ottimizzatore e cache sono intenzionalmente esclusi da Git.
 
 ## Ambiente
 
-Il progetto e' stato sviluppato in Windows con l'ambiente Conda **rlia** e una
-GPU NVIDIA. La baseline supportata e' Python 3.10.
+Il progetto richiede Python 3.10 e le dipendenze dichiarate in
+[environment.yml](environment.yml) e [requirements.txt](requirements.txt).
 
-```powershell
+```bash
 conda env create -f environment.yml
-conda activate rlia
-python -m pip install -e .\py-vgdl
+conda activate <nome-ambiente>
+python -m pip install -e ./py-vgdl
 ```
 
-Per il training su GPU, installare prima una build di PyTorch compatibile con
-CUDA e con il driver locale. Le restanti dipendenze Python sono dichiarate in
-[requirements.txt](requirements.txt) e vengono installate da
-[environment.yml](environment.yml).
+Per il training su GPU, installare una build di PyTorch compatibile con CUDA e
+con l'hardware disponibile. Le restanti dipendenze Python vengono installate
+da [environment.yml](environment.yml).
 
 I modelli Hugging Face possono richiedere autenticazione e accettazione delle
 rispettive licenze. L'esperimento zero-shot di Gemma richiede inoltre
 [Ollama](https://ollama.com/):
 
-```powershell
+```bash
 ollama pull gemma4:e4b
 ```
 
@@ -74,7 +73,7 @@ ollama pull gemma4:e4b
 Le descrizioni sorgenti e i file VGDL sono versionati. Prima di eseguire SFT,
 GRPO o la valutazione sul test set, costruire il dataset locale Hugging Face:
 
-```powershell
+```bash
 python dataset/dataset_hf.py
 ```
 
@@ -85,17 +84,17 @@ E' opzionale e richiede `dataset/.env`, creato a partire da
 ## Workflow principali
 
 Eseguire tutti i comandi dalla root della repository dopo aver attivato
-l'ambiente `rlia`.
+l'ambiente Python configurato.
 
 ### Valutazione zero-shot con Gemma4
 
-```powershell
+```bash
 python evaluation/evaluate_model_testset.py --backend ollama --model gemma4:e4b --run-name gemma4-zero-shot
 ```
 
 ### Fine-tuning supervisionato
 
-```powershell
+```bash
 python models/gemma4/supervised-learning/finetune.py
 python models/phi4-mini/supervised-learning/finetune.py
 python models/qwen3.5/supervised-learning/finetune.py
@@ -106,13 +105,13 @@ del rispettivo modello e sono ignorati da Git.
 
 ### Valutazione SFT
 
-```powershell
+```bash
 python evaluation/evaluate_model_testset.py --backend hf --model google/gemma-4-E4B-it --adapter models/gemma4/supervised-learning/model-finetuned --run-name gemma4-supervised --max-new-tokens 400
 ```
 
 ### Reinforcement learning con GRPO
 
-```powershell
+```bash
 python models/gemma4/reinforcement-learning/grpo_train.py
 python models/phi4-mini/reinforcement-learning/grpo_train.py
 python models/qwen3.5/reinforcement-learning/grpo_train.py
@@ -125,13 +124,13 @@ versionati.
 
 ### Grafici e report di valutazione
 
-```powershell
+```bash
 python evaluation/plot_evaluation_results.py --runs gemma4-zero-shot gemma4-supervised --output-dir evaluation/plots/gemma4-comparison
 ```
 
 Per validare direttamente un singolo file VGDL:
 
-```powershell
+```bash
 python evaluation/check_vgdl_executability.py models/gemma4/zero-shot/vgdl/artillery_vgdl_gemma4.txt
 ```
 
