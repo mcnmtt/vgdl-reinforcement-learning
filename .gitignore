@@ -50,10 +50,5 @@ py-vgdl/build/
 py-vgdl/*.egg-info/
 
 # LaTeX build products; the reviewed report PDF is tracked explicitly.
-docs/*.aux
-docs/*.bbl
-docs/*.blg
-docs/*.log
-docs/*.out
-docs/*.spl
-docs/*.toc
+# The report is delivered separately; keep its Overleaf source local.
+docs/
