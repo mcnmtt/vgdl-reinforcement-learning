@@ -52,3 +52,7 @@ py-vgdl/*.egg-info/
 # LaTeX build products; the reviewed report PDF is tracked explicitly.
 # The report is delivered separately; keep its Overleaf source local.
 docs/
+
+# Local explanatory notes not included in the submitted repository.
+reinforcement_learning_explained.md
+spiegazione_loss.md
