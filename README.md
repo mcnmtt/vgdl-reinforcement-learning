@@ -5,6 +5,8 @@ Laurea Magistrale in Informatica, track **Data Science e Machine Learning**,
 presso l'Universita' degli Studi di Salerno. Docente titolare del corso:
 **Vincenzo Deufemia**.
 
+**Autori:** Mattia Maucioni e Antonio Landi.
+
 Progetto d'esame sulla generazione di programmi in **Video Game Description
 Language (VGDL)** a partire da descrizioni di giochi in linguaggio naturale.
 Il repository contiene l'intera pipeline sperimentale: costruzione del dataset,
