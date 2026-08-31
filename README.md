@@ -4,7 +4,7 @@ Progetto d'esame per il corso di **Intelligenza Artificiale** della Laurea
 Magistrale in Informatica, track **Data Science e Machine Learning**,
 dell'Universita' degli Studi di Salerno. Docente: **Vincenzo Deufemia**.
 
-**Autori:** Mattia Maucioni e Antonio Landi.
+**Autori:** [Mattia Maucioni](https://github.com/mcnmtt) e [Antonio Landi](https://github.com/antonio-Landi).
 
 ## Obiettivo
 
