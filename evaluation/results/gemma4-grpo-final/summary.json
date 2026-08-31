@@ -1,0 +1,18 @@
+{
+  "run_name": "gemma4-grpo-final",
+  "backend": "hf",
+  "model": "google/gemma-4-E4B-it",
+  "profile": "gemma4",
+  "prompt_protocol": "system_user_chat",
+  "adapter": "models\\gemma4\\reinforcement-learning\\grpo-output\\best-model",
+  "examples": 21,
+  "executability_rate": 0.14285714285714285,
+  "basic_game_rate": 0.8571428571428571,
+  "complete_structure_rate": 0.23809523809523808,
+  "mean_sprite_similarity": 0.2893263253037689,
+  "mean_interaction_similarity": 0.13358294179298302,
+  "mean_termination_similarity": 0.03968253968253968,
+  "mean_structural_similarity": 0.14904368714306865,
+  "mean_similarity_valid_only": 0.1272127872127872,
+  "mean_generation_seconds": 50.67170467619005
+}

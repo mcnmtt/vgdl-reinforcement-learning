@@ -1,0 +1,22 @@
+index,valid,starts_with_basic_game,all_sections_present,sprite_similarity,interaction_similarity,termination_similarity,final_score,generation_seconds,prompt_tokens,generated_tokens,validation_errors
+0,False,False,False,0.02197802197802198,0.0,0.0,0.005494505494505495,28.421599499997683,996,400,Parsing error: 'NoneType' object is not callable
+1,False,False,True,0.15789473684210525,0.07692307692307693,0.0,0.07793522267206478,26.83281039999565,532,390,Parsing error: 'NoneType' object is not callable
+2,False,False,False,0.375,0.045454545454545456,0.0,0.11647727272727273,27.867379799994524,599,400,Parsing error: 'NoneType' object is not callable
+3,False,False,False,0.35,0.0,0.0,0.0875,27.29867610000656,596,400,Parsing error: 'NoneType' object is not callable
+4,False,False,True,0.09090909090909091,0.0,0.3333333333333333,0.10606060606060605,20.845008099990082,407,302,Parsing error: 'NoneType' object is not callable
+5,False,False,True,1.0,1.0,0.0,0.75,18.095715300005395,376,262,Parsing error: 'NoneType' object is not callable
+6,False,False,False,0.043478260869565216,0.0,0.0,0.010869565217391304,28.007002099999227,675,400,Parsing error: 'NoneType' object is not callable
+7,False,False,False,0.1935483870967742,0.06666666666666667,0.0,0.08172043010752689,27.413972399997874,540,400,Parsing error: 'NoneType' object is not callable
+8,False,False,False,0.17647058823529413,0.0,0.0,0.04411764705882353,27.943988500002888,739,400,Parsing error: 'NoneType' object is not callable
+9,False,False,True,0.4166666666666667,0.0,0.0,0.10416666666666667,20.87310090000392,394,280,Parsing error: 'NoneType' object is not callable
+10,False,False,False,0.3333333333333333,0.06666666666666667,0.0,0.11666666666666667,28.13620299998729,642,400,Parsing error: 'NoneType' object is not callable
+11,False,False,False,0.2962962962962963,0.0,0.0,0.07407407407407407,28.002050700000837,670,400,Parsing error: 'NoneType' object is not callable
+12,False,False,False,0.24242424242424243,0.0,0.0,0.06060606060606061,28.410607900004834,761,400,Parsing error: 'NoneType' object is not callable
+13,False,False,False,0.28125,0.0,0.0,0.0703125,28.712267700000666,680,400,Parsing error: 'NoneType' object is not callable
+14,False,False,True,0.23076923076923078,0.0,0.0,0.057692307692307696,21.73411409999244,367,308,Parsing error: 'NoneType' object is not callable
+15,False,False,False,0.03225806451612903,0.0,0.0,0.008064516129032258,28.328779099989333,925,400,Parsing error: 'NoneType' object is not callable
+16,False,False,True,0.2,0.0,0.3333333333333333,0.13333333333333333,16.256284200004302,339,230,Parsing error: 'NoneType' object is not callable
+17,False,False,False,0.13953488372093023,0.0,0.0,0.03488372093023256,28.15900459999102,742,400,Parsing error: 'NoneType' object is not callable
+18,False,False,True,0.16666666666666666,0.058823529411764705,0.3333333333333333,0.15441176470588236,26.506603899993934,515,378,Parsing error: 'NoneType' object is not callable
+19,False,False,False,0.1724137931034483,0.0,0.0,0.04310344827586207,28.04337430000305,655,400,Parsing error: 'NoneType' object is not callable
+20,False,False,False,0.11475409836065574,0.0,0.0,0.028688524590163935,28.315628900003503,908,400,Parsing error: 'NoneType' object is not callable

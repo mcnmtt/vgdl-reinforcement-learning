@@ -1,0 +1,18 @@
+{
+  "run_name": "phi4-mini-grpo-final",
+  "backend": "hf",
+  "model": "microsoft/Phi-4-mini-instruct",
+  "profile": "phi4-mini",
+  "prompt_protocol": "phi4_raw_shared_prompt",
+  "adapter": "models\\phi4-mini\\reinforcement-learning\\grpo-output-sft\\last-model",
+  "examples": 21,
+  "executability_rate": 0.0,
+  "basic_game_rate": 0.0,
+  "complete_structure_rate": 0.23809523809523808,
+  "mean_sprite_similarity": 0.216267640967395,
+  "mean_interaction_similarity": 0.07150860344137655,
+  "mean_termination_similarity": 0.015873015873015872,
+  "mean_structural_similarity": 0.09378946593079099,
+  "mean_similarity_valid_only": 0.0,
+  "mean_generation_seconds": 27.790876371429825
+}

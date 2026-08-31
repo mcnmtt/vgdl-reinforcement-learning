@@ -1,150 +1,90 @@
 # Generazione di VGDL con LLM e Reinforcement Learning
 
-Progetto d'esame per il corso di **Intelligenza Artificiale** del Corso di
-Laurea Magistrale in Informatica, track **Data Science e Machine Learning**,
-presso l'Universita' degli Studi di Salerno. Docente titolare del corso:
-**Vincenzo Deufemia**.
+Progetto d'esame per il corso di **Intelligenza Artificiale** della Laurea
+Magistrale in Informatica, track **Data Science e Machine Learning**,
+dell'Universita' degli Studi di Salerno. Docente: **Vincenzo Deufemia**.
 
 **Autori:** Mattia Maucioni e Antonio Landi.
 
-Progetto d'esame sulla generazione di programmi in **Video Game Description
-Language (VGDL)** a partire da descrizioni di giochi in linguaggio naturale.
-Il repository contiene l'intera pipeline sperimentale: costruzione del dataset,
-baseline zero-shot, fine-tuning supervisionato con QLoRA, reinforcement learning
-con GRPO e valutazione riproducibile.
+## Obiettivo
 
-I tre modelli selezionati per gli esperimenti principali sono:
+Il progetto genera programmi in **Video Game Description Language (VGDL)** a
+partire da descrizioni testuali di giochi. Confronta tre approcci:
 
-- **Qwen3.5-4B**
-- **Gemma4-E4B-it**
-- **Phi-4-mini-instruct**
+- generazione zero-shot;
+- fine-tuning supervisionato con QLoRA (SFT);
+- reinforcement learning con Group Relative Policy Optimization (GRPO).
 
-La relazione del progetto viene consegnata separatamente e non fa parte del
-contenuto versionato della repository.
+I modelli principali sono **Qwen3.5-4B**, **Gemma4-E4B-it** e
+**Phi-4-mini-instruct**.
 
-## Risultati principali
+## Risultati
 
-La valutazione hold-out corrente copre 21 giochi e usa il parser VGDL, insieme
-a una similarita' strutturale Jaccard pesata su sprite, interazioni e condizioni
-di terminazione.
+La valutazione usa 21 giochi e decodifica deterministica, con un massimo di
+400 token generati. `Parser` indica gli output accettati da `py-vgdl`; non e'
+una prova completa di esecuzione del gioco. La similarita' e' un indice Jaccard
+pesato su sprite, interazioni e condizioni di terminazione.
 
-| Condizione Gemma4 | VGDL eseguibile | Struttura completa | Similarita' strutturale | Tempo medio di generazione |
-| --- | ---: | ---: | ---: | ---: |
-| Zero-shot, Ollama gemma4:e4b | 100.0% | 0.0% | 0.0% | 7.8 s |
-| Fine-tuning supervisionato QLoRA | 0.0% | 85.7% | 26.1% | 107.2 s |
+| Modello | Condizione | Parser | Struttura completa | Similarita' | Tempo medio |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Qwen3.5-4B | Zero-shot | 100.0% | 0.0% | 0.0% | 25.3 s |
+| Qwen3.5-4B | SFT | 28.6% | 42.9% | 20.2% | 36.0 s |
+| Qwen3.5-4B | GRPO | 14.3% | 47.6% | 21.1% | 30.0 s |
+| Gemma4-E4B-it | Zero-shot | 100.0% | 0.0% | 0.0% | 7.7 s |
+| Gemma4-E4B-it | SFT | 23.8% | 33.3% | 18.4% | 55.8 s |
+| Gemma4-E4B-it | GRPO | 14.3% | 23.8% | 14.9% | 50.7 s |
+| Phi-4-mini | Zero-shot | 0.0% | 57.1% | 0.0% | 13.4 s |
+| Phi-4-mini | SFT | 0.0% | 33.3% | 10.3% | 25.9 s |
+| Phi-4-mini | GRPO | 0.0% | 23.8% | 9.4% | 27.8 s |
 
-Gli output leggibili dalla macchina sono in
-[evaluation/results/](evaluation/results); le figure e il report HTML sono in
-[evaluation/plots/gemma4-comparison/](evaluation/plots/gemma4-comparison).
-Il training GRPO impiega una reward che combina direttamente parsabilita',
-similarita' strutturale, controlli sull'ontologia VGDL, gestione di EOS e
-formattazione dell'output.
+I dati usati per questa tabella sono in
+[`evaluation/results/`](evaluation/results/), nelle cartelle `*-final`.
 
-## Struttura della repository
+## Struttura
 
 ```text
-dataset/        File VGDL sorgenti, descrizioni in linguaggio naturale e builder del dataset
-models/         Script di inferenza, SFT/QLoRA e GRPO per ciascun modello
-evaluation/     Controlli di eseguibilita', metriche strutturali, risultati e grafici
-py-vgdl/        Implementazione inclusa del parser VGDL
+dataset/        Specifiche VGDL, descrizioni testuali e script per il dataset
+models/         Script zero-shot, SFT e GRPO per ogni modello
+evaluation/     Metriche, valutatore e risultati delle valutazioni
+py-vgdl/        Parser VGDL incluso nel progetto
 ```
 
-Dataset generati, pesi scaricati dei modelli, adapter LoRA, checkpoint, stati
-dell'ottimizzatore e cache sono intenzionalmente esclusi da Git.
+## Avvio rapido
 
-## Ambiente
-
-Il progetto richiede Python 3.10 e le dipendenze dichiarate in
-[environment.yml](environment.yml) e [requirements.txt](requirements.txt).
+Sono necessari Python 3.10 e le dipendenze in
+[`environment.yml`](environment.yml) e [`requirements.txt`](requirements.txt).
 
 ```bash
 conda env create -f environment.yml
 conda activate <nome-ambiente>
 python -m pip install -e ./py-vgdl
+python dataset/dataset_hf.py
 ```
 
-Per il training su GPU, installare una build di PyTorch compatibile con CUDA e
-con l'hardware disponibile. Le restanti dipendenze Python vengono installate
-da [environment.yml](environment.yml).
-
-I modelli Hugging Face possono richiedere autenticazione e accettazione delle
-rispettive licenze. L'esperimento zero-shot di Gemma richiede inoltre
-[Ollama](https://ollama.com/):
+I modelli Hugging Face possono richiedere l'accettazione della relativa licenza.
+Per il caso zero-shot di Gemma4 servono anche Ollama e il modello locale:
 
 ```bash
 ollama pull gemma4:e4b
 ```
 
-## Preparazione del dataset
-
-Le descrizioni sorgenti e i file VGDL sono versionati. Prima di eseguire SFT,
-GRPO o la valutazione sul test set, costruire il dataset locale Hugging Face:
+Esempio di valutazione zero-shot di Gemma4:
 
 ```bash
-python dataset/dataset_hf.py
+python evaluation/evaluate_model_testset.py --backend ollama --model gemma4:e4b --run-name gemma4-zero-shot-final --max-new-tokens 400
 ```
 
-`dataset/create_db.py` rigenera le descrizioni tramite API Anthropic.
-E' opzionale e richiede `dataset/.env`, creato a partire da
-`dataset/.env.example`.
-
-## Workflow principali
-
-Eseguire tutti i comandi dalla root della repository dopo aver attivato
-l'ambiente Python configurato.
-
-### Valutazione zero-shot con Gemma4
+Per addestrare un modello, eseguire lo script `finetune.py` oppure
+`grpo_train.py` nella relativa cartella in `models/`. Per tutte le opzioni del
+valutatore:
 
 ```bash
-python evaluation/evaluate_model_testset.py --backend ollama --model gemma4:e4b --run-name gemma4-zero-shot
+python evaluation/evaluate_model_testset.py --help
 ```
 
-### Fine-tuning supervisionato
+## File inclusi
 
-```bash
-python models/gemma4/supervised-learning/finetune.py
-python models/phi4-mini/supervised-learning/finetune.py
-python models/qwen3.5/supervised-learning/finetune.py
-```
-
-Gli adapter sono salvati localmente nella directory `supervised-learning`
-del rispettivo modello e sono ignorati da Git.
-
-### Valutazione SFT
-
-```bash
-python evaluation/evaluate_model_testset.py --backend hf --model google/gemma-4-E4B-it --adapter models/gemma4/supervised-learning/model-finetuned --run-name gemma4-supervised --max-new-tokens 400
-```
-
-### Reinforcement learning con GRPO
-
-```bash
-python models/gemma4/reinforcement-learning/grpo_train.py
-python models/phi4-mini/reinforcement-learning/grpo_train.py
-python models/qwen3.5/reinforcement-learning/grpo_train.py
-```
-
-Il GRPO di Gemma4 e Phi-4-mini parte dal rispettivo adapter SFT. Gli script di
-training mantengono localmente gli snapshot `best-model` e
-`last-model` per la ripresa del training; tali snapshot non vengono
-versionati.
-
-### Grafici e report di valutazione
-
-```bash
-python evaluation/plot_evaluation_results.py --runs gemma4-zero-shot gemma4-supervised --output-dir evaluation/plots/gemma4-comparison
-```
-
-Per validare direttamente un singolo file VGDL:
-
-```bash
-python evaluation/check_vgdl_executability.py models/gemma4/zero-shot/vgdl/artillery_vgdl_gemma4.txt
-```
-
-## Politica di versionamento
-
-La repository include codice sorgente, file sorgenti del dataset, esempi VGDL
-generati selezionati, output delle valutazioni e grafici. Non include pesi dei
-modelli, checkpoint, cache Hugging Face, credenziali API locali o i dati
-rigenerati in `dataset_hf`. In questo modo il progetto consegnato resta
-compatto, pur mantenendo i passaggi necessari a riprodurre ciascun esperimento.
+Sono versionati il codice, le specifiche VGDL, le descrizioni e i risultati
+della valutazione finale. Pesi dei modelli, adapter LoRA, checkpoint, cache,
+credenziali e dataset Hugging Face rigenerabile restano locali e non vengono
+pubblicati.

@@ -1,0 +1,18 @@
+{
+  "run_name": "qwen35-sft-final",
+  "backend": "hf",
+  "model": "Qwen/Qwen3.5-4B",
+  "profile": "qwen3.5",
+  "prompt_protocol": "system_user_chat",
+  "adapter": "models\\qwen3.5\\supervised-learning\\16-32-0.05",
+  "examples": 21,
+  "executability_rate": 0.2857142857142857,
+  "basic_game_rate": 1.0,
+  "complete_structure_rate": 0.42857142857142855,
+  "mean_sprite_similarity": 0.4015127314622412,
+  "mean_interaction_similarity": 0.16762164073088442,
+  "mean_termination_similarity": 0.07142857142857142,
+  "mean_structural_similarity": 0.20204614608814536,
+  "mean_similarity_valid_only": 0.08558370235591296,
+  "mean_generation_seconds": 36.02654252381
+}

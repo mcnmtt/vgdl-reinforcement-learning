@@ -1,0 +1,18 @@
+{
+  "run_name": "gemma4-zero-shot-final",
+  "backend": "ollama",
+  "model": "gemma4:e4b",
+  "profile": "gemma4",
+  "prompt_protocol": "system_user_chat",
+  "adapter": null,
+  "examples": 21,
+  "executability_rate": 1.0,
+  "basic_game_rate": 1.0,
+  "complete_structure_rate": 0.0,
+  "mean_sprite_similarity": 0.0,
+  "mean_interaction_similarity": 0.0,
+  "mean_termination_similarity": 0.0,
+  "mean_structural_similarity": 0.0,
+  "mean_similarity_valid_only": 0.0,
+  "mean_generation_seconds": 7.681815828571589
+}

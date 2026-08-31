@@ -1,0 +1,18 @@
+{
+  "run_name": "phi4-mini-sft-final",
+  "backend": "hf",
+  "model": "microsoft/Phi-4-mini-instruct",
+  "profile": "phi4-mini",
+  "prompt_protocol": "phi4_raw_shared_prompt",
+  "adapter": "models\\phi4-mini\\supervised-learning\\model-finetuned",
+  "examples": 21,
+  "executability_rate": 0.0,
+  "basic_game_rate": 0.0,
+  "complete_structure_rate": 0.3333333333333333,
+  "mean_sprite_similarity": 0.23979268389468816,
+  "mean_interaction_similarity": 0.06259688024393906,
+  "mean_termination_similarity": 0.047619047619047616,
+  "mean_structural_similarity": 0.10315137300040347,
+  "mean_similarity_valid_only": 0.0,
+  "mean_generation_seconds": 25.91448435714119
+}

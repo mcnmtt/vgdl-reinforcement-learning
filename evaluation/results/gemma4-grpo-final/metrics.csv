@@ -1,0 +1,22 @@
+index,valid,starts_with_basic_game,all_sections_present,sprite_similarity,interaction_similarity,termination_similarity,final_score,generation_seconds,prompt_tokens,generated_tokens,validation_errors
+0,False,True,False,0.07142857142857142,0.0,0.0,0.017857142857142856,65.42868470000394,958,400,Parsing error: Unknown VGDL class: MissileShrinker
+1,False,True,True,0.42857142857142855,0.16666666666666666,0.5,0.31547619047619047,56.25733740000578,510,356,Parsing error: Unknown VGDL class: RandomSpread
+2,False,True,False,0.5333333333333333,0.3157894736842105,0.3333333333333333,0.37456140350877193,63.28882980000344,586,400,Parsing error: Unknown VGDL class: Door
+3,False,False,False,0.0,0.0,0.0,0.0,0.0,,,Generation error: IndexError: list index out of range
+4,False,True,True,0.2,0.0,0.0,0.05,45.56393150000076,401,288,Parsing error: Unknown VGDL class: Door
+5,False,True,False,1.0,1.0,0.0,0.75,37.00591999999597,369,231,Parsing error: Unknown VGDL class: Door
+6,True,True,False,0.48,0.2727272727272727,0.0,0.25636363636363635,62.88212989999738,686,400,
+7,False,True,True,0.125,0.05555555555555555,0.0,0.059027777777777776,62.80173520000244,534,400,Parsing error: Unknown VGDL class: PhysicsPad
+8,False,True,False,0.30303030303030304,0.047619047619047616,0.0,0.09956709956709957,62.702053500004695,727,400,Parsing error: Unknown VGDL class: PassivePortal
+9,False,True,True,0.3333333333333333,0.0,0.0,0.08333333333333333,48.698463000007905,383,307,Parsing error: Unknown VGDL class: killBoth
+10,False,True,False,0.5,0.25,0.0,0.25,61.885416100005386,628,394,Parsing error: Unknown VGDL class: undoAllExceptEnemies
+11,False,False,False,0.0,0.0,0.0,0.0,62.91727439999522,664,400,Parsing error: Unknown VGDL class: wall
+12,False,True,False,0.2,0.18181818181818182,0.0,0.14090909090909093,63.62973149999743,760,400,Parsing error: Unknown VGDL class: subtractHealthPoints
+13,False,True,False,0.2571428571428571,0.0,0.0,0.06428571428571428,63.41725049998786,650,400,Parsing error: Unknown VGDL class: Rotator
+14,True,True,True,0.15384615384615385,0.14285714285714285,0.0,0.10989010989010989,39.873427400001674,362,247,
+15,False,True,False,0.42105263157894735,0.06451612903225806,0.0,0.13752122241086587,63.38491399999475,863,400,Parsing error: Unknown VGDL class: Door
+16,False,True,False,0.09090909090909091,0.0,0.0,0.022727272727272728,28.393951899997774,329,175,Parsing error: Unknown VGDL class: spawn
+17,False,True,False,0.25,0.0,0.0,0.0625,62.637089099996956,718,400,Parsing error: Unknown VGDL class: Door
+18,False,True,False,0.6666666666666666,0.3076923076923077,0.0,0.3205128205128205,49.850440599999274,506,320,Parsing error: Unknown VGDL class: Door
+19,False,False,False,0.0,0.0,0.0,0.0,0.0,,,Generation error: IndexError: list index out of range
+20,True,True,False,0.06153846153846154,0.0,0.0,0.015384615384615385,63.48721769999247,913,400,

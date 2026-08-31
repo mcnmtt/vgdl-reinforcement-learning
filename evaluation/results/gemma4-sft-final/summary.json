@@ -1,0 +1,18 @@
+{
+  "run_name": "gemma4-sft-final",
+  "backend": "hf",
+  "model": "google/gemma-4-E4B-it",
+  "profile": "gemma4",
+  "prompt_protocol": "system_user_chat",
+  "adapter": "models\\gemma4\\supervised-learning\\model-finetuned",
+  "examples": 21,
+  "executability_rate": 0.23809523809523808,
+  "basic_game_rate": 1.0,
+  "complete_structure_rate": 0.3333333333333333,
+  "mean_sprite_similarity": 0.34804325477177817,
+  "mean_interaction_similarity": 0.12668661256675412,
+  "mean_termination_similarity": 0.13492063492063494,
+  "mean_structural_similarity": 0.18408427870648034,
+  "mean_similarity_valid_only": 0.05587447304468581,
+  "mean_generation_seconds": 55.79684819047647
+}

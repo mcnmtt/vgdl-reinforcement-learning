@@ -1,0 +1,18 @@
+{
+  "run_name": "qwen35-grpo-final",
+  "backend": "hf",
+  "model": "Qwen/Qwen3.5-4B",
+  "profile": "qwen3.5",
+  "prompt_protocol": "system_user_chat",
+  "adapter": "models\\qwen3.5\\reinforcement-learning\\grpo-output\\last-model",
+  "examples": 21,
+  "executability_rate": 0.14285714285714285,
+  "basic_game_rate": 0.9523809523809523,
+  "complete_structure_rate": 0.47619047619047616,
+  "mean_sprite_similarity": 0.3747672017195317,
+  "mean_interaction_similarity": 0.19024943310657597,
+  "mean_termination_similarity": 0.0873015873015873,
+  "mean_structural_similarity": 0.21064191380856773,
+  "mean_similarity_valid_only": 0.10211894586894586,
+  "mean_generation_seconds": 29.98843883333237
+}

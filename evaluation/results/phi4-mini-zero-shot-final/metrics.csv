@@ -1,0 +1,22 @@
+index,valid,starts_with_basic_game,all_sections_present,sprite_similarity,interaction_similarity,termination_similarity,final_score,generation_seconds,prompt_tokens,generated_tokens,validation_errors
+0,False,False,False,0.0,0.0,0.0,0.0,18.660951900004875,996,400,Parsing error: Unknown VGDL class: {
+1,False,False,True,0.0,0.0,0.0,0.0,18.226298800000222,532,400,Parsing error: Unknown VGDL class: {
+2,False,True,True,0.0,0.0,0.0,0.0,4.675422500004061,599,101,"Parsing error: Unknown VGDL class: BasicGame(""Digging"
+3,False,False,False,0.0,0.0,0.0,0.0,18.207175699993968,596,400,Parsing error: Unknown VGDL class: {
+4,False,False,True,0.0,0.0,0.0,0.0,13.980277999988175,407,306,Parsing error: Unknown VGDL class: {
+5,False,False,True,0.0,0.0,0.0,0.0,8.204632300010417,376,180,Parsing error: Unknown VGDL class: {
+6,False,False,True,0.0,0.0,0.0,0.0,18.221404199997778,675,400,Parsing error: Unknown VGDL class: {
+7,False,True,False,0.0,0.0,0.0,0.0,11.09432009999,540,243,"Parsing error: Unknown VGDL class: BasicGame(""PaddleBall"","
+8,False,False,False,0.0,0.0,0.0,0.0,12.755940000002738,739,279,Parsing error: Unknown VGDL class: basic_game;
+9,False,False,True,0.0,0.0,0.0,0.0,18.195975700000417,394,400,Parsing error: Unknown VGDL class: {
+10,False,False,True,0.0,0.0,0.0,0.0,8.14075029999367,642,177,Parsing error: Unknown VGDL class: {
+11,False,False,False,0.0,0.0,0.0,0.0,18.214581199994427,670,400,Parsing error: Unknown VGDL class: {
+12,False,False,False,0.0,0.0,0.0,0.0,18.24644210000406,761,400,Parsing error: Unknown VGDL class: {
+13,False,False,False,0.0,0.0,0.0,0.0,12.496632900001714,680,268,Parsing error: Unknown VGDL class: basic_game;
+14,False,False,True,0.0,0.0,0.0,0.0,3.9301492999948096,367,82,Parsing error: Unknown VGDL class: {
+15,False,False,False,0.0,0.0,0.0,0.0,9.46651899999415,925,201,Parsing error: Unknown VGDL class: {
+16,False,False,True,0.0,0.0,0.0,0.0,10.386421099989093,339,225,Parsing error: Unknown VGDL class: {
+17,False,False,True,0.0,0.0,0.0,0.0,5.351561699993908,742,111,Parsing error: Unknown VGDL class: basic_game;
+18,False,False,True,0.0,0.0,0.0,0.0,18.531121800013352,515,400,Parsing error: Unknown VGDL class: {
+19,False,False,False,0.0,0.0,0.0,0.0,18.728468300003442,655,400,Parsing error: Unknown VGDL class: {
+20,False,False,True,0.0,0.0,0.0,0.0,15.479273399992962,908,332,Parsing error: Unknown VGDL class: {

@@ -1,0 +1,18 @@
+{
+  "run_name": "phi4-mini-zero-shot-final",
+  "backend": "hf",
+  "model": "microsoft/Phi-4-mini-instruct",
+  "profile": "phi4-mini",
+  "prompt_protocol": "phi4_raw_shared_prompt",
+  "adapter": null,
+  "examples": 21,
+  "executability_rate": 0.0,
+  "basic_game_rate": 0.09523809523809523,
+  "complete_structure_rate": 0.5714285714285714,
+  "mean_sprite_similarity": 0.0,
+  "mean_interaction_similarity": 0.0,
+  "mean_termination_similarity": 0.0,
+  "mean_structural_similarity": 0.0,
+  "mean_similarity_valid_only": 0.0,
+  "mean_generation_seconds": 13.390205728569915
+}

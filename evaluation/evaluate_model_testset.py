@@ -40,6 +40,9 @@ sys.path.insert(0, str(REPO_ROOT / "evaluation"))
 from check_vgdl_executability import validate_vgdl  # noqa: E402
 from eval_similarity import vgdl_similarity  # noqa: E402
 
+sys.path.insert(0, str(REPO_ROOT / "models" / "phi4-mini"))
+from prompting import build_prompt as build_phi4_prompt  # noqa: E402
+
 
 SYSTEM_PROMPT = (
     "You are an expert in VGDL (Video Game Description Language). "
@@ -62,6 +65,15 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--backend", choices=("ollama", "hf"), required=True)
     parser.add_argument("--model", required=True)
+    parser.add_argument(
+        "--profile",
+        choices=("gemma4", "qwen3.5", "phi4-mini"),
+        default="gemma4",
+        help=(
+            "Profilo di architettura e prompt per il backend Hugging Face. "
+            "Il valore predefinito conserva il protocollo Gemma4 esistente."
+        ),
+    )
     parser.add_argument(
         "--adapter",
         type=Path,
@@ -175,38 +187,73 @@ class HuggingFaceGenerator:
         model_name: str,
         adapter: Path | None,
         max_new_tokens: int,
+        profile: str,
     ):
         import torch
-        from transformers import (
-            AutoModelForCausalLM,
-            AutoProcessor,
-            BitsAndBytesConfig,
-        )
+        from transformers import AutoModelForCausalLM, AutoProcessor, AutoTokenizer
+        from transformers import AutoModelForImageTextToText, BitsAndBytesConfig
 
         if not torch.cuda.is_available():
             raise RuntimeError("Il backend Hugging Face richiede CUDA.")
 
         self.torch = torch
         self.max_new_tokens = max_new_tokens
+        self.profile = profile
+        self.processor = None
 
-        processor_source = str(adapter) if adapter else model_name
-        self.processor = AutoProcessor.from_pretrained(processor_source)
-        self.tokenizer = getattr(
-            self.processor,
-            "tokenizer",
-            self.processor,
+        input_source = str(adapter) if adapter else model_name
+        if profile == "phi4-mini":
+            try:
+                self.tokenizer = AutoTokenizer.from_pretrained(
+                    input_source,
+                    trust_remote_code=False,
+                )
+            except OSError:
+                if adapter is None:
+                    raise
+                self.tokenizer = AutoTokenizer.from_pretrained(
+                    model_name,
+                    trust_remote_code=False,
+                )
+            model_class = AutoModelForCausalLM
+        else:
+            try:
+                self.processor = AutoProcessor.from_pretrained(input_source)
+            except OSError:
+                if adapter is None:
+                    raise
+                self.processor = AutoProcessor.from_pretrained(model_name)
+            self.tokenizer = getattr(
+                self.processor,
+                "tokenizer",
+                self.processor,
+            )
+            model_class = (
+                AutoModelForImageTextToText
+                if profile == "qwen3.5"
+                else AutoModelForCausalLM
+            )
+
+        if self.tokenizer.pad_token_id is None:
+            self.tokenizer.pad_token = self.tokenizer.eos_token
+        self.tokenizer.padding_side = "left"
+
+        compute_dtype = (
+            torch.bfloat16
+            if torch.cuda.is_bf16_supported()
+            else torch.float16
         )
 
         quantization_config = BitsAndBytesConfig(
             load_in_4bit=True,
             bnb_4bit_quant_type="nf4",
-            bnb_4bit_compute_dtype=torch.bfloat16,
+            bnb_4bit_compute_dtype=compute_dtype,
             bnb_4bit_use_double_quant=True,
         )
-        model = AutoModelForCausalLM.from_pretrained(
+        model = model_class.from_pretrained(
             model_name,
             quantization_config=quantization_config,
-            dtype=torch.bfloat16,
+            dtype=compute_dtype,
             device_map={"": 0},
             low_cpu_mem_usage=True,
         )
@@ -223,24 +270,36 @@ class HuggingFaceGenerator:
         self.model = model.eval()
 
     def generate(self, description: str) -> tuple[str, dict]:
-        messages = [
-            {
-                "role": "system",
-                "content": [{"type": "text", "text": SYSTEM_PROMPT}],
-            },
-            {
-                "role": "user",
-                "content": [{"type": "text", "text": description.strip()}],
-            },
-        ]
-        inputs = self.processor.apply_chat_template(
-            messages,
-            add_generation_prompt=True,
-            tokenize=True,
-            return_dict=True,
-            return_tensors="pt",
-            enable_thinking=False,
-        ).to(self.model.device)
+        if self.profile == "phi4-mini":
+            inputs = self.tokenizer(
+                build_phi4_prompt(description),
+                return_tensors="pt",
+            )
+            inputs = {
+                name: tensor.to(self.model.device)
+                for name, tensor in inputs.items()
+            }
+        else:
+            messages = [
+                {
+                    "role": "system",
+                    "content": [{"type": "text", "text": SYSTEM_PROMPT}],
+                },
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": description.strip()}
+                    ],
+                },
+            ]
+            inputs = self.processor.apply_chat_template(
+                messages,
+                add_generation_prompt=True,
+                tokenize=True,
+                return_dict=True,
+                return_tensors="pt",
+                enable_thinking=False,
+            ).to(self.model.device)
 
         start = time.perf_counter()
         with self.torch.inference_mode():
@@ -282,6 +341,7 @@ def create_generator(args: argparse.Namespace):
         args.model,
         args.adapter,
         args.max_new_tokens,
+        args.profile,
     )
 
 
@@ -334,6 +394,12 @@ def build_summary(records: list[dict], args: argparse.Namespace) -> dict:
         "run_name": args.run_name,
         "backend": args.backend,
         "model": args.model,
+        "profile": args.profile,
+        "prompt_protocol": (
+            "phi4_raw_shared_prompt"
+            if args.profile == "phi4-mini"
+            else "system_user_chat"
+        ),
         "adapter": str(args.adapter) if args.adapter else None,
         "examples": len(records),
         "executability_rate": mean(

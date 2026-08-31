@@ -1,44 +1,79 @@
 """
-GRPO training per generazione VGDL.
+GRPO training for VGDL generation with Qwen3.5-4B.
 
-Parte dal modello Qwen3.5-4B fine-tunato con SFT e lo allena con reward basate su:
-  - Eseguibilità VGDL (parser py-vgdl)
-  - Struttura corretta (4 sezioni obbligatorie + BasicGame)
-  - Classi sprite, effetti e condizioni di terminazione validi
-  - Uso corretto di EOS per i bordi dello schermo
+The run starts from the supervised LoRA adapter and optimizes the same
+structural and executability rewards used by the Qwen pipeline. It relies on
+the standard Transformers/PEFT stack, which is more stable than the Unsloth
+path for the Qwen3.5 multimodal architecture in this environment.
 
-Eseguire dalla root del progetto:
+Run from the repository root:
+  python models/qwen3.5/reinforcement-learning/grpo_train.py
+
+Dry run:
+  $env:GRPO_DRY_RUN="1"
   python models/qwen3.5/reinforcement-learning/grpo_train.py
 """
 
-import sys
-import os
-# Deve essere impostato PRIMA di qualsiasi import di torch/unsloth,
-# altrimenti torch si inizializza senza il flag e inductor tenta di
-# compilare kernel Triton cercando un compilatore C (non disponibile in WSL).
-os.environ["TORCHDYNAMO_DISABLE"] = "1"
-os.environ["TORCHINDUCTOR_DISABLE"] = "1"
+from __future__ import annotations
 
-from unsloth import FastLanguageModel
 import json
-import torch
-from tqdm import tqdm
-from transformers import TrainerCallback
+import os
+import shutil
+import sys
+from pathlib import Path
 
-_REPO_ROOT = os.path.join(os.path.dirname(__file__), "..", "..", "..")
-sys.path.insert(0, os.path.join(_REPO_ROOT, "py-vgdl"))
+os.environ.setdefault("TORCHDYNAMO_DISABLE", "1")
+os.environ.setdefault("TORCHINDUCTOR_DISABLE", "1")
+if sys.platform != "win32":
+    os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
-from datasets import load_from_disk
-from trl import GRPOTrainer, GRPOConfig
-from reward_functions import REWARD_FUNCTIONS
+# TRL can discover optional judge packages that are incompatible with the
+# installed Transformers version, even though GRPO does not use them.
+import transformers.utils.hub as _transformers_hub  # noqa: E402
+
+if not hasattr(_transformers_hub, "TRANSFORMERS_CACHE"):
+    _transformers_hub.TRANSFORMERS_CACHE = os.path.join(
+        os.path.expanduser("~"),
+        ".cache",
+        "huggingface",
+        "hub",
+    )
+
+import trl.import_utils as _trl_import_utils  # noqa: E402
+
+for _availability_flag in (
+    "_llm_blender_available",
+    "_mergekit_available",
+    "_weave_available",
+):
+    if hasattr(_trl_import_utils, _availability_flag):
+        setattr(_trl_import_utils, _availability_flag, False)
+
+import torch  # noqa: E402
+from datasets import load_from_disk  # noqa: E402
+from peft import PeftModel  # noqa: E402
+from transformers import (  # noqa: E402
+    AutoModelForImageTextToText,
+    AutoProcessor,
+    BitsAndBytesConfig,
+    TrainerCallback,
+)
+from transformers.trainer_utils import get_last_checkpoint  # noqa: E402
+from trl import GRPOConfig, GRPOTrainer  # noqa: E402
+
+_REPO_ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(_REPO_ROOT / "py-vgdl"))
+
+from reward_functions import REWARD_FUNCTIONS  # noqa: E402
 
 
-# ── Configurazione ────────────────────────────────────────────────────────────
-
-BASE_MODEL  = "Qwen/Qwen3.5-4B"
+BASE_MODEL = "Qwen/Qwen3.5-4B"
 SFT_ADAPTER = "models/qwen3.5/supervised-learning/16-32-0.05"
-OUTPUT_DIR  = "models/qwen3.5/reinforcement-learning/grpo-output"
-MAX_SEQ_LEN = 1024
+OUTPUT_DIR = os.environ.get(
+    "QWEN_GRPO_OUTPUT_DIR",
+    "models/qwen3.5/reinforcement-learning/grpo-output",
+)
+SAVE_LAST_EVERY_STEPS = 5
 
 SYSTEM_PROMPT = (
     "You are an expert in VGDL (Video Game Description Language). "
@@ -48,185 +83,231 @@ SYSTEM_PROMPT = (
 )
 
 
-# ── Caricamento modello ───────────────────────────────────────────────────────
-
-# Carica il modello base con l'adapter LoRA prodotto dall'SFT.
-# unsloth gestisce il caricamento in 4-bit e applica automaticamente l'adapter.
-print(f"Loading SFT model from {SFT_ADAPTER}...")
-model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name=SFT_ADAPTER,
-    max_seq_length=MAX_SEQ_LEN,
-    dtype=torch.bfloat16,
-    load_in_4bit=True,
-)
-
-# Attiva la modalità training e sblocca i parametri LoRA per l'aggiornamento GRPO
-model.train()
-for name, param in model.named_parameters():
-    if "lora_" in name:
-        param.requires_grad_(True)
-
-# Gradient checkpointing: ricalcola le attivazioni durante il backward
-# invece di tenerle in memoria, riducendo il consumo di VRAM
-model.enable_input_require_grads()
-
-trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
-total     = sum(p.numel() for p in model.parameters())
-print(f"Trainable params: {trainable:,} / {total:,} ({100*trainable/total:.2f}%)")
-
-
-# ── Patch unsloth: fix rotary embedding ──────────────────────────────────────
-
-# Durante GRPO, la generazione usa batch=num_generations ma il backward usa batch=1.
-# Questo causa un mismatch nelle dimensioni di cos/sin nel rotary embedding.
-# La patch allinea q_pass e k_pass alla dimensione effettiva del batch.
-def _patch_unsloth_rotary():
-    import pathlib
-    cache_file = pathlib.Path("unsloth_compiled_cache/unsloth_compiled_module_qwen3_5.py")
-    if not cache_file.exists():
+def copy_checkpoint(checkpoint: str, destination_name: str) -> None:
+    """Copy a complete Trainer checkpoint to a stable, user-facing name."""
+    if not checkpoint or not os.path.isdir(checkpoint):
         return
-    src = cache_file.read_text(encoding="utf-8")
-    old = "    q_embed = torch.cat([q_embed, q_pass], dim=-1)\n    k_embed = torch.cat([k_embed, k_pass], dim=-1)"
-    new = "    q_embed = torch.cat([q_embed, q_pass[:q_embed.shape[0]]], dim=-1)\n    k_embed = torch.cat([k_embed, k_pass[:k_embed.shape[0]]], dim=-1)"
-    if new in src:
-        print("Unsloth rotary patch: already present.")
-        return
-    if old not in src:
-        return
-    cache_file.write_text(src.replace(old, new, 1), encoding="utf-8")
-    print("Unsloth rotary patch: applied.")
-
-_patch_unsloth_rotary()
+    destination = os.path.join(OUTPUT_DIR, destination_name)
+    shutil.copytree(checkpoint, destination, dirs_exist_ok=True)
+    print(f"{destination_name} updated from: {checkpoint}")
 
 
-# ── Fix rope_deltas per Qwen3.5 ──────────────────────────────────────────────
-
-# Qwen3.5 salva rope_deltas con batch=num_generations durante la generazione.
-# Quando il backward usa batch=1, il calcolo delle position_ids produce un
-# tensore vuoto, causando un crash. Questo hook azzera rope_deltas prima di
-# ogni forward pass in modo che vengano ricalcolati correttamente.
-def _rope_deltas_reset_hook(module, args, kwargs):
-    if hasattr(module, "rope_deltas"):
-        module.rope_deltas = None
-
-registered = False
-for _name, _mod in model.named_modules():
-    if hasattr(_mod, "compute_3d_position_ids") and hasattr(_mod, "rope_deltas"):
-        _mod.register_forward_pre_hook(_rope_deltas_reset_hook, with_kwargs=True)
-        print(f"rope_deltas hook registered on: {_name}")
-        registered = True
-        break
-
-if not registered:
-    print("WARN: rope_deltas hook not registered (module not found)")
-
-
-# ── Dataset ───────────────────────────────────────────────────────────────────
-
-print("Loading dataset...")
-dataset = load_from_disk("dataset_hf")
-
-def format_prompt(example):
-    # Costruisce il prompt nel formato ChatML che il modello si aspetta.
-    # Il blocco <think> vuoto segue il pattern di Qwen3 per il reasoning.
-    return {"prompt": (
-        f"<|im_start|>system\n{SYSTEM_PROMPT}<|im_end|>\n"
-        f"<|im_start|>user\n{example['description'].strip()}<|im_end|>\n"
-        f"<|im_start|>assistant\n<think>\n\n</think>\n"
-    )}
-
-dataset = dataset.map(format_prompt, remove_columns=["vgdl"])
-print(f"Train: {len(dataset['train'])} examples | Test: {len(dataset['test'])} examples")
-
-
-# ── Progress bar ──────────────────────────────────────────────────────────────
-
-class TqdmProgressCallback(TrainerCallback):
-    """Mostra una barra di avanzamento con le metriche chiave ad ogni step."""
-
-    def on_train_begin(self, args, state, control, **kwargs):
-        self._pbar = tqdm(
-            total=state.max_steps,
-            desc="GRPO",
-            unit="step",
-            dynamic_ncols=True,
-        )
-        self._postfix = {}
+class LastCheckpointCallback(TrainerCallback):
+    """Persist a resumable copy of the most recent checkpoint."""
 
     def on_step_end(self, args, state, control, **kwargs):
-        self._pbar.update(1)
-        self._pbar.set_postfix(self._postfix, refresh=False)
+        if (
+            state.global_step > 0
+            and state.global_step % SAVE_LAST_EVERY_STEPS == 0
+        ):
+            control.should_save = True
+        return control
 
-    def on_log(self, args, state, control, logs=None, **kwargs):
-        if not logs:
-            return
-        # Mostra le metriche più utili per capire la qualità del training
-        keys = ["loss", "reward", "kl", "grad_norm", "learning_rate"]
-        self._postfix = {
-            k: f"{logs[k]:.4f}" if isinstance(logs[k], float) else str(logs[k])
-            for k in keys if k in logs
+    def on_save(self, args, state, control, **kwargs):
+        checkpoint = os.path.join(
+            args.output_dir,
+            f"checkpoint-{state.global_step}",
+        )
+        copy_checkpoint(checkpoint, "last-model")
+        return control
+
+
+def load_qwen_model():
+    if not torch.cuda.is_available():
+        raise RuntimeError("CUDA is required for Qwen3.5 GRPO training.")
+
+    print(f"Loading processor from {SFT_ADAPTER}...")
+    processor = AutoProcessor.from_pretrained(SFT_ADAPTER)
+    tokenizer = getattr(processor, "tokenizer", processor)
+    if tokenizer.pad_token_id is None:
+        tokenizer.pad_token = tokenizer.eos_token
+    tokenizer.padding_side = "left"
+
+    compute_dtype = (
+        torch.bfloat16
+        if torch.cuda.is_bf16_supported()
+        else torch.float16
+    )
+    quantization_config = BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_compute_dtype=compute_dtype,
+        bnb_4bit_use_double_quant=True,
+    )
+
+    print(f"Loading base model {BASE_MODEL} in 4-bit...")
+    base_model = AutoModelForImageTextToText.from_pretrained(
+        BASE_MODEL,
+        quantization_config=quantization_config,
+        dtype=compute_dtype,
+        device_map={"": 0},
+        low_cpu_mem_usage=True,
+        attn_implementation="eager",
+    )
+    base_model.config.use_cache = False
+    # Do not call prepare_model_for_kbit_training here: it casts the custom
+    # Qwen3.5 Conv1d layers to float32, while the model expects bfloat16
+    # activations during GRPO generation.
+
+    print(f"Loading trainable SFT adapter from {SFT_ADAPTER}...")
+    model = PeftModel.from_pretrained(
+        base_model,
+        SFT_ADAPTER,
+        is_trainable=True,
+        low_cpu_mem_usage=True,
+    )
+    model.train()
+    model.config.use_cache = False
+    model.enable_input_require_grads()
+
+    # GRPOTrainer uses this dictionary only to suppress a token-count warning.
+    if not hasattr(model, "warnings_issued"):
+        model.warnings_issued = {}
+
+    trainable = sum(
+        parameter.numel()
+        for parameter in model.parameters()
+        if parameter.requires_grad
+    )
+    total = sum(parameter.numel() for parameter in model.parameters())
+    print(
+        f"Trainable params: {trainable:,} / {total:,} "
+        f"({100 * trainable / total:.2f}%)"
+    )
+    return model, processor, tokenizer
+
+
+def load_dataset(processor):
+    print("Loading dataset...")
+    dataset = load_from_disk("dataset_hf")
+
+    def format_prompt(example):
+        messages = [
+            {
+                "role": "system",
+                "content": [{"type": "text", "text": SYSTEM_PROMPT}],
+            },
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": example["description"].strip()}
+                ],
+            },
+        ]
+        return {
+            "prompt": processor.apply_chat_template(
+                messages,
+                add_generation_prompt=True,
+                tokenize=False,
+                enable_thinking=False,
+            )
         }
-        self._pbar.set_postfix(self._postfix, refresh=True)
 
-    def on_train_end(self, args, state, control, **kwargs):
-        self._pbar.close()
-
-
-# ── GRPO Config ───────────────────────────────────────────────────────────────
-
-grpo_config = GRPOConfig(
-    output_dir=OUTPUT_DIR,
-    # Training
-    num_train_epochs=3,
-    per_device_train_batch_size=1,
-    gradient_accumulation_steps=4,  # batch effettivo = 1 * 3 generazioni * 4 accum = 12
-    learning_rate=5e-6,
-    lr_scheduler_type="cosine",
-    warmup_steps=10,
-    bf16=True,
-    fp16=False,
-    optim="adamw_8bit",             # ~4x meno VRAM rispetto ad AdamW standard
-    # Logging & salvataggio
-    logging_steps=5,
-    save_strategy="epoch",
-    report_to="none",
-    # Dataloader asincrono: i worker pre-caricano i batch mentre la GPU lavora
-    dataloader_num_workers=2,
-    dataloader_pin_memory=True,
-    # GRPO: per ogni prompt genera 3 completions, calcola reward relativa e aggiorna
-    num_generations=3,
-    max_prompt_length=400,
-    max_completion_length=384,
-    temperature=0.9,
-    beta=0.01,                      # peso della penalità KL verso la policy iniziale
-    # vLLM disabilitato: Qwen3.5-4B ha un encoder visivo (SigLIP) non supportato
-    # da unsloth fast_inference, rendendo impossibile la condivisione dei pesi
-    # tra il modello di training e il motore vLLM.
-    use_vllm=False,
-)
+    dataset = dataset.map(
+        format_prompt,
+        remove_columns=["description", "vgdl"],
+    )
+    print(f"Train size: {len(dataset['train'])} | Test size: {len(dataset['test'])}")
+    return dataset
 
 
-# ── Training ──────────────────────────────────────────────────────────────────
+def build_grpo_config() -> GRPOConfig:
+    return GRPOConfig(
+        output_dir=OUTPUT_DIR,
+        num_train_epochs=3,
+        per_device_train_batch_size=1,
+        gradient_accumulation_steps=8,
+        learning_rate=5e-6,
+        lr_scheduler_type="cosine",
+        warmup_steps=10,
+        bf16=torch.cuda.is_bf16_supported(),
+        fp16=not torch.cuda.is_bf16_supported(),
+        optim="paged_adamw_8bit",
+        logging_steps=5,
+        save_strategy="epoch",
+        save_total_limit=2,
+        report_to="none",
+        dataloader_num_workers=0,
+        dataloader_pin_memory=True,
+        num_generations=2,
+        max_prompt_length=384,
+        max_completion_length=256,
+        temperature=0.8,
+        beta=0.04,
+        use_vllm=False,
+    )
 
-trainer = GRPOTrainer(
-    model=model,
-    reward_funcs=REWARD_FUNCTIONS,
-    args=grpo_config,
-    train_dataset=dataset["train"],
-    processing_class=tokenizer,
-    callbacks=[TqdmProgressCallback()],
-)
 
-print("Starting GRPO training...")
-train_result = trainer.train()
+def find_resume_checkpoint() -> str | None:
+    last_model_dir = os.path.join(OUTPUT_DIR, "last-model")
+    required_files = (
+        "adapter_model.safetensors",
+        "optimizer.pt",
+        "scheduler.pt",
+        "rng_state.pth",
+        "trainer_state.json",
+        "training_args.bin",
+    )
+    if os.path.isdir(last_model_dir) and all(
+        os.path.isfile(os.path.join(last_model_dir, filename))
+        for filename in required_files
+    ):
+        return last_model_dir
+    if os.path.isdir(OUTPUT_DIR):
+        return get_last_checkpoint(OUTPUT_DIR)
+    return None
 
-trainer.save_model(OUTPUT_DIR)
-tokenizer.save_pretrained(OUTPUT_DIR)
 
-os.makedirs(OUTPUT_DIR, exist_ok=True)
-metrics_path = os.path.join(OUTPUT_DIR, "grpo_training_metrics.json")
-with open(metrics_path, "w") as f:
-    json.dump({"train": train_result.metrics, "history": trainer.state.log_history}, f, indent=2)
+def main() -> None:
+    model, processor, tokenizer = load_qwen_model()
+    dataset = load_dataset(processor)
+    trainer = GRPOTrainer(
+        model=model,
+        reward_funcs=REWARD_FUNCTIONS,
+        args=build_grpo_config(),
+        train_dataset=dataset["train"],
+        processing_class=tokenizer,
+        callbacks=[LastCheckpointCallback()],
+    )
 
-print(f"Training complete. Model saved to {OUTPUT_DIR}")
-print(f"Metrics saved to {metrics_path}")
+    if os.environ.get("GRPO_DRY_RUN") == "1":
+        print("Qwen3.5 GRPO dry run complete. Training source: SFT adapter.")
+        return
+
+    print("Starting Qwen3.5 GRPO training...")
+    resume_checkpoint = find_resume_checkpoint()
+    if resume_checkpoint:
+        print(f"Resuming training from: {resume_checkpoint}")
+        if os.path.normpath(resume_checkpoint) != os.path.normpath(
+            os.path.join(OUTPUT_DIR, "last-model")
+        ):
+            copy_checkpoint(resume_checkpoint, "last-model")
+    else:
+        print("No checkpoint found: training starts from the SFT adapter.")
+
+    train_result = trainer.train(resume_from_checkpoint=resume_checkpoint)
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    trainer.save_model(OUTPUT_DIR)
+    tokenizer.save_pretrained(OUTPUT_DIR)
+
+    last_checkpoint = get_last_checkpoint(OUTPUT_DIR)
+    if last_checkpoint:
+        copy_checkpoint(last_checkpoint, "last-model")
+
+    metrics = {
+        "train": train_result.metrics,
+        "history": trainer.state.log_history,
+        "started_from_sft_adapter": True,
+        "sft_adapter": SFT_ADAPTER,
+        "last_checkpoint": last_checkpoint,
+    }
+    metrics_path = os.path.join(OUTPUT_DIR, "grpo_training_metrics.json")
+    with open(metrics_path, "w", encoding="utf-8") as metrics_file:
+        json.dump(metrics, metrics_file, indent=2)
+
+    print(f"GRPO training complete. Model saved to {OUTPUT_DIR}")
+    print(f"Metrics saved to {metrics_path}")
+
+
+if __name__ == "__main__":
+    main()
