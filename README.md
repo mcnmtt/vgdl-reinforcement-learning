@@ -81,10 +81,3 @@ valutatore:
 ```bash
 python evaluation/evaluate_model_testset.py --help
 ```
-
-## File inclusi
-
-Sono versionati il codice, le specifiche VGDL, le descrizioni e i risultati
-della valutazione finale. Pesi dei modelli, adapter LoRA, checkpoint, cache,
-credenziali e dataset Hugging Face rigenerabile restano locali e non vengono
-pubblicati.
